@@ -1,90 +1,45 @@
-# SAFINUM - Interface en langue locale (prototype)
+# SAFINUM
 
-Extension Chrome qui affiche un service financier numérique dans une langue nationale du Cameroun, **sans modifier le code du site**. Elle lit les textes affichés, les remplace par une version validée par un locuteur, et vérifie que les montants et les informations sensibles n'ont pas changé.
+Prototype d’extension Chrome qui traduit l’interface de SAFINUM dans une langue locale du Cameroun.
 
-Projet de l'équipe Alpha pour le SAFINUM Innovate Challenge. Rendu : samedi 14 novembre 2026, 23h59.
+L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte n’est pas dans le dictionnaire, il reste inchangé.
 
-## Comment ça marche
+## Installation
 
-1. L'extension repère chaque texte de la page (et son menu, ses champs, ses boutons).
-2. Les **valeurs sensibles** (montants, numéros de compte et de téléphone, références, dates, noms) sont mises de côté et remplacées par un marqueur : `25 000 FCFA` devient `[M1]`.
-3. Le texte avec marqueurs est cherché dans le **dictionnaire** (`data/dictionary.json`).
-4. La traduction est affichée, les valeurs d'origine sont **remises telles quelles**.
-5. **Contrôle automatique** : si un marqueur manque ou si une valeur n'est pas identique, le texte d'origine est conservé et le panneau l'indique.
-6. Un texte absent du dictionnaire reste **tel quel** : l'extension n'invente jamais de traduction.
-7. La page est **surveillée en continu** : un nouvel écran, un message temporaire (toast) ou une alerte qui apparaît est traduit aussitôt. Les textes inconnus sont mémorisés même si le message a déjà disparu, donc le bouton **Copier les textes inconnus** les contient quand même.
+1. Ouvrir `chrome://extensions` et activer le **Mode développeur**.
+2. Cliquer sur **Charger l’extension non empaquetée** et choisir le dossier du projet.
+3. Ouvrir [la page de test SAFINUM](https://safinum.cm/hackathon-test).
 
-## Installer l'extension dans Chrome
+Après une modification, recharger l’extension dans Chrome puis actualiser la page.
 
-1. Ouvrir `chrome://extensions`.
-2. Activer le **Mode développeur** (en haut à droite).
-3. Cliquer sur **Charger l'extension non empaquetée** et choisir le dossier `ALPHA`.
-4. Ouvrir la page de test : https://safinum.cm/hackathon-test
-5. Le panneau **Langue de l'interface** apparaît en bas à droite.
+## Dictionnaire
 
-Après chaque modification : revenir sur `chrome://extensions`, cliquer sur le bouton de rechargement de l'extension, puis rafraîchir la page de test.
+Pour préparer ou mettre à jour les traductions :
 
-## Structure du dossier
-
-```
-ALPHA/
-  manifest.json        configuration de l'extension (site visé, fichiers injectés)
-  src/
-    protect.js         mise de côté et remise des valeurs sensibles
-    translate.js       recherche dans le dictionnaire
-    content.js         lecture de la page, panneau de contrôle
-  data/
-    dictionary.json    les textes : français, anglais, langue locale
-  tools/
-    check.js           contrôle du dictionnaire
-    csv.js             export / import CSV pour le locuteur
-    test.js            tests automatiques
-  docs/                notes pour la note technique, fichier CSV
+```bash
+node tools/csv.js export
+# Compléter le fichier docs/dictionnaire.csv
+node tools/csv.js import docs/dictionnaire.csv
+node tools/check.js
 ```
 
-## Remplir le dictionnaire avec le locuteur
+Conservez les marqueurs comme `[M1]` dans les traductions : ils représentent des valeurs qui seront remises à leur place.
 
-Le locuteur n'a pas besoin du code : il travaille dans un tableur.
+## Vérifications
 
-```
-node tools/csv.js export                       # crée docs/dictionnaire.csv
-# le locuteur remplit les colonnes anglais, langue_locale et note
-node tools/csv.js import docs/dictionnaire.csv # remet les traductions dans le dictionnaire
-node tools/check.js                            # vérifie que tout est cohérent
+```bash
+node tools/test.js
+node tools/check.js
 ```
 
-Règles pour les traductions :
-- Traduire des **phrases entières**, jamais mot à mot.
-- Garder les marqueurs `[M1]`, `[M2]`... dans la traduction : ils représentent une valeur (montant, nom, numéro) qui sera remise à cet endroit. L'ordre peut changer, mais chaque marqueur doit apparaître une fois.
-- Respecter les **accents et les tons** de la langue, partout de la même façon.
-- Les lignes marquées « AVERTISSEMENT DE SÉCURITÉ » doivent avoir un sens exact : une erreur est un défaut majeur d'après le règlement.
-- Pour changer le nom du bouton de la langue, modifier `meta.localLanguage.label` dans `dictionary.json`.
+## Fichiers principaux
 
-## Compléter la liste des textes
+- `manifest.json` : configuration de l’extension.
+- `src/` : lecture de la page, traduction et protection des valeurs.
+- `data/dictionary.json` : textes et traductions.
+- `tools/` : import/export CSV et vérifications.
+- `docs/` : documentation et fichiers de traduction.
 
-Dans le panneau, le bouton **Copier les textes inconnus** copie tous les textes de la page absents du dictionnaire. Parcourez tout le trajet (les 5 écrans, le bouton EN du site, les erreurs), copiez la liste, puis ajoutez les lignes manquantes dans `dictionary.json`.
+## Limites
 
-## Tests
-
-```
-node tools/test.js    # protection des valeurs et recherche dans le dictionnaire
-node tools/check.js   # contrôle du dictionnaire
-```
-
-## Organisation de l'équipe
-
-- Une branche par personne (par exemple `extension`, `traduction`, `voix`), puis fusion dans `main` quand une partie fonctionne.
-- **Ne jamais envoyer un secret sur GitHub** : clés d'API et fichiers `.env` sont exclus par `.gitignore`.
-- Écrire la note technique au fil de l'eau, quelques lignes par jour, dans `docs/`.
-
-## Limites connues (à reprendre dans la note technique)
-
-- Les noms de personnes sont protégés grâce à la liste `meta.names` du dictionnaire. Un nom nouveau, absent de cette liste, laisse le texte qui le contient en français.
-- Un texte absent du dictionnaire n'est pas traduit (le modèle d'IA pour les textes inédits n'est pas encore branché).
-- La voix n'est pas encore intégrée.
-- Un message affiché dans une autre fenêtre intégrée à la page (iframe) ou dans un composant fermé n'est pas vu par l'extension. À vérifier si un message ne se traduit pas.
-- L'extension agit uniquement sur `https://safinum.cm/*` (voir `manifest.json` pour changer le site visé).
-
-## Composants utilisés
-
-Aucune bibliothèque externe pour l'extension (JavaScript, HTML et CSS natifs). À compléter au fil du projet : modèle de synthèse vocale, modèle d'IA, dictionnaires consultés, avec leurs licences.
+Les textes absents du dictionnaire ne sont pas traduits. La voix n’est pas encore intégrée. L’extension fonctionne sur `https://safinum.cm/*`.
