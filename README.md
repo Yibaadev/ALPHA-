@@ -18,7 +18,7 @@ Projet de l'équipe Alpha pour le SAFINUM Innovate Challenge. Rendu : samedi 14 
 
 1. Ouvrir `chrome://extensions`.
 2. Activer le **Mode développeur** (en haut à droite).
-3. Cliquer sur **Charger l'extension non empaquetée** et choisir le dossier `extension-safinum`.
+3. Cliquer sur **Charger l'extension non empaquetée** et choisir le dossier `ALPHA`.
 4. Ouvrir la page de test : https://safinum.cm/hackathon-test
 5. Le panneau **Langue de l'interface** apparaît en bas à droite.
 
@@ -27,7 +27,7 @@ Après chaque modification : revenir sur `chrome://extensions`, cliquer sur le b
 ## Structure du dossier
 
 ```
-extension-safinum/
+ALPHA/
   manifest.json        configuration de l'extension (site visé, fichiers injectés)
   src/
     protect.js         mise de côté et remise des valeurs sensibles
