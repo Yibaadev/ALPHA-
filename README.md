@@ -12,6 +12,7 @@ Projet de l'équipe Alpha pour le SAFINUM Innovate Challenge. Rendu : samedi 14 
 4. La traduction est affichée, les valeurs d'origine sont **remises telles quelles**.
 5. **Contrôle automatique** : si un marqueur manque ou si une valeur n'est pas identique, le texte d'origine est conservé et le panneau l'indique.
 6. Un texte absent du dictionnaire reste **tel quel** : l'extension n'invente jamais de traduction.
+7. La page est **surveillée en continu** : un nouvel écran, un message temporaire (toast) ou une alerte qui apparaît est traduit aussitôt. Les textes inconnus sont mémorisés même si le message a déjà disparu, donc le bouton **Copier les textes inconnus** les contient quand même.
 
 ## Installer l'extension dans Chrome
 
@@ -81,6 +82,7 @@ node tools/check.js   # contrôle du dictionnaire
 - Les noms de personnes sont protégés grâce à la liste `meta.names` du dictionnaire. Un nom nouveau, absent de cette liste, laisse le texte qui le contient en français.
 - Un texte absent du dictionnaire n'est pas traduit (le modèle d'IA pour les textes inédits n'est pas encore branché).
 - La voix n'est pas encore intégrée.
+- Un message affiché dans une autre fenêtre intégrée à la page (iframe) ou dans un composant fermé n'est pas vu par l'extension. À vérifier si un message ne se traduit pas.
 - L'extension agit uniquement sur `https://safinum.cm/*` (voir `manifest.json` pour changer le site visé).
 
 ## Composants utilisés
