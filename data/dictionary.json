@@ -12,7 +12,9 @@
     "ignore": [
       "Safinum Pay",
       "EN",
-      "FR"
+      "FR",
+      "AN",
+      "Mobile Money"
     ]
   },
   "entries": [
@@ -84,8 +86,8 @@
       "screen": "1. Solde",
       "fr": "Bonjour, [M1]",
       "en": "Hello, [M1]",
-      "local": "Mə̀kónî, [M1]",
-      "note": "Salutation attestée p. 147 du dictionnaire : mə̀kónî 'salut ! bonjour !'. Marqueur [M1] préservé.",
+      "local": "M̀ mə̀mà kídí, [M1]",
+      "note": "Salutation matinale attestée (p. 14 / 215) : M̀ mə̀mà kídí (prononcé « Mmema kiri »). Marqueur [M1] préservé. Formule générale alternative : Mə̀kónî.",
       "statut": "valide"
     },
     {
@@ -112,7 +114,7 @@
       "fr": "Solde disponible",
       "en": "Available balance",
       "local": "Mwàní ú nè",
-      "note": "Solde disponible (argent qui est présent).",
+      "note": "Solde disponible (argent qui est présent). Graphie pratique clavier pour le schwa ə / nə̂.",
       "statut": "valide"
     },
     {
@@ -237,8 +239,8 @@
       "screen": "2. Frais",
       "fr": "Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.",
       "en": "Choose transfer type and amount. Fees are calculated automatically.",
-      "local": "Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í lóm yátə́ lánbân ɲə̀ m̀yɛ̌n.",
-      "note": "Choisissez le transfert et le montant. Les frais sont calculés automatiquement.",
+      "local": "Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í nlóm yátə́ lánbân ɲə̀ m̀yɛ̌n.",
+      "note": "Choisissez le transfert et le montant. Les frais sont calculés automatiquement (nlóm = substantif envoi).",
       "statut": "valide"
     },
     {
@@ -273,8 +275,8 @@
       "screen": "2. Frais",
       "fr": "Montant à envoyer",
       "en": "Amount to send",
-      "local": "Mwàní yí lóm",
-      "note": "Montant à envoyer (argent à envoyer).",
+      "local": "Mwàní ú nlóm",
+      "note": "Montant à envoyer (connectif de classe 3 ú nlóm).",
       "statut": "valide"
     },
     {
@@ -309,8 +311,8 @@
       "screen": "2. Frais",
       "fr": "Retour",
       "en": "Back",
-      "local": "Dúgnì",
-      "note": "Retour / revenir en arrière (dict. p. 103).",
+      "local": "Á mbús",
+      "note": "Retour / en arrière (directionnel UI, opposé de Kə́lə̀ ósú. Noté á mbúz p. 191 et prononcé á mbús p. 14).",
       "statut": "valide"
     },
     {
@@ -363,8 +365,8 @@
       "screen": "3. Bénéficiaire",
       "fr": "Motif du transfert",
       "en": "Transfer purpose",
-      "local": "Àsú yí nlóm",
-      "note": "Motif du transfert (la raison de l'envoi).",
+      "local": "Àsú ú nlóm",
+      "note": "Motif du transfert (connectif de classe 3a ú nlóm).",
       "statut": "valide"
     },
     {
@@ -534,24 +536,90 @@
       "screen": "Bandeau de test",
       "fr": "Environnement de test — données fictives, aucune transaction réelle.",
       "en": "Test environment — fictional data, no real transaction.",
-      "local": "",
-      "note": "Bandeau d’avertissement affiché dans l’environnement de démonstration."
+      "local": "Vôm à mə̀və́və́glá — màm mə́ pûpùd, té nlóm mwàní wə́ bə́bɛ́lə́.",
+      "note": "Bandeau d’avertissement affiché dans l’environnement de démonstration (mə̀və́və́glá = essai/test p. 273, pûpùd = sans effet p. 237, bə́bɛ́lə́ = réel/vérité p. 86).",
+      "statut": "valide"
     },
     {
       "id": "test_protocol_link",
       "screen": "Bandeau de test",
       "fr": "Protocole de test",
       "en": "Test protocol",
-      "local": "",
-      "note": "Lien vers les consignes de test."
+      "local": "Mə̀tùm mə́ mə̀və́və́glá",
+      "note": "Lien vers les consignes de test (mə̀tùm = protocole/règles p. 268, mə̀və́və́glá = test p. 273).",
+      "statut": "valide"
     },
     {
       "id": "hackathon_return_link",
       "screen": "Bandeau de test",
       "fr": "Retour au hackathon",
       "en": "Back to hackathon",
+      "local": "Dúgnì á hackathon",
+      "note": "Lien de retour à la page du hackathon (dúgnì = retourner/rentrer p. 103).",
+      "statut": "valide"
+    },
+    {
+      "id": "operation_electricity_bill",
+      "screen": "2. Frais",
+      "fr": "Facture électricité",
+      "en": "Electricity bill",
       "local": "",
-      "note": "Lien de retour à la page du hackathon."
+      "note": "Type d'opération. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "operation_other_bank",
+      "screen": "2. Frais",
+      "fr": "Autre banque",
+      "en": "Other bank",
+      "local": "",
+      "note": "Type d'opération. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "demo_warning_banner",
+      "screen": "Bandeau de test",
+      "fr": "Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
+      "en": "Safinum Pay — demonstration environment. Do not enter any real personal data.",
+      "local": "",
+      "note": "Bandeau de test. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "confirm_beneficiary_checkbox",
+      "screen": "3. Bénéficiaire",
+      "fr": "J'ai vérifié le nom et le numéro du bénéficiaire.",
+      "en": "I have checked the beneficiary's name and number.",
+      "local": "",
+      "note": "Case à cocher. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "action_close",
+      "screen": "Alertes",
+      "fr": "Fermer",
+      "en": "Close",
+      "local": "",
+      "note": "Bouton d'alerte. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "error_title",
+      "screen": "Alertes",
+      "fr": "Une erreur est survenue",
+      "en": "An error occurred",
+      "local": "",
+      "note": "Titre d'erreur. À traduire par un locuteur éton.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "error_must_confirm_info",
+      "screen": "Alertes",
+      "fr": "Vous devez confirmer les informations avant de valider le transfert.",
+      "en": "You must confirm the information before submitting the transfer.",
+      "local": "",
+      "note": "Message d'erreur. À traduire par un locuteur éton. Le sens doit être exact.",
+      "statut": "a_verifier"
     }
   ]
 }
