@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
   const DEFAULT_COVERAGE_THRESHOLD = 0.80;
   const MARKER_RE = /\[M\d+\]/g;
   const WORD_RE = /\[M\d+\]|[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu;
@@ -77,7 +77,7 @@
   }
 
   function init(dictionary, lexicon, criticalData, options) {
-    if (!NS.protect) throw new Error("SAFINUM.protect doit être chargé avant le moteur segments.");
+    if (!NS.protect) throw new Error("ALPHA.protect doit être chargé avant le moteur segments.");
     const data = dictionary || {};
     const meta = data.meta || {};
     protectionRegex = NS.protect.build(meta.names || []);

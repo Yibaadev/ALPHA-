@@ -8,7 +8,7 @@ const vm = require("vm");
 const root = path.join(__dirname, "..");
 const context = vm.createContext({ console });
 vm.runInContext(fs.readFileSync(path.join(root, "src", "engine", "templates.js"), "utf8"), context);
-const engine = context.SAFINUM.templates;
+const engine = context.ALPHA.templates;
 
 function fixture(fr_pattern, eton, statut = "valide") {
   return { id: "fixture", fr_pattern, eton, statut };
@@ -43,11 +43,18 @@ const ids = new Set();
 for (const template of data) {
   assert.ok(!ids.has(template.id), "id de gabarit unique");
   ids.add(template.id);
-  assert.strictEqual(template.eton, null, "aucune traduction Eton ne doit être inventée");
-  assert.strictEqual(template.statut, "a_verifier");
+  assert.strictEqual(template.statut, "valide", "le gabarit doit être validé");
+  assert.ok(typeof template.eton === "string" && template.eton.trim().length > 0, "la traduction Eton doit être renseignée");
   assert.ok(typeof template.critique === "boolean");
   assert.ok(["solde", "frais", "transfert", "recapitulatif", "erreur", "securite"].includes(template.categorie));
-}
-assert.strictEqual(engine.match("Solde disponible : [M1]", data), null, "les gabarits non validés doivent être ignorés");
 
-console.log("Gabarits : validation des champs, appariement exact, 1/2/3 marqueurs et refus des gabarits non validés.");
+  const frMarkers = (template.fr_pattern.match(/\[M\d+\]/g) || []).sort().join(",");
+  const etonMarkers = (template.eton.match(/\[M\d+\]/g) || []).sort().join(",");
+  assert.strictEqual(etonMarkers, frMarkers, `les marqueurs de ${template.id} doivent correspondre (${frMarkers} attendu, ${etonMarkers} trouvé)`);
+}
+
+const testMatch = engine.match("Solde disponible : [M1]", data);
+assert.ok(testMatch, "les gabarits validés doivent matcher avec succès");
+assert.strictEqual(testMatch.eton, "Mwàní àlígì á kɔ̂nt : [M1]");
+
+console.log("Gabarits : validation des champs, intégrité des marqueurs et appariement réussis.");

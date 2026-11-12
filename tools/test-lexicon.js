@@ -28,7 +28,7 @@ for (const entry of entries) {
 const dictionary = require(path.join(root, "data", "dictionary.json"));
 const sample = dictionary.entries.find((entry) => typeof entry.local === "string" && entry.local.trim());
 assert.ok(sample, "une valeur Eton de référence doit être disponible pour le test de préservation");
-const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "safinum-lexicon-"));
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "alpha-lexicon-"));
 try {
   const tempFile = path.join(tempDir, "lexicon.json");
   const fixture = [{ fr: "fixture de test", eton: sample.local, pos: "", classe: "", source: "fixture temporaire", statut: "a_verifier" }];

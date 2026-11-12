@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
   const MARKER_RE = /\[M\d+\]/g;
   let rules = [];
   let activeRules = [];
@@ -107,7 +107,7 @@
   }
 
   function init(ruleData, lexicon, criticalData, meta) {
-    if (!NS.protect) throw new Error("SAFINUM.protect doit être chargé avant le moteur rules.");
+    if (!NS.protect) throw new Error("ALPHA.protect doit être chargé avant le moteur rules.");
     protectionRegex = NS.protect.build(meta && meta.names || []);
     ignored = new Set(((meta && meta.ignore) || []).map((value) => NS.protect.normalize(String(value))));
     rules = Array.isArray(ruleData) ? ruleData : [];

@@ -1,4 +1,4 @@
-# SAFINUM
+# ALPHA
 
 Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant en français ou en anglais, sans modifier son code source. L’extension détecte la langue de la page à partir de son attribut `lang`, puis des expressions reconnues dans le dictionnaire. Le mode Eton reste hors de l’interface pour le moment.
 
@@ -10,7 +10,7 @@ Les 60 traductions Eton du parcours financier et du bandeau de démonstration on
 
 1. Ouvrir `chrome://extensions` et activer le **Mode développeur**.
 2. Cliquer sur **Charger l’extension non empaquetée** et choisir le dossier du projet.
-3. Ouvrir [la page de test SAFINUM](https://safinum.cm/hackathon-test).
+3. Ouvrir une page Web de démonstration compatible, puis vérifier le panneau ALPHA.
 
 Après une modification, recharger l’extension dans Chrome puis actualiser la page.
 

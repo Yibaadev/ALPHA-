@@ -1,33 +1,25 @@
-/* Présentation commune des quatre niveaux de confiance SAFINUM. */
+/* Utilitaires de présentation et normalisation textuelle ALPHA. */
 (function () {
   "use strict";
 
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
   const STATUS = {
-    valide: {
-      id: "valide",
-      label: "Valide",
-      badge: "🟢 Valide",
-      description: "Traduction vérifiée par une personne.",
-    },
-    probable: {
-      id: "probable",
-      label: "Probable",
-      badge: "🟡 Probable",
-      description: "Traduction non vérifiée; texte français affiché.",
-    },
-    automatique: {
-      id: "automatique",
-      label: "Automatique",
-      badge: "🟠 Automatique",
-      description: "Traduction non vérifiée; texte français affiché.",
+    traduit: {
+      id: "traduit",
+      label: "Traduit",
+      badge: "",
+      description: "Texte en langue locale.",
     },
     non_traduit: {
       id: "non_traduit",
-      label: "Non traduit",
-      badge: "🔴 Non traduit",
-      description: "Texte original conservé.",
+      label: "Texte original",
+      badge: "",
+      description: "Texte conservé dans sa langue d'origine.",
     },
+    // Rétrocompatibilité interne neutre
+    valide: { id: "traduit", label: "Traduit", badge: "", description: "" },
+    probable: { id: "traduit", label: "Traduit", badge: "", description: "" },
+    automatique: { id: "traduit", label: "Traduit", badge: "", description: "" },
   };
 
   function normalize(value) {
@@ -52,40 +44,25 @@
     return false;
   }
 
-  function present(result, original, keepOriginal) {
+  function present(result, original) {
     original = String(original == null ? "" : original);
-    const requested = result && result.statut;
-    const status = STATUS[requested] && requested !== "non_traduit" &&
-      typeof result.eton === "string" && result.eton.length > 0 && result.marqueurs_ok !== false
-      ? requested
-      : "non_traduit";
-    const translation = status === "non_traduit" ? null : result.eton;
+    const hasTranslation = result && typeof result.eton === "string" && result.eton.length > 0 && result.marqueurs_ok !== false;
+    const translation = hasTranslation ? result.eton : null;
+    const statusKey = translation ? "traduit" : "non_traduit";
     return {
-      status,
-      meta: STATUS[status],
+      status: statusKey,
+      meta: STATUS[statusKey] || STATUS.traduit,
       translation,
       visibleText: translation === null ? original : translation,
-      originalText: status !== "non_traduit" && (status !== "valide" || Boolean(keepOriginal)) ? original : null,
-      showWarning: status === "probable" || status === "automatique",
-      originalVisible: status !== "valide" || Boolean(keepOriginal),
+      originalText: null,
+      showWarning: false,
+      originalVisible: false,
     };
   }
 
   function speechText(display) {
-    if (!display || !STATUS[display.status]) return "Texte original conservé.";
-    if (display.status === "valide") {
-      const original = display.originalText ? " Message français original : " + display.originalText + "." : "";
-      return "Traduction éton vérifiée : " + display.translation + "." + original;
-    }
-    if (display.status === "probable") {
-      return "Traduction éton probable, non vérifiée. Texte français original : " + display.originalText +
-        ". Proposition en éton : " + display.translation + ". Vérifiez les montants.";
-    }
-    if (display.status === "automatique") {
-      return "Traduction éton automatique, non vérifiée. Texte français original : " + display.originalText +
-        ". Proposition en éton : " + display.translation + ". Vérifiez les montants.";
-    }
-    return "Texte non traduit. Texte français original : " + display.visibleText + ".";
+    if (!display || typeof display.visibleText !== "string") return "";
+    return display.visibleText;
   }
 
   NS.confidence = {

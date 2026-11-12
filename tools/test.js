@@ -12,7 +12,7 @@ const ctx = vm.createContext({ console });
 for (const f of ["src/protect.js", "src/translate.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), ctx, { filename: f });
 }
-const { protect: P, translate: T } = ctx.SAFINUM;
+const { protect: P, translate: T } = ctx.ALPHA;
 
 let passed = 0;
 function test(name, fn) {
@@ -59,6 +59,11 @@ test("deux valeurs dans un texte", () => {
   assert.strictEqual(r.masked, "De [M1] vers [M2]");
   assert.deepStrictEqual(Array.from(r.values), ["Amina", "+237 6 99 12 34 56"]);
 });
+test("le nom propre reconnu est protégé quelle que soit sa casse", () => {
+  const r = P.protect("Compte SAFINUM PAY", P.build(["Safinum Pay"]));
+  assert.strictEqual(r.masked, "Compte [M1]");
+  assert.strictEqual(r.values[0], "SAFINUM PAY");
+});
 
 // --- remise des valeurs ---
 test("restore simple", () => assert.strictEqual(P.restore("Total : [M1]", ["25 000 FCFA"]), "Total : 25 000 FCFA"));
@@ -69,7 +74,7 @@ test("restore refuse un marqueur inconnu", () => assert.strictEqual(P.restore("[
 
 // --- dictionnaire ---
 T.init({
-  meta: { names: ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina"], ignore: ["Safinum Pay"] },
+  meta: { names: ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina", "Safinum Pay"], ignore: ["Alpha Pay", "Safinum Pay"] },
   entries: [
     { id: "a", fr: "Total débité", en: "Total debited", local: "LOC total", statut: "valide" },
     { id: "b", fr: "Numéro de compte : [M1]", en: "", local: "LOC compte [M1]", statut: "valide" },
@@ -92,7 +97,8 @@ test("entrée sans traduction", () => assert.strictEqual(T.analyse("Solde", "loc
 test("texte inconnu", () => assert.strictEqual(T.analyse("Un message nouveau", "local").kind, "unknown"));
 test("valeur seule ignorée", () => assert.strictEqual(T.analyse("25 000 FCFA", "local").kind, "skip"));
 test("chiffre seul ignoré", () => assert.strictEqual(T.analyse("3", "local").kind, "skip"));
-test("texte ignoré par la configuration", () => assert.strictEqual(T.analyse("Safinum Pay", "local").kind, "skip"));
+test("texte ignoré par la configuration", () => assert.strictEqual(T.analyse("Alpha Pay", "local").kind, "skip"));
+test("nom propre Safinum Pay ignoré", () => assert.strictEqual(T.analyse("Safinum Pay", "local").kind, "skip"));
 test("marqueur oublié dans la traduction : refus", () => assert.strictEqual(T.analyse("Total à débiter 25 000 FCFA", "local").kind, "integrity"));
 test("marqueur en trop dans la traduction : refus", () => assert.strictEqual(T.analyse("Frais", "local").kind, "integrity"));
 
@@ -158,8 +164,19 @@ test("les 60 phrases validées gardent exactement leur traduction", () => {
     assert.ok(Array.isArray(result.raisons), entry.id);
   }
 });
+test("Compte Safinum garde le nom propre", () => {
+  const result = T.translate("Compte Safinum", { target: "eton" });
+  assert.strictEqual(result.statut, "valide");
+  assert.strictEqual(result.eton, "Kɔ̂nt Safinum");
+});
+test("Safinum Pay reste intact dans le bandeau traduit", () => {
+  const original = "Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.";
+  const result = T.translate(original, { target: "eton" });
+  assert.strictEqual(result.statut, "valide");
+  assert.ok(result.eton.startsWith("Safinum Pay —"));
+});
 test("un changement CSV retire le statut valide jusqu’à révision", () => {
-  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "safinum-csv-"));
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "alpha-csv-"));
   try {
     for (const dir of ["tools", "data", "docs"]) fs.mkdirSync(path.join(tempRoot, dir));
     fs.copyFileSync(path.join(root, "tools", "csv.js"), path.join(tempRoot, "tools", "csv.js"));
