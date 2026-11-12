@@ -1,6 +1,6 @@
 {
   "meta": {
-    "localLanguage": { "code": "xxx", "label": "Langue locale" },
+    "localLanguage": { "code": "eto", "label": "Eton" },
     "names": ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina"],
     "ignore": ["Safinum Pay", "EN", "FR"]
   },

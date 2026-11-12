@@ -19,6 +19,7 @@
       "js": [
         "src/protect.js",
         "src/translate.js",
+        "src/panel.js",
         "src/content.js"
       ],
       "run_at": "document_idle"
