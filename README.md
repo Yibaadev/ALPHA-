@@ -1,8 +1,10 @@
 # SAFINUM
 
-Prototype d’extension Chrome qui traduit l’interface de SAFINUM dans une langue locale du Cameroun.
+Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant, sans modifier son code source. La première langue nationale ciblée est l’Eton (Ìtón, code `eto`).
 
-L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte n’est pas dans le dictionnaire, il reste inchangé.
+L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte n’est pas dans le dictionnaire, il reste inchangé et peut être copié pour compléter le dictionnaire. Le rail latéral donne accès au choix de langue, au suivi du parcours, aux contrôles de valeurs et à la lecture vocale locale du texte visible.
+
+Les 57 traductions Eton du parcours financier restent à renseigner et à valider par une personne compétente avant une démonstration linguistique. L’interface signale ces entrées comme étant à valider et ne présente pas de texte financier inventé comme une traduction correcte. La synthèse automatique est désactivée en mode Eton en attendant des enregistrements natifs validés. En français et en anglais, le navigateur ne lit qu’avec une voix qu’il signale comme locale; si aucune voix locale correspondante n’est installée, la lecture ne démarre pas.
 
 ## Installation
 
@@ -42,4 +44,4 @@ node tools/check.js
 
 ## Limites
 
-Les textes absents du dictionnaire ne sont pas traduits. La voix n’est pas encore intégrée. L’extension fonctionne sur `https://safinum.cm/*`.
+Les textes absents du dictionnaire ne sont pas traduits. La qualité des traductions Eton doit être vérifiée par des locuteurs compétents, en particulier pour les avertissements et les conditions financières. La disponibilité des voix locales en français et en anglais dépend du navigateur et du système. Le prototype ne réalise aucune opération financière.
