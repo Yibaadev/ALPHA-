@@ -1,0 +1,19 @@
+{
+  "name": "safinum-eton-lexicon-tools",
+  "private": true,
+  "scripts": {
+    "lexicon:extract": "python tools/extract-lexicon.py",
+    "lexicon:review": "node tools/review-lexicon.js",
+    "lexicon:quality": "node tools/lexicon-quality.js",
+    "test:lexicon": "node tools/test-lexicon.js",
+    "templates:todo": "node tools/templates-todo.js",
+    "test:templates": "node tools/test-templates.js",
+    "test:fuzzy": "node tools/test-fuzzy.js",
+    "test:segments": "node tools/test-segments.js",
+    "rules:review": "node tools/review-rules.js",
+    "test:rules": "node tools/test-rules.js",
+    "test:ui-confidence": "node tools/test-ui-confidence.js",
+    "test:cascade": "node tools/test-cascade.js",
+    "test:unseen": "node tools/test-unseen.js"
+  }
+}

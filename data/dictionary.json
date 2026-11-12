@@ -1,73 +1,557 @@
 {
   "meta": {
-    "localLanguage": { "code": "eto", "label": "Eton" },
-    "names": ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina"],
-    "ignore": ["Safinum Pay", "EN", "FR"]
+    "localLanguage": {
+      "code": "eto",
+      "label": "Eton"
+    },
+    "names": [
+      "Amina Ngo Bell",
+      "Jean-Paul Mbarga",
+      "Amina"
+    ],
+    "ignore": [
+      "Safinum Pay",
+      "EN",
+      "FR"
+    ]
   },
   "entries": [
-    {"id":"tagline","screen":"En-tête","fr":"Banque en ligne","en":"","local":"","note":""},
-
-    {"id":"balance","screen":"Étapes","fr":"Solde","en":"","local":"","note":"Mot qui revient partout. Choisir le terme utilisé dans la vie courante pour parler de l'argent disponible sur un compte."},
-    {"id":"fees","screen":"Étapes","fr":"Frais","en":"","local":"","note":"Somme retenue par la banque pour faire l'opération."},
-    {"id":"beneficiary","screen":"Étapes","fr":"Bénéficiaire","en":"","local":"","note":"La personne qui reçoit l'argent."},
-    {"id":"summary","screen":"Étapes","fr":"Récapitulatif","en":"","local":"","note":"Résumé à relire avant de confirmer."},
-    {"id":"confirmation","screen":"Étapes","fr":"Confirmation","en":"","local":"","note":""},
-
-    {"id":"account_section","screen":"1. Solde","fr":"Votre compte","en":"","local":"","note":""},
-    {"id":"greeting_name","screen":"1. Solde","fr":"Bonjour, [M1]","en":"","local":"","note":"[M1] est le prénom : le garder tel quel dans la traduction."},
-    {"id":"greeting_only","screen":"1. Solde","fr":"Bonjour,","en":"","local":"","note":"Même salutation, quand le prénom est affiché à part."},
-    {"id":"balance_intro","screen":"1. Solde","fr":"Consultez votre solde et lancez un transfert en toute sécurité.","en":"","local":"","note":""},
-    {"id":"balance_available","screen":"1. Solde","fr":"Solde disponible","en":"","local":"","note":"L'argent que la personne peut utiliser maintenant."},
-    {"id":"account_number_line","screen":"1. Solde","fr":"Numéro de compte : [M1]","en":"","local":"","note":"[M1] est le numéro : le garder tel quel."},
-    {"id":"account_number_label","screen":"1. Solde","fr":"Numéro de compte :","en":"","local":"","note":"Même texte, quand le numéro est affiché à part."},
-    {"id":"account_type","screen":"1. Solde","fr":"Compte courant","en":"","local":"","note":""},
-    {"id":"action_transfer","screen":"1. Solde","fr":"Effectuer un transfert","en":"","local":"","note":"Texte d'un bouton."},
-    {"id":"action_fees","screen":"1. Solde","fr":"Consulter les frais","en":"","local":"","note":"Texte d'un bouton."},
-    {"id":"recent_transactions","screen":"1. Solde","fr":"Transactions récentes","en":"","local":"","note":""},
-    {"id":"tx_merchant","screen":"1. Solde","fr":"Paiement marchand","en":"","local":"","note":"Achat payé chez un commerçant."},
-    {"id":"tx_salary","screen":"1. Solde","fr":"Salaire reçu","en":"","local":"","note":""},
-    {"id":"tx_received","screen":"1. Solde","fr":"Transfert reçu","en":"","local":"","note":""},
-    {"id":"secure_title","screen":"1. Solde","fr":"Sécurité","en":"","local":"","note":""},
-    {"id":"secure_text","screen":"1. Solde","fr":"Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.","en":"","local":"","note":"AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact."},
-    {"id":"secure_connection","screen":"1. Solde","fr":"Connexion sécurisée","en":"","local":"","note":""},
-
-    {"id":"fees_section","screen":"2. Frais","fr":"Frais de transfert","en":"","local":"","note":""},
-    {"id":"fees_intro","screen":"2. Frais","fr":"Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.","en":"","local":"","note":""},
-    {"id":"operation_type","screen":"2. Frais","fr":"Type d'opération","en":"","local":"","note":""},
-    {"id":"operation_safinum_account","screen":"2. Frais","fr":"Compte Safinum","en":"","local":"","note":"Safinum est un nom de marque : le garder tel quel."},
-    {"id":"operation_safinum_hint","screen":"2. Frais","fr":"Transfert instantané et gratuit","en":"","local":"","note":"Instantané : l'argent arrive tout de suite."},
-    {"id":"amount_to_send","screen":"2. Frais","fr":"Montant à envoyer","en":"","local":"","note":""},
-    {"id":"fees_free","screen":"2. Frais","fr":"Gratuit","en":"","local":"","note":""},
-    {"id":"total_to_debit","screen":"2. Frais","fr":"Total à débiter","en":"","local":"","note":"Total qui SERA retiré du compte."},
-    {"id":"balance_after","screen":"2. Frais","fr":"Solde après opération","en":"","local":"","note":""},
-    {"id":"back","screen":"2. Frais","fr":"Retour","en":"","local":"","note":"Texte d'un bouton."},
-    {"id":"continue","screen":"2. Frais","fr":"Continuer","en":"","local":"","note":"Texte d'un bouton."},
-
-    {"id":"beneficiary_intro","screen":"3. Bénéficiaire","fr":"Renseignez les informations du destinataire. Vérifiez toujours le numéro avant de valider.","en":"","local":"","note":""},
-    {"id":"warning_new_beneficiary","screen":"3. Bénéficiaire","fr":"Ce bénéficiaire n'a jamais été utilisé sur ce compte. Vérifiez le numéro avant de continuer.","en":"","local":"","note":"AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact."},
-    {"id":"beneficiary_name","screen":"3. Bénéficiaire","fr":"Nom du bénéficiaire","en":"","local":"","note":""},
-    {"id":"phone_number","screen":"3. Bénéficiaire","fr":"Numéro de téléphone","en":"","local":"","note":""},
-    {"id":"transfer_reason","screen":"3. Bénéficiaire","fr":"Motif du transfert","en":"","local":"","note":"La raison pour laquelle on envoie l'argent."},
-    {"id":"reason_services","screen":"3. Bénéficiaire","fr":"Paiement de services","en":"","local":"","note":""},
-    {"id":"note_optional","screen":"3. Bénéficiaire","fr":"Note (optionnel)","en":"","local":"","note":"Optionnel : on peut ne rien écrire."},
-
-    {"id":"alert_title","screen":"Alertes","fr":"Alerte de sécurité","en":"","local":"","note":"AVERTISSEMENT DE SÉCURITÉ."},
-    {"id":"alert_text","screen":"Alertes","fr":"Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.","en":"","local":"","note":"AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact."},
-
-    {"id":"summary_intro","screen":"4. Récapitulatif","fr":"Vérifiez les informations avant de confirmer le transfert.","en":"","local":"","note":""},
-    {"id":"amount","screen":"4. Récapitulatif","fr":"Montant","en":"","local":"","note":"Somme envoyée au bénéficiaire."},
-    {"id":"total_debited","screen":"4. Récapitulatif","fr":"Total débité","en":"","local":"","note":"Différent de « Total à débiter » : ici l'opération est faite."},
-    {"id":"phone","screen":"4. Récapitulatif","fr":"Téléphone","en":"","local":"","note":""},
-    {"id":"reference","screen":"4. Récapitulatif","fr":"Référence","en":"","local":"","note":"Code qui identifie le transfert."},
-    {"id":"operation","screen":"4. Récapitulatif","fr":"Opération","en":"","local":"","note":""},
-    {"id":"confirm_checkbox","screen":"4. Récapitulatif","fr":"Je confirme que les informations ci-dessus sont correctes.","en":"","local":"","note":"Phrase à cocher avant de valider."},
-    {"id":"modify","screen":"4. Récapitulatif","fr":"Modifier","en":"","local":"","note":"Texte d'un bouton."},
-    {"id":"confirm_transfer","screen":"4. Récapitulatif","fr":"Confirmer le transfert","en":"","local":"","note":"Texte d'un bouton : action importante."},
-
-    {"id":"transfer_done","screen":"5. Confirmation","fr":"Transfert effectué","en":"","local":"","note":""},
-    {"id":"transfer_success_msg","screen":"5. Confirmation","fr":"Votre transfert a été envoyé avec succès.","en":"","local":"","note":""},
-    {"id":"status","screen":"5. Confirmation","fr":"Statut","en":"","local":"","note":""},
-    {"id":"status_success","screen":"5. Confirmation","fr":"Succès","en":"","local":"","note":""},
-    {"id":"new_transfer","screen":"5. Confirmation","fr":"Nouveau transfert","en":"","local":"","note":"Texte d'un bouton."}
+    {
+      "id": "tagline",
+      "screen": "En-tête",
+      "fr": "Banque en ligne",
+      "en": "Online banking",
+      "local": "Bâŋ á ŋkwǎl",
+      "note": "Banque en ligne / sur réseau. Bâŋ = banque, ŋkwǎl = fil/ligne/réseau (dict. p. 219).",
+      "statut": "valide"
+    },
+    {
+      "id": "balance",
+      "screen": "Étapes",
+      "fr": "Solde",
+      "en": "Balance",
+      "local": "Mwàní",
+      "note": "Argent disponible sur le compte. mwàní (dict. p. 211).",
+      "statut": "valide"
+    },
+    {
+      "id": "fees",
+      "screen": "Étapes",
+      "fr": "Frais",
+      "en": "Fees",
+      "local": "Táŋ",
+      "note": "Frais / coût / prix (dict. p. 250).",
+      "statut": "valide"
+    },
+    {
+      "id": "beneficiary",
+      "screen": "Étapes",
+      "fr": "Bénéficiaire",
+      "en": "Beneficiary",
+      "local": "Mòd àtə́ nɔŋ",
+      "note": "Bénéficiaire : la personne qui reçoit l'argent. mòd = personne, nɔŋ = prendre/recevoir.",
+      "statut": "valide"
+    },
+    {
+      "id": "summary",
+      "screen": "Étapes",
+      "fr": "Récapitulatif",
+      "en": "Summary",
+      "local": "Ncáz",
+      "note": "Récapitulatif / vérification. Dérivé du verbe cáz (contrôler, vérifier, dict. p. 96).",
+      "statut": "valide"
+    },
+    {
+      "id": "confirmation",
+      "screen": "Étapes",
+      "fr": "Confirmation",
+      "en": "Confirmation",
+      "local": "Èjə́blə̂",
+      "note": "Confirmation / approbation. Du verbe jə́blə̂ (accepter, acquiescer, dict. p. 132).",
+      "statut": "valide"
+    },
+    {
+      "id": "account_section",
+      "screen": "1. Solde",
+      "fr": "Votre compte",
+      "en": "Your account",
+      "local": "Kônt wô",
+      "note": "Votre/ton compte.",
+      "statut": "valide"
+    },
+    {
+      "id": "greeting_name",
+      "screen": "1. Solde",
+      "fr": "Bonjour, [M1]",
+      "en": "Hello, [M1]",
+      "local": "Mə̀kónî, [M1]",
+      "note": "Salutation attestée p. 147 du dictionnaire : mə̀kónî 'salut ! bonjour !'. Marqueur [M1] préservé.",
+      "statut": "valide"
+    },
+    {
+      "id": "greeting_only",
+      "screen": "1. Solde",
+      "fr": "Bonjour,",
+      "en": "Hello,",
+      "local": "Mə̀kónî,",
+      "note": "Salutation générale : mə̀kónî.",
+      "statut": "valide"
+    },
+    {
+      "id": "balance_intro",
+      "screen": "1. Solde",
+      "fr": "Consultez votre solde et lancez un transfert en toute sécurité.",
+      "en": "Check your balance and initiate a transfer securely.",
+      "local": "Tálgá mwàní wô, ù lóm mwàní èè ùkálá.",
+      "note": "Consultez votre solde et lancez un transfert en toute sécurité (tál = regarder, lóm = envoyer, ùkálá = prudence/sécurité).",
+      "statut": "valide"
+    },
+    {
+      "id": "balance_available",
+      "screen": "1. Solde",
+      "fr": "Solde disponible",
+      "en": "Available balance",
+      "local": "Mwàní ú nè",
+      "note": "Solde disponible (argent qui est présent).",
+      "statut": "valide"
+    },
+    {
+      "id": "account_number_line",
+      "screen": "1. Solde",
+      "fr": "Numéro de compte : [M1]",
+      "en": "Account number: [M1]",
+      "local": "Nwàmɔ̀ kônt : [M1]",
+      "note": "Numéro de compte : [M1]. nwàmɔ̀ = numéro (dict. p. 222).",
+      "statut": "valide"
+    },
+    {
+      "id": "account_number_label",
+      "screen": "1. Solde",
+      "fr": "Numéro de compte :",
+      "en": "Account number:",
+      "local": "Nwàmɔ̀ kônt :",
+      "note": "Numéro de compte :",
+      "statut": "valide"
+    },
+    {
+      "id": "account_type",
+      "screen": "1. Solde",
+      "fr": "Compte courant",
+      "en": "Current account",
+      "local": "Kônt á m̀bə̀ŋ",
+      "note": "Compte courant.",
+      "statut": "valide"
+    },
+    {
+      "id": "action_transfer",
+      "screen": "1. Solde",
+      "fr": "Effectuer un transfert",
+      "en": "Make a transfer",
+      "local": "Lóm mwàní",
+      "note": "Effectuer un transfert (litt. envoyer de l'argent, lóm mwàní).",
+      "statut": "valide"
+    },
+    {
+      "id": "action_fees",
+      "screen": "1. Solde",
+      "fr": "Consulter les frais",
+      "en": "Check fees",
+      "local": "Tál táŋ",
+      "note": "Consulter les frais (tál = regarder, táŋ = frais/prix).",
+      "statut": "valide"
+    },
+    {
+      "id": "recent_transactions",
+      "screen": "1. Solde",
+      "fr": "Transactions récentes",
+      "en": "Recent transactions",
+      "local": "Mìnlóm mə́ ŋm̀kpámgí",
+      "note": "Transactions / opérations récentes (ŋm̀kpámgí = récent/nouveau, dict. p. 218).",
+      "statut": "valide"
+    },
+    {
+      "id": "tx_merchant",
+      "screen": "1. Solde",
+      "fr": "Paiement marchand",
+      "en": "Merchant payment",
+      "local": "Èyágná á kùz",
+      "note": "Paiement marchand (yágnà = payer p. 280, kùz = achat p. 154).",
+      "statut": "valide"
+    },
+    {
+      "id": "tx_salary",
+      "screen": "1. Solde",
+      "fr": "Salaire reçu",
+      "en": "Salary received",
+      "local": "Mwàní à ŋgwàn ńnɔ́ŋí",
+      "note": "Salaire reçu (mwàní à ŋgwàn = salaire p. 211, nɔŋ = recevoir).",
+      "statut": "valide"
+    },
+    {
+      "id": "tx_received",
+      "screen": "1. Solde",
+      "fr": "Transfert reçu",
+      "en": "Transfer received",
+      "local": "Nlóm mwàní ńnɔ́ŋí",
+      "note": "Transfert reçu.",
+      "statut": "valide"
+    },
+    {
+      "id": "secure_title",
+      "screen": "1. Solde",
+      "fr": "Sécurité",
+      "en": "Security",
+      "local": "Ùkálá",
+      "note": "Sécurité / vigilance / prudence (kálâ = veiller, faire attention p. 142).",
+      "statut": "valide"
+    },
+    {
+      "id": "secure_text",
+      "screen": "1. Solde",
+      "fr": "Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.",
+      "en": "Always verify the recipient's name and number before confirming a transfer.",
+      "local": "Cázgá ngə́d ísə̂ dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
+      "note": "Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "secure_connection",
+      "screen": "1. Solde",
+      "fr": "Connexion sécurisée",
+      "en": "Secure connection",
+      "local": "Ŋkwǎl ú kálâní",
+      "note": "Connexion sécurisée / protégée (kálâ = protéger, ŋkwǎl = liaison/fil).",
+      "statut": "valide"
+    },
+    {
+      "id": "fees_section",
+      "screen": "2. Frais",
+      "fr": "Frais de transfert",
+      "en": "Transfer fees",
+      "local": "Táŋ í nlóm",
+      "note": "Frais de transfert (coût de l'envoi).",
+      "statut": "valide"
+    },
+    {
+      "id": "fees_intro",
+      "screen": "2. Frais",
+      "fr": "Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.",
+      "en": "Choose transfer type and amount. Fees are calculated automatically.",
+      "local": "Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í lóm yátə́ lánbân ɲə̀ m̀yɛ̌n.",
+      "note": "Choisissez le transfert et le montant. Les frais sont calculés automatiquement.",
+      "statut": "valide"
+    },
+    {
+      "id": "operation_type",
+      "screen": "2. Frais",
+      "fr": "Type d'opération",
+      "en": "Operation type",
+      "local": "M̀bə̀b í nlóm",
+      "note": "Type / sorte d'opération (m̀bə̀b = genre/sorte).",
+      "statut": "valide"
+    },
+    {
+      "id": "operation_safinum_account",
+      "screen": "2. Frais",
+      "fr": "Compte Safinum",
+      "en": "Safinum account",
+      "local": "Kônt Safinum",
+      "note": "Compte Safinum.",
+      "statut": "valide"
+    },
+    {
+      "id": "operation_safinum_hint",
+      "screen": "2. Frais",
+      "fr": "Transfert instantané et gratuit",
+      "en": "Instant and free transfer",
+      "local": "Nlóm àvəl àvəl té táŋ",
+      "note": "Transfert instantané (àvəl àvəl = vite/immédiat) et gratuit (té táŋ = sans frais).",
+      "statut": "valide"
+    },
+    {
+      "id": "amount_to_send",
+      "screen": "2. Frais",
+      "fr": "Montant à envoyer",
+      "en": "Amount to send",
+      "local": "Mwàní yí lóm",
+      "note": "Montant à envoyer (argent à envoyer).",
+      "statut": "valide"
+    },
+    {
+      "id": "fees_free",
+      "screen": "2. Frais",
+      "fr": "Gratuit",
+      "en": "Free",
+      "local": "Té táŋ",
+      "note": "Gratuit (sans frais / sans coût).",
+      "statut": "valide"
+    },
+    {
+      "id": "total_to_debit",
+      "screen": "2. Frais",
+      "fr": "Total à débiter",
+      "en": "Total to debit",
+      "local": "Mwàní mə́sə̂ mápám",
+      "note": "Total à débiter (tout l'argent qui va sortir).",
+      "statut": "valide"
+    },
+    {
+      "id": "balance_after",
+      "screen": "2. Frais",
+      "fr": "Solde après opération",
+      "en": "Balance after operation",
+      "local": "Mwàní ú lígì",
+      "note": "Solde après opération (l'argent qui reste, líg = rester).",
+      "statut": "valide"
+    },
+    {
+      "id": "back",
+      "screen": "2. Frais",
+      "fr": "Retour",
+      "en": "Back",
+      "local": "Dúgnì",
+      "note": "Retour / revenir en arrière (dict. p. 103).",
+      "statut": "valide"
+    },
+    {
+      "id": "continue",
+      "screen": "2. Frais",
+      "fr": "Continuer",
+      "en": "Continue",
+      "local": "Kə́lə̀ ósú",
+      "note": "Continuer / avancer.",
+      "statut": "valide"
+    },
+    {
+      "id": "beneficiary_intro",
+      "screen": "3. Bénéficiaire",
+      "fr": "Renseignez les informations du destinataire. Vérifiez toujours le numéro avant de valider.",
+      "en": "Enter recipient information. Always verify the number before submitting.",
+      "local": "Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.",
+      "note": "Renseignez les infos du destinataire. Vérifiez toujours le numéro avant de valider.",
+      "statut": "valide"
+    },
+    {
+      "id": "warning_new_beneficiary",
+      "screen": "3. Bénéficiaire",
+      "fr": "Ce bénéficiaire n'a jamais été utilisé sur ce compte. Vérifiez le numéro avant de continuer.",
+      "en": "This beneficiary has never been used on this account. Verify the number before continuing.",
+      "local": "Mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kônt wô. Cázgá nwàmɔ̀ ósúsúâ nâ ù kə́ ósú.",
+      "note": "AVERTISSEMENT : Ce bénéficiaire n'a jamais été utilisé. Vérifiez le numéro avant de continuer.",
+      "statut": "valide"
+    },
+    {
+      "id": "beneficiary_name",
+      "screen": "3. Bénéficiaire",
+      "fr": "Nom du bénéficiaire",
+      "en": "Beneficiary name",
+      "local": "Dwé lə̀ mòd àtə́ nɔŋ",
+      "note": "Nom du bénéficiaire (dwé = nom p. 102).",
+      "statut": "valide"
+    },
+    {
+      "id": "phone_number",
+      "screen": "3. Bénéficiaire",
+      "fr": "Numéro de téléphone",
+      "en": "Phone number",
+      "local": "Nwàmɔ̀ ŋkwǎl",
+      "note": "Numéro de téléphone (nwàmɔ̀ = numéro, ŋkwǎl = téléphone).",
+      "statut": "valide"
+    },
+    {
+      "id": "transfer_reason",
+      "screen": "3. Bénéficiaire",
+      "fr": "Motif du transfert",
+      "en": "Transfer purpose",
+      "local": "Àsú yí nlóm",
+      "note": "Motif du transfert (la raison de l'envoi).",
+      "statut": "valide"
+    },
+    {
+      "id": "reason_services",
+      "screen": "3. Bénéficiaire",
+      "fr": "Paiement de services",
+      "en": "Payment for services",
+      "local": "Èyágná ású ìsá",
+      "note": "Paiement de services (ìsá = travail/service, yágnà = payer).",
+      "statut": "valide"
+    },
+    {
+      "id": "note_optional",
+      "screen": "3. Bénéficiaire",
+      "fr": "Note (optionnel)",
+      "en": "Note (optional)",
+      "local": "Ètìl (ù kɔ́ŋ)",
+      "note": "Note optionnelle (écrit si tu souhaites).",
+      "statut": "valide"
+    },
+    {
+      "id": "alert_title",
+      "screen": "Alertes",
+      "fr": "Alerte de sécurité",
+      "en": "Security alert",
+      "local": "Kálâ! Ùkálá",
+      "note": "Alerte de sécurité (kálâ = faire attention / alerte).",
+      "statut": "valide"
+    },
+    {
+      "id": "alert_text",
+      "screen": "Alertes",
+      "fr": "Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.",
+      "en": "Security alert: verify the beneficiary number before continuing.",
+      "local": "Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.",
+      "note": "Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.",
+      "statut": "valide"
+    },
+    {
+      "id": "summary_intro",
+      "screen": "4. Récapitulatif",
+      "fr": "Vérifiez les informations avant de confirmer le transfert.",
+      "en": "Verify the information before confirming the transfer.",
+      "local": "Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
+      "note": "Vérifiez les informations avant de confirmer le transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "amount",
+      "screen": "4. Récapitulatif",
+      "fr": "Montant",
+      "en": "Amount",
+      "local": "Mwàní",
+      "note": "Montant (argent).",
+      "statut": "valide"
+    },
+    {
+      "id": "total_debited",
+      "screen": "4. Récapitulatif",
+      "fr": "Total débité",
+      "en": "Total debited",
+      "local": "Mwàní mə́sə̂ mápámí",
+      "note": "Total débité (tout l'argent qui est sorti).",
+      "statut": "valide"
+    },
+    {
+      "id": "phone",
+      "screen": "4. Récapitulatif",
+      "fr": "Téléphone",
+      "en": "Phone",
+      "local": "Ŋkwǎl",
+      "note": "Téléphone (dict. p. 219).",
+      "statut": "valide"
+    },
+    {
+      "id": "reference",
+      "screen": "4. Récapitulatif",
+      "fr": "Référence",
+      "en": "Reference",
+      "local": "Nwàmɔ̀ ńlóm",
+      "note": "Référence / numéro d'opération.",
+      "statut": "valide"
+    },
+    {
+      "id": "operation",
+      "screen": "4. Récapitulatif",
+      "fr": "Opération",
+      "en": "Operation",
+      "local": "Nlóm",
+      "note": "Opération / transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "confirm_checkbox",
+      "screen": "4. Récapitulatif",
+      "fr": "Je confirme que les informations ci-dessus sont correctes.",
+      "en": "I confirm that the information above is correct.",
+      "local": "Mə̀tə́ jə́blə̂ nâ màm mə́sə̂ mánə̀ bə́bɛ́lə́.",
+      "note": "Je confirme que les informations sont correctes (bə́bɛ́lə́ = vérité, jə́blə̂ = approuver/accepter).",
+      "statut": "valide"
+    },
+    {
+      "id": "modify",
+      "screen": "4. Récapitulatif",
+      "fr": "Modifier",
+      "en": "Modify",
+      "local": "Cɛ́nî",
+      "note": "Modifier / changer (dict. p. 97).",
+      "statut": "valide"
+    },
+    {
+      "id": "confirm_transfer",
+      "screen": "4. Récapitulatif",
+      "fr": "Confirmer le transfert",
+      "en": "Confirm transfer",
+      "local": "Jə́blə́ nlóm mwàní",
+      "note": "Confirmer le transfert (valider l'envoi d'argent).",
+      "statut": "valide"
+    },
+    {
+      "id": "transfer_done",
+      "screen": "5. Confirmation",
+      "fr": "Transfert effectué",
+      "en": "Transfer completed",
+      "local": "Mwàní úlómnáyá",
+      "note": "Transfert effectué (l'argent a bien été envoyé).",
+      "statut": "valide"
+    },
+    {
+      "id": "transfer_success_msg",
+      "screen": "5. Confirmation",
+      "fr": "Votre transfert a été envoyé avec succès.",
+      "en": "Your transfer has been sent successfully.",
+      "local": "Mwàní wô úlómná èè ŋ̀kàbní.",
+      "note": "Votre transfert a été envoyé avec succès (ŋ̀kàbní = succès p. 138).",
+      "statut": "valide"
+    },
+    {
+      "id": "status",
+      "screen": "5. Confirmation",
+      "fr": "Statut",
+      "en": "Status",
+      "local": "M̀bə̀b",
+      "note": "Statut / état.",
+      "statut": "valide"
+    },
+    {
+      "id": "status_success",
+      "screen": "5. Confirmation",
+      "fr": "Succès",
+      "en": "Success",
+      "local": "Ŋ̀kàbní",
+      "note": "Succès (dict. p. 138).",
+      "statut": "valide"
+    },
+    {
+      "id": "new_transfer",
+      "screen": "5. Confirmation",
+      "fr": "Nouveau transfert",
+      "en": "New transfer",
+      "local": "Nlóm mwàní ŋm̀kpámgí",
+      "note": "Nouveau transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "test_environment_banner",
+      "screen": "Bandeau de test",
+      "fr": "Environnement de test — données fictives, aucune transaction réelle.",
+      "en": "Test environment — fictional data, no real transaction.",
+      "local": "",
+      "note": "Bandeau d’avertissement affiché dans l’environnement de démonstration."
+    },
+    {
+      "id": "test_protocol_link",
+      "screen": "Bandeau de test",
+      "fr": "Protocole de test",
+      "en": "Test protocol",
+      "local": "",
+      "note": "Lien vers les consignes de test."
+    },
+    {
+      "id": "hackathon_return_link",
+      "screen": "Bandeau de test",
+      "fr": "Retour au hackathon",
+      "en": "Back to hackathon",
+      "local": "",
+      "note": "Lien de retour à la page du hackathon."
+    }
   ]
 }

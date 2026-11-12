@@ -1,58 +1,61 @@
 ﻿id;ecran;francais;anglais;langue_locale;note
-tagline;En-tête;Banque en ligne;;;
-balance;Étapes;Solde;;;Mot qui revient partout. Choisir le terme utilisé dans la vie courante pour parler de l'argent disponible sur un compte.
-fees;Étapes;Frais;;;Somme retenue par la banque pour faire l'opération.
-beneficiary;Étapes;Bénéficiaire;;;La personne qui reçoit l'argent.
-summary;Étapes;Récapitulatif;;;Résumé à relire avant de confirmer.
-confirmation;Étapes;Confirmation;;;
-account_section;1. Solde;Votre compte;;;
-greeting_name;1. Solde;Bonjour, [M1];;;[M1] est le prénom : le garder tel quel dans la traduction.
-greeting_only;1. Solde;Bonjour,;;;Même salutation, quand le prénom est affiché à part.
-balance_intro;1. Solde;Consultez votre solde et lancez un transfert en toute sécurité.;;;
-balance_available;1. Solde;Solde disponible;;;L'argent que la personne peut utiliser maintenant.
-account_number_line;1. Solde;Numéro de compte : [M1];;;[M1] est le numéro : le garder tel quel.
-account_number_label;1. Solde;Numéro de compte :;;;Même texte, quand le numéro est affiché à part.
-account_type;1. Solde;Compte courant;;;
-action_transfer;1. Solde;Effectuer un transfert;;;Texte d'un bouton.
-action_fees;1. Solde;Consulter les frais;;;Texte d'un bouton.
-recent_transactions;1. Solde;Transactions récentes;;;
-tx_merchant;1. Solde;Paiement marchand;;;Achat payé chez un commerçant.
-tx_salary;1. Solde;Salaire reçu;;;
-tx_received;1. Solde;Transfert reçu;;;
-secure_title;1. Solde;Sécurité;;;
-secure_text;1. Solde;Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.;;;AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact.
-secure_connection;1. Solde;Connexion sécurisée;;;
-fees_section;2. Frais;Frais de transfert;;;
-fees_intro;2. Frais;Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.;;;
-operation_type;2. Frais;Type d'opération;;;
-operation_safinum_account;2. Frais;Compte Safinum;;;Safinum est un nom de marque : le garder tel quel.
-operation_safinum_hint;2. Frais;Transfert instantané et gratuit;;;Instantané : l'argent arrive tout de suite.
-amount_to_send;2. Frais;Montant à envoyer;;;
-fees_free;2. Frais;Gratuit;;;
-total_to_debit;2. Frais;Total à débiter;;;Total qui SERA retiré du compte.
-balance_after;2. Frais;Solde après opération;;;
-back;2. Frais;Retour;;;Texte d'un bouton.
-continue;2. Frais;Continuer;;;Texte d'un bouton.
-beneficiary_intro;3. Bénéficiaire;Renseignez les informations du destinataire. Vérifiez toujours le numéro avant de valider.;;;
-warning_new_beneficiary;3. Bénéficiaire;Ce bénéficiaire n'a jamais été utilisé sur ce compte. Vérifiez le numéro avant de continuer.;;;AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact.
-beneficiary_name;3. Bénéficiaire;Nom du bénéficiaire;;;
-phone_number;3. Bénéficiaire;Numéro de téléphone;;;
-transfer_reason;3. Bénéficiaire;Motif du transfert;;;La raison pour laquelle on envoie l'argent.
-reason_services;3. Bénéficiaire;Paiement de services;;;
-note_optional;3. Bénéficiaire;Note (optionnel);;;Optionnel : on peut ne rien écrire.
-alert_title;Alertes;Alerte de sécurité;;;AVERTISSEMENT DE SÉCURITÉ.
-alert_text;Alertes;Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.;;;AVERTISSEMENT DE SÉCURITÉ : le sens doit être exact.
-summary_intro;4. Récapitulatif;Vérifiez les informations avant de confirmer le transfert.;;;
-amount;4. Récapitulatif;Montant;;;Somme envoyée au bénéficiaire.
-total_debited;4. Récapitulatif;Total débité;;;Différent de « Total à débiter » : ici l'opération est faite.
-phone;4. Récapitulatif;Téléphone;;;
-reference;4. Récapitulatif;Référence;;;Code qui identifie le transfert.
-operation;4. Récapitulatif;Opération;;;
-confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;;;Phrase à cocher avant de valider.
-modify;4. Récapitulatif;Modifier;;;Texte d'un bouton.
-confirm_transfer;4. Récapitulatif;Confirmer le transfert;;;Texte d'un bouton : action importante.
-transfer_done;5. Confirmation;Transfert effectué;;;
-transfer_success_msg;5. Confirmation;Votre transfert a été envoyé avec succès.;;;
-status;5. Confirmation;Statut;;;
-status_success;5. Confirmation;Succès;;;
-new_transfer;5. Confirmation;Nouveau transfert;;;Texte d'un bouton.
+tagline;En-tête;Banque en ligne;Online banking;Bâŋ á ŋkwǎl;Banque en ligne / sur réseau. Bâŋ = banque, ŋkwǎl = fil/ligne/réseau (dict. p. 219).
+balance;Étapes;Solde;Balance;Mwàní;Argent disponible sur le compte. mwàní (dict. p. 211).
+fees;Étapes;Frais;Fees;Táŋ;Frais / coût / prix (dict. p. 250).
+beneficiary;Étapes;Bénéficiaire;Beneficiary;Mòd àtə́ nɔŋ;Bénéficiaire : la personne qui reçoit l'argent. mòd = personne, nɔŋ = prendre/recevoir.
+summary;Étapes;Récapitulatif;Summary;Ncáz;Récapitulatif / vérification. Dérivé du verbe cáz (contrôler, vérifier, dict. p. 96).
+confirmation;Étapes;Confirmation;Confirmation;Èjə́blə̂;Confirmation / approbation. Du verbe jə́blə̂ (accepter, acquiescer, dict. p. 132).
+account_section;1. Solde;Votre compte;Your account;Kônt wô;Votre/ton compte.
+greeting_name;1. Solde;Bonjour, [M1];Hello, [M1];Mə̀kónî, [M1];Salutation attestée p. 147 du dictionnaire : mə̀kónî 'salut ! bonjour !'. Marqueur [M1] préservé.
+greeting_only;1. Solde;Bonjour,;Hello,;Mə̀kónî,;Salutation générale : mə̀kónî.
+balance_intro;1. Solde;Consultez votre solde et lancez un transfert en toute sécurité.;Check your balance and initiate a transfer securely.;Tálgá mwàní wô, ù lóm mwàní èè ùkálá.;Consultez votre solde et lancez un transfert en toute sécurité (tál = regarder, lóm = envoyer, ùkálá = prudence/sécurité).
+balance_available;1. Solde;Solde disponible;Available balance;Mwàní ú nè;Solde disponible (argent qui est présent).
+account_number_line;1. Solde;Numéro de compte : [M1];Account number: [M1];Nwàmɔ̀ kônt : [M1];Numéro de compte : [M1]. nwàmɔ̀ = numéro (dict. p. 222).
+account_number_label;1. Solde;Numéro de compte :;Account number:;Nwàmɔ̀ kônt :;Numéro de compte :
+account_type;1. Solde;Compte courant;Current account;Kônt á m̀bə̀ŋ;Compte courant.
+action_transfer;1. Solde;Effectuer un transfert;Make a transfer;Lóm mwàní;Effectuer un transfert (litt. envoyer de l'argent, lóm mwàní).
+action_fees;1. Solde;Consulter les frais;Check fees;Tál táŋ;Consulter les frais (tál = regarder, táŋ = frais/prix).
+recent_transactions;1. Solde;Transactions récentes;Recent transactions;Mìnlóm mə́ ŋm̀kpámgí;Transactions / opérations récentes (ŋm̀kpámgí = récent/nouveau, dict. p. 218).
+tx_merchant;1. Solde;Paiement marchand;Merchant payment;Èyágná á kùz;Paiement marchand (yágnà = payer p. 280, kùz = achat p. 154).
+tx_salary;1. Solde;Salaire reçu;Salary received;Mwàní à ŋgwàn ńnɔ́ŋí;Salaire reçu (mwàní à ŋgwàn = salaire p. 211, nɔŋ = recevoir).
+tx_received;1. Solde;Transfert reçu;Transfer received;Nlóm mwàní ńnɔ́ŋí;Transfert reçu.
+secure_title;1. Solde;Sécurité;Security;Ùkálá;Sécurité / vigilance / prudence (kálâ = veiller, faire attention p. 142).
+secure_text;1. Solde;Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.;Always verify the recipient's name and number before confirming a transfer.;Cázgá ngə́d ísə̂ dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù jə́blə́ nlóm mwàní.;Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.
+secure_connection;1. Solde;Connexion sécurisée;Secure connection;Ŋkwǎl ú kálâní;Connexion sécurisée / protégée (kálâ = protéger, ŋkwǎl = liaison/fil).
+fees_section;2. Frais;Frais de transfert;Transfer fees;Táŋ í nlóm;Frais de transfert (coût de l'envoi).
+fees_intro;2. Frais;Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.;Choose transfer type and amount. Fees are calculated automatically.;Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í lóm yátə́ lánbân ɲə̀ m̀yɛ̌n.;Choisissez le transfert et le montant. Les frais sont calculés automatiquement.
+operation_type;2. Frais;Type d'opération;Operation type;M̀bə̀b í nlóm;Type / sorte d'opération (m̀bə̀b = genre/sorte).
+operation_safinum_account;2. Frais;Compte Safinum;Safinum account;Kônt Safinum;Compte Safinum.
+operation_safinum_hint;2. Frais;Transfert instantané et gratuit;Instant and free transfer;Nlóm àvəl àvəl té táŋ;Transfert instantané (àvəl àvəl = vite/immédiat) et gratuit (té táŋ = sans frais).
+amount_to_send;2. Frais;Montant à envoyer;Amount to send;Mwàní yí lóm;Montant à envoyer (argent à envoyer).
+fees_free;2. Frais;Gratuit;Free;Té táŋ;Gratuit (sans frais / sans coût).
+total_to_debit;2. Frais;Total à débiter;Total to debit;Mwàní mə́sə̂ mápám;Total à débiter (tout l'argent qui va sortir).
+balance_after;2. Frais;Solde après opération;Balance after operation;Mwàní ú lígì;Solde après opération (l'argent qui reste, líg = rester).
+back;2. Frais;Retour;Back;Dúgnì;Retour / revenir en arrière (dict. p. 103).
+continue;2. Frais;Continuer;Continue;Kə́lə̀ ósú;Continuer / avancer.
+beneficiary_intro;3. Bénéficiaire;Renseignez les informations du destinataire. Vérifiez toujours le numéro avant de valider.;Enter recipient information. Always verify the number before submitting.;Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.;Renseignez les infos du destinataire. Vérifiez toujours le numéro avant de valider.
+warning_new_beneficiary;3. Bénéficiaire;Ce bénéficiaire n'a jamais été utilisé sur ce compte. Vérifiez le numéro avant de continuer.;This beneficiary has never been used on this account. Verify the number before continuing.;Mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kônt wô. Cázgá nwàmɔ̀ ósúsúâ nâ ù kə́ ósú.;AVERTISSEMENT : Ce bénéficiaire n'a jamais été utilisé. Vérifiez le numéro avant de continuer.
+beneficiary_name;3. Bénéficiaire;Nom du bénéficiaire;Beneficiary name;Dwé lə̀ mòd àtə́ nɔŋ;Nom du bénéficiaire (dwé = nom p. 102).
+phone_number;3. Bénéficiaire;Numéro de téléphone;Phone number;Nwàmɔ̀ ŋkwǎl;Numéro de téléphone (nwàmɔ̀ = numéro, ŋkwǎl = téléphone).
+transfer_reason;3. Bénéficiaire;Motif du transfert;Transfer purpose;Àsú yí nlóm;Motif du transfert (la raison de l'envoi).
+reason_services;3. Bénéficiaire;Paiement de services;Payment for services;Èyágná ású ìsá;Paiement de services (ìsá = travail/service, yágnà = payer).
+note_optional;3. Bénéficiaire;Note (optionnel);Note (optional);Ètìl (ù kɔ́ŋ);Note optionnelle (écrit si tu souhaites).
+alert_title;Alertes;Alerte de sécurité;Security alert;Kálâ! Ùkálá;Alerte de sécurité (kálâ = faire attention / alerte).
+alert_text;Alertes;Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.;Security alert: verify the beneficiary number before continuing.;Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.;Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.
+summary_intro;4. Récapitulatif;Vérifiez les informations avant de confirmer le transfert.;Verify the information before confirming the transfer.;Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.;Vérifiez les informations avant de confirmer le transfert.
+amount;4. Récapitulatif;Montant;Amount;Mwàní;Montant (argent).
+total_debited;4. Récapitulatif;Total débité;Total debited;Mwàní mə́sə̂ mápámí;Total débité (tout l'argent qui est sorti).
+phone;4. Récapitulatif;Téléphone;Phone;Ŋkwǎl;Téléphone (dict. p. 219).
+reference;4. Récapitulatif;Référence;Reference;Nwàmɔ̀ ńlóm;Référence / numéro d'opération.
+operation;4. Récapitulatif;Opération;Operation;Nlóm;Opération / transfert.
+confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;I confirm that the information above is correct.;Mə̀tə́ jə́blə̂ nâ màm mə́sə̂ mánə̀ bə́bɛ́lə́.;Je confirme que les informations sont correctes (bə́bɛ́lə́ = vérité, jə́blə̂ = approuver/accepter).
+modify;4. Récapitulatif;Modifier;Modify;Cɛ́nî;Modifier / changer (dict. p. 97).
+confirm_transfer;4. Récapitulatif;Confirmer le transfert;Confirm transfer;Jə́blə́ nlóm mwàní;Confirmer le transfert (valider l'envoi d'argent).
+transfer_done;5. Confirmation;Transfert effectué;Transfer completed;Mwàní úlómnáyá;Transfert effectué (l'argent a bien été envoyé).
+transfer_success_msg;5. Confirmation;Votre transfert a été envoyé avec succès.;Your transfer has been sent successfully.;Mwàní wô úlómná èè ŋ̀kàbní.;Votre transfert a été envoyé avec succès (ŋ̀kàbní = succès p. 138).
+status;5. Confirmation;Statut;Status;M̀bə̀b;Statut / état.
+status_success;5. Confirmation;Succès;Success;Ŋ̀kàbní;Succès (dict. p. 138).
+new_transfer;5. Confirmation;Nouveau transfert;New transfer;Nlóm mwàní ŋm̀kpámgí;Nouveau transfert.
+test_environment_banner;Bandeau de test;Environnement de test — données fictives, aucune transaction réelle.;Test environment — fictional data, no real transaction.;;Bandeau d’avertissement affiché dans l’environnement de démonstration.
+test_protocol_link;Bandeau de test;Protocole de test;Test protocol;;Lien vers les consignes de test.
+hackathon_return_link;Bandeau de test;Retour au hackathon;Back to hackathon;;Lien de retour à la page du hackathon.

@@ -2,15 +2,16 @@
    - lit les textes de la page et les remplace par la version validée du dictionnaire ;
    - vérifie que chaque valeur sensible (montant, numéro, nom...) est restée identique ;
    - surveille la page : quand l'écran change ou qu'un message apparaît (toast, alerte), il le traduit aussitôt ;
-   - affiche un petit panneau de contrôle (langue + état du contrôle).
+   - propose le français et l'anglais, détecte la langue de la page et ajoute des commandes d'accessibilité.
    Il ne modifie jamais le code du site : il agit seulement sur ce qui est affiché. */
 (function () {
   "use strict";
   const NS = globalThis.SAFINUM;
   const T = NS.translate;
+  const Confidence = NS.confidence;
 
   const HOST_ID = "safinum-lang-panel";
-  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"]);
+  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "OPTION", "TITLE"]);
   const ATTRS = ["placeholder", "title", "aria-label"];
   const OBSERVE = {
     childList: true,
@@ -21,15 +22,17 @@
   };
 
   let dict = null;
+  let criticalData = null;
   let mode = "original"; // "original" | "fr" | "en" | "local"
+  let pageLanguage = null;
   let panel = null;
   let observer = null;
+  let languageObserver = null;
   let speaking = false;
+  let originalBodyZoom = "";
+  let baseBodyZoom = 1;
   let stats = emptyStats();
   let lastCost = 0; // durée du dernier scan, en ms
-  // Textes inconnus vus depuis le début, même si le message a disparu depuis
-  // (messages temporaires : toasts, alertes).
-  const collectedUnknown = new Set();
 
   // Pour chaque texte, on retient l'original et ce que nous avons écrit.
   // Si le site change le texte lui-même, on le détecte et on repart du nouveau texte.
@@ -37,28 +40,123 @@
   const attrState = new WeakMap();
 
   function emptyStats() {
-    return { ok: 0, pending: 0, unknown: 0, failed: 0, values: 0 };
+    return {
+      ok: 0, pending: 0, unknown: 0, failed: 0, values: 0,
+      confidence: { valide: 0, probable: 0, automatique: 0, non_traduit: 0 },
+    };
   }
 
-  function record(res, original) {
+  function record(res) {
     if (res.kind === "ok") stats.ok++;
     else if (res.kind === "pending") stats.pending++;
     else if (res.kind === "integrity") stats.failed++;
-    else if (res.kind === "unknown") {
-      stats.unknown++;
-      collectedUnknown.add(original.trim().replace(/\s+/g, " "));
+    else if (res.kind === "unknown") stats.unknown++;
+  }
+
+  function recordStructured(res) {
+    if (res && Object.hasOwn(stats.confidence, res.statut)) {
+      stats.confidence[res.statut]++;
+      if (res.statut === "valide") stats.ok++;
+      else if (res.statut === "probable" || res.statut === "automatique") stats.pending++;
+      else stats.unknown++;
     }
+    if (res && res.marqueurs_ok === false) stats.failed++;
+  }
+
+  function retainOuterWhitespace(original, translated) {
+    if (translated === original) return original;
+    return original.match(/^\s*/)[0] + translated + original.match(/\s*$/)[0];
+  }
+
+  function isSecurityWarning(original) {
+    const terms = criticalData && criticalData.categories && criticalData.categories.securite;
+    return Boolean(terms && Confidence.containsAnyTerm(original, terms));
+  }
+
+  function unwrapText(node, state) {
+    const wrapper = state.wrapper;
+    if (wrapper && wrapper.parentNode && wrapper.contains(node)) {
+      wrapper.parentNode.insertBefore(node, wrapper);
+      wrapper.remove();
+    }
+    state.wrapper = null;
+    state.statusText = null;
+    state.badge = null;
+    state.originalLabel = null;
+    state.warning = null;
+  }
+
+  function decorateText(node, state, presentation, original) {
+    if (!state.wrapper || !state.wrapper.contains(node)) {
+      const wrapper = document.createElement("span");
+      wrapper.className = "safinum-status-wrap";
+      wrapper.dataset.safinumUi = "confidence";
+      const statusText = document.createElement("span");
+      statusText.className = "safinum-status-text";
+      const parent = node.parentNode;
+      if (!parent) return;
+      parent.insertBefore(wrapper, node);
+      wrapper.appendChild(statusText);
+      statusText.appendChild(node);
+
+      const badge = document.createElement("span");
+      badge.className = "safinum-status-badge";
+      badge.dataset.safinumUi = "confidence";
+      badge.setAttribute("aria-label", presentation.meta.description);
+      wrapper.appendChild(badge);
+
+      const originalLabel = document.createElement("span");
+      originalLabel.className = "safinum-status-original";
+      originalLabel.dataset.safinumUi = "confidence";
+      wrapper.appendChild(originalLabel);
+
+      const warning = document.createElement("span");
+      warning.className = "safinum-status-warning";
+      warning.dataset.safinumUi = "confidence";
+      wrapper.appendChild(warning);
+      Object.assign(state, { wrapper, statusText, badge, originalLabel, warning });
+    }
+    state.wrapper.dataset.safinumStatus = presentation.status;
+    state.wrapper.dataset.safinumOriginal = original;
+    state.wrapper.dataset.safinumTranslation = presentation.translation || "";
+    state.wrapper.dataset.safinumKeepOriginal = String(presentation.originalText !== null);
+    state.badge.dataset.status = presentation.status;
+    state.badge.textContent = presentation.meta.badge;
+    state.originalLabel.hidden = presentation.originalText === null;
+    state.originalLabel.textContent = presentation.originalText === null
+      ? ""
+      : "Français : " + presentation.originalText;
+    state.warning.hidden = !presentation.showWarning;
+    state.warning.textContent = presentation.showWarning
+      ? "⚠ Traduction non vérifiée, vérifiez les montants."
+      : "";
   }
 
   // Décide quel texte afficher pour une valeur donnée (texte ou attribut).
-  function decide(st, current) {
+  function decide(st, current, canShowBadge) {
     if (st.written === undefined || current !== st.written) {
       st.orig = current; // texte d'origine (nouveau, ou modifié par le site)
       st.written = undefined;
     }
     const original = st.orig;
-    const res = T.analyse(original, mode === "original" ? "local" : mode);
-    record(res, original);
+    st.presentation = null;
+    if (mode === "local") {
+      if (!canShowBadge) return original;
+      if (T.analyse(original, "local", pageLanguage).kind === "skip") return original;
+      const structured = criticalData
+        ? T.translate(original, { target: "eton", pageLanguage })
+        : {
+            original, eton: null, statut: "non_traduit", source: "aucune", score: 0,
+            marqueurs_ok: true, raisons: ["Liste des termes de sécurité indisponible."],
+          };
+      recordStructured(structured);
+      st.presentation = Confidence.present(structured, original, isSecurityWarning(original));
+      return retainOuterWhitespace(original, st.presentation.visibleText);
+    }
+    const res = mode === "original"
+      ? { kind: "skip" }
+      : T.analyse(original, mode, pageLanguage);
+    record(res);
 
     if (mode !== "original" && res.kind === "ok") {
       const lead = original.match(/^\s*/)[0];
@@ -77,9 +175,11 @@
   function writeText(node) {
     let st = textState.get(node);
     if (!st) textState.set(node, (st = {}));
-    const desired = decide(st, node.nodeValue);
+    const desired = decide(st, node.nodeValue, true);
     if (node.nodeValue !== desired) node.nodeValue = desired;
     st.written = desired;
+    if (mode === "local" && st.presentation) decorateText(node, st, st.presentation, st.orig);
+    else unwrapText(node, st);
   }
 
   function writeAttrs(el) {
@@ -88,7 +188,7 @@
     for (const a of ATTRS) {
       if (!el.hasAttribute(a)) continue;
       const st = map[a] || (map[a] = {});
-      const desired = decide(st, el.getAttribute(a));
+      const desired = decide(st, el.getAttribute(a), false);
       if (el.getAttribute(a) !== desired) el.setAttribute(a, desired);
       st.written = desired;
     }
@@ -104,20 +204,30 @@
       acceptNode(n) {
         const p = n.parentElement;
         if (!p || SKIP_TAGS.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        if (p.namespaceURI === "http://www.w3.org/2000/svg") return NodeFilter.FILTER_REJECT;
+        if (p.closest("[data-safinum-ui='confidence']") && !p.classList.contains("safinum-status-text")) {
+          return NodeFilter.FILTER_REJECT;
+        }
         return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       },
     });
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
+    const sourceSamples = nodes.map((node) => {
+      const state = textState.get(node);
+      return state && state.orig !== undefined ? state.orig : node.nodeValue;
+    });
+    pageLanguage = T.detectPageLanguage(document.documentElement.getAttribute("lang"), sourceSamples);
     nodes.forEach(writeText);
     document.querySelectorAll("[placeholder],[title],[aria-label]").forEach(writeAttrs);
 
     lastCost = performance.now() - t0;
-    if (panel) panel.update(stats, mode, collectedUnknown.size);
+    if (panel) panel.update(stats, mode, pageLanguage);
     if (observer) observer.observe(document.body, OBSERVE);
   }
 
   function setMode(next) {
+    if (!["original", "fr", "en", "local"].includes(next)) return;
     mode = next;
     if (speaking && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
@@ -132,39 +242,20 @@
     apply();
   }
 
-  function copyUnknown() {
-    const text = Array.from(collectedUnknown).join("\n");
-    const done = () => panel && panel.flash("Copié");
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
-    } else {
-      fallbackCopy(text, done);
+  // Agrandit le contenu du site tout en gardant le rail SAFINUM à sa taille normale.
+  function setZoom(percent) {
+    const body = document.body;
+    if (!body) return;
+    if (percent === 100) {
+      body.style.zoom = originalBodyZoom;
+      return;
     }
-  }
-
-  function fallbackCopy(text, done) {
-    const area = document.createElement("textarea");
-    area.value = text;
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    try {
-      document.execCommand("copy");
-      done();
-    } catch (e) {
-      /* rien de plus à faire */
-    }
-    area.remove();
+    body.style.zoom = String(baseBodyZoom * (percent / 100));
   }
 
   // Réserve la synthèse du navigateur au français et à l'anglais avec une voix marquée locale.
   function speakVisibleText() {
     if (!panel) return;
-    if (mode === "local") {
-      panel.setVoiceStatus("La synthèse Eton est désactivée. Il faudra intégrer des enregistrements natifs validés.");
-      return;
-    }
     if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
       panel.setVoiceStatus("La lecture vocale n’est pas disponible dans ce navigateur.");
       return;
@@ -177,14 +268,29 @@
       return;
     }
 
-    const text = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
+    let visibleText = document.body.innerText || "";
+    if (mode === "local") {
+      const copy = document.body.cloneNode(true);
+      copy.querySelectorAll(".safinum-status-wrap").forEach((wrapper) => {
+        const display = Confidence.present({
+          statut: wrapper.dataset.safinumStatus,
+          eton: wrapper.dataset.safinumTranslation || null,
+          marqueurs_ok: true,
+        }, wrapper.dataset.safinumOriginal || "", wrapper.dataset.safinumKeepOriginal === "true");
+        wrapper.replaceWith(document.createTextNode(Confidence.speechText(display)));
+      });
+      visibleText = copy.innerText || "";
+    }
+    const text = visibleText.replace(/\s+/g, " ").trim().slice(0, 4000);
     if (!text) {
       panel.setVoiceStatus("Aucun texte visible à lire.");
       return;
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    const language = mode === "en" ? "en-US" : "fr-FR";
+    const language = mode === "en" || (mode === "original" && pageLanguage === "en")
+      ? "en-US"
+      : "fr-FR";
     utterance.lang = language;
     const voices = window.speechSynthesis.getVoices();
     const voice = voices.find((candidate) =>
@@ -209,7 +315,9 @@
       panel.setSpeaking(false);
       panel.setVoiceStatus("La lecture a échoué. Vérifiez les voix disponibles dans le navigateur.");
     };
-    panel.setVoiceStatus("Lecture locale en cours…");
+    panel.setVoiceStatus(mode === "local"
+      ? "Lecture locale en cours; les niveaux de fiabilité sont annoncés."
+      : "Lecture locale en cours…");
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
   }
@@ -229,18 +337,47 @@
 
   async function init() {
     if (document.getElementById(HOST_ID)) return; // déjà lancé
-    const res = await fetch(chrome.runtime.getURL("data/dictionary.json"));
-    dict = await res.json();
-    T.init(dict);
+    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse] = await Promise.all([
+      fetch(chrome.runtime.getURL("data/dictionary.json")),
+      fetch(chrome.runtime.getURL("data/critical_terms.json")),
+      fetch(chrome.runtime.getURL("data/templates.json")),
+      fetch(chrome.runtime.getURL("data/lexicon.json")),
+      fetch(chrome.runtime.getURL("data/rules.json")),
+    ]);
+    if (!dictionaryResponse.ok) throw new Error("Dictionnaire local indisponible.");
+    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules] = await Promise.all([
+      dictionaryResponse.json(),
+      criticalResponse.ok ? criticalResponse.json() : Promise.resolve(null),
+      templatesResponse.ok ? templatesResponse.json() : Promise.resolve([]),
+      lexiconResponse.ok ? lexiconResponse.json() : Promise.resolve([]),
+      rulesResponse.ok ? rulesResponse.json() : Promise.resolve([]),
+    ]);
+    dict = loadedDictionary;
+    criticalData = loadedCritical;
+    T.init(dict, {
+      criticalTerms: criticalData,
+      templates: loadedTemplates,
+      lexicon: loadedLexicon,
+      rules: loadedRules,
+    });
 
     const saved = await readSavedMode();
-    if (["original", "fr", "en", "local"].includes(saved)) mode = saved;
+    const initialLanguage = T.detectPageLanguage(
+      document.documentElement.getAttribute("lang"),
+      (document.body.innerText || "").split(/[\r\n]+/).filter(Boolean)
+    );
+    pageLanguage = initialLanguage;
+    mode = ["original", "fr", "en", "local"].includes(saved) ? saved : initialLanguage || "original";
+
+    originalBodyZoom = document.body.style.zoom;
+    const computedBodyZoom = Number.parseFloat(getComputedStyle(document.body).zoom);
+    if (Number.isFinite(computedBodyZoom)) baseBodyZoom = computedBodyZoom;
 
     panel = NS.panel.create({
       hostId: HOST_ID,
       onModeChange: setMode,
-      onCopyUnknown: copyUnknown,
       onSpeak: speakVisibleText,
+      onZoomChange: setZoom,
     });
     // Appelé dès que la page change, avant l'affichage : un message qui apparaît
     // (écran suivant, toast, alerte) est traduit sans clignotement du français.
@@ -256,6 +393,11 @@
       }, 150);
     });
     apply();
+    languageObserver = new MutationObserver(() => apply());
+    languageObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
   }
 
   init().catch((e) => console.error("[SAFINUM] démarrage impossible :", e));

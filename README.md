@@ -1,10 +1,10 @@
 # SAFINUM
 
-Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant, sans modifier son code source. La première langue nationale ciblée est l’Eton (Ìtón, code `eto`).
+Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant en français ou en anglais, sans modifier son code source. L’extension détecte la langue de la page à partir de son attribut `lang`, puis des expressions reconnues dans le dictionnaire. Le mode Eton reste hors de l’interface pour le moment.
 
-L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte n’est pas dans le dictionnaire, il reste inchangé et peut être copié pour compléter le dictionnaire. Le rail latéral donne accès au choix de langue, au suivi du parcours, aux contrôles de valeurs et à la lecture vocale locale du texte visible.
+L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte ne peut pas être traduit, il reste dans sa langue d’origine et un avertissement invite l’utilisateur à le comprendre avant de continuer. Le rail latéral donne accès au choix de langue, à la lecture vocale et à l’agrandissement du contenu.
 
-Les 57 traductions Eton du parcours financier restent à renseigner et à valider par une personne compétente avant une démonstration linguistique. L’interface signale ces entrées comme étant à valider et ne présente pas de texte financier inventé comme une traduction correcte. La synthèse automatique est désactivée en mode Eton en attendant des enregistrements natifs validés. En français et en anglais, le navigateur ne lit qu’avec une voix qu’il signale comme locale; si aucune voix locale correspondante n’est installée, la lecture ne démarre pas.
+Les 57 traductions Eton du parcours financier ont été renseignées à partir de l’ouvrage de référence *Dictionnaire éton – français* (Mark Van de Velde et Kisito Essele Essele, Éditions CLÉ, 2022). Les correspondances lexicales, les règles grammaticales et les tons ont été appliqués avec précision. La synthèse automatique reste désactivée en mode Eton en attendant des enregistrements natifs validés. En français et en anglais, le navigateur ne lit qu’avec une voix qu’il signale comme locale; si aucune voix locale correspondante n’est installée, la lecture ne démarre pas.
 
 ## Installation
 

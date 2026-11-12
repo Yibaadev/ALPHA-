@@ -1,0 +1,274 @@
+[
+  {
+    "id": "solde_titre",
+    "fr_pattern": "Solde",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "solde",
+    "critique": false
+  },
+  {
+    "id": "solde_disponible",
+    "fr_pattern": "Solde disponible",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "solde",
+    "critique": false
+  },
+  {
+    "id": "solde_disponible_montant",
+    "fr_pattern": "Solde disponible : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "solde",
+    "critique": true
+  },
+  {
+    "id": "solde_votre_montant",
+    "fr_pattern": "Votre solde est de [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "solde",
+    "critique": true
+  },
+  {
+    "id": "solde_insuffisant",
+    "fr_pattern": "Solde insuffisant",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "solde",
+    "critique": true
+  },
+  {
+    "id": "frais_titre",
+    "fr_pattern": "Frais",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "frais",
+    "critique": false
+  },
+  {
+    "id": "frais_transfert_montant",
+    "fr_pattern": "Frais de transfert : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "frais",
+    "critique": true
+  },
+  {
+    "id": "frais_montant",
+    "fr_pattern": "Frais : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "frais",
+    "critique": true
+  },
+  {
+    "id": "frais_cout_total",
+    "fr_pattern": "Coût total : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "frais",
+    "critique": true
+  },
+  {
+    "id": "frais_aucun",
+    "fr_pattern": "Aucun frais",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "frais",
+    "critique": true
+  },
+  {
+    "id": "transfert_nouveau",
+    "fr_pattern": "Nouveau transfert",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": false
+  },
+  {
+    "id": "transfert_montant",
+    "fr_pattern": "Montant à transférer : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "transfert_vers",
+    "fr_pattern": "Transfert de [M1] vers [M2]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "transfert_envoyer_a",
+    "fr_pattern": "Envoyer [M1] à [M2]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "transfert_beneficiaire",
+    "fr_pattern": "Bénéficiaire : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "transfert_numero_beneficiaire",
+    "fr_pattern": "Numéro du bénéficiaire : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "transfert_numero_compte",
+    "fr_pattern": "Numéro de compte : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "transfert",
+    "critique": true
+  },
+  {
+    "id": "recap_titre",
+    "fr_pattern": "Récapitulatif",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": false
+  },
+  {
+    "id": "recap_verification",
+    "fr_pattern": "Vérifiez les informations avant de confirmer le transfert.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_montant",
+    "fr_pattern": "Montant : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_frais",
+    "fr_pattern": "Frais : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_total_debite",
+    "fr_pattern": "Total débité : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_total_a_debiter",
+    "fr_pattern": "Total à débiter : [M1]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_confirmation",
+    "fr_pattern": "Je confirme que les informations ci-dessus sont correctes.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "recap_detail_trois_valeurs",
+    "fr_pattern": "Montant : [M1], frais : [M2], total à débiter : [M3]",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "recapitulatif",
+    "critique": true
+  },
+  {
+    "id": "erreur_effectue",
+    "fr_pattern": "Transfert effectué",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "erreur_echoue",
+    "fr_pattern": "Transfert échoué",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "erreur_refuse",
+    "fr_pattern": "Transfert refusé",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "erreur_annule",
+    "fr_pattern": "Opération annulée",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "erreur_code_pin",
+    "fr_pattern": "Code PIN incorrect",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "securite_alerte_beneficiaire",
+    "fr_pattern": "Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "securite",
+    "critique": true
+  },
+  {
+    "id": "securite_code_secret",
+    "fr_pattern": "Ne partagez jamais votre code secret.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "securite",
+    "critique": true
+  },
+  {
+    "id": "erreur_reessayer",
+    "fr_pattern": "Une erreur est survenue. Réessayez plus tard.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "erreur",
+    "critique": true
+  },
+  {
+    "id": "securite_session_expiree",
+    "fr_pattern": "Votre session a expiré.",
+    "eton": null,
+    "statut": "a_verifier",
+    "categorie": "securite",
+    "critique": true
+  }
+]

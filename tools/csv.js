@@ -87,6 +87,10 @@ if (cmd === "export") {
     const local = (r[col("langue_locale")] || "").trim();
     const note = (r[col("note")] || "").trim();
     if (en !== e.en || local !== e.local || note !== e.note) updated++;
+    if (local !== e.local) {
+      if (local) e.statut = "a_verifier";
+      else delete e.statut;
+    }
     e.en = en;
     e.local = local;
     e.note = note;

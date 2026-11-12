@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 const assert = require("assert");
+const os = require("os");
+const { execFileSync } = require("child_process");
 
 const root = path.join(__dirname, "..");
 const ctx = vm.createContext({ console });
@@ -69,11 +71,11 @@ test("restore refuse un marqueur inconnu", () => assert.strictEqual(P.restore("[
 T.init({
   meta: { names: ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina"], ignore: ["Safinum Pay"] },
   entries: [
-    { id: "a", fr: "Total débité", en: "Total debited", local: "LOC total" },
-    { id: "b", fr: "Numéro de compte : [M1]", en: "", local: "LOC compte [M1]" },
+    { id: "a", fr: "Total débité", en: "Total debited", local: "LOC total", statut: "valide" },
+    { id: "b", fr: "Numéro de compte : [M1]", en: "", local: "LOC compte [M1]", statut: "valide" },
     { id: "c", fr: "Solde", en: "", local: "" },
-    { id: "d", fr: "Frais", en: "", local: "LOC frais sans marqueur [M1]" },
-    { id: "e", fr: "Total à débiter [M1]", en: "", local: "LOC sans marqueur" },
+    { id: "d", fr: "Frais", en: "", local: "LOC frais sans marqueur [M1]", statut: "valide" },
+    { id: "e", fr: "Total à débiter [M1]", en: "", local: "LOC sans marqueur", statut: "valide" },
   ],
 });
 
@@ -93,5 +95,88 @@ test("chiffre seul ignoré", () => assert.strictEqual(T.analyse("3", "local").ki
 test("texte ignoré par la configuration", () => assert.strictEqual(T.analyse("Safinum Pay", "local").kind, "skip"));
 test("marqueur oublié dans la traduction : refus", () => assert.strictEqual(T.analyse("Total à débiter 25 000 FCFA", "local").kind, "integrity"));
 test("marqueur en trop dans la traduction : refus", () => assert.strictEqual(T.analyse("Frais", "local").kind, "integrity"));
+
+test("la normalisation de comparaison ignore accents et ponctuation", () => {
+  assert.strictEqual(T.normalizeForComparison("  ÉCHOUÉ,   25 FCFA! "), "echoue 25 fcfa");
+});
+test("le validateur rejette des marqueurs réordonnés", () => {
+  const r = T.validateIntegrity("De 25 000 FCFA vers +237 6 99 12 34 56", "[M2] vers [M1]");
+  assert.strictEqual(r.ok, false);
+});
+test("le validateur rejette la perte d'un chiffre non protégé", () => {
+  const r = T.validateIntegrity("Code 1234", "Code vérifié");
+  assert.strictEqual(r.ok, false);
+});
+test("une traduction locale sans statut valide est ignorée", () => {
+  T.init({ entries: [{ id: "unverified", fr: "Solde", en: "", local: "texte local non validé" }] });
+  const r = T.translate("Solde");
+  assert.strictEqual(r.statut, "non_traduit");
+  assert.strictEqual(r.eton, null);
+});
+test("sortie structurée inconnue conserve le texte original", () => {
+  const unknown = "Une information nouvelle pour 25 000 FCFA.";
+  const r = T.translate(unknown, { target: "eton" });
+  assert.deepStrictEqual(Object.keys(r), ["original", "eton", "statut", "source", "score", "marqueurs_ok", "raisons"]);
+  assert.strictEqual(r.original, unknown);
+  assert.strictEqual(r.eton, null);
+  assert.strictEqual(r.statut, "non_traduit");
+  assert.strictEqual(r.source, "aucune");
+  assert.strictEqual(r.score, 0);
+  assert.strictEqual(r.marqueurs_ok, true);
+  assert.ok(Array.isArray(r.raisons));
+});
+test("un marqueur manquant rejette la traduction structurée", () => {
+  T.init({ entries: [{
+    id: "broken", fr: "Total à débiter [M1]", en: "",
+    local: "Mwàní sans montant", statut: "valide",
+  }] });
+  const r = T.translate("Total à débiter 25 000 FCFA");
+  assert.strictEqual(r.statut, "non_traduit");
+  assert.strictEqual(r.eton, null);
+  assert.strictEqual(r.marqueurs_ok, false);
+});
+
+// Les 57 traductions existantes sont le jeu de référence de cette étape.
+const dictionary = require(path.join(root, "data", "dictionary.json"));
+T.init(dictionary);
+test("les 57 phrases validées gardent exactement leur traduction", () => {
+  const entries = dictionary.entries.filter((entry) => entry.local && entry.local.trim());
+  assert.strictEqual(entries.length, 57);
+  for (const entry of entries) {
+    const markers = entry.fr.match(/\[M\d+\]/g) || [];
+    const values = markers.map(() => "25 000 FCFA");
+    let index = 0;
+    const original = entry.fr.replace(/\[M\d+\]/g, () => values[index++]);
+    const expected = P.restore(entry.local, values);
+    const result = T.translate(original, { target: "eton" });
+    assert.strictEqual(entry.statut, "valide", entry.id + " doit porter le statut valide");
+    assert.strictEqual(result.statut, "valide", entry.id);
+    assert.strictEqual(result.source, "exact", entry.id);
+    assert.strictEqual(result.score, 1, entry.id);
+    assert.strictEqual(result.eton, expected, entry.id);
+    assert.strictEqual(result.marqueurs_ok, true, entry.id);
+    assert.ok(Array.isArray(result.raisons), entry.id);
+  }
+});
+test("un changement CSV retire le statut valide jusqu’à révision", () => {
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "safinum-csv-"));
+  try {
+    for (const dir of ["tools", "data", "docs"]) fs.mkdirSync(path.join(tempRoot, dir));
+    fs.copyFileSync(path.join(root, "tools", "csv.js"), path.join(tempRoot, "tools", "csv.js"));
+    fs.writeFileSync(path.join(tempRoot, "data", "dictionary.json"), JSON.stringify({
+      meta: {},
+      entries: [{ id: "balance", screen: "Étapes", fr: "Solde", en: "Balance", local: "Ancien texte", note: "", statut: "valide" }],
+    }), "utf8");
+    const csv = "id;ecran;francais;anglais;langue_locale;note\r\nbalance;Étapes;Solde;Balance;Nouveau texte;\r\n";
+    const csvPath = path.join(tempRoot, "docs", "dictionnaire.csv");
+    fs.writeFileSync(csvPath, csv, "utf8");
+    execFileSync(process.execPath, [path.join(tempRoot, "tools", "csv.js"), "import", csvPath], { cwd: tempRoot });
+    const imported = JSON.parse(fs.readFileSync(path.join(tempRoot, "data", "dictionary.json"), "utf8"));
+    assert.strictEqual(imported.entries[0].local, "Nouveau texte");
+    assert.strictEqual(imported.entries[0].statut, "a_verifier");
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
+});
 
 console.log(passed + " test(s) réussi(s)" + (process.exitCode ? ", des échecs ci-dessus." : "."));

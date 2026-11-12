@@ -1,0 +1,34 @@
+.safinum-status-wrap { display:inline !important; font:inherit !important; }
+.safinum-status-text { font:inherit !important; }
+.safinum-status-wrap [hidden] { display:none !important; }
+.safinum-status-badge {
+  display:inline-block !important;
+  margin:0 .25em !important;
+  padding:.08em .42em !important;
+  border:1px solid transparent !important;
+  border-radius:999px !important;
+  font:600 .78em/1.45 system-ui,sans-serif !important;
+  vertical-align:baseline !important;
+  white-space:nowrap !important;
+}
+.safinum-status-badge[data-status="valide"] { color:#14532d !important; background:#dcfce7 !important; border-color:#4ade80 !important; }
+.safinum-status-badge[data-status="probable"] { color:#713f12 !important; background:#fef3c7 !important; border-color:#f59e0b !important; }
+.safinum-status-badge[data-status="automatique"] { color:#7c2d12 !important; background:#ffedd5 !important; border-color:#fb923c !important; }
+.safinum-status-badge[data-status="non_traduit"] { color:#7f1d1d !important; background:#fee2e2 !important; border-color:#f87171 !important; }
+.safinum-status-original {
+  display:inline-block !important;
+  margin:0 .25em !important;
+  padding:.06em .35em !important;
+  border-left:3px solid #374151 !important;
+  border-radius:2px !important;
+  color:#111827 !important;
+  background:#f3f4f6 !important;
+  font:600 .9em/1.4 system-ui,sans-serif !important;
+}
+.safinum-status-warning {
+  display:inline-block !important;
+  margin:0 .25em !important;
+  color:#713f12 !important;
+  background:#fef3c7 !important;
+  font:600 .82em/1.4 system-ui,sans-serif !important;
+}
