@@ -22,7 +22,7 @@ for (const file of [
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), runtime, { filename: file });
 }
 
-const NS = runtime.SAFINUM;
+const NS = runtime.ALPHA;
 const terms = require(path.join(root, "data", "critical_terms.json"));
 const emptyDictionary = { meta: { names: [], ignore: [] }, entries: [] };
 const emptyLayers = { criticalTerms: terms, templates: [], lexicon: [], rules: [] };
@@ -193,13 +193,13 @@ test("effectué/échoué et suffisant/insuffisant sont bloqués", () => {
 test("trace désactivée par défaut puis activable sans texte source", () => {
   init(emptyDictionary);
   debugLines.length = 0;
-  text("Texte inédit SAFINUM-SECRET");
+  text("Texte inédit ALPHA-SECRET");
   assert.strictEqual(debugLines.length, 0);
   NS.translate.setDebugTrace(true);
-  text("Texte inédit SAFINUM-SECRET");
+  text("Texte inédit ALPHA-SECRET");
   NS.translate.setDebugTrace(false);
   assert.ok(debugLines.length > 0);
-  assert.ok(debugLines.every((line) => !line.includes("SAFINUM-SECRET")));
+  assert.ok(debugLines.every((line) => !line.includes("ALPHA-SECRET")));
 });
 
 console.log(passed + " tests cascade réussis.");

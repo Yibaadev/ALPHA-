@@ -1,7 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "SAFINUM - Interface en langue locale (prototype)",
+  "name": "ALPHA - Interface en langue locale (prototype)",
   "version": "0.1.0",
+  "icons": {
+    "16": "icons/alpha-16.png",
+    "32": "icons/alpha-32.png",
+    "48": "icons/alpha-48.png",
+    "128": "icons/alpha-128.png"
+  },
   "description": "Affiche un service financier numérique dans une langue nationale du Cameroun, sans modifier son code source, en protégeant les montants et les informations sensibles.",
   "permissions": [
     "storage"

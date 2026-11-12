@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
   const DEFAULT_THRESHOLD = 0.90;
   const DEFAULTS = {
     threshold: DEFAULT_THRESHOLD,
@@ -192,7 +192,7 @@
   }
 
   function init(dictionary, criticalData, options) {
-    if (!NS.protect) throw new Error("SAFINUM.protect doit être chargé avant le moteur fuzzy.");
+    if (!NS.protect) throw new Error("ALPHA.protect doit être chargé avant le moteur fuzzy.");
     const data = dictionary || {};
     const meta = data.meta || {};
     protectionRegex = NS.protect.build(meta.names || []);
