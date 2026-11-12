@@ -16,9 +16,17 @@
         "https://*.google.com/*",
         "https://*.googleapis.com/*"
       ],
+      "css": [
+        "src/confidence.css"
+      ],
       "js": [
         "src/protect.js",
+        "src/engine/templates.js",
+        "src/engine/fuzzy.js",
+        "src/engine/segments.js",
+        "src/engine/rules.js",
         "src/translate.js",
+        "src/confidence.js",
         "src/panel.js",
         "src/content.js"
       ],
@@ -28,7 +36,11 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "data/dictionary.json"
+        "data/dictionary.json",
+        "data/critical_terms.json",
+        "data/templates.json",
+        "data/lexicon.json",
+        "data/rules.json"
       ],
       "matches": [
         "https://*/*",

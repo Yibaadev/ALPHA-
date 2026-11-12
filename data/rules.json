@@ -1,0 +1,74 @@
+[
+  {
+    "id": "present",
+    "description_fr": "Présent",
+    "pattern": null,
+    "example_fr": null,
+    "example_eton": null,
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  },
+  {
+    "id": "passe_recent",
+    "description_fr": "Passé récent",
+    "pattern": {
+      "fr": null,
+      "eton": null,
+      "suffixe": "-yá"
+    },
+    "example_fr": null,
+    "example_eton": null,
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  },
+  {
+    "id": "imperatif_singulier",
+    "description_fr": "Impératif singulier",
+    "pattern": null,
+    "example_fr": null,
+    "example_eton": null,
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  },
+  {
+    "id": "imperatif_pluriel",
+    "description_fr": "Impératif pluriel",
+    "pattern": {
+      "fr": null,
+      "eton": null,
+      "suffixe": "-gá"
+    },
+    "example_fr": "vérifiez",
+    "example_eton": "cázgá",
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  },
+  {
+    "id": "negation",
+    "description_fr": "Négation",
+    "pattern": {
+      "fr": null,
+      "eton": null,
+      "marqueur": "tə̀"
+    },
+    "example_fr": null,
+    "example_eton": null,
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  },
+  {
+    "id": "prefixes_de_classe",
+    "description_fr": "Préfixes de classe",
+    "pattern": null,
+    "example_fr": null,
+    "example_eton": null,
+    "statut": "a_verifier",
+    "verifie_par": null,
+    "date": null
+  }
+]
