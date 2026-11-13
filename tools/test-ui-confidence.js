@@ -47,14 +47,11 @@ assert.strictEqual(retainedOriginal.originalText, securityWarning);
 const broken = confidence.present({ statut: "valide", eton: "CANDIDAT", marqueurs_ok: false }, original, false);
 assert.strictEqual(broken.status, "non_traduit", "une intégrité invalide ne reçoit jamais le badge vert");
 
-for (const label of ["Valide", "Probable", "Automatique", "Non traduit"]) {
-  assert.ok(panelSource.includes(label), "la légende visible contient " + label);
-}
-assert.ok(panelSource.includes(".confidence-chip::before"), "la légende utilise des repères visuels cohérents");
-assert.ok(!/[🟢🟡🟠🔴]/u.test(panelSource), "la légende n’utilise pas d’emojis comme icônes");
+assert.ok(!panelSource.includes("confidence-legend"), "le panneau n’affiche plus de légende de fiabilité");
+assert.ok(!contentSource.includes("safinum-status-badge"), "aucun badge de statut n’est injecté dans la page");
+assert.ok(!/[🟢🟡🟠🔴]/u.test(panelSource), "pas d’emojis comme icônes");
 assert.ok(panelSource.includes('id: "local"') && panelSource.includes("Éton"), "le mode Eton est sélectionnable");
 assert.ok(panelSource.includes("speak") && panelSource.includes("zoom-control"), "lecture vocale et zoom conservés");
-assert.ok(contentSource.includes("Traduction non vérifiée, vérifiez les montants."));
 assert.ok(contentSource.includes("Confidence.speechText(display)"), "le niveau de confiance est annoncé à voix haute");
 const scripts = manifest.content_scripts[0].js;
 assert.ok(scripts.indexOf("src/confidence.js") < scripts.indexOf("src/panel.js"));

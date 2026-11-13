@@ -7,25 +7,25 @@
     valide: {
       id: "valide",
       label: "Valide",
-      badge: "🟢 Valide",
+      badge: "Valide",
       description: "Traduction vérifiée par une personne.",
     },
     probable: {
       id: "probable",
       label: "Probable",
-      badge: "🟡 Probable",
+      badge: "Probable",
       description: "Traduction non vérifiée; texte français affiché.",
     },
     automatique: {
       id: "automatique",
       label: "Automatique",
-      badge: "🟠 Automatique",
+      badge: "Automatique",
       description: "Traduction non vérifiée; texte français affiché.",
     },
     non_traduit: {
       id: "non_traduit",
       label: "Non traduit",
-      badge: "🔴 Non traduit",
+      badge: "Non traduit",
       description: "Texte original conservé.",
     },
   };

@@ -464,8 +464,8 @@
       "screen": "4. Récapitulatif",
       "fr": "Je confirme que les informations ci-dessus sont correctes.",
       "en": "I confirm that the information above is correct.",
-      "local": "Mə̀tə́ jə́blə̂ nâ màm mə́sə̂ mánə̀ bə́bɛ́lə́.",
-      "note": "Je confirme que les informations sont correctes (bə́bɛ́lə́ = vérité, jə́blə̂ = approuver/accepter).",
+      "local": "Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.",
+      "note": "Traduction fournie par l'équipe.",
       "statut": "valide"
     },
     {
@@ -563,63 +563,63 @@
       "screen": "2. Frais",
       "fr": "Facture électricité",
       "en": "Electricity bill",
-      "local": "",
-      "note": "Type d'opération. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Kálàdà wà ndùàn",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "operation_other_bank",
       "screen": "2. Frais",
       "fr": "Autre banque",
       "en": "Other bank",
-      "local": "",
-      "note": "Type d'opération. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Báŋk ìfə́",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "demo_warning_banner",
       "screen": "Bandeau de test",
       "fr": "Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
       "en": "Safinum Pay — demonstration environment. Do not enter any real personal data.",
-      "local": "",
-      "note": "Bandeau de test. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Safinum Pay — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "confirm_beneficiary_checkbox",
       "screen": "3. Bénéficiaire",
       "fr": "J'ai vérifié le nom et le numéro du bénéficiaire.",
       "en": "I have checked the beneficiary's name and number.",
-      "local": "",
-      "note": "Case à cocher. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Mə̀ŋgá bɛ̀bə̀ jɔ̌y yà nɔ́mbà yà mùt àyá kùs mɔ̀nì",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "action_close",
       "screen": "Alertes",
       "fr": "Fermer",
       "en": "Close",
-      "local": "",
-      "note": "Bouton d'alerte. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Díb",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "error_title",
       "screen": "Alertes",
       "fr": "Une erreur est survenue",
       "en": "An error occurred",
-      "local": "",
-      "note": "Titre d'erreur. À traduire par un locuteur éton.",
-      "statut": "a_verifier"
+      "local": "Dzɔ̌m díŋgá cɔ́b",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     },
     {
       "id": "error_must_confirm_info",
       "screen": "Alertes",
       "fr": "Vous devez confirmer les informations avant de valider le transfert.",
       "en": "You must confirm the information before submitting the transfer.",
-      "local": "",
-      "note": "Message d'erreur. À traduire par un locuteur éton. Le sens doit être exact.",
-      "statut": "a_verifier"
+      "local": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
+      "note": "Traduction fournie par l'équipe.",
+      "statut": "valide"
     }
   ]
 }

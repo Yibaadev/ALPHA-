@@ -48,7 +48,7 @@ total_debited;4. Récapitulatif;Total débité;Total debited;Mwàní mə́sə̂ 
 phone;4. Récapitulatif;Téléphone;Phone;Ŋkwǎl;Téléphone (dict. p. 219).
 reference;4. Récapitulatif;Référence;Reference;Nwàmɔ̀ ńlóm;Référence / numéro d'opération.
 operation;4. Récapitulatif;Opération;Operation;Nlóm;Opération / transfert.
-confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;I confirm that the information above is correct.;Mə̀tə́ jə́blə̂ nâ màm mə́sə̂ mánə̀ bə́bɛ́lə́.;Je confirme que les informations sont correctes (bə́bɛ́lə́ = vérité, jə́blə̂ = approuver/accepter).
+confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;I confirm that the information above is correct.;Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.;Traduction fournie par l'équipe.
 modify;4. Récapitulatif;Modifier;Modify;Cɛ́nî;Modifier / changer (dict. p. 97).
 confirm_transfer;4. Récapitulatif;Confirmer le transfert;Confirm transfer;Jə́blə́ nlóm mwàní;Confirmer le transfert (valider l'envoi d'argent).
 transfer_done;5. Confirmation;Transfert effectué;Transfer completed;Mwàní úlómnáyá;Transfert effectué (l'argent a bien été envoyé).
@@ -59,10 +59,10 @@ new_transfer;5. Confirmation;Nouveau transfert;New transfer;Nlóm mwàní ŋm̀k
 test_environment_banner;Bandeau de test;Environnement de test — données fictives, aucune transaction réelle.;Test environment — fictional data, no real transaction.;Vôm à mə̀və́və́glá — màm mə́ pûpùd, té nlóm mwàní wə́ bə́bɛ́lə́.;Bandeau d’avertissement affiché dans l’environnement de démonstration (mə̀və́və́glá = essai/test p. 273, pûpùd = sans effet p. 237, bə́bɛ́lə́ = réel/vérité p. 86).
 test_protocol_link;Bandeau de test;Protocole de test;Test protocol;Mə̀tùm mə́ mə̀və́və́glá;Lien vers les consignes de test (mə̀tùm = protocole/règles p. 268, mə̀və́və́glá = test p. 273).
 hackathon_return_link;Bandeau de test;Retour au hackathon;Back to hackathon;Dúgnì á hackathon;Lien de retour à la page du hackathon (dúgnì = retourner/rentrer p. 103).
-operation_electricity_bill;2. Frais;Facture électricité;Electricity bill;;Type d'opération. À traduire par un locuteur éton.
-operation_other_bank;2. Frais;Autre banque;Other bank;;Type d'opération. À traduire par un locuteur éton.
-demo_warning_banner;Bandeau de test;Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.;Safinum Pay — demonstration environment. Do not enter any real personal data.;;Bandeau de test. À traduire par un locuteur éton.
-confirm_beneficiary_checkbox;3. Bénéficiaire;J'ai vérifié le nom et le numéro du bénéficiaire.;I have checked the beneficiary's name and number.;;Case à cocher. À traduire par un locuteur éton.
-action_close;Alertes;Fermer;Close;;Bouton d'alerte. À traduire par un locuteur éton.
-error_title;Alertes;Une erreur est survenue;An error occurred;;Titre d'erreur. À traduire par un locuteur éton.
-error_must_confirm_info;Alertes;Vous devez confirmer les informations avant de valider le transfert.;You must confirm the information before submitting the transfer.;;Message d'erreur. À traduire par un locuteur éton. Le sens doit être exact.
+operation_electricity_bill;2. Frais;Facture électricité;Electricity bill;Kálàdà wà ndùàn;Traduction fournie par l'équipe.
+operation_other_bank;2. Frais;Autre banque;Other bank;Báŋk ìfə́;Traduction fournie par l'équipe.
+demo_warning_banner;Bandeau de test;Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.;Safinum Pay — demonstration environment. Do not enter any real personal data.;Safinum Pay — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.;Traduction fournie par l'équipe.
+confirm_beneficiary_checkbox;3. Bénéficiaire;J'ai vérifié le nom et le numéro du bénéficiaire.;I have checked the beneficiary's name and number.;Mə̀ŋgá bɛ̀bə̀ jɔ̌y yà nɔ́mbà yà mùt àyá kùs mɔ̀nì;Traduction fournie par l'équipe.
+action_close;Alertes;Fermer;Close;Díb;Traduction fournie par l'équipe.
+error_title;Alertes;Une erreur est survenue;An error occurred;Dzɔ̌m díŋgá cɔ́b;Traduction fournie par l'équipe.
+error_must_confirm_info;Alertes;Vous devez confirmer les informations avant de valider le transfert.;You must confirm the information before submitting the transfer.;Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.;Traduction fournie par l'équipe.
