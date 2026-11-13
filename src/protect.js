@@ -48,6 +48,34 @@
     return new RegExp(parts.map((p) => "(?:" + p + ")").join("|"), "gi");
   }
 
+  /* Noms propres inconnus (bénéficiaire saisi, ville...). Repérage prudent :
+     - au moins deux mots à majuscule qui se suivent (« Paul Atangana », « Marie-Claire Essomba »),
+       sauf en début de phrase, où il s'agit souvent d'un titre (« Confirm Transfer ») ;
+     - ou un seul mot à majuscule juste après « à, vers, pour, to, for, from ». */
+  const NAME_WORD = "\\p{Lu}[\\p{Ll}'’]+(?:-\\p{Lu}[\\p{Ll}'’]+)*";
+  const MULTI_NAME = new RegExp(NAME_WORD + "(?:[ \\u00a0]+" + NAME_WORD + "){1,3}(?![\\p{L}\\p{N}])", "gu");
+  const AFTER_PREPOSITION = new RegExp(
+    "(?<=(?:^|[\\s(])(?:à|À|vers|Vers|pour|Pour|to|To|for|For|from|From)[ \\u00a0]+)" + NAME_WORD + "(?![\\p{L}\\p{N}])",
+    "gu"
+  );
+
+  function detectNames(text) {
+    const source = String(text == null ? "" : text);
+    const found = new Set();
+    for (const match of source.matchAll(MULTI_NAME)) {
+      const before = source.slice(0, match.index);
+      if (/[\p{L}\p{N}]$/u.test(before)) continue; // milieu de mot
+      if (!before.trim() || /[.!?]\s*$/.test(before)) continue; // début de phrase
+      // Suite d'un titre en majuscules (« Make A Transfer Now ») : pas un nom.
+      const clause = before.split(/[:;,.!?()«»"]/).pop();
+      const words = clause.match(/\p{L}+/gu) || [];
+      if (words.length && words.every((word) => /^\p{Lu}/u.test(word))) continue;
+      found.add(match[0]);
+    }
+    for (const match of source.matchAll(AFTER_PREPOSITION)) found.add(match[0]);
+    return [...found];
+  }
+
   // "Total : 25 000 FCFA" devient { masked: "Total : [M1]", values: ["25 000 FCFA"] }
   function protect(text, re) {
     const values = [];
@@ -87,5 +115,5 @@
       .toLowerCase();
   }
 
-  NS.protect = { build, protect, restore, normalize };
+  NS.protect = { build, protect, restore, normalize, detectNames };
 })();

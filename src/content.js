@@ -10,14 +10,24 @@
   const T = NS.translate;
 
   const HOST_ID = "alpha-lang-panel";
-  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "OPTION", "TITLE"]);
-  const ATTRS = ["placeholder", "title", "aria-label"];
+  // Contenus jamais traduits : code, styles, saisies de l'utilisateur.
+  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "TITLE", "INPUT", "CODE", "PRE", "KBD", "SAMP", "TEMPLATE", "IFRAME", "CANVAS"]);
+  const ATTRS = ["placeholder", "title", "aria-label", "alt"];
+  const BUTTON_INPUTS = new Set(["button", "submit", "reset"]);
+  const TYPED_INPUTS = new Set(["text", "search", "tel", "email", "url", "number", ""]);
+  const IS_TOP = (() => {
+    try {
+      return window.top === window;
+    } catch (e) {
+      return false;
+    }
+  })();
   const OBSERVE = {
     childList: true,
     subtree: true,
     characterData: true,
     attributes: true,
-    attributeFilter: ATTRS,
+    attributeFilter: [...ATTRS, "value"],
   };
 
   let dict = null;
@@ -36,6 +46,36 @@
   // Pour chaque texte, on retient l'original et ce qui a été affiché.
   const textState = new WeakMap();
   const attrState = new WeakMap();
+
+  // Valeurs saisies par l'utilisateur (nom, motif, note...). Quand la page les réaffiche
+  // (récapitulatif, reçu), elles ne doivent jamais être traduites.
+  // Gardées en mémoire seulement, jamais stockées ni transmises.
+  const typedValues = new Map(); // texte saisi -> champ d'origine (référence faible)
+  function rememberTyped(field) {
+    const v = String(field.value || "").trim();
+    if (v.length < 2) return;
+    if (typedValues.size > 300) typedValues.delete(typedValues.keys().next().value);
+    typedValues.set(v, typeof WeakRef === "function" ? new WeakRef(field) : null);
+  }
+  function collectTyped(root) {
+    root.querySelectorAll("input, textarea").forEach((field) => {
+      if (field.tagName === "TEXTAREA" || TYPED_INPUTS.has(field.type)) rememberTyped(field);
+    });
+  }
+  // Une saisie réaffichée par la page est une donnée de l'utilisateur (nom, motif...),
+  // SAUF si son champ est toujours là mais vidé : c'est alors une zone d'envoi de message
+  // (messagerie, injection de contenu par le jury), et le message affiché doit être traduit.
+  function isUserData(text) {
+    const key = text.trim();
+    if (!typedValues.has(key)) return false;
+    const ref = typedValues.get(key);
+    const field = ref && ref.deref();
+    if (field && field.isConnected && !field.value.trim()) {
+      typedValues.delete(key);
+      return false;
+    }
+    return true;
+  }
 
   function retainOuterWhitespace(original, translated) {
     if (translated === original) return original;
@@ -68,16 +108,23 @@
     if (mode === "original") {
       return original;
     }
+    if (isUserData(original)) return original; // donnée saisie par l'utilisateur
 
     if (mode === "local") {
       if (T.analyse(original, "local", pageLanguage).kind === "skip") return original;
-      const structured = criticalData
-        ? T.translate(original, { target: "eton", pageLanguage })
-        : null;
-
-      if (structured && typeof structured.eton === "string" && structured.eton.trim() && structured.marqueurs_ok !== false) {
+      const eton = toEton(original, pageLanguage);
+      if (eton) {
         stats.ok++;
-        return retainOuterWhitespace(original, structured.eton);
+        return retainOuterWhitespace(original, eton);
+      }
+      // Texte anglais inédit : passage par le français, puis vers l'éton si possible.
+      // Sinon le français est affiché, plus proche du lecteur que l'anglais.
+      if (sourceLanguageOf(original) === "en") {
+        const french = machine(original, "en", "fr");
+        if (french) {
+          stats.ok++;
+          return retainOuterWhitespace(original, toEton(french, "fr") || french);
+        }
       }
       return original;
     }
@@ -90,7 +137,36 @@
         return candidate;
       }
     }
+    // Contenu inédit (absent du dictionnaire) : traduction locale contrôlée.
+    if (res.kind === "unknown" || res.kind === "same") {
+      const source = sourceLanguageOf(original);
+      if (source && source !== mode) {
+        const translated = machine(original, source, mode);
+        if (translated) {
+          stats.ok++;
+          return retainOuterWhitespace(original, translated);
+        }
+      }
+    }
     return original;
+  }
+
+  function toEton(text, language) {
+    if (!criticalData) return null;
+    const structured = T.translate(text, { target: "eton", pageLanguage: language });
+    return structured && typeof structured.eton === "string" && structured.eton.trim() && structured.marqueurs_ok !== false
+      ? structured.eton
+      : null;
+  }
+
+  function sourceLanguageOf(text) {
+    return T.guessLanguage(text) || pageLanguage;
+  }
+
+  // Traduction locale de secours (voir src/engine/mt.js). Renvoie null tant qu'elle n'est pas prête.
+  function machine(text, source, target) {
+    if (!NS.mt) return null;
+    return NS.mt.lookup(text, source, target) || null;
   }
 
   function writeText(node) {
@@ -103,16 +179,52 @@
     unwrapText(node, st);
   }
 
+  // Le libellé d'un bouton <input> est son attribut value. On ne le traduit que s'il n'est
+  // pas envoyé avec le formulaire (pas d'attribut name).
+  function attrsOf(el) {
+    const list = ATTRS.filter((a) => el.hasAttribute(a));
+    if (el.tagName === "INPUT" && BUTTON_INPUTS.has(el.type) && !el.name && el.hasAttribute("value")) list.push("value");
+    return list;
+  }
+
   function writeAttrs(el) {
     let map = attrState.get(el);
     if (!map) attrState.set(el, (map = {}));
-    for (const a of ATTRS) {
-      if (!el.hasAttribute(a)) continue;
+    for (const a of attrsOf(el)) {
       const st = map[a] || (map[a] = {});
       const desired = decide(st, el.getAttribute(a));
       if (el.getAttribute(a) !== desired) el.setAttribute(a, desired);
       st.written = desired;
     }
+  }
+
+  // Zones que l'auteur du site ou l'utilisateur contrôlent : jamais modifiées.
+  function isProtectedElement(el) {
+    if (el.id === HOST_ID) return true; // panneau ALPHA
+    if (el.isContentEditable) return true;
+    if (el.getAttribute("translate") === "no" || el.classList.contains("notranslate")) return true;
+    if (el.namespaceURI === "http://www.w3.org/2000/svg") return true;
+    // Une option sans attribut value envoie son texte avec le formulaire.
+    if (el.tagName === "OPTION" && !el.hasAttribute("value")) return true;
+    return false;
+  }
+
+  // Parcourt le document et les Shadow DOM ouverts (composants Web).
+  function collect(root, nodes, attrEls, roots) {
+    roots.push(root);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        if (n.nodeType === Node.TEXT_NODE) {
+          return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+        if (isProtectedElement(n)) return NodeFilter.FILTER_REJECT;
+        if (attrsOf(n).length) attrEls.push(n);
+        if (SKIP_TAGS.has(n.tagName)) return NodeFilter.FILTER_REJECT;
+        if (n.shadowRoot) collect(n.shadowRoot, nodes, attrEls, roots);
+        return NodeFilter.FILTER_SKIP;
+      },
+    });
+    while (walker.nextNode()) nodes.push(walker.currentNode);
   }
 
   function apply() {
@@ -121,32 +233,45 @@
     if (observer) observer.disconnect(); // nos propres écritures ne doivent pas relancer le scan
     stats = { ok: 0, total: 0 };
 
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-      acceptNode(n) {
-        const p = n.parentElement;
-        if (!p || SKIP_TAGS.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-        if (p.namespaceURI === "http://www.w3.org/2000/svg") return NodeFilter.FILTER_REJECT;
-        return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-      },
-    });
     const nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-    const sourceSamples = nodes.map((node) => {
+    const attrEls = [];
+    const roots = [];
+    collect(document.body, nodes, attrEls, roots);
+    roots.forEach((root) => collectTyped(root));
+    const sourceSamples = nodes.slice(0, 400).map((node) => {
       const state = textState.get(node);
       return state && state.orig !== undefined ? state.orig : node.nodeValue;
     });
     pageLanguage = T.detectPageLanguage(document.documentElement.getAttribute("lang"), sourceSamples);
     nodes.forEach(writeText);
-    document.querySelectorAll("[placeholder],[title],[aria-label]").forEach(writeAttrs);
+    attrEls.forEach(writeAttrs);
 
     lastCost = performance.now() - t0;
     if (panel) panel.update(stats, mode, pageLanguage);
-    if (observer) observer.observe(document.body, OBSERVE);
+    if (observer) roots.forEach((root) => observer.observe(root, OBSERVE));
+  }
+
+  // Une traduction locale vient d'arriver : nouveau passage, regroupé.
+  let applyTimer = null;
+  function scheduleApply(delay) {
+    if (applyTimer) return;
+    applyTimer = setTimeout(() => {
+      applyTimer = null;
+      apply();
+    }, delay);
+  }
+
+  function machinePairs(next) {
+    if (next === "en") return [["fr", "en"]];
+    if (next === "fr" || next === "local") return [["en", "fr"]];
+    return [];
   }
 
   function setMode(next) {
     if (!["original", "fr", "en", "local"].includes(next)) return;
     mode = next;
+    // Appelé pendant le clic : Chrome autorise alors la préparation du modèle hors ligne.
+    if (NS.mt) NS.mt.prepare(machinePairs(next));
     if (speaking && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       speaking = false;
@@ -236,8 +361,22 @@
     }
   }
 
+  // Message du panneau sur l'état de la traduction hors ligne des contenus nouveaux.
+  const MT_NOTICES = {
+    "needs-activation": "Choisissez une langue pour activer la traduction hors ligne des contenus nouveaux.",
+    downloading: "Préparation de la traduction hors ligne des contenus nouveaux…",
+    unsupported: "Ce navigateur ne traduit que les textes connus d’ALPHA.",
+    unavailable: "Ce navigateur ne traduit que les textes connus d’ALPHA.",
+  };
+  function showMachineStatus(status) {
+    if (panel && panel.setNotice) panel.setNotice(mode === "original" ? "" : MT_NOTICES[status] || "");
+  }
+
   async function init() {
     if (document.getElementById(HOST_ID)) return; // déjà lancé
+    if (!document.body) return;
+    // Dans un cadre (iframe), on traduit aussi, sauf les cadres minuscules (publicités, pixels).
+    if (!IS_TOP && (window.innerWidth < 120 || window.innerHeight < 40)) return;
     const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse] = await Promise.all([
       fetch(chrome.runtime.getURL("data/dictionary.json")),
       fetch(chrome.runtime.getURL("data/critical_terms.json")),
@@ -274,12 +413,41 @@
     const computedBodyZoom = Number.parseFloat(getComputedStyle(document.body).zoom);
     if (Number.isFinite(computedBodyZoom)) baseBodyZoom = computedBodyZoom;
 
-    panel = NS.panel.create({
-      hostId: HOST_ID,
-      onModeChange: setMode,
-      onSpeak: speakVisibleText,
-      onZoomChange: setZoom,
-    });
+    // Le panneau n'apparaît que dans la page principale ; les cadres suivent son choix.
+    if (IS_TOP) {
+      panel = NS.panel.create({
+        hostId: HOST_ID,
+        onModeChange: setMode,
+        onSpeak: speakVisibleText,
+        onZoomChange: setZoom,
+      });
+    }
+    try {
+      chrome.storage.onChanged.addListener((changes, area) => {
+        if (area !== "local" || !changes.alphaMode) return;
+        const next = changes.alphaMode.newValue;
+        if (next === mode || !["original", "fr", "en", "local"].includes(next)) return;
+        mode = next;
+        apply();
+      });
+    } catch (e) {
+      /* stockage indisponible : chaque cadre garde son choix */
+    }
+
+    // Saisies de l'utilisateur, pour ne jamais traduire leur réaffichage.
+    const onTyped = (event) => {
+      const field = event.target;
+      if (field && (field.tagName === "TEXTAREA" || (field.tagName === "INPUT" && TYPED_INPUTS.has(field.type)))) {
+        rememberTyped(field);
+      }
+    };
+    document.addEventListener("input", onTyped, true);
+    document.addEventListener("change", onTyped, true);
+
+    if (NS.mt) {
+      NS.mt.onResult(() => scheduleApply(40));
+      NS.mt.onStatus(showMachineStatus);
+    }
 
     let waiting = false;
     observer = new MutationObserver(() => {
@@ -292,6 +460,7 @@
       }, 150);
     });
     apply();
+    showMachineStatus(NS.mt ? NS.mt.status() : "unsupported");
     languageObserver = new MutationObserver(() => apply());
     languageObserver.observe(document.documentElement, {
       attributes: true,

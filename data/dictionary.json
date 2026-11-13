@@ -46,7 +46,10 @@
       "en": "Fees",
       "local": "Táŋ",
       "note": "Frais / coût / prix (dict. p. 250).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Fee"
+      ]
     },
     {
       "id": "beneficiary",
@@ -109,7 +112,10 @@
       "en": "Check your balance and initiate a transfer securely.",
       "local": "Tálgá mwàní wô, ù lóm mwàní èè ùkálá.",
       "note": "Consultez votre solde et lancez un transfert en toute sécurité (tál = regarder, lóm = envoyer, ùkálá = prudence/sécurité).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Check your balance and start a secure transfer."
+      ]
     },
     {
       "id": "balance_available",
@@ -127,7 +133,10 @@
       "en": "Account number: [M1]",
       "local": "Nwàmɔ̀ kônt : [M1]",
       "note": "Numéro de compte : [M1]. nwàmɔ̀ = numéro (dict. p. 222).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Account number : [M1]"
+      ]
     },
     {
       "id": "account_number_label",
@@ -136,7 +145,10 @@
       "en": "Account number:",
       "local": "Nwàmɔ̀ kônt :",
       "note": "Numéro de compte :",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Account number :"
+      ]
     },
     {
       "id": "account_type",
@@ -163,7 +175,10 @@
       "en": "Check fees",
       "local": "Tál táŋ",
       "note": "Consulter les frais (tál = regarder, táŋ = frais/prix).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "View fees"
+      ]
     },
     {
       "id": "recent_transactions",
@@ -217,7 +232,10 @@
       "en": "Always verify the recipient's name and number before confirming a transfer.",
       "local": "Cázgá ngə́d ísə̂ dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
       "note": "Vérifiez toujours le nom et le numéro du bénéficiaire avant de confirmer un transfert.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Always verify the beneficiary name and number before confirming a transfer."
+      ]
     },
     {
       "id": "secure_connection",
@@ -244,7 +262,10 @@
       "en": "Choose transfer type and amount. Fees are calculated automatically.",
       "local": "Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í nlóm yátə́ lánbân ɲə̀ m̀yɛ̌n.",
       "note": "Choisissez le transfert et le montant. Les frais sont calculés automatiquement (nlóm = substantif envoi).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Choose the transfer type and amount. Fees are calculated automatically."
+      ]
     },
     {
       "id": "operation_type",
@@ -307,7 +328,10 @@
       "en": "Balance after operation",
       "local": "Mwàní àlígì á mbús ísɛ́",
       "note": "Solde après opération (l'argent qui reste après le travail/l'opération).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Balance after transfer"
+      ]
     },
     {
       "id": "back",
@@ -334,7 +358,10 @@
       "en": "Enter recipient information. Always verify the number before submitting.",
       "local": "Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.",
       "note": "Renseignez les infos du destinataire. Vérifiez toujours le numéro avant de valider.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Enter the recipient details. Always verify the number before confirming."
+      ]
     },
     {
       "id": "warning_new_beneficiary",
@@ -370,7 +397,10 @@
       "en": "Transfer purpose",
       "local": "Àsú ú nlóm",
       "note": "Motif du transfert (connectif de classe 3a ú nlóm).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Transfer reason"
+      ]
     },
     {
       "id": "reason_services",
@@ -397,7 +427,10 @@
       "en": "Security alert",
       "local": "Kálâ! Ùkálá",
       "note": "Alerte de sécurité (kálâ = faire attention / alerte).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Security warning"
+      ]
     },
     {
       "id": "alert_text",
@@ -406,7 +439,10 @@
       "en": "Security alert: verify the beneficiary number before continuing.",
       "local": "Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.",
       "note": "Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Security warning: verify the beneficiary phone number before continuing."
+      ]
     },
     {
       "id": "summary_intro",
@@ -415,7 +451,10 @@
       "en": "Verify the information before confirming the transfer.",
       "local": "Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
       "note": "Vérifiez les informations avant de confirmer le transfert.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Check the details before confirming the transfer."
+      ]
     },
     {
       "id": "amount",
@@ -469,7 +508,10 @@
       "en": "I confirm that the information above is correct.",
       "local": "Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.",
       "note": "Je confirme que les informations ci-dessus sont correctes.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "I confirm the information above is correct."
+      ]
     },
     {
       "id": "modify",
@@ -478,7 +520,10 @@
       "en": "Modify",
       "local": "Cɛ́nî",
       "note": "Modifier / changer (dict. p. 97).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Edit"
+      ]
     },
     {
       "id": "confirm_transfer",
@@ -586,7 +631,10 @@
       "en": "[M1] — demonstration environment. Do not enter any real personal data.",
       "local": "[M1] — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
       "note": "Le nom propre Safinum Pay est conservé tel quel.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "[M1] — demonstration environment. Do not enter real personal data."
+      ]
     },
     {
       "id": "confirm_beneficiary_checkbox",
@@ -595,7 +643,10 @@
       "en": "I have checked the beneficiary's name and number.",
       "local": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.",
       "note": "J'ai vérifié le nom et le numéro du bénéficiaire.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "I have verified the beneficiary name and phone number."
+      ]
     },
     {
       "id": "action_close",
@@ -604,7 +655,10 @@
       "en": "Close",
       "local": "Díb",
       "note": "Fermer (verbe díb, fermer/clore).",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "Dismiss"
+      ]
     },
     {
       "id": "error_title",
@@ -622,7 +676,10 @@
       "en": "You must confirm the information before submitting the transfer.",
       "local": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
       "note": "Vous devez confirmer les informations avant de valider le transfert.",
-      "statut": "valide"
+      "statut": "valide",
+      "en_variants": [
+        "You must confirm the details before validating the transfer."
+      ]
     },
     {
       "id": "transfer_done_success",
@@ -911,6 +968,78 @@
       "local": "Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
       "note": "Consigne de sécurité données personnelles.",
       "statut": "valide"
+    },
+    {
+      "id": "error_amount_zero",
+      "screen": "Erreurs",
+      "fr": "Le montant doit être supérieur à zéro.",
+      "en": "The amount must be greater than zero.",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "error_amount_insufficient",
+      "screen": "Erreurs",
+      "fr": "Solde insuffisant pour effectuer ce transfert.",
+      "en": "Insufficient balance for this transfer.",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "error_beneficiary_missing",
+      "screen": "Erreurs",
+      "fr": "Veuillez renseigner le nom et le numéro du bénéficiaire.",
+      "en": "Please provide the beneficiary name and phone number.",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "error_network",
+      "screen": "Erreurs",
+      "fr": "Erreur réseau : le service est temporairement indisponible. Réessayez.",
+      "en": "Network error: the service is temporarily unavailable. Please try again.",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "alert_new_beneficiary",
+      "screen": "Erreurs",
+      "fr": "Alerte de sécurité : ce bénéficiaire n'a jamais été utilisé sur ce compte.",
+      "en": "Security warning: this beneficiary has never been used on this account.",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "important_message",
+      "screen": "Contenu dynamique",
+      "fr": "Message important",
+      "en": "Important message",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "fee_desc_mobile",
+      "screen": "Frais",
+      "fr": "Frais de 1,5 % (min. [M1], max. [M2])",
+      "en": "1,5 % fee (min. [M1], max. [M2])",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "fee_desc_bank",
+      "screen": "Frais",
+      "fr": "Frais de 2 % (min. [M1], max. [M2])",
+      "en": "2 % fee (min. [M1], max. [M2])",
+      "local": "",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
+      "statut": "a_verifier"
     }
   ]
 }

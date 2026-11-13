@@ -8,13 +8,17 @@
   let index = new Map();
   let languageIndexes = { fr: new Map(), en: new Map() };
   let regex = P.build([]);
+  let baseNames = [];
+  const nameRegexCache = new Map();
   let ignored = new Set();
   let cascade = { ready: false, templates: [], lexicon: [], rules: [], criticalTerms: null };
   let debugTraceEnabled = false;
 
   function init(dict, options) {
     const meta = dict.meta || {};
-    regex = P.build(meta.names || []);
+    baseNames = meta.names || [];
+    regex = P.build(baseNames);
+    nameRegexCache.clear();
     ignored = new Set((meta.ignore || []).map(P.normalize));
     index = new Map();
     languageIndexes = { fr: new Map(), en: new Map() };
@@ -24,9 +28,11 @@
         index.set(key, e);
         languageIndexes.fr.set(key, e);
       }
-      if (e.en && e.en.trim()) {
-        const key = P.normalize(e.en);
-        index.set(key, e);
+      // en_variants : autres formulations anglaises du même texte (ex. libellés d'un site).
+      for (const en of [e.en, ...(Array.isArray(e.en_variants) ? e.en_variants : [])]) {
+        if (!en || !en.trim()) continue;
+        const key = P.normalize(en);
+        if (!index.has(key)) index.set(key, e);
         languageIndexes.en.set(key, e);
       }
     }
@@ -64,18 +70,83 @@
     return isFrench ? "fr" : "en";
   }
 
-  // L'attribut lang est la source prioritaire; à défaut, on utilise les phrases reconnues.
+  // Mots très fréquents propres à chaque langue, pour deviner la langue d'un texte inconnu.
+  const STOPWORDS = {
+    fr: new Set(("le la les un une des du de au aux et ou est sont été être avec pour par sur dans vers votre vos " +
+      "nous vous ils elle il ce cette ces qui que ne pas plus sans très mais leur leurs avez avant après " +
+      "été sera seront veuillez merci aucun aucune frais solde montant compte").split(" ")),
+    en: new Set(("the a an of to and or is are was were be been with for by on in into your our you we they " +
+      "it this that these those which who not no more without very but their have has before after will " +
+      "please thank any fee fees balance amount account").split(" ")),
+  };
+
+  // Devine la langue d'un texte libre. Renvoie null en cas de doute.
+  function guessLanguage(text) {
+    const known = detectTextLanguage(text);
+    if (known) return known;
+    const words = String(text || "").toLowerCase().normalize("NFC").match(/\p{L}+/gu) || [];
+    if (!words.length) return null;
+    let fr = 0;
+    let en = 0;
+    for (const w of words) {
+      if (STOPWORDS.fr.has(w)) fr++;
+      if (STOPWORDS.en.has(w)) en++;
+    }
+    // Les lettres accentuées sont un indice fort de français.
+    if (/[àâçéèêëîïôûùüÿœæ]/i.test(text)) fr += 2;
+    if (fr === en) return null;
+    if (Math.max(fr, en) < 2 && words.length > 3) return null;
+    return fr > en ? "fr" : "en";
+  }
+
+  // Le contenu réel l'emporte sur l'attribut lang quand il le contredit nettement
+  // (beaucoup de sites changent de langue sans mettre à jour <html lang>).
   function detectPageLanguage(pageLang, samples) {
     const declared = normalizeLanguageTag(pageLang);
-    if (declared) return declared;
-
     const counts = { fr: 0, en: 0 };
     for (const sample of samples || []) {
-      const language = detectTextLanguage(sample);
+      const language = guessLanguage(sample);
       if (language) counts[language]++;
     }
-    if (counts.fr === counts.en) return null;
-    return counts.fr > counts.en ? "fr" : "en";
+    const top = counts.fr === counts.en ? null : counts.fr > counts.en ? "fr" : "en";
+    if (!declared) return top;
+    if (top && top !== declared) {
+      const other = top === "fr" ? counts.en : counts.fr;
+      if (counts[top] >= 5 && counts[top] >= 2 * other) return top;
+    }
+    return declared;
+  }
+
+  // Expression de protection étendue aux noms propres inconnus du texte (null s'il n'y en a pas).
+  function namesRegexFor(text) {
+    const known = new Set(baseNames.map((name) => name.toLowerCase()));
+    const extra = P.detectNames(text).filter((name) => !known.has(name.toLowerCase()) && !ignored.has(P.normalize(name)));
+    if (!extra.length) return null;
+    const key = extra.slice().sort().join("|");
+    if (!nameRegexCache.has(key)) {
+      if (nameRegexCache.size > 200) nameRegexCache.delete(nameRegexCache.keys().next().value);
+      nameRegexCache.set(key, P.build([...baseNames, ...extra]));
+    }
+    return nameRegexCache.get(key);
+  }
+
+  // Exécute fn en protégeant aussi les noms propres inconnus de ce texte.
+  function withNames(text, fn) {
+    const extended = namesRegexFor(text);
+    if (!extended) return fn();
+    const saved = regex;
+    regex = extended;
+    try {
+      return fn();
+    } finally {
+      regex = saved;
+    }
+  }
+
+  // Masque les valeurs sensibles, noms connus et noms propres repérés dans le texte.
+  function protectText(text) {
+    const value = String(text == null ? "" : text);
+    return P.protect(value, namesRegexFor(value) || regex);
   }
 
   function markerTokens(text) {
@@ -243,7 +314,16 @@
   }
 
   // API structurée du moteur Eton. context.target/lang accepte "local" ou "eton".
+  // Si la phrase échoue, un second essai protège les noms propres inconnus
+  // (« envoyés à Paul Atangana ») pour qu'un gabarit puisse s'appliquer.
   function translate(original, context) {
+    const first = translateCore(original, context);
+    if (first.eton !== null || first.marqueurs_ok === false || !namesRegexFor(String(original == null ? "" : original))) return first;
+    const second = withNames(String(original), () => translateCore(original, context));
+    return second.eton !== null ? second : first;
+  }
+
+  function translateCore(original, context) {
     original = String(original == null ? "" : original);
     context = context && typeof context === "object" ? context : {};
     const requested = String(context.target || context.lang || context.language || "local").toLowerCase();
@@ -330,6 +410,6 @@
 
   NS.translate = {
     init, translate, analyse, validateIntegrity, normalizeForComparison, setDebugTrace,
-    detectPageLanguage, detectTextLanguage, normalizeLanguageTag,
+    detectPageLanguage, detectTextLanguage, normalizeLanguageTag, guessLanguage, protectText, withNames,
   };
 })();
