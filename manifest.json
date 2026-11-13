@@ -32,11 +32,13 @@
         "src/engine/segments.js",
         "src/engine/rules.js",
         "src/translate.js",
+        "src/engine/mt.js",
         "src/confidence.js",
         "src/panel.js",
         "src/content.js"
       ],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
   "web_accessible_resources": [

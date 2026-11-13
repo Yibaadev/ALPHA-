@@ -31,6 +31,14 @@ for (const e of dict.entries) {
     keys.set(k, e.id);
   }
 
+  // Variantes anglaises (formulations d'un site) : mêmes règles que la colonne anglaise.
+  for (const variant of Array.isArray(e.en_variants) ? e.en_variants : []) {
+    const k = norm(variant);
+    if (keys.has(k) && keys.get(k) !== e.id) errors.push("Variante anglaise en double : " + e.id + " et " + keys.get(k));
+    keys.set(k, e.id);
+    if (markers(variant) !== markers(e.fr)) errors.push(e.id + " : les marqueurs de la variante « " + variant + " » ne correspondent pas au français");
+  }
+
   for (const col of ["en", "local"]) {
     if (!e[col] || !e[col].trim()) continue;
     if (col === "en") en++;
