@@ -3,10 +3,10 @@ tagline;En-tête;Banque en ligne;Online banking;Bâŋ á ŋkwǎl;Banque en ligne
 balance;Étapes;Solde;Balance;Mwàní;Argent disponible sur le compte. mwàní (dict. p. 211).
 fees;Étapes;Frais;Fees;Táŋ;Frais / coût / prix (dict. p. 250).
 beneficiary;Étapes;Bénéficiaire;Beneficiary;Mòd àtə́ nɔŋ;Bénéficiaire : la personne qui reçoit l'argent. mòd = personne, nɔŋ = prendre/recevoir.
-summary;Étapes;Récapitulatif;Summary;Ncáz;Récapitulatif / vérification. Dérivé du verbe cáz (contrôler, vérifier, dict. p. 96).
-confirmation;Étapes;Confirmation;Confirmation;Èjə́blə̂;Confirmation / approbation. Du verbe jə́blə̂ (accepter, acquiescer, dict. p. 132).
+summary;Étapes;Récapitulatif;Summary;Ìbɛ̀bə̀ àsúg;Récapitulatif / revue finale (ìbɛ̀bə̀ = regard/revue, àsúg = fin/terme).
+confirmation;Étapes;Confirmation;Confirmation;Ìjə́blə́;Confirmation (nominalisation du verbe jə́blə́).
 account_section;1. Solde;Votre compte;Your account;Kônt wô;Votre/ton compte.
-greeting_name;1. Solde;Bonjour, [M1];Hello, [M1];M̀ mə̀mà kídí, [M1];Salutation matinale attestée (p. 14 / 215) : M̀ mə̀mà kídí (prononcé « Mmema kiri »). Marqueur [M1] préservé. Formule générale alternative : Mə̀kónî.
+greeting_name;1. Solde;Bonjour, [M1];Hello, [M1];Mə̀má kìrí, [M1];Bonjour, [M1] (salutation matinale attestée).
 greeting_only;1. Solde;Bonjour,;Hello,;Mə̀kónî,;Salutation générale : mə̀kónî.
 balance_intro;1. Solde;Consultez votre solde et lancez un transfert en toute sécurité.;Check your balance and initiate a transfer securely.;Tálgá mwàní wô, ù lóm mwàní èè ùkálá.;Consultez votre solde et lancez un transfert en toute sécurité (tál = regarder, lóm = envoyer, ùkálá = prudence/sécurité).
 balance_available;1. Solde;Solde disponible;Available balance;Mwàní ú nè;Solde disponible (argent qui est présent). Graphie pratique clavier pour le schwa ə / nə̂.
@@ -25,12 +25,12 @@ secure_connection;1. Solde;Connexion sécurisée;Secure connection;Ŋkwǎl ú k�
 fees_section;2. Frais;Frais de transfert;Transfer fees;Táŋ í nlóm;Frais de transfert (coût de l'envoi).
 fees_intro;2. Frais;Choisissez le type de transfert et le montant. Les frais sont calculés automatiquement.;Choose transfer type and amount. Fees are calculated automatically.;Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í nlóm yátə́ lánbân ɲə̀ m̀yɛ̌n.;Choisissez le transfert et le montant. Les frais sont calculés automatiquement (nlóm = substantif envoi).
 operation_type;2. Frais;Type d'opération;Operation type;M̀bə̀b í nlóm;Type / sorte d'opération (m̀bə̀b = genre/sorte).
-operation_safinum_account;2. Frais;Compte Safinum;Safinum account;Kônt Safinum;Compte Safinum.
-operation_safinum_hint;2. Frais;Transfert instantané et gratuit;Instant and free transfer;Nlóm àvəl àvəl té táŋ;Transfert instantané (àvəl àvəl = vite/immédiat) et gratuit (té táŋ = sans frais).
+operation_alpha_account;2. Frais;Compte Safinum;Safinum account;Kɔ̂nt Safinum;Le nom propre Safinum est conservé dans la traduction.
+operation_alpha_hint;2. Frais;Transfert instantané et gratuit;Instant and free transfer;Nlóm àvəl àvəl té táŋ;Transfert instantané (àvəl àvəl = vite/immédiat) et gratuit (té táŋ = sans frais).
 amount_to_send;2. Frais;Montant à envoyer;Amount to send;Mwàní ú nlóm;Montant à envoyer (connectif de classe 3 ú nlóm).
 fees_free;2. Frais;Gratuit;Free;Té táŋ;Gratuit (sans frais / sans coût).
-total_to_debit;2. Frais;Total à débiter;Total to debit;Mwàní mə́sə̂ mápám;Total à débiter (tout l'argent qui va sortir).
-balance_after;2. Frais;Solde après opération;Balance after operation;Mwàní ú lígì;Solde après opération (l'argent qui reste, líg = rester).
+total_to_debit;2. Frais;Total à débiter;Total to debit;Mwàní wɔ́sə̂ wàyá kùì;Total à débiter (tout l'argent qui va sortir).
+balance_after;2. Frais;Solde après opération;Balance after operation;Mwàní àlígì á mbús ísɛ́;Solde après opération (l'argent qui reste après le travail/l'opération).
 back;2. Frais;Retour;Back;Á mbús;Retour / en arrière (directionnel UI, opposé de Kə́lə̀ ósú. Noté á mbúz p. 191 et prononcé á mbús p. 14).
 continue;2. Frais;Continuer;Continue;Kə́lə̀ ósú;Continuer / avancer.
 beneficiary_intro;3. Bénéficiaire;Renseignez les informations du destinataire. Vérifiez toujours le numéro avant de valider.;Enter recipient information. Always verify the number before submitting.;Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.;Renseignez les infos du destinataire. Vérifiez toujours le numéro avant de valider.
@@ -43,26 +43,58 @@ note_optional;3. Bénéficiaire;Note (optionnel);Note (optional);Ètìl (ù kɔ�
 alert_title;Alertes;Alerte de sécurité;Security alert;Kálâ! Ùkálá;Alerte de sécurité (kálâ = faire attention / alerte).
 alert_text;Alertes;Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.;Security alert: verify the beneficiary number before continuing.;Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.;Alerte de sécurité : vérifiez le numéro du bénéficiaire avant de continuer.
 summary_intro;4. Récapitulatif;Vérifiez les informations avant de confirmer le transfert.;Verify the information before confirming the transfer.;Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.;Vérifiez les informations avant de confirmer le transfert.
-amount;4. Récapitulatif;Montant;Amount;Mwàní;Montant (argent).
-total_debited;4. Récapitulatif;Total débité;Total debited;Mwàní mə́sə̂ mápámí;Total débité (tout l'argent qui est sorti).
-phone;4. Récapitulatif;Téléphone;Phone;Ŋkwǎl;Téléphone (dict. p. 219).
-reference;4. Récapitulatif;Référence;Reference;Nwàmɔ̀ ńlóm;Référence / numéro d'opération.
-operation;4. Récapitulatif;Opération;Operation;Nlóm;Opération / transfert.
-confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;I confirm that the information above is correct.;Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.;Traduction fournie par l'équipe.
+amount;4. Récapitulatif;Montant;Amount;Àbùm mwàní;Montant (somme / volume d'argent).
+total_debited;4. Récapitulatif;Total débité;Total debited;Mwàní wɔ́sə̂ ùkùì;Total débité (tout l'argent qui est sorti).
+phone;4. Récapitulatif;Téléphone;Phone;Nɔ́mbà yà tɛ̀lɛ̀fɔ̂n;Téléphone / numéro de téléphone.
+reference;4. Récapitulatif;Référence;Reference;Nɔ́mbà yà ísɛ́;Référence / numéro d'opération.
+operation;4. Récapitulatif;Opération;Operation;Ìsɛ́;Opération / transaction.
+confirm_checkbox;4. Récapitulatif;Je confirme que les informations ci-dessus sont correctes.;I confirm that the information above is correct.;Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.;Je confirme que les informations ci-dessus sont correctes.
 modify;4. Récapitulatif;Modifier;Modify;Cɛ́nî;Modifier / changer (dict. p. 97).
 confirm_transfer;4. Récapitulatif;Confirmer le transfert;Confirm transfer;Jə́blə́ nlóm mwàní;Confirmer le transfert (valider l'envoi d'argent).
-transfer_done;5. Confirmation;Transfert effectué;Transfer completed;Mwàní úlómnáyá;Transfert effectué (l'argent a bien été envoyé).
-transfer_success_msg;5. Confirmation;Votre transfert a été envoyé avec succès.;Your transfer has been sent successfully.;Mwàní wô úlómná èè ŋ̀kàbní.;Votre transfert a été envoyé avec succès (ŋ̀kàbní = succès p. 138).
+transfer_done;5. Confirmation;Transfert effectué;Transfer completed;Nlóm mwàní ùbòbànyà mbə̀ŋ !;Transfert effectué avec succès !
+transfer_success_msg;5. Confirmation;Votre transfert a été envoyé avec succès.;Your transfer has been sent successfully.;Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.;Votre argent a bien été envoyé au bénéficiaire.
 status;5. Confirmation;Statut;Status;M̀bə̀b;Statut / état.
 status_success;5. Confirmation;Succès;Success;Ŋ̀kàbní;Succès (dict. p. 138).
-new_transfer;5. Confirmation;Nouveau transfert;New transfer;Nlóm mwàní ŋm̀kpámgí;Nouveau transfert.
+new_transfer;5. Confirmation;Nouveau transfert;New transfer;Lóm mwàní fə́;Effectuer un nouveau transfert / transférer à nouveau.
 test_environment_banner;Bandeau de test;Environnement de test — données fictives, aucune transaction réelle.;Test environment — fictional data, no real transaction.;Vôm à mə̀və́və́glá — màm mə́ pûpùd, té nlóm mwàní wə́ bə́bɛ́lə́.;Bandeau d’avertissement affiché dans l’environnement de démonstration (mə̀və́və́glá = essai/test p. 273, pûpùd = sans effet p. 237, bə́bɛ́lə́ = réel/vérité p. 86).
 test_protocol_link;Bandeau de test;Protocole de test;Test protocol;Mə̀tùm mə́ mə̀və́və́glá;Lien vers les consignes de test (mə̀tùm = protocole/règles p. 268, mə̀və́və́glá = test p. 273).
 hackathon_return_link;Bandeau de test;Retour au hackathon;Back to hackathon;Dúgnì á hackathon;Lien de retour à la page du hackathon (dúgnì = retourner/rentrer p. 103).
-operation_electricity_bill;2. Frais;Facture électricité;Electricity bill;Kálàdà wà ndùàn;Traduction fournie par l'équipe.
-operation_other_bank;2. Frais;Autre banque;Other bank;Báŋk ìfə́;Traduction fournie par l'équipe.
-demo_warning_banner;Bandeau de test;Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.;Safinum Pay — demonstration environment. Do not enter any real personal data.;Safinum Pay — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.;Traduction fournie par l'équipe.
-confirm_beneficiary_checkbox;3. Bénéficiaire;J'ai vérifié le nom et le numéro du bénéficiaire.;I have checked the beneficiary's name and number.;Mə̀ŋgá bɛ̀bə̀ jɔ̌y yà nɔ́mbà yà mùt àyá kùs mɔ̀nì;Traduction fournie par l'équipe.
-action_close;Alertes;Fermer;Close;Díb;Traduction fournie par l'équipe.
-error_title;Alertes;Une erreur est survenue;An error occurred;Dzɔ̌m díŋgá cɔ́b;Traduction fournie par l'équipe.
-error_must_confirm_info;Alertes;Vous devez confirmer les informations avant de valider le transfert.;You must confirm the information before submitting the transfer.;Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.;Traduction fournie par l'équipe.
+operation_electricity_bill;2. Frais;Facture électricité;Electricity bill;Kálàdà wà kùrâŋ;Facture électricité (kálàdà = reçu/facture, kùrâŋ = électricité).
+operation_other_bank;2. Frais;Autre banque;Other bank;Báŋk ìfə́;Autre banque (báŋk = banque, ìfə́ = autre cl. 9/10).
+demo_warning_banner;Bandeau de test;[M1] — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.;[M1] — demonstration environment. Do not enter any real personal data.;[M1] — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.;Le nom propre Safinum Pay est conservé tel quel.
+confirm_beneficiary_checkbox;3. Bénéficiaire;J'ai vérifié le nom et le numéro du bénéficiaire.;I have checked the beneficiary's name and number.;Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.;J'ai vérifié le nom et le numéro du bénéficiaire.
+action_close;Alertes;Fermer;Close;Díb;Fermer (verbe díb, fermer/clore).
+error_title;Alertes;Une erreur est survenue;An error occurred;Dzɔ̌m díŋgá cɔ́b;Une erreur est survenue (quelque chose s'est gâté/trompé).
+error_must_confirm_info;Alertes;Vous devez confirmer les informations avant de valider le transfert.;You must confirm the information before submitting the transfer.;Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.;Vous devez confirmer les informations avant de valider le transfert.
+transfer_done_success;5. Confirmation;Transfert effectué avec succès !;Transfer completed successfully!;Nlóm mwàní ùbòbànyà mbə̀ŋ !;Transfert effectué avec succès ! (nlóm mwàní = envoi d'argent, bòbànyà = a été fait, mbə̀ŋ = bien/avec succès).
+money_sent_to_beneficiary;5. Confirmation;Votre argent a bien été envoyé au bénéficiaire.;Your money has been successfully sent to the beneficiary.;Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.;Votre argent a bien été envoyé au bénéficiaire.
+transaction_reference;5. Confirmation;Référence de transaction;Transaction reference;Nɔ́mbà yà nlóm mwàní;Référence de transaction (numéro du transfert d'argent).
+date_and_time;5. Confirmation;Date et heure;Date and time;Mɔ́s bá ǹtə̀ŋ;Date et heure (mɔ́s = jour/date, bá = et, ǹtə̀ŋ = heure/moment).
+download_receipt;5. Confirmation;Télécharger le reçu;Download receipt;Nɔŋ kálàdà wà ǹyáà;Télécharger le reçu (nɔŋ = prendre/récupérer, kálàdà wà ǹyáà = reçu de paiement/preuve).
+action_new_transfer;5. Confirmation;Effectuer un nouveau transfert;Make a new transfer;Lóm mwàní fə́;Effectuer un nouveau transfert (lóm mwàní = transférer l'argent, fə́ = à nouveau).
+back_to_home;5. Confirmation;Retour à l'accueil;Back to home;Ìbùlàn á ǹtɔ́ŋ;Retour à l'accueil (ìbùlàn = retour, ǹtɔ́ŋ = accueil/base de départ).
+ext_connexion_réussie;Alertes;Connexion réussie;Successful connection;Mì nyíìnyà á kɔ̂nt mbə̀ŋ;Notification / statut connexion.
+ext_mot_de_passe_incorrect;Alertes;Mot de passe incorrect;Incorrect password;Ìbùg yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té;Alerte mot de passe incorrect.
+ext_code_pin_incorrect;Alertes;Code PIN incorrect;Incorrect PIN code;Nɔ́mbà yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té;Alerte code PIN incorrect.
+ext_limite_quotidienne_atteinte;Alertes;Limite quotidienne atteinte;Daily limit reached;Mì mànyà àbùm mwàní yà lóm mɔ́s wùá;Alerte limite journalière.
+ext_téléchargement_terminé;Alertes;Téléchargement terminé;Download completed;Ìnɔŋ kálàdà ìmànyà;Notification téléchargement.
+ext_transaction_en_cours_de_traite;Alertes;Transaction en cours de traitement;Transaction being processed;Bə̀tə̀ kɔ̀m ísɛ́ yɔ̂ ɛ́yə́ŋ;Statut opération en cours.
+ext_veuillez_patienter;Alertes;Veuillez patienter...;Please wait...;Yàŋgá ǹtə̀ŋ mɔ́n...;Message d'attente.
+ext_voulez-vous_annuler_cette_opér;Alertes;Voulez-vous annuler cette opération ?;Do you want to cancel this operation?;Yə̀ mì yì kàb ísɛ́ ńì ?;Demande de confirmation d'annulation.
+ext_reçu_envoyé_par_sms;Alertes;Reçu envoyé par SMS;Receipt sent by SMS;Bə́lómnyà kálàdà wà ǹyáà á SMS;Notification envoi reçu.
+ext_votre_session_a_expiré;Alertes;Votre session a expiré.;Your session has expired.;Ǹtə̀ŋ wɔ̂ wà ísɛ́ ùmànyà.;Alerte sécurité session expirée.
+ext_ne_partagez_jamais_votre_code_;Alertes;Ne partagez jamais votre code secret.;Never share your secret code.;Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.;Consigne de sécurité.
+ext_attention__ne_partagez_jamais_;Alertes;Attention : ne partagez jamais votre code secret.;Warning: never share your secret code.;Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.;Alerte sécurité code secret.
+ext_alerte_sécurité__une_activité_;Alertes;Alerte sécurité : une activité inhabituelle a été détectée.;Security alert: unusual activity detected.;Mə̀bàlà : bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt yɔ̂.;Alerte activité inhabituelle.
+ext_impossible_de_traiter_cette_de;Alertes;Impossible de traiter cette demande pour le moment.;Unable to process this request right now.;Ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.;Erreur traitement temporaire.
+ext_la_transaction_est_en_attente_;Alertes;La transaction est en attente de confirmation.;Transaction is pending confirmation.;Ìsɛ́ ìtə̀ yàŋà ǹjə́blə́ wɔ̂.;Statut transaction en attente.
+ext_votre_solde_est_insuffisant_po;Alertes;Votre solde est insuffisant pour couvrir les frais de transfert.;Your balance is insufficient to cover the transfer fees.;Mwàní wɔ̂ àlígì àtə̀ bɔ́n á yáà mwàní wà ísɛ́ yà nlóm.;Erreur solde insuffisant.
+ext_aucun_coût_supplémentaire_ne_s;Alertes;Aucun coût supplémentaire ne sera prélevé.;No additional cost will be charged.;Bə̀bə́gə̀ nɔŋ mwàní ḿfə́ á yɔ́b.;Information frais nuls.
+ext_vérifiez_le_numéro_du_bénéfici;Alertes;Vérifiez le numéro du bénéficiaire avant de poursuivre.;Check the beneficiary's number before proceeding.;Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.;Consigne vérification numéro.
+ext_transfert_échoué__aucun_montan;Alertes;Transfert échoué : aucun montant n’a été débité.;Transfer failed: no amount was debited.;Nlóm mwàní ùŋgá cɔ́b : mwàní wɔ̂ àbə́gə̀ kùì á kɔ̂nt.;Notification échec transfert.
+ext_une_erreur_est_survenue_réessa;Alertes;Une erreur est survenue. Réessayez plus tard.;An error occurred. Try again later.;Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.;Message d'erreur générique.
+ext_transfert_refusé;Alertes;Transfert refusé;Transfer rejected;Bə́ŋgá bɛ̀n nlóm mwàní;Statut transfert refusé.
+ext_opération_annulée;Alertes;Opération annulée;Operation cancelled;Bə́ŋgá kàb ísɛ́;Statut opération annulée.
+demo_warning_banner_bare;Bandeau de test;Environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.;Demonstration environment. Do not enter any real personal data.;Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.;Avertissement de démonstration sans préfixe.
+demo_env_title;Bandeau de test;Environnement de démonstration;Demonstration environment;Ìfɔ̀gɔ̀ yà ǹyèglè;Titre environnement de démonstration seul.
+demo_no_personal_data;Bandeau de test;Ne saisissez aucune donnée personnelle réelle.;Do not enter any real personal data.;Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.;Consigne de sécurité données personnelles.

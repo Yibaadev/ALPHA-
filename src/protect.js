@@ -3,7 +3,7 @@
    puis remis tels quels. Un montant ne passe donc jamais par une traduction. */
 (function () {
   "use strict";
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
 
   const SP = "[\\s\\u00a0\\u202f]";
   const withCapital = (list) =>
@@ -45,7 +45,7 @@
       .map(escapeRe);
     if (list.length) parts.push("(?<![\\wÀ-ÿ])(?:" + list.join("|") + ")(?![\\wÀ-ÿ])");
     PATTERNS.forEach((p) => parts.push(p));
-    return new RegExp(parts.map((p) => "(?:" + p + ")").join("|"), "g");
+    return new RegExp(parts.map((p) => "(?:" + p + ")").join("|"), "gi");
   }
 
   // "Total : 25 000 FCFA" devient { masked: "Total : [M1]", values: ["25 000 FCFA"] }

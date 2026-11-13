@@ -10,7 +10,7 @@ const context = vm.createContext({ console });
 for (const file of ["src/protect.js", "src/engine/segments.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
-const engine = context.SAFINUM.segments;
+const engine = context.ALPHA.segments;
 const criticalTerms = require(path.join(root, "data", "critical_terms.json"));
 const dictionary = require(path.join(root, "data", "dictionary.json"));
 const lexicon = require(path.join(root, "data", "lexicon.json"));

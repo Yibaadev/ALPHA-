@@ -7,14 +7,17 @@
     "names": [
       "Amina Ngo Bell",
       "Jean-Paul Mbarga",
-      "Amina"
+      "Amina",
+      "Safinum Pay",
+      "Alpha Pay"
     ],
     "ignore": [
-      "Safinum Pay",
+      "Alpha Pay",
       "EN",
       "FR",
       "AN",
-      "Mobile Money"
+      "Mobile Money",
+      "Safinum Pay"
     ]
   },
   "entries": [
@@ -59,8 +62,8 @@
       "screen": "Étapes",
       "fr": "Récapitulatif",
       "en": "Summary",
-      "local": "Ncáz",
-      "note": "Récapitulatif / vérification. Dérivé du verbe cáz (contrôler, vérifier, dict. p. 96).",
+      "local": "Ìbɛ̀bə̀ àsúg",
+      "note": "Récapitulatif / revue finale (ìbɛ̀bə̀ = regard/revue, àsúg = fin/terme).",
       "statut": "valide"
     },
     {
@@ -68,8 +71,8 @@
       "screen": "Étapes",
       "fr": "Confirmation",
       "en": "Confirmation",
-      "local": "Èjə́blə̂",
-      "note": "Confirmation / approbation. Du verbe jə́blə̂ (accepter, acquiescer, dict. p. 132).",
+      "local": "Ìjə́blə́",
+      "note": "Confirmation (nominalisation du verbe jə́blə́).",
       "statut": "valide"
     },
     {
@@ -86,8 +89,8 @@
       "screen": "1. Solde",
       "fr": "Bonjour, [M1]",
       "en": "Hello, [M1]",
-      "local": "M̀ mə̀mà kídí, [M1]",
-      "note": "Salutation matinale attestée (p. 14 / 215) : M̀ mə̀mà kídí (prononcé « Mmema kiri »). Marqueur [M1] préservé. Formule générale alternative : Mə̀kónî.",
+      "local": "Mə̀má kìrí, [M1]",
+      "note": "Bonjour, [M1] (salutation matinale attestée).",
       "statut": "valide"
     },
     {
@@ -253,16 +256,16 @@
       "statut": "valide"
     },
     {
-      "id": "operation_safinum_account",
+      "id": "operation_alpha_account",
       "screen": "2. Frais",
       "fr": "Compte Safinum",
       "en": "Safinum account",
-      "local": "Kônt Safinum",
-      "note": "Compte Safinum.",
+      "local": "Kɔ̂nt Safinum",
+      "note": "Le nom propre Safinum est conservé dans la traduction.",
       "statut": "valide"
     },
     {
-      "id": "operation_safinum_hint",
+      "id": "operation_alpha_hint",
       "screen": "2. Frais",
       "fr": "Transfert instantané et gratuit",
       "en": "Instant and free transfer",
@@ -293,7 +296,7 @@
       "screen": "2. Frais",
       "fr": "Total à débiter",
       "en": "Total to debit",
-      "local": "Mwàní mə́sə̂ mápám",
+      "local": "Mwàní wɔ́sə̂ wàyá kùì",
       "note": "Total à débiter (tout l'argent qui va sortir).",
       "statut": "valide"
     },
@@ -302,8 +305,8 @@
       "screen": "2. Frais",
       "fr": "Solde après opération",
       "en": "Balance after operation",
-      "local": "Mwàní ú lígì",
-      "note": "Solde après opération (l'argent qui reste, líg = rester).",
+      "local": "Mwàní àlígì á mbús ísɛ́",
+      "note": "Solde après opération (l'argent qui reste après le travail/l'opération).",
       "statut": "valide"
     },
     {
@@ -419,8 +422,8 @@
       "screen": "4. Récapitulatif",
       "fr": "Montant",
       "en": "Amount",
-      "local": "Mwàní",
-      "note": "Montant (argent).",
+      "local": "Àbùm mwàní",
+      "note": "Montant (somme / volume d'argent).",
       "statut": "valide"
     },
     {
@@ -428,7 +431,7 @@
       "screen": "4. Récapitulatif",
       "fr": "Total débité",
       "en": "Total debited",
-      "local": "Mwàní mə́sə̂ mápámí",
+      "local": "Mwàní wɔ́sə̂ ùkùì",
       "note": "Total débité (tout l'argent qui est sorti).",
       "statut": "valide"
     },
@@ -437,8 +440,8 @@
       "screen": "4. Récapitulatif",
       "fr": "Téléphone",
       "en": "Phone",
-      "local": "Ŋkwǎl",
-      "note": "Téléphone (dict. p. 219).",
+      "local": "Nɔ́mbà yà tɛ̀lɛ̀fɔ̂n",
+      "note": "Téléphone / numéro de téléphone.",
       "statut": "valide"
     },
     {
@@ -446,7 +449,7 @@
       "screen": "4. Récapitulatif",
       "fr": "Référence",
       "en": "Reference",
-      "local": "Nwàmɔ̀ ńlóm",
+      "local": "Nɔ́mbà yà ísɛ́",
       "note": "Référence / numéro d'opération.",
       "statut": "valide"
     },
@@ -455,8 +458,8 @@
       "screen": "4. Récapitulatif",
       "fr": "Opération",
       "en": "Operation",
-      "local": "Nlóm",
-      "note": "Opération / transfert.",
+      "local": "Ìsɛ́",
+      "note": "Opération / transaction.",
       "statut": "valide"
     },
     {
@@ -465,7 +468,7 @@
       "fr": "Je confirme que les informations ci-dessus sont correctes.",
       "en": "I confirm that the information above is correct.",
       "local": "Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.",
-      "note": "Traduction fournie par l'équipe.",
+      "note": "Je confirme que les informations ci-dessus sont correctes.",
       "statut": "valide"
     },
     {
@@ -491,8 +494,8 @@
       "screen": "5. Confirmation",
       "fr": "Transfert effectué",
       "en": "Transfer completed",
-      "local": "Mwàní úlómnáyá",
-      "note": "Transfert effectué (l'argent a bien été envoyé).",
+      "local": "Nlóm mwàní ùbòbànyà mbə̀ŋ !",
+      "note": "Transfert effectué avec succès !",
       "statut": "valide"
     },
     {
@@ -500,8 +503,8 @@
       "screen": "5. Confirmation",
       "fr": "Votre transfert a été envoyé avec succès.",
       "en": "Your transfer has been sent successfully.",
-      "local": "Mwàní wô úlómná èè ŋ̀kàbní.",
-      "note": "Votre transfert a été envoyé avec succès (ŋ̀kàbní = succès p. 138).",
+      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
+      "note": "Votre argent a bien été envoyé au bénéficiaire.",
       "statut": "valide"
     },
     {
@@ -527,8 +530,8 @@
       "screen": "5. Confirmation",
       "fr": "Nouveau transfert",
       "en": "New transfer",
-      "local": "Nlóm mwàní ŋm̀kpámgí",
-      "note": "Nouveau transfert.",
+      "local": "Lóm mwàní fə́",
+      "note": "Effectuer un nouveau transfert / transférer à nouveau.",
       "statut": "valide"
     },
     {
@@ -563,8 +566,8 @@
       "screen": "2. Frais",
       "fr": "Facture électricité",
       "en": "Electricity bill",
-      "local": "Kálàdà wà ndùàn",
-      "note": "Traduction fournie par l'équipe.",
+      "local": "Kálàdà wà kùrâŋ",
+      "note": "Facture électricité (kálàdà = reçu/facture, kùrâŋ = électricité).",
       "statut": "valide"
     },
     {
@@ -573,16 +576,16 @@
       "fr": "Autre banque",
       "en": "Other bank",
       "local": "Báŋk ìfə́",
-      "note": "Traduction fournie par l'équipe.",
+      "note": "Autre banque (báŋk = banque, ìfə́ = autre cl. 9/10).",
       "statut": "valide"
     },
     {
       "id": "demo_warning_banner",
       "screen": "Bandeau de test",
-      "fr": "Safinum Pay — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
-      "en": "Safinum Pay — demonstration environment. Do not enter any real personal data.",
-      "local": "Safinum Pay — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "note": "Traduction fournie par l'équipe.",
+      "fr": "[M1] — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
+      "en": "[M1] — demonstration environment. Do not enter any real personal data.",
+      "local": "[M1] — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Le nom propre Safinum Pay est conservé tel quel.",
       "statut": "valide"
     },
     {
@@ -590,8 +593,8 @@
       "screen": "3. Bénéficiaire",
       "fr": "J'ai vérifié le nom et le numéro du bénéficiaire.",
       "en": "I have checked the beneficiary's name and number.",
-      "local": "Mə̀ŋgá bɛ̀bə̀ jɔ̌y yà nɔ́mbà yà mùt àyá kùs mɔ̀nì",
-      "note": "Traduction fournie par l'équipe.",
+      "local": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.",
+      "note": "J'ai vérifié le nom et le numéro du bénéficiaire.",
       "statut": "valide"
     },
     {
@@ -600,7 +603,7 @@
       "fr": "Fermer",
       "en": "Close",
       "local": "Díb",
-      "note": "Traduction fournie par l'équipe.",
+      "note": "Fermer (verbe díb, fermer/clore).",
       "statut": "valide"
     },
     {
@@ -609,7 +612,7 @@
       "fr": "Une erreur est survenue",
       "en": "An error occurred",
       "local": "Dzɔ̌m díŋgá cɔ́b",
-      "note": "Traduction fournie par l'équipe.",
+      "note": "Une erreur est survenue (quelque chose s'est gâté/trompé).",
       "statut": "valide"
     },
     {
@@ -618,7 +621,295 @@
       "fr": "Vous devez confirmer les informations avant de valider le transfert.",
       "en": "You must confirm the information before submitting the transfer.",
       "local": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
-      "note": "Traduction fournie par l'équipe.",
+      "note": "Vous devez confirmer les informations avant de valider le transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "transfer_done_success",
+      "screen": "5. Confirmation",
+      "fr": "Transfert effectué avec succès !",
+      "en": "Transfer completed successfully!",
+      "local": "Nlóm mwàní ùbòbànyà mbə̀ŋ !",
+      "note": "Transfert effectué avec succès ! (nlóm mwàní = envoi d'argent, bòbànyà = a été fait, mbə̀ŋ = bien/avec succès).",
+      "statut": "valide"
+    },
+    {
+      "id": "money_sent_to_beneficiary",
+      "screen": "5. Confirmation",
+      "fr": "Votre argent a bien été envoyé au bénéficiaire.",
+      "en": "Your money has been successfully sent to the beneficiary.",
+      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
+      "note": "Votre argent a bien été envoyé au bénéficiaire.",
+      "statut": "valide"
+    },
+    {
+      "id": "transaction_reference",
+      "screen": "5. Confirmation",
+      "fr": "Référence de transaction",
+      "en": "Transaction reference",
+      "local": "Nɔ́mbà yà nlóm mwàní",
+      "note": "Référence de transaction (numéro du transfert d'argent).",
+      "statut": "valide"
+    },
+    {
+      "id": "date_and_time",
+      "screen": "5. Confirmation",
+      "fr": "Date et heure",
+      "en": "Date and time",
+      "local": "Mɔ́s bá ǹtə̀ŋ",
+      "note": "Date et heure (mɔ́s = jour/date, bá = et, ǹtə̀ŋ = heure/moment).",
+      "statut": "valide"
+    },
+    {
+      "id": "download_receipt",
+      "screen": "5. Confirmation",
+      "fr": "Télécharger le reçu",
+      "en": "Download receipt",
+      "local": "Nɔŋ kálàdà wà ǹyáà",
+      "note": "Télécharger le reçu (nɔŋ = prendre/récupérer, kálàdà wà ǹyáà = reçu de paiement/preuve).",
+      "statut": "valide"
+    },
+    {
+      "id": "action_new_transfer",
+      "screen": "5. Confirmation",
+      "fr": "Effectuer un nouveau transfert",
+      "en": "Make a new transfer",
+      "local": "Lóm mwàní fə́",
+      "note": "Effectuer un nouveau transfert (lóm mwàní = transférer l'argent, fə́ = à nouveau).",
+      "statut": "valide"
+    },
+    {
+      "id": "back_to_home",
+      "screen": "5. Confirmation",
+      "fr": "Retour à l'accueil",
+      "en": "Back to home",
+      "local": "Ìbùlàn á ǹtɔ́ŋ",
+      "note": "Retour à l'accueil (ìbùlàn = retour, ǹtɔ́ŋ = accueil/base de départ).",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_connexion_réussie",
+      "screen": "Alertes",
+      "fr": "Connexion réussie",
+      "en": "Successful connection",
+      "local": "Mì nyíìnyà á kɔ̂nt mbə̀ŋ",
+      "note": "Notification / statut connexion.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_mot_de_passe_incorrect",
+      "screen": "Alertes",
+      "fr": "Mot de passe incorrect",
+      "en": "Incorrect password",
+      "local": "Ìbùg yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
+      "note": "Alerte mot de passe incorrect.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_code_pin_incorrect",
+      "screen": "Alertes",
+      "fr": "Code PIN incorrect",
+      "en": "Incorrect PIN code",
+      "local": "Nɔ́mbà yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
+      "note": "Alerte code PIN incorrect.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_limite_quotidienne_atteinte",
+      "screen": "Alertes",
+      "fr": "Limite quotidienne atteinte",
+      "en": "Daily limit reached",
+      "local": "Mì mànyà àbùm mwàní yà lóm mɔ́s wùá",
+      "note": "Alerte limite journalière.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_téléchargement_terminé",
+      "screen": "Alertes",
+      "fr": "Téléchargement terminé",
+      "en": "Download completed",
+      "local": "Ìnɔŋ kálàdà ìmànyà",
+      "note": "Notification téléchargement.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_transaction_en_cours_de_traite",
+      "screen": "Alertes",
+      "fr": "Transaction en cours de traitement",
+      "en": "Transaction being processed",
+      "local": "Bə̀tə̀ kɔ̀m ísɛ́ yɔ̂ ɛ́yə́ŋ",
+      "note": "Statut opération en cours.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_veuillez_patienter",
+      "screen": "Alertes",
+      "fr": "Veuillez patienter...",
+      "en": "Please wait...",
+      "local": "Yàŋgá ǹtə̀ŋ mɔ́n...",
+      "note": "Message d'attente.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_voulez-vous_annuler_cette_opér",
+      "screen": "Alertes",
+      "fr": "Voulez-vous annuler cette opération ?",
+      "en": "Do you want to cancel this operation?",
+      "local": "Yə̀ mì yì kàb ísɛ́ ńì ?",
+      "note": "Demande de confirmation d'annulation.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_reçu_envoyé_par_sms",
+      "screen": "Alertes",
+      "fr": "Reçu envoyé par SMS",
+      "en": "Receipt sent by SMS",
+      "local": "Bə́lómnyà kálàdà wà ǹyáà á SMS",
+      "note": "Notification envoi reçu.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_votre_session_a_expiré",
+      "screen": "Alertes",
+      "fr": "Votre session a expiré.",
+      "en": "Your session has expired.",
+      "local": "Ǹtə̀ŋ wɔ̂ wà ísɛ́ ùmànyà.",
+      "note": "Alerte sécurité session expirée.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_ne_partagez_jamais_votre_code_",
+      "screen": "Alertes",
+      "fr": "Ne partagez jamais votre code secret.",
+      "en": "Never share your secret code.",
+      "local": "Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "note": "Consigne de sécurité.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_attention__ne_partagez_jamais_",
+      "screen": "Alertes",
+      "fr": "Attention : ne partagez jamais votre code secret.",
+      "en": "Warning: never share your secret code.",
+      "local": "Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "note": "Alerte sécurité code secret.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_alerte_sécurité__une_activité_",
+      "screen": "Alertes",
+      "fr": "Alerte sécurité : une activité inhabituelle a été détectée.",
+      "en": "Security alert: unusual activity detected.",
+      "local": "Mə̀bàlà : bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt yɔ̂.",
+      "note": "Alerte activité inhabituelle.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_impossible_de_traiter_cette_de",
+      "screen": "Alertes",
+      "fr": "Impossible de traiter cette demande pour le moment.",
+      "en": "Unable to process this request right now.",
+      "local": "Ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.",
+      "note": "Erreur traitement temporaire.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_la_transaction_est_en_attente_",
+      "screen": "Alertes",
+      "fr": "La transaction est en attente de confirmation.",
+      "en": "Transaction is pending confirmation.",
+      "local": "Ìsɛ́ ìtə̀ yàŋà ǹjə́blə́ wɔ̂.",
+      "note": "Statut transaction en attente.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_votre_solde_est_insuffisant_po",
+      "screen": "Alertes",
+      "fr": "Votre solde est insuffisant pour couvrir les frais de transfert.",
+      "en": "Your balance is insufficient to cover the transfer fees.",
+      "local": "Mwàní wɔ̂ àlígì àtə̀ bɔ́n á yáà mwàní wà ísɛ́ yà nlóm.",
+      "note": "Erreur solde insuffisant.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_aucun_coût_supplémentaire_ne_s",
+      "screen": "Alertes",
+      "fr": "Aucun coût supplémentaire ne sera prélevé.",
+      "en": "No additional cost will be charged.",
+      "local": "Bə̀bə́gə̀ nɔŋ mwàní ḿfə́ á yɔ́b.",
+      "note": "Information frais nuls.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_vérifiez_le_numéro_du_bénéfici",
+      "screen": "Alertes",
+      "fr": "Vérifiez le numéro du bénéficiaire avant de poursuivre.",
+      "en": "Check the beneficiary's number before proceeding.",
+      "local": "Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.",
+      "note": "Consigne vérification numéro.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_transfert_échoué__aucun_montan",
+      "screen": "Alertes",
+      "fr": "Transfert échoué : aucun montant n’a été débité.",
+      "en": "Transfer failed: no amount was debited.",
+      "local": "Nlóm mwàní ùŋgá cɔ́b : mwàní wɔ̂ àbə́gə̀ kùì á kɔ̂nt.",
+      "note": "Notification échec transfert.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_une_erreur_est_survenue_réessa",
+      "screen": "Alertes",
+      "fr": "Une erreur est survenue. Réessayez plus tard.",
+      "en": "An error occurred. Try again later.",
+      "local": "Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.",
+      "note": "Message d'erreur générique.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_transfert_refusé",
+      "screen": "Alertes",
+      "fr": "Transfert refusé",
+      "en": "Transfer rejected",
+      "local": "Bə́ŋgá bɛ̀n nlóm mwàní",
+      "note": "Statut transfert refusé.",
+      "statut": "valide"
+    },
+    {
+      "id": "ext_opération_annulée",
+      "screen": "Alertes",
+      "fr": "Opération annulée",
+      "en": "Operation cancelled",
+      "local": "Bə́ŋgá kàb ísɛ́",
+      "note": "Statut opération annulée.",
+      "statut": "valide"
+    },
+    {
+      "id": "demo_warning_banner_bare",
+      "screen": "Bandeau de test",
+      "fr": "Environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
+      "en": "Demonstration environment. Do not enter any real personal data.",
+      "local": "Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Avertissement de démonstration sans préfixe.",
+      "statut": "valide"
+    },
+    {
+      "id": "demo_env_title",
+      "screen": "Bandeau de test",
+      "fr": "Environnement de démonstration",
+      "en": "Demonstration environment",
+      "local": "Ìfɔ̀gɔ̀ yà ǹyèglè",
+      "note": "Titre environnement de démonstration seul.",
+      "statut": "valide"
+    },
+    {
+      "id": "demo_no_personal_data",
+      "screen": "Bandeau de test",
+      "fr": "Ne saisissez aucune donnée personnelle réelle.",
+      "en": "Do not enter any real personal data.",
+      "local": "Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Consigne de sécurité données personnelles.",
       "statut": "valide"
     }
   ]

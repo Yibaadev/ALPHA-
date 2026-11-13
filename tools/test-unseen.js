@@ -19,7 +19,7 @@ for (const file of [
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
 
-const NS = context.SAFINUM;
+const NS = context.ALPHA;
 const dictionary = require(path.join(root, "data", "dictionary.json"));
 const criticalTerms = require(path.join(root, "data", "critical_terms.json"));
 const templates = require(path.join(root, "data", "templates.json"));
