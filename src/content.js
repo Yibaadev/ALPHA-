@@ -81,9 +81,6 @@
     }
     state.wrapper = null;
     state.statusText = null;
-    state.badge = null;
-    state.originalLabel = null;
-    state.warning = null;
   }
 
   function decorateText(node, state, presentation, original) {
@@ -98,38 +95,14 @@
       parent.insertBefore(wrapper, node);
       wrapper.appendChild(statusText);
       statusText.appendChild(node);
-
-      const badge = document.createElement("span");
-      badge.className = "safinum-status-badge";
-      badge.dataset.safinumUi = "confidence";
-      badge.setAttribute("aria-label", presentation.meta.description);
-      wrapper.appendChild(badge);
-
-      const originalLabel = document.createElement("span");
-      originalLabel.className = "safinum-status-original";
-      originalLabel.dataset.safinumUi = "confidence";
-      wrapper.appendChild(originalLabel);
-
-      const warning = document.createElement("span");
-      warning.className = "safinum-status-warning";
-      warning.dataset.safinumUi = "confidence";
-      wrapper.appendChild(warning);
-      Object.assign(state, { wrapper, statusText, badge, originalLabel, warning });
+      // Aucun badge, libellé d'origine ni avertissement n'est injecté dans la page :
+      // seul le texte traduit est affiché. Le statut reste porté par les attributs data-*.
+      Object.assign(state, { wrapper, statusText });
     }
     state.wrapper.dataset.safinumStatus = presentation.status;
     state.wrapper.dataset.safinumOriginal = original;
     state.wrapper.dataset.safinumTranslation = presentation.translation || "";
     state.wrapper.dataset.safinumKeepOriginal = String(presentation.originalText !== null);
-    state.badge.dataset.status = presentation.status;
-    state.badge.textContent = presentation.meta.badge;
-    state.originalLabel.hidden = presentation.originalText === null;
-    state.originalLabel.textContent = presentation.originalText === null
-      ? ""
-      : "Français : " + presentation.originalText;
-    state.warning.hidden = !presentation.showWarning;
-    state.warning.textContent = presentation.showWarning
-      ? "⚠ Traduction non vérifiée, vérifiez les montants."
-      : "";
   }
 
   // Décide quel texte afficher pour une valeur donnée (texte ou attribut).
