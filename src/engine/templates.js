@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const NS = (globalThis.SAFINUM = globalThis.SAFINUM || {});
+  const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
   const MARKER_RE = /\[M(\d+)\]/g;
 
   function markerTokens(text) {

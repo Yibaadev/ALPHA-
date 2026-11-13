@@ -2,7 +2,7 @@
    La détection utilise l'attribut lang de la page puis les phrases du dictionnaire. */
 (function () {
   "use strict";
-  const NS = globalThis.SAFINUM;
+  const NS = globalThis.ALPHA;
   const P = NS.protect;
 
   let index = new Map();
@@ -184,7 +184,7 @@
   function trace(layer, status, accepted) {
     if (!debugTraceEnabled || typeof console === "undefined" || typeof console.debug !== "function") return;
     // Ne jamais écrire le texte de la page ou des valeurs protégées dans la trace.
-    console.debug("[SAFINUM cascade] couche=" + layer + " statut=" + status + " retenue=" + Boolean(accepted));
+    console.debug("[ALPHA cascade] couche=" + layer + " statut=" + status + " retenue=" + Boolean(accepted));
   }
 
   function nonTranslated(original, reason, markersOk) {

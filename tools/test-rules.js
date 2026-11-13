@@ -10,7 +10,7 @@ const context = vm.createContext({ console });
 for (const file of ["src/protect.js", "src/engine/rules.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
-const engine = context.SAFINUM.rules;
+const engine = context.ALPHA.rules;
 const rules = require(path.join(root, "data", "rules.json"));
 const criticalTerms = require(path.join(root, "data", "critical_terms.json"));
 

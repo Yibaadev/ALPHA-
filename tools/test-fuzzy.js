@@ -10,7 +10,7 @@ const context = vm.createContext({ console });
 for (const file of ["src/protect.js", "src/engine/fuzzy.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
-const engine = context.SAFINUM.fuzzy;
+const engine = context.ALPHA.fuzzy;
 const dictionary = require(path.join(root, "data", "dictionary.json"));
 const criticalTerms = require(path.join(root, "data", "critical_terms.json"));
 engine.init({ entries: [{ id: "status", fr: "Transfert effectué", local: "TARGET", statut: "valide" }] }, null);

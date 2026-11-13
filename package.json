@@ -1,5 +1,5 @@
 {
-  "name": "safinum-eton-lexicon-tools",
+  "name": "alpha-eton-lexicon-tools",
   "private": true,
   "scripts": {
     "lexicon:extract": "python tools/extract-lexicon.py",
