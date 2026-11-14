@@ -50,7 +50,23 @@ function readJson(file) {
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
 }
 
-const normText = (t) => String(t || "").normalize("NFC").replace(/\s+/g, " ").trim();
+// Forme de comparaison : la suite de mots, sans ponctuation ni majuscules (comme src/eton-audio.js).
+const normText = (t) => {
+  const words = String(t || "").normalize("NFC").toLowerCase().replace(/'/g, "’").match(/[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu);
+  return words ? words.join(" ") : String(t || "").trim();
+};
+
+// Durée d'un fichier Ogg Opus (dernière position de page, à 48 kHz, moins le pré-roulage) :
+// un clip vide (génération ratée) dure 0 s et n'est pas utilisé.
+function oggSeconds(buffer) {
+  if (buffer.length < 32 || buffer.toString("latin1", 0, 4) !== "OggS") return buffer.length > 0 ? 1 : 0; // autre format
+  let last = 0;
+  for (let i = buffer.indexOf("OggS"); i >= 0 && i + 14 <= buffer.length; i = buffer.indexOf("OggS", i + 4)) {
+    const granule = Number(buffer.readBigInt64LE(i + 6));
+    if (granule > 0) last = granule;
+  }
+  return Math.max(0, last - 312) / 48000;
+}
 
 // base : dossier data/audio/eton (ou un dossier de test).
 // currentTexts (facultatif) : textes éton actuels (docs/audio/eton-tts.jsonl) ; un clip dont le texte
@@ -67,7 +83,7 @@ function buildIndex(base, includeUnreviewed, currentTexts) {
   );
 
   const clips = [];
-  const counts = { locuteur: 0, oui: 0, a_verifier: 0, refuses: 0, absents: 0, perimes: 0 };
+  const counts = { locuteur: 0, oui: 0, a_verifier: 0, refuses: 0, absents: 0, perimes: 0, vides: 0 };
   for (const clip of omni.clips) {
     if (currentTexts && !currentTexts.has(normText(clip.text))) { counts.perimes++; continue; }
     const speaker = speakerFiles.get(clip.id);
@@ -77,6 +93,7 @@ function buildIndex(base, includeUnreviewed, currentTexts) {
       continue;
     }
     if (!fs.existsSync(path.join(base, "omnivoice", clip.file))) { counts.absents++; continue; }
+    if (oggSeconds(fs.readFileSync(path.join(base, "omnivoice", clip.file))) < 0.15) { counts.vides++; continue; }
     const verdict = (review.get(clip.id) || {}).correct || "";
     if (/^(non|no|n|x)$/.test(verdict)) { counts.refuses++; continue; }
     const accepted = /^(oui|yes|o|y|ok)$/.test(verdict);
@@ -110,11 +127,11 @@ if (require.main === module) {
   console.log(
     index.clips.length + " clip(s) dans data/audio/eton/index.json — locuteur : " + counts.locuteur +
     ", OmniVoice validés : " + counts.oui + ", OmniVoice non revus : " + counts.a_verifier +
-    ", refusés : " + counts.refuses + (counts.perimes ? ", périmés (texte corrigé, à régénérer) : " + counts.perimes : "") + (counts.absents ? ", fichiers absents : " + counts.absents : "")
+    ", refusés : " + counts.refuses + (counts.perimes ? ", périmés (texte corrigé, à régénérer) : " + counts.perimes : "") + (counts.vides ? ", vides (à régénérer) : " + counts.vides : "") + (counts.absents ? ", fichiers absents : " + counts.absents : "")
   );
   if (!includeUnreviewed && !index.clips.length && total) {
     console.log("Aucun clip validé : faites remplir revue_locuteur.csv, ou testez avec --inclure-non-revus.");
   }
 }
 
-module.exports = { parseCsv, buildIndex, normText };
+module.exports = { parseCsv, buildIndex, normText, oggSeconds };

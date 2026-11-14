@@ -87,11 +87,16 @@ test("chaque clip de l'index existe et est un vrai fichier audio", () => {
 test("chaque clip correspond au texte éton actuel du dictionnaire (pas de clip périmé)", () => {
   const entries = new Map(JSON.parse(fs.readFileSync(path.join(root, "data", "dictionary.json"), "utf8"))
     .entries.map((e) => ["dict." + e.id, e]));
-  const norm = (t) => String(t || "").normalize("NFC").replace(/\s+/g, " ").trim();
+  // Comparaison sur les mots (la ponctuation ne s'entend pas).
+  const words = (t) => (String(t || "").normalize("NFC").toLowerCase().replace(/'/g, "’")
+    .match(/[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu) || []).join(" ");
   for (const clip of shipped.clips.filter((c) => c.key.startsWith("dict."))) {
-    const entry = entries.get(clip.key);
+    // « dict.x.partie1 » : morceau fixe d'une entrée contenant une valeur [M1].
+    const part = clip.key.match(/^(.*)\.partie(\d+)$/);
+    const entry = entries.get(part ? part[1] : clip.key);
     assert.ok(entry, "entrée supprimée du dictionnaire : " + clip.key);
-    assert.strictEqual(norm(clip.text), norm(entry.local), "texte éton modifié depuis la génération du clip : " + clip.key);
+    const expected = part ? entry.local.split(/\[M\d+\]/)[Number(part[2]) - 1] : entry.local;
+    assert.strictEqual(words(clip.text), words(expected), "texte éton modifié depuis la génération du clip : " + clip.key);
   }
 });
 
