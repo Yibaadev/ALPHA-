@@ -285,12 +285,61 @@
     .zoom-control:hover:not(:disabled) { background: var(--accent-soft); border-color: #6da295; }
     .zoom-control:disabled { color: #87948f; background: #f2f5f3; opacity: .65; cursor: not-allowed; }
     .zoom-reset { margin: 6px 0 0 auto; }
-    @media (max-width: 520px) {
-      .rail { right: 8px; top: 10px; width: 44px; padding: 6px 3px; }
-      .rail-button { width: 36px; height: 36px; }
-      .rail-brand { width: 30px; height: 30px; }
-      .drawer { right: 58px; top: 10px; width: 280px; max-width: calc(100vw - 64px); }
-      .inner { padding: 12px; }
+    /* ---------- Adaptation à toutes les tailles d'écran ---------- */
+    /* Hauteur réelle visible sur mobile (barre d'adresse comprise) et zones sûres (encoches). */
+    .drawer { max-height: calc(100dvh - 28px); }
+    .rail { top: max(14px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+    .rail::-webkit-scrollbar { display: none; }
+    .launcher { right: max(12px, env(safe-area-inset-right)); }
+
+    /* Téléphones : le panneau devient une feuille qui monte du bas de l'écran, pleine largeur. */
+    @media (max-width: 560px) {
+      .rail { right: max(8px, env(safe-area-inset-right)); top: max(10px, env(safe-area-inset-top)); width: 46px; padding: 9px 3px 6px; }
+      .rail-button { width: 38px; height: 38px; }
+      .rail-brand { width: 32px; height: 32px; }
+      .drawer {
+        left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        top: auto; bottom: max(8px, env(safe-area-inset-bottom));
+        width: auto; max-width: none; max-height: min(72dvh, calc(100dvh - 24px));
+        border-radius: 16px; font-size: 13.5px;
+        box-shadow: 0 -8px 30px rgba(15, 38, 32, .22), 0 2px 8px rgba(15, 38, 32, .1);
+        animation: sheet-in .24s ease-out both;
+      }
+      .inner { padding: 14px 16px 18px; }
+      .title { font-size: 15px; }
+      .subtitle, .section-note, .voice-hint, .zoom-hint, .voice-status { font-size: 12px; }
+      .section-heading, .voice-title { font-size: 13.5px; }
+      .mode-code { font-size: 14px; }
+      .mode-name { font-size: 11px; }
+      .reset, .zoom-reset, .action { font-size: 12.5px; }
+    }
+    @keyframes sheet-in {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Écrans bas (téléphone en paysage) : barre plus compacte, panneau défilant. */
+    @media (max-height: 420px) {
+      .rail {
+        gap: 2px; padding-top: 7px; padding-bottom: 5px;
+        max-height: calc(100dvh - 20px); overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      }
+      .rail-rule { margin: 1px 0; }
+      .launcher { height: 60px; }
+      .launcher .cm-map { height: 50px; }
+    }
+
+    /* Écrans tactiles : cibles d'au moins 44 px (recommandation WCAG), pas d'infobulles au survol. */
+    @media (pointer: coarse) {
+      .rail { width: 54px; }
+      .rail-button { width: 44px; height: 44px; }
+      .rail-brand { width: 40px; height: 40px; }
+      .tooltip { display: none; }
+      .close { width: 40px; height: 40px; }
+      .mode { height: 50px; min-height: 50px; }
+      .zoom-control { width: 44px; height: 44px; font-size: 20px; }
+      .action { min-height: 44px; padding: 8px 16px; }
+      .reset, .zoom-reset { min-height: 40px; padding: 8px 10px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
@@ -446,7 +495,14 @@
     } catch (_) { /* stockage indisponible : position par défaut */ }
     /* La barre et le panneau s'ouvrent là où l'utilisateur a placé la carte
        (le panneau se met du côté où il y a le plus de place). */
+    // Sur téléphone, le panneau est une feuille en bas de l'écran (voir le CSS) : pas de placement.
+    const sheetQuery = typeof window.matchMedia === "function"
+      ? window.matchMedia("(max-width: 560px)")
+      : { get matches() { return window.innerWidth <= 560; } };
     function placePanels() {
+      if (sheetQuery.matches) {
+        drawer.style.left = drawer.style.top = drawer.style.right = "";
+      }
       if (!launcherPos) return;
       const M = 10;
       const vw = window.innerWidth;
@@ -461,7 +517,7 @@
         rail.style.top = ry + "px";
         rail.style.right = "auto";
       }
-      if (!drawer.hidden) {
+      if (!drawer.hidden && !sheetQuery.matches) {
         const r = rail.getBoundingClientRect();
         const dw = drawer.offsetWidth;
         const dh = drawer.offsetHeight;
