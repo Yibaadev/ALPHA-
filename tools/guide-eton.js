@@ -1,11 +1,11 @@
-// Traduction en éton du guide « ? », de la bulle ALPHA et du glossaire « Expliquer ».
+// Traduction en éton du guide « ? » et de la bulle ALPHA.
 // La traduction est faite HORS de l'extension (Gemini, sur le site de Google), puis vérifiée
 // par un locuteur. L'extension ne contient aucun modèle d'IA et n'envoie rien.
 //
 //   node tools/guide-eton.js export
 //       -> docs/traduction/PROMPT_GEMINI.md  (texte à coller dans Gemini)
 //   node tools/guide-eton.js import docs/traduction/gemini-eton.json
-//       -> remplit data/guide.json et data/glossary.json (statut « a_verifier »)
+//       -> remplit data/guide.json (statut « a_verifier »)
 //       -> docs/traduction/revue-guide-eton.csv (feuille de revue pour le locuteur)
 //   node tools/guide-eton.js import docs/traduction/gemini-eton.json docs/traduction/revue-guide-eton.csv
 //       -> applique la revue : « oui » ou une correction = « valide », « non » sans correction = retiré
@@ -18,12 +18,10 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const files = {
   guide: path.join(root, "data", "guide.json"),
-  glossary: path.join(root, "data", "glossary.json"),
   dictionary: path.join(root, "data", "dictionary.json"),
 };
 const outDir = path.join(root, "docs", "traduction");
 const UI_KEYS = ["where", "what", "how", "alert", "known", "unknownAlert", "secretTip"];
-const GLOSSARY_UI_KEYS = ["button", "title", "listen", "close", "hint"];
 const PARTS = ["where", "what", "how", "tip"];
 
 const readJson = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
@@ -62,7 +60,7 @@ function parseCsv(text) {
 }
 
 /* Liste de tous les textes fixes à traduire : { id, fr, en, where (pour le locuteur) }. */
-function units(guide, glossary) {
+function units(guide) {
   const list = [];
   const add = (id, fr, en, where) => fr && list.push({ id, fr, en: en || "", where });
   for (const key of UI_KEYS) add("ui." + key, guide.ui.fr[key], guide.ui.en[key], "Guide : titres et conseils");
@@ -75,26 +73,18 @@ function units(guide, glossary) {
   intro.fr.lines.forEach((line, i) => add("intro.line." + i, line, intro.en.lines[i], "Bulle de présentation"));
   add("intro.about", intro.fr.about, intro.en.about, "Bulle de présentation");
   add("intro.ok", intro.fr.ok, intro.en.ok, "Bulle de présentation");
-  for (const key of GLOSSARY_UI_KEYS) {
-    add("glossary.ui." + key, glossary.meta.ui.fr[key], glossary.meta.ui.en[key], "Expliquer : boutons");
-  }
-  for (const entry of glossary.entries) {
-    add("glossary." + entry.id + ".term", entry.fr.term, entry.en.term, "Expliquer : terme");
-    add("glossary." + entry.id + ".text", entry.fr.text, entry.en.text, "Expliquer : définition de « " + entry.fr.term + " »");
-  }
   return list;
 }
 
 function exportPrompt() {
   const guide = readJson(files.guide);
-  const glossary = readJson(files.glossary);
   const dictionary = readJson(files.dictionary);
   const lexicon = dictionary.entries
     .filter((e) => e.local && e.statut === "valide")
     .map((e) => "- " + e.fr + " = " + e.local)
     .join("\n");
   const source = {};
-  for (const u of units(guide, glossary)) source[u.id] = u.fr;
+  for (const u of units(guide)) source[u.id] = u.fr;
 
   const prompt = `Tu es traducteur vers l'éton (langue bantoue A71 du Cameroun, région du Centre, proche de l'ewondo).
 Traduis en éton les textes français ci-dessous. Ils servent d'aide à l'écran pour une application bancaire.
@@ -146,10 +136,9 @@ function readReview(file) {
 
 function importAnswer(answerFile, reviewFile) {
   const guide = readJson(files.guide);
-  const glossary = readJson(files.glossary);
   const answer = readAnswer(answerFile);
   const review = readReview(reviewFile);
-  const all = units(guide, glossary);
+  const all = units(guide);
   const accepted = {};
   const problems = [];
   const warnings = [];
@@ -207,20 +196,10 @@ function importAnswer(answerFile, reviewFile) {
       }
     : null;
 
-  const gui = {};
-  for (const key of GLOSSARY_UI_KEYS) if (get("glossary.ui." + key)) gui[key] = get("glossary.ui." + key);
-  glossary.meta.ui.local = Object.keys(gui).length ? gui : null;
-  for (const entry of glossary.entries) {
-    const ids = ["glossary." + entry.id + ".term", "glossary." + entry.id + ".text"];
-    entry.local = ids.every(get) ? { term: get(ids[0]), text: get(ids[1]), statut: statusOf(ids) } : null;
-  }
-
   const source = "Proposition de traduction par Gemini (Google), hors de l'extension, vérifiée par un locuteur.";
   const statut = counts.a_verifier ? "a_verifier" : "valide";
   Object.assign(guide.meta, { statut_local: statut, source_local: source });
-  Object.assign(glossary.meta, { statut_local: statut, source_local: source });
   writeJson(files.guide, guide);
-  writeJson(files.glossary, glossary);
 
   // Feuille de revue pour le locuteur (séparateur « ; », ouvrable dans Excel).
   const q = (v) => (/[;"\r\n]/.test(v) ? '"' + String(v).replace(/"/g, '""') + '"' : String(v));
@@ -248,4 +227,4 @@ if (require.main === module) {
   else console.log("Usage : node tools/guide-eton.js export | import <reponse-gemini.json> [revue.csv]");
 }
 
-module.exports = { units, placeholders, parseCsv, readAnswer, readReview };
+module.exports = { units, placeholders, parseCsv, readAnswer, readReview, clean };

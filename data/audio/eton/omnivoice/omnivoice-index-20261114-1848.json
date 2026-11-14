@@ -1,0 +1,1311 @@
+{
+  "modele": "k2-fsa/OmniVoice",
+  "langue": "eto",
+  "date": "2026-11-14",
+  "clips": [
+    {
+      "id": "dict.error_amount_zero",
+      "key": "dict.error_amount_zero",
+      "text": "Àbùm mwàní ù yì nâ ù lɔ̀d zèró.",
+      "file": "dict.error_amount_zero.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.error_amount_insufficient",
+      "key": "dict.error_amount_insufficient",
+      "text": "Mwàní wô àlígì àtə̀ bɔ́n á lóm nlóm mwàní ńì.",
+      "file": "dict.error_amount_insufficient.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.error_beneficiary_missing",
+      "key": "dict.error_beneficiary_missing",
+      "text": "Tílgá dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.",
+      "file": "dict.error_beneficiary_missing.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.error_network",
+      "key": "dict.error_network",
+      "text": "Dzɔ̌m díŋgá cɔ́b á ŋkwǎl : ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ. Ù búlàn və̀gə̀.",
+      "file": "dict.error_network.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.alert_new_beneficiary",
+      "key": "dict.alert_new_beneficiary",
+      "text": "Kálâ! Ùkálá : mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kɔ̂nt wô.",
+      "file": "dict.alert_new_beneficiary.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.important_message",
+      "key": "dict.important_message",
+      "text": "Fòè ìpúmgí",
+      "file": "dict.important_message.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.fee_desc_mobile.partie1",
+      "key": "dict.fee_desc_mobile.partie1",
+      "text": "Táŋ yà 1,5 % (tə̀ kàt á sí",
+      "file": "dict.fee_desc_mobile.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.fee_desc_mobile.partie2",
+      "key": "dict.fee_desc_mobile.partie2",
+      "text": "tə̀ lɔ̀d",
+      "file": "dict.fee_desc_mobile.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_annule",
+      "key": "dict.bank_statut_transfert_annule",
+      "text": "Bə́ŋgá kàb nlóm mwàní wô.",
+      "file": "dict.bank_statut_transfert_annule.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_annule_montant.partie1",
+      "key": "dict.bank_statut_transfert_annule_montant.partie1",
+      "text": "Bə́ŋgá kàb nlóm mwàní wô wà",
+      "file": "dict.bank_statut_transfert_annule_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_traitement",
+      "key": "dict.bank_statut_transfert_traitement",
+      "text": "Bə̀tə̀ kɔ̀m nlóm mwàní wô ɛ́yə́ŋ.",
+      "file": "dict.bank_statut_transfert_traitement.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_attente",
+      "key": "dict.bank_statut_transfert_attente",
+      "text": "Nlóm mwàní wô ùtə̀ yàŋà ǹjə́blə́.",
+      "file": "dict.bank_statut_transfert_attente.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_refuse",
+      "key": "dict.bank_statut_transfert_refuse",
+      "text": "Bə́ŋgá bɛ̀n nlóm mwàní wô.",
+      "file": "dict.bank_statut_transfert_refuse.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_refuse_montant.partie1",
+      "key": "dict.bank_statut_transfert_refuse_montant.partie1",
+      "text": "Bə́ŋgá bɛ̀n nlóm mwàní wô wà",
+      "file": "dict.bank_statut_transfert_refuse_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_reussi",
+      "key": "dict.bank_statut_transfert_reussi",
+      "text": "Nlóm mwàní wô ùbòbànyà mbə̀ŋ.",
+      "file": "dict.bank_statut_transfert_reussi.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_reussi_montant.partie1",
+      "key": "dict.bank_statut_transfert_reussi_montant.partie1",
+      "text": "Nlóm mwàní wô wà",
+      "file": "dict.bank_statut_transfert_reussi_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_reussi_montant.partie2",
+      "key": "dict.bank_statut_transfert_reussi_montant.partie2",
+      "text": "ùbòbànyà mbə̀ŋ.",
+      "file": "dict.bank_statut_transfert_reussi_montant.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_echoue_reessayer",
+      "key": "dict.bank_statut_transfert_echoue_reessayer",
+      "text": "Nlóm mwàní ùŋgá cɔ́b. Ù búlàn və̀gə̀.",
+      "file": "dict.bank_statut_transfert_echoue_reessayer.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_envoye",
+      "key": "dict.bank_statut_transfert_envoye",
+      "text": "Nlóm mwàní ùkə̀nyà.",
+      "file": "dict.bank_statut_transfert_envoye.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_envoye_vers.partie2",
+      "key": "dict.bank_statut_transfert_envoye_vers.partie2",
+      "text": "ábə́",
+      "file": "dict.bank_statut_transfert_envoye_vers.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_envoye_vers.partie3",
+      "key": "dict.bank_statut_transfert_envoye_vers.partie3",
+      "text": "ùkə̀nyà.",
+      "file": "dict.bank_statut_transfert_envoye_vers.partie3.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_recu_de.partie1",
+      "key": "dict.bank_statut_recu_de.partie1",
+      "text": "Ù nɔ́ŋnyà",
+      "file": "dict.bank_statut_recu_de.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_minutes",
+      "key": "dict.bank_statut_transfert_minutes",
+      "text": "Nlóm mwàní wàyá bòbàn á ǹtə̀ŋ mɔ́n.",
+      "file": "dict.bank_statut_transfert_minutes.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_programme",
+      "key": "dict.bank_statut_transfert_programme",
+      "text": "Bə́kɔ̀mnyà nlóm mwàní.",
+      "file": "dict.bank_statut_transfert_programme.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_operation_reussie",
+      "key": "dict.bank_statut_operation_reussie",
+      "text": "Ìsɛ́ ìbòbànyà mbə̀ŋ.",
+      "file": "dict.bank_statut_operation_reussie.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_operation_echouee",
+      "key": "dict.bank_statut_operation_echouee",
+      "text": "Ìsɛ́ ìŋgá cɔ́b.",
+      "file": "dict.bank_statut_operation_echouee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_operation_cours",
+      "key": "dict.bank_statut_operation_cours",
+      "text": "Ìsɛ́ ìtə̀ bòbàn ɛ́yə́ŋ.",
+      "file": "dict.bank_statut_operation_cours.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_operation_attente",
+      "key": "dict.bank_statut_operation_attente",
+      "text": "Ìsɛ́ ìtə̀ yàŋà.",
+      "file": "dict.bank_statut_operation_attente.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_paiement_effectue",
+      "key": "dict.bank_statut_paiement_effectue",
+      "text": "Èyágná ìbòbànyà.",
+      "file": "dict.bank_statut_paiement_effectue.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_paiement_refuse",
+      "key": "dict.bank_statut_paiement_refuse",
+      "text": "Bə́ŋgá bɛ̀n èyágná.",
+      "file": "dict.bank_statut_paiement_refuse.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_paiement_annule",
+      "key": "dict.bank_statut_paiement_annule",
+      "text": "Bə́ŋgá kàb èyágná.",
+      "file": "dict.bank_statut_paiement_annule.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_paiement_montant.partie1",
+      "key": "dict.bank_statut_paiement_montant.partie1",
+      "text": "Èyágná yà",
+      "file": "dict.bank_statut_paiement_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_paiement_montant.partie2",
+      "key": "dict.bank_statut_paiement_montant.partie2",
+      "text": "ìbòbànyà.",
+      "file": "dict.bank_statut_paiement_montant.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_remboursement_montant.partie1",
+      "key": "dict.bank_statut_remboursement_montant.partie1",
+      "text": "Ìbùlàn mwàní wà",
+      "file": "dict.bank_statut_remboursement_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_remboursement_montant.partie2",
+      "key": "dict.bank_statut_remboursement_montant.partie2",
+      "text": "ùbòbànyà.",
+      "file": "dict.bank_statut_remboursement_montant.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_demande_enregistree",
+      "key": "dict.bank_statut_demande_enregistree",
+      "text": "Bə́tílnyà dzàm ù yì.",
+      "file": "dict.bank_statut_demande_enregistree.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_demande_traitement",
+      "key": "dict.bank_statut_demande_traitement",
+      "text": "Bə̀tə̀ kɔ̀m dzàm ù yì ɛ́yə́ŋ.",
+      "file": "dict.bank_statut_demande_traitement.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_demande_refusee",
+      "key": "dict.bank_statut_demande_refusee",
+      "text": "Bə́ŋgá bɛ̀n dzàm ù yì.",
+      "file": "dict.bank_statut_demande_refusee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_demande_acceptee",
+      "key": "dict.bank_statut_demande_acceptee",
+      "text": "Bə́jə́blə́nyà dzàm ù yì.",
+      "file": "dict.bank_statut_demande_acceptee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_transfert_confirme",
+      "key": "dict.bank_statut_transfert_confirme",
+      "text": "Nlóm mwàní ùjə́blə́bàn.",
+      "file": "dict.bank_statut_transfert_confirme.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_statut_operation_terminee",
+      "key": "dict.bank_statut_operation_terminee",
+      "text": "Ìsɛ́ ìmànyà.",
+      "file": "dict.bank_statut_operation_terminee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_solde_montant.partie1",
+      "key": "dict.bank_compte_solde_montant.partie1",
+      "text": "Mwàní wô ú nè",
+      "file": "dict.bank_compte_solde_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_solde_insuffisant",
+      "key": "dict.bank_compte_solde_insuffisant",
+      "text": "Mwàní wô àlígì àtə̀ bɔ́n.",
+      "file": "dict.bank_compte_solde_insuffisant.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_debite.partie1",
+      "key": "dict.bank_compte_debite.partie1",
+      "text": "Mwàní wà",
+      "file": "dict.bank_compte_debite.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_debite.partie2",
+      "key": "dict.bank_compte_debite.partie2",
+      "text": "ùkùì á kɔ̂nt wô.",
+      "file": "dict.bank_compte_debite.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_credite.partie2",
+      "key": "dict.bank_compte_credite.partie2",
+      "text": "ùnyíìnyà á kɔ̂nt wô.",
+      "file": "dict.bank_compte_credite.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_bloque",
+      "key": "dict.bank_compte_bloque",
+      "text": "Kɔ̂nt wô í díbân.",
+      "file": "dict.bank_compte_bloque.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_suspendu",
+      "key": "dict.bank_compte_suspendu",
+      "text": "Bə́tə́lnyà kɔ̂nt wô.",
+      "file": "dict.bank_compte_suspendu.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_debloque",
+      "key": "dict.bank_compte_debloque",
+      "text": "Bə́kùlnyà kɔ̂nt wô.",
+      "file": "dict.bank_compte_debloque.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_actif",
+      "key": "dict.bank_compte_actif",
+      "text": "Kɔ̂nt wô í tə̀ sɛ́.",
+      "file": "dict.bank_compte_actif.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_carte_bloquee",
+      "key": "dict.bank_compte_carte_bloquee",
+      "text": "Kálàdà wô í díbân.",
+      "file": "dict.bank_compte_carte_bloquee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_carte_expiree",
+      "key": "dict.bank_compte_carte_expiree",
+      "text": "Ǹtə̀ŋ wà kálàdà wô ùmànyà.",
+      "file": "dict.bank_compte_carte_expiree.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_plafond_atteint",
+      "key": "dict.bank_compte_plafond_atteint",
+      "text": "Ù mànyà àbùm mwàní yà mɔ́s wùá.",
+      "file": "dict.bank_compte_plafond_atteint.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_montant_plafond",
+      "key": "dict.bank_compte_montant_plafond",
+      "text": "Àbùm mwàní ù lɔ̀d àbùm bə́jə́blə́.",
+      "file": "dict.bank_compte_montant_plafond.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_montant_maximum.partie1",
+      "key": "dict.bank_compte_montant_maximum.partie1",
+      "text": "Àbùm mwàní àpúmgí á nlóm wùá ú nè",
+      "file": "dict.bank_compte_montant_maximum.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_montant_minimum.partie1",
+      "key": "dict.bank_compte_montant_minimum.partie1",
+      "text": "Àbùm mwàní mɔ́n á nlóm wùá ú nè",
+      "file": "dict.bank_compte_montant_minimum.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_limite_modifiee",
+      "key": "dict.bank_compte_limite_modifiee",
+      "text": "Bə́cɛ́nînyà àbùm mwàní wô yà lóm.",
+      "file": "dict.bank_compte_limite_modifiee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_nouveau_solde.partie1",
+      "key": "dict.bank_compte_nouveau_solde.partie1",
+      "text": "Mwàní ḿfə́ :",
+      "file": "dict.bank_compte_nouveau_solde.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_solde_apres_transfert.partie1",
+      "key": "dict.bank_compte_solde_apres_transfert.partie1",
+      "text": "Mwàní àlígì á mbús nlóm :",
+      "file": "dict.bank_compte_solde_apres_transfert.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_appliques_montant.partie1",
+      "key": "dict.bank_frais_appliques_montant.partie1",
+      "text": "Bə̀yá nɔŋ táŋ yà",
+      "file": "dict.bank_frais_appliques_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_transfert_montant.partie1",
+      "key": "dict.bank_frais_transfert_montant.partie1",
+      "text": "Táŋ í nlóm ńì í nè",
+      "file": "dict.bank_frais_transfert_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_gratuit",
+      "key": "dict.bank_frais_gratuit",
+      "text": "Nlóm mwàní ńì ú nè té táŋ.",
+      "file": "dict.bank_frais_gratuit.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_aucun_preleve",
+      "key": "dict.bank_frais_aucun_preleve",
+      "text": "Bə̀bə́gə̀ nɔŋ táŋ ḿfə́.",
+      "file": "dict.bank_frais_aucun_preleve.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_inclus",
+      "key": "dict.bank_frais_inclus",
+      "text": "Táŋ í nè á àbùm mwàní.",
+      "file": "dict.bank_frais_inclus.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_changes",
+      "key": "dict.bank_frais_changes",
+      "text": "Táŋ í cɛ́nînyà.",
+      "file": "dict.bank_frais_changes.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_total_payer.partie1",
+      "key": "dict.bank_frais_total_payer.partie1",
+      "text": "Mwàní wɔ́sə̂ wà yág :",
+      "file": "dict.bank_frais_total_payer.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_total_debite_futur.partie1",
+      "key": "dict.bank_frais_total_debite_futur.partie1",
+      "text": "Mwàní wɔ́sə̂ wàyá kùì ú nè",
+      "file": "dict.bank_frais_total_debite_futur.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_frais_appliques_libelle.partie1",
+      "key": "dict.bank_frais_appliques_libelle.partie1",
+      "text": "Táŋ í nɔ́ŋí :",
+      "file": "dict.bank_frais_appliques_libelle.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_montant",
+      "key": "dict.bank_saisie_montant",
+      "text": "Tílgá àbùm mwàní.",
+      "file": "dict.bank_saisie_montant.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_montant_valide",
+      "key": "dict.bank_saisie_montant_valide",
+      "text": "Tílgá àbùm mwàní wə́ bə́bɛ́lə́.",
+      "file": "dict.bank_saisie_montant_valide.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_montant_eleve",
+      "key": "dict.bank_saisie_montant_eleve",
+      "text": "Àbùm mwàní ù lɔ̀d àbùm.",
+      "file": "dict.bank_saisie_montant_eleve.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_montant_faible",
+      "key": "dict.bank_saisie_montant_faible",
+      "text": "Àbùm mwàní ú nè mɔ́n ábùi.",
+      "file": "dict.bank_saisie_montant_faible.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_nom_beneficiaire",
+      "key": "dict.bank_saisie_nom_beneficiaire",
+      "text": "Tílgá dwé lə̀ mòd àtə́ nɔŋ.",
+      "file": "dict.bank_saisie_nom_beneficiaire.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_telephone_valide",
+      "key": "dict.bank_saisie_telephone_valide",
+      "text": "Tílgá nwàmɔ̀ ŋkwǎl wə́ bə́bɛ́lə́.",
+      "file": "dict.bank_saisie_telephone_valide.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_telephone_incorrect",
+      "key": "dict.bank_saisie_telephone_incorrect",
+      "text": "Nwàmɔ̀ ŋkwǎl àbə́gə̀ bə́bɛ́lə́ té.",
+      "file": "dict.bank_saisie_telephone_incorrect.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_numero_inexistant",
+      "key": "dict.bank_saisie_numero_inexistant",
+      "text": "Nwàmɔ̀ ńì àbə́gə̀.",
+      "file": "dict.bank_saisie_numero_inexistant.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_champ_obligatoire",
+      "key": "dict.bank_saisie_champ_obligatoire",
+      "text": "Vôm nû á yì nâ ù tíl.",
+      "file": "dict.bank_saisie_champ_obligatoire.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_tous_champs",
+      "key": "dict.bank_saisie_tous_champs",
+      "text": "Tílgá màm mə́sə̂.",
+      "file": "dict.bank_saisie_tous_champs.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_type_operation",
+      "key": "dict.bank_saisie_type_operation",
+      "text": "Tɔ́bgá m̀bə̀b í ísɛ́.",
+      "file": "dict.bank_saisie_type_operation.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_case_confirmation",
+      "key": "dict.bank_saisie_case_confirmation",
+      "text": "Tɔ́bgá vôm à ǹjə́blə́.",
+      "file": "dict.bank_saisie_case_confirmation.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_informations_incorrectes",
+      "key": "dict.bank_saisie_informations_incorrectes",
+      "text": "Màm ù tíl mə́bə́gə̀ bə́bɛ́lə́ té.",
+      "file": "dict.bank_saisie_informations_incorrectes.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_code_incorrect",
+      "key": "dict.bank_saisie_code_incorrect",
+      "text": "Nɔ́mbà ù tíl ìbə́gə̀ bə́bɛ́lə́ té.",
+      "file": "dict.bank_saisie_code_incorrect.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_saisie_code_incorrect_reessayer",
+      "key": "dict.bank_saisie_code_incorrect_reessayer",
+      "text": "Nɔ́mbà ìbə́gə̀ bə́bɛ́lə́ té. Ù búlàn və̀gə̀.",
+      "file": "dict.bank_saisie_code_incorrect_reessayer.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_technique",
+      "key": "dict.bank_erreur_technique",
+      "text": "Dzɔ̌m díŋgá cɔ́b á ǹkɔ̀m.",
+      "file": "dict.bank_erreur_technique.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_service_plus_tard",
+      "key": "dict.bank_erreur_service_plus_tard",
+      "text": "Ìsɛ́ íbə́gə̀ dzàm bòbàn. Ù búlàn və̀gə̀ á mbús.",
+      "file": "dict.bank_erreur_service_plus_tard.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_connexion",
+      "key": "dict.bank_erreur_connexion",
+      "text": "Dzɔ̌m díŋgá cɔ́b á ŋkwǎl.",
+      "file": "dict.bank_erreur_connexion.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_verifier_internet",
+      "key": "dict.bank_erreur_verifier_internet",
+      "text": "Cázgá ŋkwǎl wô wà internet.",
+      "file": "dict.bank_erreur_verifier_internet.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_connexion_interrompue",
+      "key": "dict.bank_erreur_connexion_interrompue",
+      "text": "Ŋkwǎl ùkàbàn.",
+      "file": "dict.bank_erreur_connexion_interrompue.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_reessayer",
+      "key": "dict.bank_erreur_reessayer",
+      "text": "Ù búlàn və̀gə̀.",
+      "file": "dict.bank_erreur_reessayer.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_reessayer_minutes",
+      "key": "dict.bank_erreur_reessayer_minutes",
+      "text": "Ù búlàn və̀gə̀ á ǹtə̀ŋ mɔ́n.",
+      "file": "dict.bank_erreur_reessayer_minutes.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_delai_depasse",
+      "key": "dict.bank_erreur_delai_depasse",
+      "text": "Ǹtə̀ŋ wà yàŋà ùlɔ̀dnyà.",
+      "file": "dict.bank_erreur_delai_depasse.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_maintenance",
+      "key": "dict.bank_erreur_maintenance",
+      "text": "Bə̀tə̀ kɔ̀m ìsɛ́ ɛ́yə́ŋ.",
+      "file": "dict.bank_erreur_maintenance.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_pin_partager",
+      "key": "dict.bank_securite_pin_partager",
+      "text": "Tə̀ ù kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.",
+      "file": "dict.bank_securite_pin_partager.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_pin_communiquer",
+      "key": "dict.bank_securite_pin_communiquer",
+      "text": "Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.",
+      "file": "dict.bank_securite_pin_communiquer.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_telephone",
+      "key": "dict.bank_securite_code_telephone",
+      "text": "Tə̀ ù və́ nɔ́mbà yɔ̂ yà ǹsɔ́l á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.",
+      "file": "dict.bank_securite_code_telephone.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_banque_demande",
+      "key": "dict.bank_securite_banque_demande",
+      "text": "Bâŋ yɔ̂ íbə́gə̀ sílà wɔ̌ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "file": "dict.bank_securite_banque_demande.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_arnaques",
+      "key": "dict.bank_securite_arnaques",
+      "text": "Tɔ̀gá ǹjɔ̀ŋ èè bə̀fúfùb.",
+      "file": "dict.bank_securite_arnaques.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_faux_messages",
+      "key": "dict.bank_securite_faux_messages",
+      "text": "Tɔ̀gá ǹjɔ̀ŋ èè mìfòè mə́ pûpùd.",
+      "file": "dict.bank_securite_faux_messages.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_numero_frauduleux",
+      "key": "dict.bank_securite_numero_frauduleux",
+      "text": "Bə́kàtnyà nâ nwàmɔ̀ ńì ú nè wà ǹwú.",
+      "file": "dict.bank_securite_numero_frauduleux.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_activite_suspecte",
+      "key": "dict.bank_securite_activite_suspecte",
+      "text": "Bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt wô.",
+      "file": "dict.bank_securite_activite_suspecte.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_connexion_inhabituelle",
+      "key": "dict.bank_securite_connexion_inhabituelle",
+      "text": "Bə́yɛ́nyà ŋkwǎl ḿfə́ úbə́gə̀ mbə̀ŋ.",
+      "file": "dict.bank_securite_connexion_inhabituelle.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_pas_origine",
+      "key": "dict.bank_securite_pas_origine",
+      "text": "Ŋgə́ ù bə́gə̀ bô ísɛ́ ńì, lɔ́gə̀ bâŋ yɔ̂.",
+      "file": "dict.bank_securite_pas_origine.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_liens",
+      "key": "dict.bank_securite_liens",
+      "text": "Tə̀ ù nàm mə̀zə̀n ù bə́gə̀ yə́m.",
+      "file": "dict.bank_securite_liens.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_verifier_nom",
+      "key": "dict.bank_securite_verifier_nom",
+      "text": "Cázgá ngə́d ísə̂ dwé lə̀ mòd àtə́ nɔŋ.",
+      "file": "dict.bank_securite_verifier_nom.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_verifier_montant",
+      "key": "dict.bank_securite_verifier_montant",
+      "text": "Cázgá àbùm mwàní ósúsúâ nâ ù jə́blə̂.",
+      "file": "dict.bank_securite_verifier_montant.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_verifier_informations",
+      "key": "dict.bank_securite_verifier_informations",
+      "text": "Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə̂.",
+      "file": "dict.bank_securite_verifier_informations.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_irreversible",
+      "key": "dict.bank_securite_irreversible",
+      "text": "Ìsɛ́ ńì íbə́gə̀ dzàm búlàn á mbús.",
+      "file": "dict.bank_securite_irreversible.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_confirme_non_annulable",
+      "key": "dict.bank_securite_confirme_non_annulable",
+      "text": "Nlóm mwàní ùjə́blə́bàn úbə́gə̀ dzàm kàbàn.",
+      "file": "dict.bank_securite_confirme_non_annulable.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_session_fermee",
+      "key": "dict.bank_securite_session_fermee",
+      "text": "Ású ùkálá wô, bə́díbnyà ǹtə̀ŋ wô wà ísɛ́.",
+      "file": "dict.bank_securite_session_fermee.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_sms_envoye",
+      "key": "dict.bank_securite_code_sms_envoye",
+      "text": "Bə́lómnyà wɔ̌ nɔ́mbà yà ǹjə́blə́ á SMS.",
+      "file": "dict.bank_securite_code_sms_envoye.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_sms_saisir",
+      "key": "dict.bank_securite_code_sms_saisir",
+      "text": "Tílgá nɔ́mbà ù nɔ́ŋ á SMS.",
+      "file": "dict.bank_securite_code_sms_saisir.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_pin_valider",
+      "key": "dict.bank_securite_pin_valider",
+      "text": "Tílgá nɔ́mbà yɔ̂ yà PIN ású ǹjə́blə́.",
+      "file": "dict.bank_securite_pin_valider.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_secret_saisir",
+      "key": "dict.bank_securite_code_secret_saisir",
+      "text": "Tílgá nɔ́mbà yɔ̂ yà ǹsɔ́l.",
+      "file": "dict.bank_securite_code_secret_saisir.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_valable",
+      "key": "dict.bank_securite_code_valable",
+      "text": "Nɔ́mbà ńì í tə̀ sɛ́ ǹtə̀ŋ mɔ́n.",
+      "file": "dict.bank_securite_code_valable.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_code_expire",
+      "key": "dict.bank_securite_code_expire",
+      "text": "Ǹtə̀ŋ wà nɔ́mbà ńì ùmànyà.",
+      "file": "dict.bank_securite_code_expire.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_ajoute",
+      "key": "dict.bank_beneficiaire_ajoute",
+      "text": "Bə́bə̀gnyà mòd àtə́ nɔŋ.",
+      "file": "dict.bank_beneficiaire_ajoute.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_supprime",
+      "key": "dict.bank_beneficiaire_supprime",
+      "text": "Bə́vânyà mòd àtə́ nɔŋ.",
+      "file": "dict.bank_beneficiaire_supprime.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_introuvable",
+      "key": "dict.bank_beneficiaire_introuvable",
+      "text": "Bə̀bə́gə̀ yə́n mòd àtə́ nɔŋ.",
+      "file": "dict.bank_beneficiaire_introuvable.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_injoignable",
+      "key": "dict.bank_beneficiaire_injoignable",
+      "text": "Bə̀bə́gə̀ dzàm lɔ́g mòd àtə́ nɔŋ.",
+      "file": "dict.bank_beneficiaire_injoignable.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_a_recu",
+      "key": "dict.bank_beneficiaire_a_recu",
+      "text": "Mòd àtə́ nɔŋ ànɔ́ŋnyà mwàní.",
+      "file": "dict.bank_beneficiaire_a_recu.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_recevra_minutes",
+      "key": "dict.bank_beneficiaire_recevra_minutes",
+      "text": "Mòd àtə́ nɔŋ àyá nɔŋ mwàní á ǹtə̀ŋ mɔ́n.",
+      "file": "dict.bank_beneficiaire_recevra_minutes.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_nouveau",
+      "key": "dict.bank_beneficiaire_nouveau",
+      "text": "Mòd àtə́ nɔŋ ḿfə́.",
+      "file": "dict.bank_beneficiaire_nouveau.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_deja_enregistre",
+      "key": "dict.bank_beneficiaire_deja_enregistre",
+      "text": "Mòd àtə́ nɔŋ nû àtílnyà ábə́.",
+      "file": "dict.bank_beneficiaire_deja_enregistre.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_confirmer_numero",
+      "key": "dict.bank_beneficiaire_confirmer_numero",
+      "text": "Jə́blə́gá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.",
+      "file": "dict.bank_beneficiaire_confirmer_numero.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_numero_incorrect",
+      "key": "dict.bank_beneficiaire_numero_incorrect",
+      "text": "Nwàmɔ̀ lə̀ mòd àtə́ nɔŋ àbə́gə̀ bə́bɛ́lə́ té.",
+      "file": "dict.bank_beneficiaire_numero_incorrect.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_nom_a_recu.partie2",
+      "key": "dict.bank_beneficiaire_nom_a_recu.partie2",
+      "text": "ànɔ́ŋnyà",
+      "file": "dict.bank_beneficiaire_nom_a_recu.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_nom_a_recu.partie3",
+      "key": "dict.bank_beneficiaire_nom_a_recu.partie3",
+      "text": "mbə̀ŋ.",
+      "file": "dict.bank_beneficiaire_nom_a_recu.partie3.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_recevra_montant.partie1",
+      "key": "dict.bank_beneficiaire_recevra_montant.partie1",
+      "text": "Mòd àtə́ nɔŋ àyá nɔŋ",
+      "file": "dict.bank_beneficiaire_recevra_montant.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_beneficiaire_envoyer_a.partie1",
+      "key": "dict.bank_beneficiaire_envoyer_a.partie1",
+      "text": "Ù yá lóm",
+      "file": "dict.bank_beneficiaire_envoyer_a.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_transfert_question",
+      "key": "dict.bank_confirmation_transfert_question",
+      "text": "Yə̀ ù yì jə́blə́ nlóm mwàní ńì ?",
+      "file": "dict.bank_confirmation_transfert_question.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_continuer",
+      "key": "dict.bank_confirmation_continuer",
+      "text": "Yə̀ ù yì kə́ ósú ?",
+      "file": "dict.bank_confirmation_continuer.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_annuler",
+      "key": "dict.bank_confirmation_annuler",
+      "text": "Yə̀ ù yì kàb bə́bɛ́lə́ ?",
+      "file": "dict.bank_confirmation_annuler.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_operation",
+      "key": "dict.bank_confirmation_operation",
+      "text": "Yə̀ ù jə́blə́ ísɛ́ ńì ?",
+      "file": "dict.bank_confirmation_operation.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_merci_confiance",
+      "key": "dict.bank_confirmation_merci_confiance",
+      "text": "Àkíbá ású ǹjə́blə́ wô.",
+      "file": "dict.bank_confirmation_merci_confiance.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_merci_service",
+      "key": "dict.bank_confirmation_merci_service",
+      "text": "Àkíbá nâ ù sɛ́ èè ìsɛ́ yə́.",
+      "file": "dict.bank_confirmation_merci_service.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_chargement",
+      "key": "dict.bank_confirmation_chargement",
+      "text": "Bə̀tə̀ lɔ̀d ɛ́yə́ŋ.",
+      "file": "dict.bank_confirmation_chargement.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_traitement",
+      "key": "dict.bank_confirmation_traitement",
+      "text": "Bə̀tə̀ kɔ̀m ɛ́yə́ŋ.",
+      "file": "dict.bank_confirmation_traitement.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_recu_disponible",
+      "key": "dict.bank_confirmation_recu_disponible",
+      "text": "Kálàdà wô wà ǹyáà ú nè.",
+      "file": "dict.bank_confirmation_recu_disponible.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_recu_sms",
+      "key": "dict.bank_confirmation_recu_sms",
+      "text": "Bə́lómnyà kálàdà wô wà ǹyáà á SMS.",
+      "file": "dict.bank_confirmation_recu_sms.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_conserver_recu",
+      "key": "dict.bank_confirmation_conserver_recu",
+      "text": "Bàlgá kálàdà wô wà ǹyáà.",
+      "file": "dict.bank_confirmation_conserver_recu.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_noter_reference",
+      "key": "dict.bank_confirmation_noter_reference",
+      "text": "Tílgá nɔ́mbà yà nlóm mwàní wô.",
+      "file": "dict.bank_confirmation_noter_reference.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_date.partie1",
+      "key": "dict.bank_confirmation_date.partie1",
+      "text": "Mɔ́s wà nlóm mwàní :",
+      "file": "dict.bank_confirmation_date.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_effectue_le.partie1",
+      "key": "dict.bank_confirmation_effectue_le.partie1",
+      "text": "Nlóm mwàní wàyá bòbàn mɔ́s",
+      "file": "dict.bank_confirmation_effectue_le.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_montant_recu.partie1",
+      "key": "dict.bank_confirmation_montant_recu.partie1",
+      "text": "Àbùm mwàní ńnɔ́ŋí :",
+      "file": "dict.bank_confirmation_montant_recu.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_confirmation_montant_envoye.partie1",
+      "key": "dict.bank_confirmation_montant_envoye.partie1",
+      "text": "Àbùm mwàní úlómí :",
+      "file": "dict.bank_confirmation_montant_envoye.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_session_expiree_reconnecter",
+      "key": "dict.bank_session_expiree_reconnecter",
+      "text": "Ǹtə̀ŋ wô wà ísɛ́ ùmànyà. Ù búlàn nyíì á kɔ̂nt.",
+      "file": "dict.bank_session_expiree_reconnecter.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_session_reconnecter",
+      "key": "dict.bank_session_reconnecter",
+      "text": "Ù búlàn nyíì á kɔ̂nt.",
+      "file": "dict.bank_session_reconnecter.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_session_deconnecte",
+      "key": "dict.bank_session_deconnecte",
+      "text": "Ù kùìnyà á kɔ̂nt.",
+      "file": "dict.bank_session_deconnecte.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_session_deconnexion_reussie",
+      "key": "dict.bank_session_deconnexion_reussie",
+      "text": "Ù kùìnyà á kɔ̂nt mbə̀ŋ.",
+      "file": "dict.bank_session_deconnexion_reussie.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_session_bienvenue_espace",
+      "key": "dict.bank_session_bienvenue_espace",
+      "text": "Mə̀kónî á vôm wô.",
+      "file": "dict.bank_session_bienvenue_espace.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_message_nouveau",
+      "key": "dict.bank_message_nouveau",
+      "text": "Fòè ḿfə́.",
+      "file": "dict.bank_message_nouveau.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_message_vous_avez",
+      "key": "dict.bank_message_vous_avez",
+      "text": "Ù bə́lə́ fòè ḿfə́.",
+      "file": "dict.bank_message_vous_avez.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_message_maintenance_prevue",
+      "key": "dict.bank_message_maintenance_prevue",
+      "text": "Bə̀yá kɔ̀m ìsɛ́.",
+      "file": "dict.bank_message_maintenance_prevue.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_message_maintenance_le.partie1",
+      "key": "dict.bank_message_maintenance_le.partie1",
+      "text": "Bə̀yá kɔ̀m ìsɛ́ mɔ́s",
+      "file": "dict.bank_message_maintenance_le.partie1.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_message_mise_a_jour",
+      "key": "dict.bank_message_mise_a_jour",
+      "text": "Ìkɔ̀m ḿfə́ í nè.",
+      "file": "dict.bank_message_mise_a_jour.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_intitule_attention",
+      "key": "dict.bank_intitule_attention",
+      "text": "Tɔ̀gá ǹjɔ̀ŋ",
+      "file": "dict.bank_intitule_attention.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_intitule_important",
+      "key": "dict.bank_intitule_important",
+      "text": "Ìpúmgí",
+      "file": "dict.bank_intitule_important.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_intitule_information",
+      "key": "dict.bank_intitule_information",
+      "text": "Fòè",
+      "file": "dict.bank_intitule_information.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_intitule_alerte",
+      "key": "dict.bank_intitule_alerte",
+      "text": "Kálâ!",
+      "file": "dict.bank_intitule_alerte.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_intitule_rappel",
+      "key": "dict.bank_intitule_rappel",
+      "text": "Ìbùlàn ǹkàt",
+      "file": "dict.bank_intitule_rappel.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_compte_sera_debite.partie2",
+      "key": "dict.bank_compte_sera_debite.partie2",
+      "text": "wàyá kùì á kɔ̂nt wô.",
+      "file": "dict.bank_compte_sera_debite.partie2.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_erreur_service_mobile_money",
+      "key": "dict.bank_erreur_service_mobile_money",
+      "text": "Ìsɛ́ yà Mobile Money íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.",
+      "file": "dict.bank_erreur_service_mobile_money.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    },
+    {
+      "id": "dict.bank_securite_pin_telephone",
+      "key": "dict.bank_securite_pin_telephone",
+      "text": "Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.",
+      "file": "dict.bank_securite_pin_telephone.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°4"
+    }
+  ]
+}

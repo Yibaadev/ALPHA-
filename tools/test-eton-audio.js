@@ -65,6 +65,19 @@ test("l'enregistrement du locuteur remplace toujours le clip OmniVoice, même re
   assert.strictEqual(d.file, "locuteur/dict.d.mp3");
 });
 
+test("nouveau lot Colab (seulement les nouveaux textes) : s'ajoute sans effacer les anciens clips", () => {
+  const base = fixture("id,texte,correct,remarque\ndict.a,x,oui,\n");
+  const dir = path.join(base, "omnivoice");
+  fs.writeFileSync(path.join(dir, "bank.x.ogg"), "OggS");
+  fs.writeFileSync(path.join(dir, "omnivoice-index-20261115-0900.json"),
+    JSON.stringify({ clips: [{ id: "bank.x", key: "bank.x", text: "éton bank.x", file: "bank.x.ogg" }] }));
+  fs.writeFileSync(path.join(dir, "revue_locuteur-20261115-0900.csv"), "id,texte,correct,remarque\nbank.x,x,oui,\ndict.a,x,,\n");
+  const { index } = buildIndex(base, false);
+  // dict.a reste validé (une ligne vide du nouveau lot n'efface pas la réponse), bank.x arrive.
+  assert.deepStrictEqual(sources(index), { "dict.a": "omnivoice:oui", "bank.x": "omnivoice:oui", "dict.d": "locuteur:oui" });
+  assert.strictEqual(buildIndex(base, true).index.clips.length, 5);
+});
+
 test("sans revue ni clips : index vide, sans erreur", () => {
   const base = fs.mkdtempSync(path.join(os.tmpdir(), "alpha-audio-"));
   assert.deepStrictEqual(buildIndex(base, true).index.clips, []);

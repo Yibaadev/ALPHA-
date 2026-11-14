@@ -13,6 +13,8 @@ const path = require("path");
 
 // 3. Compte = « kɔ̂nt » (forme du locuteur, ex. « Nwàmɔ̀ kɔ̂nt »), jamais « kônt ».
 const ACCOUNT = /([Kk])ônt/gu;
+// 5. « si » = « ŋgə́ » (orthographe des textes validés), jamais « ngə́ » (≠ « ngə́d », toujours).
+const IF = /(^|[^\p{L}\p{M}])([Nn])gə́(?![\p{L}\p{M}])/gu;
 // 4. Frais = « táŋ » (dictionnaire), « Frais de transfert » = « táŋ í nlóm » ; jamais « mwàní wà ísɛ́ ».
 const FEES = [
   [/([Mm])wàní wà ísɛ́ yà nlóm/gu, (_, m) => (m === "M" ? "Táŋ" : "táŋ") + " í nlóm"],
@@ -36,6 +38,7 @@ function harmonize(input) {
   let text = original.normalize("NFC");
   const flags = [];
   text = text.replace(ACCOUNT, (_, k) => k + "ɔ̂nt");
+  text = text.replace(IF, (_, before, n) => before + (n === "N" ? "Ŋ" : "ŋ") + "gə́");
   for (const [pattern, fix] of FEES) text = text.replace(pattern, fix);
   text = text.replace(BENEFICIARY,(_, before, m) => before + (m === "M" ? "Mòd" : "mòd") + " àtə́ nɔŋ");
   for (const [pattern, fix] of OBJECTS) text = text.replace(pattern, fix);

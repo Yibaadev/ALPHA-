@@ -9,7 +9,6 @@
 //    fois : il ne peut pas être enregistré à l'avance) ;
 //  - guide : chaque phrase des écrans connus, avec les noms de boutons éton du dictionnaire à la place
 //    des {cles} (c'est exactement ce que le guide affiche sur la page) ; conseils d'alerte ;
-//  - glossaire « Expliquer » : terme et définition, en deux clips.
 // « regenerer » : le texte a changé depuis les clips actuels (data/audio/eton/omnivoice) ; le notebook
 // refait alors ce clip au lieu de garder l'ancien.
 "use strict";
@@ -21,6 +20,9 @@ const root = path.join(__dirname, "..");
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const drafts = process.argv.includes("--brouillons");
 const redoAll = process.argv.includes("--tout"); // refaire tous les clips (même voix pour tout)
+// --refaire nom. : refaire les clips dont l'identifiant commence par « nom. » (ex. mauvaise voix choisie).
+const redoArg = process.argv.indexOf("--refaire");
+const redoPrefix = redoArg >= 0 ? process.argv[redoArg + 1] || "" : null;
 const norm = (text) => String(text || "").normalize("NFC").replace(/\s+/g, " ").trim();
 const usable = (statut) => statut === "valide" || (drafts && statut === "a_verifier");
 
@@ -35,10 +37,10 @@ function fileNameFor(id) {
 }
 
 // Clips actuels : nom de fichier -> texte lu.
+// Tous les lots déjà reçus de Colab (omnivoice-index*.json) sont pris en compte.
 const current = new Map();
-const currentIndex = path.join(root, "data", "audio", "eton", "omnivoice", "omnivoice-index.json");
-if (fs.existsSync(currentIndex)) {
-  for (const clip of JSON.parse(fs.readFileSync(currentIndex, "utf8")).clips || []) current.set(clip.id, norm(clip.text));
+for (const clip of require("./build-audio-index.js").readOmniIndexes(path.join(root, "data", "audio", "eton")).clips) {
+  current.set(clip.id, norm(clip.text));
 }
 
 const lines = [];
@@ -62,7 +64,8 @@ function add(id, text, origin) {
   seenTexts.add(key);
   // « id » : nom du fichier audio ; « key » : identifiant d'origine dans les données d'ALPHA.
   const line = { id: fileNameFor(id), key: id, text: value, language_id: "eto", origin };
-  if (redoAll ? current.has(line.id) : current.has(line.id) && current.get(line.id) !== value) line.regenerer = true;
+  const redoThis = redoAll || (redoPrefix !== null && redoPrefix !== "" && line.id.startsWith(redoPrefix));
+  if (redoThis ? current.has(line.id) : current.has(line.id) && current.get(line.id) !== value) line.regenerer = true;
   lines.push(line);
 }
 
@@ -70,6 +73,10 @@ const dictionary = read("data/dictionary.json");
 for (const entry of dictionary.entries || []) {
   if (entry.statut === "valide") add("dict." + entry.id, entry.local, "dictionary");
 }
+// Noms connus à l'avance (titulaire du compte de démonstration, bénéficiaires, services) : lus avec la
+// même voix éton, pour que « Mə̀má kìrí, Amina Ngo Bell » soit lu en entier. Un nom saisi par
+// l'utilisateur, inconnu à l'avance, n'est pas lu.
+for (const name of (dictionary.meta && dictionary.meta.names) || []) add("nom." + name, name, "noms");
 
 // Phrases modèles (« Solde disponible : [M1] ») : morceaux fixes.
 for (const template of read("data/templates.json")) {
@@ -115,19 +122,16 @@ if (intro && usable(intro.statut)) {
   add("intro.ok", intro.ok, "guide");
 }
 
-const glossary = read("data/glossary.json");
-for (const entry of glossary.entries || []) {
-  if (!entry.local || !usable(entry.local.statut)) continue;
-  add("gloss." + entry.id + ".term", entry.local.term, "glossary");
-  add("gloss." + entry.id + ".text", entry.local.text, "glossary");
-}
-for (const [key, text] of Object.entries(glossary.meta.ui.local || {})) add("gloss.ui." + key, text, "glossary");
-
 const outDir = path.join(root, "docs", "audio");
 fs.mkdirSync(outDir, { recursive: true });
 const out = path.join(outDir, "eton-tts.jsonl");
 fs.writeFileSync(out, lines.map((line) => JSON.stringify(line)).join("\n") + "\n");
 const fresh = lines.filter((l) => !current.has(l.id)).length;
 const redo = lines.filter((l) => l.regenerer).length;
+// Lot à envoyer sur Colab : seulement les clips à faire (nouveaux ou à régénérer).
+const todo = lines.filter((l) => !current.has(l.id) || l.regenerer);
+const outTodo = path.join(outDir, "eton-tts-a-generer.jsonl");
+fs.writeFileSync(outTodo, todo.map((line) => JSON.stringify(line)).join("\n") + (todo.length ? "\n" : ""));
 console.log(`${lines.length} texte(s) éton exporté(s) dans ${path.relative(root, out)} : ${fresh} nouveau(x), ${redo} à régénérer (texte modifié), ${lines.length - fresh - redo} déjà prêts.`);
+console.log(`À envoyer sur Colab : ${path.relative(root, outTodo)} (${todo.length} clip(s) à faire seulement).`);
 if (skipped.length) console.log("Ignoré(s) : " + skipped.join(", "));

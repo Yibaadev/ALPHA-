@@ -35,23 +35,21 @@ Le bouton haut-parleur active la **lecture au clic** : l’utilisateur touche un
 
 **Pendant ce mode, les clics ne déclenchent rien sur le site** : toucher « Confirmer le transfert » pour l’entendre ne confirme jamais le transfert.
 
-**En mode Éton, ALPHA ne parle qu’en éton.** Un texte qui n’a pas encore de voix éton (montant, nom, texte non enregistré) n’est pas lu en français : le bandeau l’indique. Il en va de même pour le guide et pour « Expliquer », dont les textes éton attendent leur validation.
+**En mode Éton, ALPHA ne parle qu’en éton.** Les montants, les noms et les mots restés en français ne sont pas lus : le bandeau l’indique. Le guide « ? » est lu de la même façon, avec les voix éton de ses phrases.
 
 ## Voix éton
 
 Aucune synthèse vocale n’existe pour l’éton dans les navigateurs. En mode Éton, la lecture au clic utilise donc des **clips audio préenregistrés**, livrés avec l’extension (`data/audio/eton/`).
 
-- **Voix provisoires** : 195 clips générés à l’avance avec OmniVoice. Ils couvrent tout l’éton affiché : le dictionnaire, les phrases modèles (morceaux fixes autour des montants et des noms), le guide « ? », la bulle et « Expliquer ». Une phrase est lue en enchaînant ses morceaux enregistrés ; les montants, les noms et les mots restés en français ne sont pas lus. Le modèle tourne une seule fois sur Google Colab (voir [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md)) : l’extension ne contient aucun modèle et ne transmet rien. Le panneau précise qu’il s’agit d’une voix de synthèse provisoire.
+- **Voix provisoires** : 159 clips générés à l’avance avec OmniVoice. Ils couvrent tout l’éton affiché : le dictionnaire, les phrases modèles (morceaux fixes autour des montants et des noms), le guide « ? » et la bulle. Une phrase est lue en enchaînant ses morceaux enregistrés ; les montants, les noms et les mots restés en français ne sont pas lus. Le modèle tourne une seule fois sur Google Colab (voir [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md)) : l’extension ne contient aucun modèle et ne transmet rien. Le panneau précise qu’il s’agit d’une voix de synthèse provisoire.
 - **Revue par un locuteur** : il note chaque clip dans `revue_locuteur.csv`. Seuls les clips validés sont livrés (`npm run audio:index`) ; `npm run audio:index:essai` inclut aussi les clips pas encore écoutés, pour les tests.
 - **Enregistrements du locuteur** : déposés dans `data/audio/eton/locuteur/` avec le même nom de fichier, ils remplacent toujours le clip de synthèse.
 
-## Expliquer un terme
-
-Quand l’utilisateur sélectionne un texte de la page qui contient un terme financier connu (frais, solde, bénéficiaire, référence, total débité, Mobile Money…), un bouton **Expliquer** apparaît à côté. Il ouvre une courte explication, lisible à voix haute. Les explications viennent d’un glossaire vérifié (`data/glossary.json`, 24 termes en français et en anglais), pas d’un modèle d’IA : rien n’est inventé et rien ne sort de l’appareil. En mode Éton, le terme d’origine est reconnu sous le texte traduit ; l’explication s’affiche en français tant que sa version éton n’est pas validée. Le bouton n’apparaît jamais dans un champ de saisie, ni sur une sélection sans terme connu.
+## Confidentialité et outils déclarés
 
 Le guide lit la page en mémoire, sur l’appareil. Il ne stocke ni ne transmet aucun texte de la page. La lecture vocale n’utilise que des voix installées sur l’appareil (`localService`) : les voix « en ligne » de certains navigateurs enverraient le texte lu à un serveur.
 
-**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales ; OmniVoice (k2-fsa, Apache-2.0), utilisé **hors de l’extension**, une seule fois, pour produire des clips audio éton provisoires (aucun modèle n’est embarqué dans l’extension) ; Gemini (Google), utilisé **hors de l’extension**, sur le site de Google, uniquement pour proposer une première traduction éton des textes fixes du guide et du glossaire, ensuite vérifiée par un locuteur (voir [docs/traduction/LISEZMOI.md](docs/traduction/LISEZMOI.md)) : aucun texte de la page n’y est envoyé. **Aucun modèle d’IA générative** n’est utilisé par l’extension et elle n’envoie aucun texte de la page à un service externe. Un prototype d’assistant Gemini en ligne a été écarté de cette version pour respecter la règle de non-transmission des données affichées ; il est conservé à part dans la branche `experimental-gemini`. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
+**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales ; OmniVoice (k2-fsa, Apache-2.0), utilisé **hors de l’extension**, une seule fois, pour produire des clips audio éton provisoires (aucun modèle n’est embarqué dans l’extension) ; Gemini (Google), utilisé **hors de l’extension**, sur le site de Google, uniquement pour proposer une première traduction éton des textes fixes du guide, ensuite vérifiée par un locuteur (voir [docs/traduction/LISEZMOI.md](docs/traduction/LISEZMOI.md)) : aucun texte de la page n’y est envoyé. **Aucun modèle d’IA générative** n’est utilisé par l’extension et elle n’envoie aucun texte de la page à un service externe. Un prototype d’assistant Gemini en ligne a été écarté de cette version pour respecter la règle de non-transmission des données affichées ; il est conservé à part dans la branche `experimental-gemini`. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
 
 ## Installation
 
@@ -60,6 +58,16 @@ Le guide lit la page en mémoire, sur l’appareil. Il ne stocke ni ne transmet 
 3. Ouvrir une page Web de démonstration compatible, puis vérifier le panneau ALPHA.
 
 Après une modification, recharger l’extension dans Chrome puis actualiser la page.
+
+## Fichier à soumettre
+
+`npm run package` crée `dist/alpha-extension.zip`. Le zip contient seulement ce que l’extension utilise : le manifeste, les icônes, les scripts, les données et les clips audio de l’index. Il pèse environ 1,9 Mo, sous la limite de 10 Mo. Un test (`npm test`) bloque tout dépassement.
+
+L’extension reste légère sur les pages :
+- elle ne retraduit que les textes nouveaux ou modifiés ;
+- elle regroupe les changements rapprochés en un seul passage ;
+- elle ne fait rien quand l’onglet est en arrière-plan ;
+- elle ne charge que les entrées validées du lexique (`data/lexicon-valide.json`, régénéré par `npm run package`).
 
 ## Dictionnaire
 
@@ -96,8 +104,7 @@ Cette commande vérifie la syntaxe des scripts, les données JSON, les moteurs d
 - `src/guide.js` et `data/guide.json` : guide « ? » de l’écran (reconnaissance de l’écran, textes, bulle de présentation).
 - `src/guide-controller.js` : relevé de la page pour le guide, rafraîchissement et lecture.
 - `src/panel-guide.js` : section guide et bulle de présentation du panneau.
-- `src/explain.js`, `src/explain-controller.js`, `src/panel-explain.js` et `data/glossary.json` : action « Expliquer » (glossaire, sélection, carte d’explication).
-- `src/panel-help.css` : styles du guide, de la bulle et de « Expliquer ».
+- `src/panel-help.css` : styles du guide, de la bulle et de la lecture au clic.
 - `src/eton-audio.js` et `data/audio/eton/` : clips éton préenregistrés et leur lecture ; `tools/build-audio-index.js` construit l’index des clips utilisables.
 - `data/dictionary.json` : textes et traductions.
 - `tools/` : import/export CSV et vérifications.

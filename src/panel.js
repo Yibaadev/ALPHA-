@@ -14,7 +14,6 @@
     zoom: '<circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"/>',
     speaker: '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
     close: '<path d="m18 6-12 12M6 6l12 12"/>',
-    explain: '<path d="M3 5.5h6a3 3 0 0 1 3 3V20a2.5 2.5 0 0 0-2.5-2.5H3z"/><path d="M21 5.5h-6a3 3 0 0 0-3 3V20a2.5 2.5 0 0 1 2.5-2.5H21z"/>',
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.4 9.3a2.7 2.7 0 0 1 5.2 1c0 1.8-2.6 2.3-2.6 4"/><path d="M12 17.4h.01"/>',
   };
 
@@ -51,7 +50,7 @@
   const alphaMark = () => '<svg class="alpha-mark" viewBox="130 65 235 235" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M145 280 218 80h31l52 141c14-18 22-38 27-58h22c-5 30-17 55-34 75l25 41h-34l-15-18c-15 13-32 20-51 20-24 0-42-10-50-28l-10 27h-36zm63-79h52l-28-69z"/></svg>';
 
 
-  function create({ hostId, onModeChange, onSpeak, onZoomChange, onGuide, onGuideSpeak, onExplain, onExplainSpeak, onExplainClose }) {
+  function create({ hostId, onModeChange, onSpeak, onZoomChange, onGuide, onGuideSpeak }) {
     const guidePart = NS.panelGuide;
     const host = document.createElement("div");
     host.id = hostId;
@@ -72,7 +71,7 @@
         <button class="rail-button rail-dismiss" type="button" aria-label="Masquer la barre ALPHA">${icon("close")}<span class="tooltip">Masquer la barre</span></button>
       </nav>
       <button class="launcher" type="button" aria-label="Ouvrir la barre ALPHA" title="Ouvrir ALPHA — glisser pour déplacer"><span class="cm-enter"><span class="cm-float">${cameroonMap("cm-launch")}</span></span><span class="cm-shadow"></span></button>
-${guidePart.introMarkup()}${NS.panelExplain.markup(icon("explain"))}${NS.panelRead.markup(icon("speaker"))}
+${guidePart.introMarkup()}${NS.panelRead.markup(icon("speaker"))}
       <aside class="drawer" aria-label="Langue et accessibilité" hidden>
         <div class="inner">
           <header class="head">
@@ -85,7 +84,6 @@ ${guidePart.introMarkup()}${NS.panelExplain.markup(icon("explain"))}${NS.panelRe
             <p class="section-note">Langue détectée : <span class="detected-language">non déterminée</span></p>
             <p class="section-note mt-notice" aria-live="polite" hidden></p>
             <div class="modes" role="group" aria-label="Choisir la langue d’affichage"></div>
-            <button class="reset" type="button">Revenir au texte d’origine</button>
           </section>
 ${guidePart.sectionMarkup()}
           <section class="section" data-section="voice">
@@ -300,10 +298,8 @@ ${guidePart.sectionMarkup()}
       close();
       root.querySelector('.rail-button[data-panel="language"]').focus();
     });
-    root.querySelector(".reset").addEventListener("click", () => onModeChange("original"));
     root.querySelector(".speak").addEventListener("click", onSpeak);
     const guideApi = guidePart.attach(root, { launcher, onGuide, onGuideSpeak });
-    const explainApi = NS.panelExplain.attach(root, { onExplain, onExplainSpeak, onExplainClose });
     const readApi = NS.panelRead.attach(root, { onReadExit: onSpeak });
     let zoomPercent = 100;
     const zoomValue = root.querySelector(".zoom-value");
@@ -351,7 +347,6 @@ ${guidePart.sectionMarkup()}
       },
       updateZoom,
       ...guideApi,
-      ...explainApi,
       ...readApi,
       // Le guide est-il affiché ? (pour le rafraîchir quand la page change)
       guideVisible() {

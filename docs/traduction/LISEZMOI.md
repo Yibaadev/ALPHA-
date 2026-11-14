@@ -1,6 +1,6 @@
 # Traduire le guide en éton (Gemini + locuteur)
 
-Ce dossier contient la traduction éton du guide « ? », de la bulle « Moi, c'est ALPHA ! » et du glossaire « Expliquer ».
+Ce dossier contient la traduction éton du guide « ? » et de la bulle « Moi, c'est ALPHA ! ».
 Gemini est utilisé **hors de l'extension**, sur le site de Google, et ne propose qu'une première version. C'est le locuteur qui valide.
 L'extension ne contient aucun modèle d'IA et n'envoie rien.
 
@@ -26,7 +26,7 @@ Si la réponse est coupée parce qu'elle est trop longue, demandez « continue �
 npm run eton:import
 ```
 
-- Le guide et « Expliquer » s'affichent maintenant en éton, avec la mention « proposé avec l'aide d'une IA de traduction (Google), en cours de vérification par un locuteur ».
+- Le guide s'affiche maintenant en éton, avec la mention « proposé avec l'aide d'une IA de traduction (Google), en cours de vérification par un locuteur ».
 - Une traduction qui a perdu un nom de bouton entre accolades, comme `{confirm}`, est refusée. L'écran concerné reste alors en français. La commande affiche la liste de ces cas.
 - La commande crée aussi `revue-guide-eton.csv`, la feuille du locuteur.
 

@@ -20,10 +20,8 @@
               <p class="guide-tip" hidden></p>
             </div>
             <p class="guide-note"></p>
-            <p class="guide-hint"></p>
             <div class="guide-actions">
               <button class="action guide-speak" type="button" aria-pressed="false">Écouter le guide</button>
-              <button class="reset guide-refresh" type="button">Actualiser</button>
             </div>
             <p class="voice-status guide-status" aria-live="polite"></p>
             <details class="guide-about">
@@ -60,7 +58,6 @@
     let introDone = null;
 
     if (onGuideSpeak) $(".guide-speak").addEventListener("click", onGuideSpeak);
-    if (onGuide) $(".guide-refresh").addEventListener("click", () => onGuide());
 
     // À côté de la carte, du côté où il y a de la place ; sinon au-dessus ou en dessous.
     function placeIntro() {

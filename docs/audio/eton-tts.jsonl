@@ -92,13 +92,180 @@
 {"id":"dict.ext_operation_annulee","key":"dict.ext_opération_annulée","text":"Bə́ŋgá kàb ísɛ́","language_id":"eto","origin":"dictionary"}
 {"id":"dict.demo_env_title","key":"dict.demo_env_title","text":"Ìfɔ̀gɔ̀ yà ǹyèglè","language_id":"eto","origin":"dictionary"}
 {"id":"dict.demo_no_personal_data","key":"dict.demo_no_personal_data","text":"Tə̀ ù tìl màm mə́ńán mə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_amount_zero","key":"dict.error_amount_zero","text":"Àbùm mwàní ù yì nâ ù lɔ̀d zèró.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_amount_insufficient","key":"dict.error_amount_insufficient","text":"Mwàní wô àlígì àtə̀ bɔ́n á lóm nlóm mwàní ńì.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_beneficiary_missing","key":"dict.error_beneficiary_missing","text":"Tílgá dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_network","key":"dict.error_network","text":"Dzɔ̌m díŋgá cɔ́b á ŋkwǎl : ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ. Ù búlàn və̀gə̀.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.alert_new_beneficiary","key":"dict.alert_new_beneficiary","text":"Kálâ! Ùkálá : mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.important_message","key":"dict.important_message","text":"Fòè ìpúmgí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fee_desc_mobile.partie1","key":"dict.fee_desc_mobile.partie1","text":"Táŋ yà 1,5 % (tə̀ kàt á sí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fee_desc_mobile.partie2","key":"dict.fee_desc_mobile.partie2","text":"tə̀ lɔ̀d","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_annule","key":"dict.bank_statut_transfert_annule","text":"Bə́ŋgá kàb nlóm mwàní wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_annule_montant.partie1","key":"dict.bank_statut_transfert_annule_montant.partie1","text":"Bə́ŋgá kàb nlóm mwàní wô wà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_traitement","key":"dict.bank_statut_transfert_traitement","text":"Bə̀tə̀ kɔ̀m nlóm mwàní wô ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_attente","key":"dict.bank_statut_transfert_attente","text":"Nlóm mwàní wô ùtə̀ yàŋà ǹjə́blə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_refuse","key":"dict.bank_statut_transfert_refuse","text":"Bə́ŋgá bɛ̀n nlóm mwàní wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_refuse_montant.partie1","key":"dict.bank_statut_transfert_refuse_montant.partie1","text":"Bə́ŋgá bɛ̀n nlóm mwàní wô wà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_reussi","key":"dict.bank_statut_transfert_reussi","text":"Nlóm mwàní wô ùbòbànyà mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_reussi_montant.partie1","key":"dict.bank_statut_transfert_reussi_montant.partie1","text":"Nlóm mwàní wô wà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_reussi_montant.partie2","key":"dict.bank_statut_transfert_reussi_montant.partie2","text":"ùbòbànyà mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_echoue_reessayer","key":"dict.bank_statut_transfert_echoue_reessayer","text":"Nlóm mwàní ùŋgá cɔ́b. Ù búlàn və̀gə̀.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_envoye","key":"dict.bank_statut_transfert_envoye","text":"Nlóm mwàní ùkə̀nyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_envoye_vers.partie2","key":"dict.bank_statut_transfert_envoye_vers.partie2","text":"ábə́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_envoye_vers.partie3","key":"dict.bank_statut_transfert_envoye_vers.partie3","text":"ùkə̀nyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_recu_de.partie1","key":"dict.bank_statut_recu_de.partie1","text":"Ù nɔ́ŋnyà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_minutes","key":"dict.bank_statut_transfert_minutes","text":"Nlóm mwàní wàyá bòbàn á ǹtə̀ŋ mɔ́n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_programme","key":"dict.bank_statut_transfert_programme","text":"Bə́kɔ̀mnyà nlóm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_operation_reussie","key":"dict.bank_statut_operation_reussie","text":"Ìsɛ́ ìbòbànyà mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_operation_echouee","key":"dict.bank_statut_operation_echouee","text":"Ìsɛ́ ìŋgá cɔ́b.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_operation_cours","key":"dict.bank_statut_operation_cours","text":"Ìsɛ́ ìtə̀ bòbàn ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_operation_attente","key":"dict.bank_statut_operation_attente","text":"Ìsɛ́ ìtə̀ yàŋà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_paiement_effectue","key":"dict.bank_statut_paiement_effectue","text":"Èyágná ìbòbànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_paiement_refuse","key":"dict.bank_statut_paiement_refuse","text":"Bə́ŋgá bɛ̀n èyágná.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_paiement_annule","key":"dict.bank_statut_paiement_annule","text":"Bə́ŋgá kàb èyágná.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_paiement_montant.partie1","key":"dict.bank_statut_paiement_montant.partie1","text":"Èyágná yà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_paiement_montant.partie2","key":"dict.bank_statut_paiement_montant.partie2","text":"ìbòbànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_remboursement_montant.partie1","key":"dict.bank_statut_remboursement_montant.partie1","text":"Ìbùlàn mwàní wà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_remboursement_montant.partie2","key":"dict.bank_statut_remboursement_montant.partie2","text":"ùbòbànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_demande_enregistree","key":"dict.bank_statut_demande_enregistree","text":"Bə́tílnyà dzàm ù yì.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_demande_traitement","key":"dict.bank_statut_demande_traitement","text":"Bə̀tə̀ kɔ̀m dzàm ù yì ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_demande_refusee","key":"dict.bank_statut_demande_refusee","text":"Bə́ŋgá bɛ̀n dzàm ù yì.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_demande_acceptee","key":"dict.bank_statut_demande_acceptee","text":"Bə́jə́blə́nyà dzàm ù yì.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_transfert_confirme","key":"dict.bank_statut_transfert_confirme","text":"Nlóm mwàní ùjə́blə́bàn.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_statut_operation_terminee","key":"dict.bank_statut_operation_terminee","text":"Ìsɛ́ ìmànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_solde_montant.partie1","key":"dict.bank_compte_solde_montant.partie1","text":"Mwàní wô ú nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_solde_insuffisant","key":"dict.bank_compte_solde_insuffisant","text":"Mwàní wô àlígì àtə̀ bɔ́n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_debite.partie1","key":"dict.bank_compte_debite.partie1","text":"Mwàní wà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_debite.partie2","key":"dict.bank_compte_debite.partie2","text":"ùkùì á kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_credite.partie2","key":"dict.bank_compte_credite.partie2","text":"ùnyíìnyà á kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_bloque","key":"dict.bank_compte_bloque","text":"Kɔ̂nt wô í díbân.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_suspendu","key":"dict.bank_compte_suspendu","text":"Bə́tə́lnyà kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_debloque","key":"dict.bank_compte_debloque","text":"Bə́kùlnyà kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_actif","key":"dict.bank_compte_actif","text":"Kɔ̂nt wô í tə̀ sɛ́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_carte_bloquee","key":"dict.bank_compte_carte_bloquee","text":"Kálàdà wô í díbân.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_carte_expiree","key":"dict.bank_compte_carte_expiree","text":"Ǹtə̀ŋ wà kálàdà wô ùmànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_plafond_atteint","key":"dict.bank_compte_plafond_atteint","text":"Ù mànyà àbùm mwàní yà mɔ́s wùá.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_montant_plafond","key":"dict.bank_compte_montant_plafond","text":"Àbùm mwàní ù lɔ̀d àbùm bə́jə́blə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_montant_maximum.partie1","key":"dict.bank_compte_montant_maximum.partie1","text":"Àbùm mwàní àpúmgí á nlóm wùá ú nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_montant_minimum.partie1","key":"dict.bank_compte_montant_minimum.partie1","text":"Àbùm mwàní mɔ́n á nlóm wùá ú nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_limite_modifiee","key":"dict.bank_compte_limite_modifiee","text":"Bə́cɛ́nînyà àbùm mwàní wô yà lóm.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_nouveau_solde.partie1","key":"dict.bank_compte_nouveau_solde.partie1","text":"Mwàní ḿfə́ :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_solde_apres_transfert.partie1","key":"dict.bank_compte_solde_apres_transfert.partie1","text":"Mwàní àlígì á mbús nlóm :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_appliques_montant.partie1","key":"dict.bank_frais_appliques_montant.partie1","text":"Bə̀yá nɔŋ táŋ yà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_transfert_montant.partie1","key":"dict.bank_frais_transfert_montant.partie1","text":"Táŋ í nlóm ńì í nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_gratuit","key":"dict.bank_frais_gratuit","text":"Nlóm mwàní ńì ú nè té táŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_aucun_preleve","key":"dict.bank_frais_aucun_preleve","text":"Bə̀bə́gə̀ nɔŋ táŋ ḿfə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_inclus","key":"dict.bank_frais_inclus","text":"Táŋ í nè á àbùm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_changes","key":"dict.bank_frais_changes","text":"Táŋ í cɛ́nînyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_total_payer.partie1","key":"dict.bank_frais_total_payer.partie1","text":"Mwàní wɔ́sə̂ wà yág :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_total_debite_futur.partie1","key":"dict.bank_frais_total_debite_futur.partie1","text":"Mwàní wɔ́sə̂ wàyá kùì ú nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_frais_appliques_libelle.partie1","key":"dict.bank_frais_appliques_libelle.partie1","text":"Táŋ í nɔ́ŋí :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_montant","key":"dict.bank_saisie_montant","text":"Tílgá àbùm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_montant_valide","key":"dict.bank_saisie_montant_valide","text":"Tílgá àbùm mwàní wə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_montant_eleve","key":"dict.bank_saisie_montant_eleve","text":"Àbùm mwàní ù lɔ̀d àbùm.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_montant_faible","key":"dict.bank_saisie_montant_faible","text":"Àbùm mwàní ú nè mɔ́n ábùi.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_nom_beneficiaire","key":"dict.bank_saisie_nom_beneficiaire","text":"Tílgá dwé lə̀ mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_telephone_valide","key":"dict.bank_saisie_telephone_valide","text":"Tílgá nwàmɔ̀ ŋkwǎl wə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_telephone_incorrect","key":"dict.bank_saisie_telephone_incorrect","text":"Nwàmɔ̀ ŋkwǎl àbə́gə̀ bə́bɛ́lə́ té.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_numero_inexistant","key":"dict.bank_saisie_numero_inexistant","text":"Nwàmɔ̀ ńì àbə́gə̀.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_champ_obligatoire","key":"dict.bank_saisie_champ_obligatoire","text":"Vôm nû á yì nâ ù tíl.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_tous_champs","key":"dict.bank_saisie_tous_champs","text":"Tílgá màm mə́sə̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_type_operation","key":"dict.bank_saisie_type_operation","text":"Tɔ́bgá m̀bə̀b í ísɛ́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_case_confirmation","key":"dict.bank_saisie_case_confirmation","text":"Tɔ́bgá vôm à ǹjə́blə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_informations_incorrectes","key":"dict.bank_saisie_informations_incorrectes","text":"Màm ù tíl mə́bə́gə̀ bə́bɛ́lə́ té.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_code_incorrect","key":"dict.bank_saisie_code_incorrect","text":"Nɔ́mbà ù tíl ìbə́gə̀ bə́bɛ́lə́ té.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_saisie_code_incorrect_reessayer","key":"dict.bank_saisie_code_incorrect_reessayer","text":"Nɔ́mbà ìbə́gə̀ bə́bɛ́lə́ té. Ù búlàn və̀gə̀.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_technique","key":"dict.bank_erreur_technique","text":"Dzɔ̌m díŋgá cɔ́b á ǹkɔ̀m.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_service_plus_tard","key":"dict.bank_erreur_service_plus_tard","text":"Ìsɛ́ íbə́gə̀ dzàm bòbàn. Ù búlàn və̀gə̀ á mbús.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_connexion","key":"dict.bank_erreur_connexion","text":"Dzɔ̌m díŋgá cɔ́b á ŋkwǎl.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_verifier_internet","key":"dict.bank_erreur_verifier_internet","text":"Cázgá ŋkwǎl wô wà internet.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_connexion_interrompue","key":"dict.bank_erreur_connexion_interrompue","text":"Ŋkwǎl ùkàbàn.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_reessayer","key":"dict.bank_erreur_reessayer","text":"Ù búlàn və̀gə̀.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_reessayer_minutes","key":"dict.bank_erreur_reessayer_minutes","text":"Ù búlàn və̀gə̀ á ǹtə̀ŋ mɔ́n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_delai_depasse","key":"dict.bank_erreur_delai_depasse","text":"Ǹtə̀ŋ wà yàŋà ùlɔ̀dnyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_maintenance","key":"dict.bank_erreur_maintenance","text":"Bə̀tə̀ kɔ̀m ìsɛ́ ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_pin_partager","key":"dict.bank_securite_pin_partager","text":"Tə̀ ù kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_pin_communiquer","key":"dict.bank_securite_pin_communiquer","text":"Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_telephone","key":"dict.bank_securite_code_telephone","text":"Tə̀ ù və́ nɔ́mbà yɔ̂ yà ǹsɔ́l á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_banque_demande","key":"dict.bank_securite_banque_demande","text":"Bâŋ yɔ̂ íbə́gə̀ sílà wɔ̌ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_arnaques","key":"dict.bank_securite_arnaques","text":"Tɔ̀gá ǹjɔ̀ŋ èè bə̀fúfùb.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_faux_messages","key":"dict.bank_securite_faux_messages","text":"Tɔ̀gá ǹjɔ̀ŋ èè mìfòè mə́ pûpùd.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_numero_frauduleux","key":"dict.bank_securite_numero_frauduleux","text":"Bə́kàtnyà nâ nwàmɔ̀ ńì ú nè wà ǹwú.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_activite_suspecte","key":"dict.bank_securite_activite_suspecte","text":"Bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_connexion_inhabituelle","key":"dict.bank_securite_connexion_inhabituelle","text":"Bə́yɛ́nyà ŋkwǎl ḿfə́ úbə́gə̀ mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_pas_origine","key":"dict.bank_securite_pas_origine","text":"Ŋgə́ ù bə́gə̀ bô ísɛ́ ńì, lɔ́gə̀ bâŋ yɔ̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_liens","key":"dict.bank_securite_liens","text":"Tə̀ ù nàm mə̀zə̀n ù bə́gə̀ yə́m.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_verifier_nom","key":"dict.bank_securite_verifier_nom","text":"Cázgá ngə́d ísə̂ dwé lə̀ mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_verifier_montant","key":"dict.bank_securite_verifier_montant","text":"Cázgá àbùm mwàní ósúsúâ nâ ù jə́blə̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_verifier_informations","key":"dict.bank_securite_verifier_informations","text":"Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_irreversible","key":"dict.bank_securite_irreversible","text":"Ìsɛ́ ńì íbə́gə̀ dzàm búlàn á mbús.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_confirme_non_annulable","key":"dict.bank_securite_confirme_non_annulable","text":"Nlóm mwàní ùjə́blə́bàn úbə́gə̀ dzàm kàbàn.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_session_fermee","key":"dict.bank_securite_session_fermee","text":"Ású ùkálá wô, bə́díbnyà ǹtə̀ŋ wô wà ísɛ́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_sms_envoye","key":"dict.bank_securite_code_sms_envoye","text":"Bə́lómnyà wɔ̌ nɔ́mbà yà ǹjə́blə́ á SMS.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_sms_saisir","key":"dict.bank_securite_code_sms_saisir","text":"Tílgá nɔ́mbà ù nɔ́ŋ á SMS.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_pin_valider","key":"dict.bank_securite_pin_valider","text":"Tílgá nɔ́mbà yɔ̂ yà PIN ású ǹjə́blə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_secret_saisir","key":"dict.bank_securite_code_secret_saisir","text":"Tílgá nɔ́mbà yɔ̂ yà ǹsɔ́l.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_valable","key":"dict.bank_securite_code_valable","text":"Nɔ́mbà ńì í tə̀ sɛ́ ǹtə̀ŋ mɔ́n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_code_expire","key":"dict.bank_securite_code_expire","text":"Ǹtə̀ŋ wà nɔ́mbà ńì ùmànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_ajoute","key":"dict.bank_beneficiaire_ajoute","text":"Bə́bə̀gnyà mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_supprime","key":"dict.bank_beneficiaire_supprime","text":"Bə́vânyà mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_introuvable","key":"dict.bank_beneficiaire_introuvable","text":"Bə̀bə́gə̀ yə́n mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_injoignable","key":"dict.bank_beneficiaire_injoignable","text":"Bə̀bə́gə̀ dzàm lɔ́g mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_a_recu","key":"dict.bank_beneficiaire_a_recu","text":"Mòd àtə́ nɔŋ ànɔ́ŋnyà mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_recevra_minutes","key":"dict.bank_beneficiaire_recevra_minutes","text":"Mòd àtə́ nɔŋ àyá nɔŋ mwàní á ǹtə̀ŋ mɔ́n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_nouveau","key":"dict.bank_beneficiaire_nouveau","text":"Mòd àtə́ nɔŋ ḿfə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_deja_enregistre","key":"dict.bank_beneficiaire_deja_enregistre","text":"Mòd àtə́ nɔŋ nû àtílnyà ábə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_confirmer_numero","key":"dict.bank_beneficiaire_confirmer_numero","text":"Jə́blə́gá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_numero_incorrect","key":"dict.bank_beneficiaire_numero_incorrect","text":"Nwàmɔ̀ lə̀ mòd àtə́ nɔŋ àbə́gə̀ bə́bɛ́lə́ té.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_nom_a_recu.partie2","key":"dict.bank_beneficiaire_nom_a_recu.partie2","text":"ànɔ́ŋnyà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_nom_a_recu.partie3","key":"dict.bank_beneficiaire_nom_a_recu.partie3","text":"mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_recevra_montant.partie1","key":"dict.bank_beneficiaire_recevra_montant.partie1","text":"Mòd àtə́ nɔŋ àyá nɔŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_beneficiaire_envoyer_a.partie1","key":"dict.bank_beneficiaire_envoyer_a.partie1","text":"Ù yá lóm","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_transfert_question","key":"dict.bank_confirmation_transfert_question","text":"Yə̀ ù yì jə́blə́ nlóm mwàní ńì ?","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_continuer","key":"dict.bank_confirmation_continuer","text":"Yə̀ ù yì kə́ ósú ?","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_annuler","key":"dict.bank_confirmation_annuler","text":"Yə̀ ù yì kàb bə́bɛ́lə́ ?","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_operation","key":"dict.bank_confirmation_operation","text":"Yə̀ ù jə́blə́ ísɛ́ ńì ?","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_merci_confiance","key":"dict.bank_confirmation_merci_confiance","text":"Àkíbá ású ǹjə́blə́ wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_merci_service","key":"dict.bank_confirmation_merci_service","text":"Àkíbá nâ ù sɛ́ èè ìsɛ́ yə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_chargement","key":"dict.bank_confirmation_chargement","text":"Bə̀tə̀ lɔ̀d ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_traitement","key":"dict.bank_confirmation_traitement","text":"Bə̀tə̀ kɔ̀m ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_recu_disponible","key":"dict.bank_confirmation_recu_disponible","text":"Kálàdà wô wà ǹyáà ú nè.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_recu_sms","key":"dict.bank_confirmation_recu_sms","text":"Bə́lómnyà kálàdà wô wà ǹyáà á SMS.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_conserver_recu","key":"dict.bank_confirmation_conserver_recu","text":"Bàlgá kálàdà wô wà ǹyáà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_noter_reference","key":"dict.bank_confirmation_noter_reference","text":"Tílgá nɔ́mbà yà nlóm mwàní wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_date.partie1","key":"dict.bank_confirmation_date.partie1","text":"Mɔ́s wà nlóm mwàní :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_effectue_le.partie1","key":"dict.bank_confirmation_effectue_le.partie1","text":"Nlóm mwàní wàyá bòbàn mɔ́s","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_montant_recu.partie1","key":"dict.bank_confirmation_montant_recu.partie1","text":"Àbùm mwàní ńnɔ́ŋí :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_confirmation_montant_envoye.partie1","key":"dict.bank_confirmation_montant_envoye.partie1","text":"Àbùm mwàní úlómí :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_session_expiree_reconnecter","key":"dict.bank_session_expiree_reconnecter","text":"Ǹtə̀ŋ wô wà ísɛ́ ùmànyà. Ù búlàn nyíì á kɔ̂nt.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_session_reconnecter","key":"dict.bank_session_reconnecter","text":"Ù búlàn nyíì á kɔ̂nt.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_session_deconnecte","key":"dict.bank_session_deconnecte","text":"Ù kùìnyà á kɔ̂nt.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_session_deconnexion_reussie","key":"dict.bank_session_deconnexion_reussie","text":"Ù kùìnyà á kɔ̂nt mbə̀ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_session_bienvenue_espace","key":"dict.bank_session_bienvenue_espace","text":"Mə̀kónî á vôm wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_message_nouveau","key":"dict.bank_message_nouveau","text":"Fòè ḿfə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_message_vous_avez","key":"dict.bank_message_vous_avez","text":"Ù bə́lə́ fòè ḿfə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_message_maintenance_prevue","key":"dict.bank_message_maintenance_prevue","text":"Bə̀yá kɔ̀m ìsɛ́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_message_maintenance_le.partie1","key":"dict.bank_message_maintenance_le.partie1","text":"Bə̀yá kɔ̀m ìsɛ́ mɔ́s","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_message_mise_a_jour","key":"dict.bank_message_mise_a_jour","text":"Ìkɔ̀m ḿfə́ í nè.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_intitule_attention","key":"dict.bank_intitule_attention","text":"Tɔ̀gá ǹjɔ̀ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_intitule_important","key":"dict.bank_intitule_important","text":"Ìpúmgí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_intitule_information","key":"dict.bank_intitule_information","text":"Fòè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_intitule_alerte","key":"dict.bank_intitule_alerte","text":"Kálâ!","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_intitule_rappel","key":"dict.bank_intitule_rappel","text":"Ìbùlàn ǹkàt","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_compte_sera_debite.partie2","key":"dict.bank_compte_sera_debite.partie2","text":"wàyá kùì á kɔ̂nt wô.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_erreur_service_mobile_money","key":"dict.bank_erreur_service_mobile_money","text":"Ìsɛ́ yà Mobile Money íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.bank_securite_pin_telephone","key":"dict.bank_securite_pin_telephone","text":"Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"nom.amina_ngo_bell","key":"nom.Amina Ngo Bell","text":"Amina Ngo Bell","language_id":"eto","origin":"noms"}
+{"id":"nom.jean_paul_mbarga","key":"nom.Jean-Paul Mbarga","text":"Jean-Paul Mbarga","language_id":"eto","origin":"noms"}
+{"id":"nom.amina","key":"nom.Amina","text":"Amina","language_id":"eto","origin":"noms"}
+{"id":"nom.safinum_pay","key":"nom.Safinum Pay","text":"Safinum Pay","language_id":"eto","origin":"noms"}
+{"id":"nom.alpha_pay","key":"nom.Alpha Pay","text":"Alpha Pay","language_id":"eto","origin":"noms"}
 {"id":"tpl.solde_votre_montant.partie1","key":"tpl.solde_votre_montant.partie1","text":"Mwàní wɔ̂ àlígì ànə̀","language_id":"eto","origin":"templates"}
 {"id":"tpl.solde_insuffisant","key":"tpl.solde_insuffisant","text":"Mwàní àlígì àtə̀ bɔ́n","language_id":"eto","origin":"templates"}
 {"id":"tpl.frais_cout_total.partie1","key":"tpl.frais_cout_total.partie1","text":"Mwàní wɔ́sə̂ :","language_id":"eto","origin":"templates"}
 {"id":"tpl.frais_aucun","key":"tpl.frais_aucun","text":"Tə̀ yáà táŋ","language_id":"eto","origin":"templates"}
 {"id":"tpl.transfert_montant.partie1","key":"tpl.transfert_montant.partie1","text":"Àbùm mwàní yà lóm :","language_id":"eto","origin":"templates"}
 {"id":"tpl.transfert_vers.partie1","key":"tpl.transfert_vers.partie1","text":"Nlóm mwàní wà","language_id":"eto","origin":"templates"}
-{"id":"tpl.transfert_vers.partie2","key":"tpl.transfert_vers.partie2","text":"ábə́","language_id":"eto","origin":"templates"}
 {"id":"tpl.transfert_envoyer_a.partie1","key":"tpl.transfert_envoyer_a.partie1","text":"Lóm","language_id":"eto","origin":"templates"}
 {"id":"tpl.transfert_numero_beneficiaire.partie1","key":"tpl.transfert_numero_beneficiaire.partie1","text":"Nɔ́mbà yà mòd àtə́ nɔŋ mwàní :","language_id":"eto","origin":"templates"}
 {"id":"tpl.erreur_echoue","key":"tpl.erreur_echoue","text":"Nlóm mwàní ùŋgá cɔ́b","language_id":"eto","origin":"templates"}
@@ -148,37 +315,3 @@
 {"id":"intro.line.2","key":"intro.line.2","text":"Nyì’ì mə́ ású yɛ́n bìsɛ́ byâm. Tìndgá mə́ ŋgə́ mə̀ tə̀ ù kwàm : mə̀ bə́gə̀ bə̀ ɔ̀lùn.","language_id":"eto","origin":"guide"}
 {"id":"intro.about","key":"intro.about","text":"Fùlàgì ní à tə̀ yɛ̀ŋ á yɔ́b, à nə̀ dzé ?","language_id":"eto","origin":"guide"}
 {"id":"intro.ok","key":"intro.ok","text":"Mə̀wógí !","language_id":"eto","origin":"guide"}
-{"id":"gloss.fees.text","key":"gloss.fees.text","text":"Mwàní ísɛ́ y’à nɔŋ ású bòbàn ísɛ́. À tə̀ bàmàn á mwàní w’à lóm. Ŋgə́ mwàní w’à lóm à nɛ́n, táŋ y’à nɛ́n fə́, vè à nə̀ àbùm ìtún yà ǹnɛ́n.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.balance_after.text","key":"gloss.balance_after.text","text":"Mwàní à yá lígì á kɔ̂nt yɔ̂ á mbús b’à nɔŋ mwàní w’à lóm yà táŋ.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.balance.text","key":"gloss.balance.text","text":"Mwàní ú nə̀ á kɔ̂nt yɔ̂ ɛ́yə́ŋ ní. Ù bə́gə̀ dzàm lóm mwàní à dàŋ mwàní nû, ŋgə́ ù bàmàn táŋ.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.beneficiary.text","key":"gloss.beneficiary.text","text":"Mòd àtə́ nɔŋ mwàní. Cázgá dwé lɔ́ yà nwàmɔ̀ wɔ́ : ŋgə́ mwàní àkə̀ ábə́ mòd ḿfə́, ànə̀ àyà nâ ù búlnì nɔŋ ɲə́.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.new_beneficiary.term","key":"gloss.new_beneficiary.term","text":"Mòd àtə́ nɔŋ ḿfə́","language_id":"eto","origin":"glossary"}
-{"id":"gloss.new_beneficiary.text","key":"gloss.new_beneficiary.text","text":"Ù bə́gə̀ kə́ lóm mwàní á nwàmɔ̀ nû á kɔ̂nt yɔ̂ mɔ́s mɔ́s. Màdúgà mə̀tə̀ bɔ̀ nálá : yə̀mgá mbə̀ŋ nâ ù yə́m mòd nû.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.reference.text","key":"gloss.reference.text","text":"Nɔ́mbà wùá àtə̀ lə́d ísɛ́ yɔ̂. Bàglà ɲə́ : àtə̀ lə́d nâ ù lómnyà mwàní ŋgə́ àtə̀ sál ású bɛ̀bə̀.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.amount.text","key":"gloss.amount.text","text":"Mwàní mòd àtə́ nɔŋ àyá nɔŋ, tə̀ táŋ.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.total_debit.text","key":"gloss.total_debit.text","text":"Mwàní wɔ́sə̂ ùkùì á kɔ̂nt yɔ̂ : àbùm mwàní ú nlóm yà táŋ.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.debit.term","key":"gloss.debit.term","text":"Mwàní ùkùì","language_id":"eto","origin":"glossary"}
-{"id":"gloss.debit.text","key":"gloss.debit.text","text":"Mwàní ùkùì á kɔ̂nt yɔ̂. Ìfə́ yà ǹnɔ́ŋí : mwàní ùnyíì á kɔ̂nt yɔ̂.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.reason.text","key":"gloss.reason.text","text":"Ìbùg ìtún ású kàt àsú ú mwàní (ndá, ǹdá bɔ̀d, kálàdà…). Yátə̀ sál ású yɛ́n ísɛ́ ńì á mbús.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.operation_type.text","key":"gloss.operation_type.text","text":"Ǹzə̌n yà lóm mwàní : á kɔ̂nt yà ísɛ́ ńì, á Mobile Money, ŋgə́ á báŋk ìfə́. Táŋ àtə̀ cɛ́nî á mbús ǹtɔ́b wɔ̂.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.mobile_money.term","key":"gloss.mobile_money.term","text":"Mobile Money","language_id":"eto","origin":"glossary"}
-{"id":"gloss.mobile_money.text","key":"gloss.mobile_money.text","text":"Kɔ̂nt yà mwàní ìbàmàn á nwàmɔ̀ ŋkwǎl, ísɛ́ yà ŋkwǎl yátə̀ sál ɲə́. Mwàní àtə̀ kə̀ á tɛ̀lɛ̀fɔ̂n yà mòd àtə́ nɔŋ.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.other_bank.text","key":"gloss.other_bank.text","text":"Nlóm mwàní á kɔ̂nt yà báŋk ìfə́. Àtə̀ bə̀ ǹtáŋ á yɔ́b yà ǹtə̀ŋ àyà.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.account_number.text","key":"gloss.account_number.text","text":"Nɔ́mbà àtə̀ lə́d kɔ̂nt yɔ̂. Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm wɔ̀ mwàní.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.transfer.term","key":"gloss.transfer.term","text":"Nlóm mwàní","language_id":"eto","origin":"glossary"}
-{"id":"gloss.transfer.text","key":"gloss.transfer.text","text":"Lóm mwàní á kɔ̂nt yɔ̂ á kə̀ á kɔ̂nt yà mòd ḿfə́. Ŋgə́ ù jə́blə́nyà, ù bə́gə̀ dzàm kàb ɲə́ fə́.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.instant.term","key":"gloss.instant.term","text":"Àvəl àvəl","language_id":"eto","origin":"glossary"}
-{"id":"gloss.instant.text","key":"gloss.instant.text","text":"Mwàní àtə̀ kə̀ ábə́ mòd àtə́ nɔŋ á ǹtə̀ŋ mɔ́n, tə̀ yàŋà mə̀lú.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.summary.text","key":"gloss.summary.text","text":"Ìbɛ̀bə̀ ísɛ́ ósúsúâ nâ ù lóm. Mwàní àbə́gə̀ kə̀ : ànə̀ ǹtə̀ŋ àsú kɔ̀m dzɔ̌m díŋgá cɔ́b.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.receipt.term","key":"gloss.receipt.term","text":"Kálàdà wà ǹyáà","language_id":"eto","origin":"glossary"}
-{"id":"gloss.receipt.text","key":"gloss.receipt.text","text":"Kálàdà àtə̀ lə́d nâ ísɛ́ ìbòbànyà. Bàglà ɲə́, yà nɔ́mbà yà ísɛ́.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.status.text","key":"gloss.status.text","text":"M̀bə̀b í ísɛ́ : ìbòbànyà mbə̀ŋ, ìtə̀ yàŋà, ŋgə́ ìŋgá cɔ́b.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.secret_code.term","key":"gloss.secret_code.term","text":"Nɔ́mbà yà ǹsɔ́l","language_id":"eto","origin":"glossary"}
-{"id":"gloss.secret_code.text","key":"gloss.secret_code.text","text":"Nɔ́mbà wɔ̂ àtə̀ lə́d nâ à nə̀ wɔ̀. Tə̀ ù kàt mòd ḿfə́ mɔ́s mɔ́s, tɔ́ mòd àkàt nâ bâŋ àlóm ɲə́.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.security_alert.text","key":"gloss.security_alert.text","text":"Fɔ̀ ńlɔ́ŋí àtə̀ lə́d dzɔ̌m díbə́gə̀ mbə̀ŋ. Láŋgá ɲə́ wɔ́sə̂, ù cázgá dzɔ̌m àtə̀ yì ósúsúâ nâ ù kə̀ ósú.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.secure_connection.text","key":"gloss.secure_connection.text","text":"Màm mə̀tə̀ kə̀ á zàŋ tɛ̀lɛ̀fɔ̂n yɔ̂ yà ísɛ́ mánə̀ ǹsɔ́l. Bì bə́gə̀ lə́d nâ mòd àtə́ nɔŋ ànə̀ mbə̀ŋ : cázgá ɲə́ ngə́d ísə̂.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.merchant_payment.text","key":"gloss.merchant_payment.text","text":"Èyágná ábə́ mòd àtə̀ kùz bìyɔ́m á kɔ̂nt yɔ̂.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.free.text","key":"gloss.free.text","text":"Bə̀bə́gə̀ nɔŋ táŋ : mwàní wɔ́sə̂ ùkùì ànə̀ fàlà àbùm mwàní ú nlóm.","language_id":"eto","origin":"glossary"}
-{"id":"gloss.ui.button","key":"gloss.ui.button","text":"Lédég","language_id":"eto","origin":"glossary"}
-{"id":"gloss.ui.listen","key":"gloss.ui.listen","text":"Vòglò","language_id":"eto","origin":"glossary"}
-{"id":"gloss.ui.hint","key":"gloss.ui.hint","text":"Fɛ́g : tɔ́’ɔ̀ éfia jìá é nə̀ á màn (táŋ, mwàní, mòd àtə́ nɔŋ…) ású yɛ́n lédég wɔ́.","language_id":"eto","origin":"glossary"}

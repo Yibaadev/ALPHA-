@@ -12,3 +12,6 @@ node_modules/
 Thumbs.db
 
 /data/dochack/
+
+# Paquet de soumission (npm run package)
+/dist/

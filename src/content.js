@@ -41,6 +41,10 @@
   let baseBodyZoom = 1;
   let stats = { ok: 0, total: 0 };
   let lastCost = 0; // durée du dernier scan, en ms
+  // Génération des traductions : change avec la langue choisie, la langue de la page ou l'arrivée
+  // d'une traduction hors ligne. Un texte déjà traité dans la génération courante n'est pas recalculé.
+  let generation = 0;
+  let generationKey = "";
   const translationController = NS.translationController.create({
     translate: T,
     getCriticalData: () => criticalData,
@@ -64,14 +68,6 @@
     hostId: HOST_ID,
     textState,
     attrState,
-    getPanel: () => panel,
-    getMode: () => mode,
-    getPageLanguage: () => pageLanguage,
-    voice,
-  });
-  const explainer = NS.explainController.create({
-    hostId: HOST_ID,
-    textState,
     getPanel: () => panel,
     getMode: () => mode,
     getPageLanguage: () => pageLanguage,
@@ -126,7 +122,13 @@
     if (st.written === undefined || current !== st.written) {
       st.orig = current; // texte d'origine (nouveau, ou modifié par le site)
       st.written = undefined;
+    } else if (st.gen === generation) {
+      // Texte inchangé depuis le dernier passage, même langue : rien à recalculer.
+      if (st.ok) stats.ok++;
+      return st.written;
     }
+    st.gen = generation;
+    st.ok = false;
     const original = st.orig;
 
     if (mode === "original") {
@@ -135,7 +137,10 @@
     if (isUserData(original)) return original; // donnée saisie par l'utilisateur
 
     const decision = translationController.translateText(original, mode, pageLanguage);
-    if (decision.translated) stats.ok++;
+    if (decision.translated) {
+      stats.ok++;
+      st.ok = true;
+    }
     return decision.text;
   }
 
@@ -213,6 +218,10 @@
       return state && state.orig !== undefined ? state.orig : node.nodeValue;
     });
     pageLanguage = T.detectPageLanguage(document.documentElement.getAttribute("lang"), sourceSamples);
+    if (mode + "|" + pageLanguage !== generationKey) {
+      generationKey = mode + "|" + pageLanguage;
+      generation++;
+    }
     nodes.forEach(writeText);
     attrEls.forEach(writeAttrs);
 
@@ -288,27 +297,24 @@
     if (!document.body) return;
     // Dans un cadre (iframe), on traduit aussi, sauf les cadres minuscules (publicités, pixels).
     if (!IS_TOP && (window.innerWidth < 120 || window.innerHeight < 40)) return;
-    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse, guideResponse, glossaryResponse] = await Promise.all([
+    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse, guideResponse] = await Promise.all([
       fetch(chrome.runtime.getURL("data/dictionary.json")),
       fetch(chrome.runtime.getURL("data/critical_terms.json")),
       fetch(chrome.runtime.getURL("data/templates.json")),
-      fetch(chrome.runtime.getURL("data/lexicon.json")),
+      fetch(chrome.runtime.getURL("data/lexicon-valide.json")), // entrées validées seulement (tools/lexicon-valide.js)
       fetch(chrome.runtime.getURL("data/rules.json")),
       IS_TOP ? fetch(chrome.runtime.getURL("data/guide.json")).catch(() => null) : Promise.resolve(null),
-      IS_TOP ? fetch(chrome.runtime.getURL("data/glossary.json")).catch(() => null) : Promise.resolve(null),
     ]);
     if (!dictionaryResponse.ok) throw new Error("Dictionnaire local indisponible.");
-    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules, loadedGuide, loadedGlossary] = await Promise.all([
+    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules, loadedGuide] = await Promise.all([
       dictionaryResponse.json(),
       criticalResponse.ok ? criticalResponse.json() : Promise.resolve(null),
       templatesResponse.ok ? templatesResponse.json() : Promise.resolve([]),
       lexiconResponse.ok ? lexiconResponse.json() : Promise.resolve([]),
       rulesResponse.ok ? rulesResponse.json() : Promise.resolve([]),
       guideResponse && guideResponse.ok ? guideResponse.json() : Promise.resolve(null),
-      glossaryResponse && glossaryResponse.ok ? glossaryResponse.json() : Promise.resolve(null),
     ]);
     if (NS.guide) NS.guide.init(loadedGuide);
-    if (NS.explain) NS.explain.init(loadedGlossary);
     dict = loadedDictionary;
     criticalData = loadedCritical;
     T.init(dict, {
@@ -339,9 +345,6 @@
         onZoomChange: setZoom,
         onGuide: guide.refresh,
         onGuideSpeak: guide.speak,
-        onExplain: explainer.show,
-        onExplainSpeak: explainer.speak,
-        onExplainClose: explainer.close,
       });
     }
     try {
@@ -367,24 +370,19 @@
     document.addEventListener("change", onTyped, true);
 
     if (NS.mt) {
-      NS.mt.onResult(() => scheduleApply(40));
+      NS.mt.onResult(() => {
+        generation++; // une traduction hors ligne vient d'arriver : on revoit les textes en attente
+        scheduleApply(40);
+      });
       NS.mt.onStatus(showMachineStatus);
     }
 
-    let waiting = false;
-    observer = new MutationObserver(() => {
-      if (lastCost < 12) return apply();
-      if (waiting) return;
-      waiting = true;
-      setTimeout(() => {
-        waiting = false;
-        apply();
-      }, 150);
-    });
+    // Changements de la page regroupés ; rien en arrière-plan (src/page-observer.js).
+    observer = NS.pageObserver.create(apply, () => lastCost);
     apply();
     showMachineStatus(NS.mt ? NS.mt.status() : "unsupported");
     guide.start();
-    if (panel) { explainer.start(); if (etonAudio) etonAudio.load(); }
+    if (panel && etonAudio) etonAudio.load();
     languageObserver = new MutationObserver(() => apply());
     languageObserver.observe(document.documentElement, {
       attributes: true,

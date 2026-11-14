@@ -71,10 +71,37 @@ function oggSeconds(buffer) {
 // base : dossier data/audio/eton (ou un dossier de test).
 // currentTexts (facultatif) : textes éton actuels (docs/audio/eton-tts.jsonl) ; un clip dont le texte
 // n'y figure plus est périmé (texte corrigé depuis) et n'est pas utilisé.
+/* Chaque passage sur Colab livre son propre index (omnivoice-index-AAAAMMJJ-HHMM.json) et sa propre
+   feuille de revue : on ne renvoie que les nouveaux textes sans jamais écraser les lots précédents.
+   Ici on les fusionne, du plus ancien au plus récent (le plus récent l'emporte pour un même clip). */
+function batchFiles(dir, pattern) {
+  return (fs.existsSync(dir) ? fs.readdirSync(dir) : []).filter((f) => pattern.test(f)).sort()
+    .map((f) => path.join(dir, f));
+}
+function readOmniIndexes(base) {
+  const dir = path.join(base, "omnivoice");
+  const byId = new Map();
+  let modele = null;
+  for (const file of batchFiles(dir, /^omnivoice-index.*\.json$/)) {
+    const data = readJson(file) || {};
+    modele = data.modele || modele;
+    for (const clip of data.clips || []) byId.set(clip.id, clip);
+  }
+  return { modele, clips: [...byId.values()] };
+}
+function readReviews(base) {
+  const review = new Map();
+  for (const file of batchFiles(path.join(base, "omnivoice"), /^revue_locuteur.*\.csv$/)) {
+    for (const [id, row] of parseCsv(fs.readFileSync(file, "utf8"))) {
+      if (row.correct || !review.has(id)) review.set(id, row); // une réponse donnée n'est pas effacée par une ligne vide
+    }
+  }
+  return review;
+}
+
 function buildIndex(base, includeUnreviewed, currentTexts) {
-  const omni = readJson(path.join(base, "omnivoice", "omnivoice-index.json")) || { clips: [] };
-  const reviewFile = path.join(base, "omnivoice", "revue_locuteur.csv");
-  const review = fs.existsSync(reviewFile) ? parseCsv(fs.readFileSync(reviewFile, "utf8")) : new Map();
+  const omni = readOmniIndexes(base);
+  const review = readReviews(base);
   const speakerDir = path.join(base, "locuteur");
   const speakerFiles = new Map(
     (fs.existsSync(speakerDir) ? fs.readdirSync(speakerDir) : [])
@@ -123,6 +150,17 @@ if (require.main === module) {
     : null;
   if (!currentTexts) console.log("docs/audio/eton-tts.jsonl absent : lancez d'abord npm run audio:export (clips périmés non détectés).");
   const { index, counts, total } = buildIndex(base, includeUnreviewed, currentTexts);
+  // Une seule voix de synthèse pour tous les clips : sinon une phrase change de voix en cours de lecture.
+  const voices = new Map();
+  for (const clip of readOmniIndexes(base).clips) {
+    if (!voices.has(clip.voix)) voices.set(clip.voix, []);
+    voices.get(clip.voix).push(clip.id);
+  }
+  if (voices.size > 1) {
+    const sorted = [...voices].sort((a, b) => b[1].length - a[1].length);
+    console.log("Attention : plusieurs voix mélangées. Voix principale : " + sorted[0][0] + ". À refaire avec elle :");
+    for (const [voice, ids] of sorted.slice(1)) console.log("  " + voice + " : " + ids.join(", "));
+  }
   fs.writeFileSync(path.join(base, "index.json"), JSON.stringify(index, null, 2) + "\n");
   console.log(
     index.clips.length + " clip(s) dans data/audio/eton/index.json — locuteur : " + counts.locuteur +
@@ -134,4 +172,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { parseCsv, buildIndex, normText, oggSeconds };
+module.exports = { parseCsv, buildIndex, normText, oggSeconds, readOmniIndexes, readReviews };

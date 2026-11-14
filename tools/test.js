@@ -146,8 +146,14 @@ test("un marqueur manquant rejette la traduction structurée", () => {
 const dictionary = require(path.join(root, "data", "dictionary.json"));
 T.init(dictionary);
 test("les 60 phrases validées gardent exactement leur traduction", () => {
-  const entries = dictionary.entries.filter((entry) => entry.local && entry.local.trim());
+  const entries = dictionary.entries.filter((entry) => entry.local && entry.local.trim() && entry.statut === "valide");
   assert.ok(entries.length >= 57);
+  // Brouillons (éton proposé, pas encore validé par le locuteur) : jamais affichés.
+  for (const draft of dictionary.entries.filter((entry) => entry.local && entry.statut !== "valide")) {
+    const original = draft.fr.replace(/\[M\d+\]/g, "25 000 FCFA");
+    const result = T.translate(original, { target: "eton" });
+    assert.notStrictEqual(result.eton, P.restore(draft.local, (draft.fr.match(/\[M\d+\]/g) || []).map(() => "25 000 FCFA")), draft.id + " : brouillon affiché");
+  }
   for (const entry of entries) {
     const markers = entry.fr.match(/\[M\d+\]/g) || [];
     const values = markers.map(() => "25 000 FCFA");

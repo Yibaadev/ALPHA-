@@ -20,10 +20,11 @@ const checks = [
   ["contrôleur de traduction", "tools/test-translation-controller.js"],
   ["lecture vocale", "tools/test-voice.js"],
   ["guide de l'écran", "tools/test-guide.js"],
-  ["expliquer (glossaire)", "tools/test-explain.js"],
   ["guide en éton (traduction)", "tools/test-guide-eton.js"],
   ["voix éton préenregistrées", "tools/test-eton-audio.js"],
   ["couverture vocale éton", "tools/test-eton-coverage.js"],
+  ["banque de messages (contenu inédit)", "tools/test-bank-eton.js"],
+  ["paquet de soumission (moins de 10 Mo)", "tools/test-package.js"],
   ["dictionnaire", "tools/check.js"],
 ];
 

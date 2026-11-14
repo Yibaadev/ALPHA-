@@ -13,6 +13,9 @@
   let ignored = new Set();
   let cascade = { ready: false, templates: [], lexicon: [], rules: [], criticalTerms: null };
   let debugTraceEnabled = false;
+  // Le point (ou « ! ») final ne change pas le sens : un message peut arriver avec ou sans.
+  // Le « ? » est gardé : il fait d'une phrase une question.
+  const withoutFinalDot = (key) => key.replace(/\s*[.!]+$/, "").trimEnd();
 
   function init(dict, options) {
     const meta = dict.meta || {};
@@ -24,6 +27,8 @@
     index = new Map();
     for (const e of dict.entries || []) {
       if (e.fr) index.set(P.normalize(e.fr), e);
+      // Même texte sans point final (« Paiement refusé » / « Paiement refusé. »).
+      if (e.fr && !index.has(withoutFinalDot(P.normalize(e.fr)))) index.set(withoutFinalDot(P.normalize(e.fr)), e);
       // en_variants : autres formulations anglaises du même texte (ex. libellés d'un site).
       for (const en of [e.en, ...(Array.isArray(e.en_variants) ? e.en_variants : [])]) {
         if (!en || !en.trim()) continue;
@@ -231,7 +236,7 @@
       return { kind: "same", language: sourceLanguage || pageLanguage };
     }
 
-    const entry = index.get(key);
+    const entry = index.get(key) || index.get(withoutFinalDot(key));
     if (!entry) return { kind: "unknown" };
 
     const target = entry[lang];
@@ -250,10 +255,43 @@
   // (« envoyés à Paul Atangana ») pour qu'un gabarit puisse s'appliquer.
   function translate(original, context) {
     const first = translateCore(original, context);
-    if (first.eton !== null || first.marqueurs_ok === false || !namesRegexFor(String(original == null ? "" : original))) return first;
-    const second = withNames(String(original), () => translateCore(original, context));
-    return second.eton !== null ? second : first;
+    if (first.eton !== null || first.marqueurs_ok === false) return first;
+    if (namesRegexFor(String(original == null ? "" : original))) {
+      const second = withNames(String(original), () => translateCore(original, context));
+      if (second.eton !== null) return second;
+    }
+    return translateByParts(String(original == null ? "" : original), context) || first;
   }
+
+  /* Message composé (« Nouveau message : votre carte a été bloquée. », « Erreur. Réessayez. ») :
+     traduit seulement si CHAQUE partie a sa propre traduction validée ; sinon rien n'est assemblé.
+     Une partie qui n'est qu'une valeur (montant, date…) est recopiée telle quelle. */
+  const PART_SEPARATOR = /(\s*:\s+|(?<=[.!?])\s+)/u;
+  function translateByParts(original, context) {
+    const pieces = original.split(PART_SEPARATOR);
+    if (pieces.length < 3) return null;
+    let output = "";
+    let weakest = "valide";
+    for (let i = 0; i < pieces.length; i++) {
+      const piece = pieces[i];
+      if (i % 2 === 1) { output += piece; continue; } // séparateur d'origine
+      if (!piece.trim()) return null;
+      if (!/\p{L}/u.test(P.protect(piece, regex).masked.replace(/\[M\d+\]/g, ""))) { output += piece; continue; }
+      const part = translate(piece, context);
+      if (part.eton === null) return null;
+      if (part.statut !== "valide") weakest = "probable";
+      // Avant « : », pas de ponctuation finale en double (« … mbə̀ŋ ! : 25 000 FCFA »).
+      output += /:/.test(pieces[i + 1] || "") ? part.eton.replace(/\s*[.!]+$/u, "") : part.eton;
+    }
+    // Contrôle final : mêmes valeurs protégées, dans le même ordre.
+    if (!COMMON_SAME(P.protect(original, regex).values, P.protect(output, regex).values)) return null;
+    trace("phrases", weakest, true);
+    return {
+      original, eton: output, statut: weakest, source: "phrases", score: 1, marqueurs_ok: true,
+      raisons: ["Message découpé en parties ; chaque partie a une traduction validée."],
+    };
+  }
+  const COMMON_SAME = (a, b) => a.length === b.length && a.every((value, i) => value === b[i]);
 
   function translateCore(original, context) {
     original = String(original == null ? "" : original);

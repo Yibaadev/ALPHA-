@@ -40,7 +40,8 @@
       source += "(\\[M\\d+\\])";
       cursor = marker.index + marker[0].length;
     }
-    source += literalPattern(pattern.slice(cursor)) + "$";
+    // Le point (ou « ! ») final est facultatif (« Solde insuffisant » = « Solde insuffisant. »).
+    source += literalPattern(pattern.slice(cursor).replace(/\s*[.!]+\s*$/, "")) + "\\s*[.!]?$";
     return { regex: new RegExp(source, "iu"), slotNumbers };
   }
 

@@ -22,12 +22,8 @@
         status: (panel, message, state) => panel.setGuideStatus && panel.setGuideStatus(message, state),
         speaking: (panel, value) => panel.setGuideSpeaking && panel.setGuideSpeaking(value),
       },
-      explain: {
-        status: (panel, message, state) => panel.setExplainStatus && panel.setExplainStatus(message, state),
-        speaking: (panel, value) => panel.setExplainSpeaking && panel.setExplainSpeaking(value),
-      },
     };
-    let speaker = null; // lecteur en cours : "page" | "guide" | "explain" | null
+    let speaker = null; // lecteur en cours : "page" | "guide" | null
     let sequence = null; // suite de clips éton en cours
 
     function report(owner, message, state) {
@@ -153,7 +149,7 @@
       }
       const info = audio.describe();
       let message = "Lecture en éton";
-      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire" + (info.unreviewed ? ", pas encore vérifiée" : "") + ")";
+      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire)";
       message += ".";
       if (missing) message += " Les montants, les noms et les mots restés en français ne sont pas lus.";
       playClips(owner, items, message);
@@ -162,13 +158,13 @@
     function etonMessage(missing) {
       const info = eton().describe();
       let message = "Lecture en éton";
-      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire" + (info.unreviewed ? ", pas encore vérifiée" : "") + ")";
+      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire)";
       message += ".";
       if (missing) message += " " + missing;
       return message;
     }
 
-    /* En éton, le guide et les explications sont lus avec les clips éton de leurs phrases, et
+    /* En éton, le guide est lu avec les clips éton de leurs phrases, et
        jamais en français. Retourne true si le mode éton a pris la main (lu ou message affiché). */
     function speakEton(owner, texts) {
       if (getMode() !== "local") return false;
@@ -198,16 +194,7 @@
       speakText("guide", text, lang === "en" ? "en-US" : "fr-FR");
     }
 
-    // Lecture de l'explication d'un terme (action « Expliquer »).
-    function speakExplain(text, lang, etonTexts) {
-      if (speakEton("explain", etonTexts)) return;
-      speakText("explain", text, lang === "en" ? "en-US" : "fr-FR");
-    }
-    function stopExplain() {
-      if (speaker === "explain") stop();
-    }
-
-    return { speakElement, speakGuide, speakExplain, stopExplain, stop: () => stop() };
+    return { speakElement, speakGuide, stop: () => stop() };
   }
 
   NS.voice = { create };

@@ -1,0 +1,47 @@
+{
+  "modele": "k2-fsa/OmniVoice",
+  "langue": "eto",
+  "date": "2026-11-14",
+  "clips": [
+    {
+      "id": "nom.amina_ngo_bell",
+      "key": "nom.Amina Ngo Bell",
+      "text": "Amina Ngo Bell",
+      "file": "nom.amina_ngo_bell.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°1"
+    },
+    {
+      "id": "nom.jean_paul_mbarga",
+      "key": "nom.Jean-Paul Mbarga",
+      "text": "Jean-Paul Mbarga",
+      "file": "nom.jean_paul_mbarga.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°1"
+    },
+    {
+      "id": "nom.amina",
+      "key": "nom.Amina",
+      "text": "Amina",
+      "file": "nom.amina.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°1"
+    },
+    {
+      "id": "nom.safinum_pay",
+      "key": "nom.Safinum Pay",
+      "text": "Safinum Pay",
+      "file": "nom.safinum_pay.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°1"
+    },
+    {
+      "id": "nom.alpha_pay",
+      "key": "nom.Alpha Pay",
+      "text": "Alpha Pay",
+      "file": "nom.alpha_pay.ogg",
+      "source": "omnivoice",
+      "voix": "synthèse n°1"
+    }
+  ]
+}

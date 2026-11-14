@@ -1,4 +1,4 @@
-// Tests de la traduction éton du guide et du glossaire (tools/guide-eton.js, src/guide.js, src/explain.js) :
+// Tests de la traduction éton du guide (tools/guide-eton.js, src/guide.js) :
 // éléments {…} protégés, revue du locuteur, affichage éton seulement quand la traduction existe,
 // mention « à vérifier » tant que le locuteur n'a pas validé.
 // Lancer : node tools/test-guide-eton.js
@@ -14,10 +14,10 @@ const tool = require("./guide-eton.js");
 const root = path.join(__dirname, "..");
 const load = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const context = vm.createContext({ console });
-for (const file of ["src/guide.js", "src/explain.js"]) {
+for (const file of ["src/guide.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
-const { guide: G, explain: E } = context.ALPHA;
+const { guide: G } = context.ALPHA;
 
 let passed = 0;
 function test(name, fn) {
@@ -31,7 +31,6 @@ function test(name, fn) {
 }
 
 const guideData = load("data/guide.json");
-const glossaryData = load("data/glossary.json");
 const item = (kind, orig, shown) => ({ kind, orig, shown: shown || orig });
 const summary = {
   title: "",
@@ -40,11 +39,11 @@ const summary = {
 };
 
 test("la liste couvre le guide, la bulle et le glossaire, avec des identifiants uniques", () => {
-  const units = tool.units(guideData, glossaryData);
+  const units = tool.units(guideData);
   const ids = units.map((u) => u.id);
   assert.strictEqual(new Set(ids).size, ids.length);
-  assert.ok(ids.includes("screen.summary.how") && ids.includes("intro.title") && ids.includes("glossary.fees.text"));
-  assert.strictEqual(units.filter((u) => u.id.startsWith("glossary.") && u.id.endsWith(".text")).length, glossaryData.entries.length);
+  assert.ok(ids.includes("screen.summary.how") && ids.includes("intro.title"));
+  assert.ok(!ids.some((id) => id.startsWith("glossary.")), "plus de glossaire « Expliquer »");
 });
 
 test("les éléments {…} sont comparés quel que soit leur ordre", () => {
@@ -119,19 +118,6 @@ test("éton : conseil d'alerte en éton, ou conseil générique éton s'il n'est
   assert.strictEqual(alertOf("Solde insuffisant pour ce transfert."), "ETO lisez");
 });
 
-test("Expliquer en éton : explication traduite, mention « à vérifier »", () => {
-  const data = JSON.parse(JSON.stringify(glossaryData));
-  for (const e of data.entries) e.local = null;
-  data.entries.find((e) => e.id === "fees").local = { term: "Táŋ", text: "ETO frais", statut: "a_verifier" };
-  data.meta.ui.local = { title: "ETO explication" };
-  E.init(data);
-  const r = E.explain("frais", "local", "fr");
-  assert.strictEqual(r.items[0].term, "Táŋ");
-  assert.strictEqual(r.title, "ETO explication");
-  assert.ok(/en cours de vérification/.test(r.note));
-  assert.strictEqual(E.explain("frais", "fr", "fr").items[0].term, "Frais");
-});
-
 test("données livrées : éton passé par l'import (statut, éléments {…} intacts, sans [?])", () => {
   for (const s of guideData.screens) {
     if (!s.local) continue;
@@ -140,8 +126,7 @@ test("données livrées : éton passé par l'import (statut, éléments {…} in
       assert.strictEqual(tool.placeholders(s.local[part] || ""), tool.placeholders(s.fr[part] || ""), s.id + "." + part);
     }
   }
-  for (const e of glossaryData.entries) assert.ok(e.local === null || ["valide", "a_verifier"].includes(e.local.statut), e.id);
-  assert.ok(!(JSON.stringify(guideData) + JSON.stringify(glossaryData)).includes("[?]"), "marque [?] restée à l'écran");
+  assert.ok(!JSON.stringify(guideData).includes("[?]"), "marque [?] restée à l'écran");
 });
 
 
@@ -170,7 +155,6 @@ test("données livrées : plus aucune incohérence de style dans les textes vali
   const dictionary = load("data/dictionary.json");
   const texts = dictionary.entries.filter((e) => e.local && e.statut === "valide").map((e) => e.local);
   for (const s of guideData.screens) if (s.local && s.local.statut === "valide") texts.push(s.local.where, s.local.what, s.local.how, s.local.tip || "");
-  for (const e of glossaryData.entries) if (e.local && e.local.statut === "valide") texts.push(e.local.term, e.local.text);
   for (const text of texts) assert.strictEqual(harmonize(text).text, String(text).normalize("NFC"), text);
 });
 console.log(passed + " test(s) traduction éton du guide et style éton réussi(s).");

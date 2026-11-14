@@ -36,7 +36,7 @@ const rows = messages.map((original) => {
   const result = NS.translate.translate(original, { target: "eton" });
   assert.strictEqual(result.original, original, "le texte source doit rester intact");
   assert.ok(["valide", "probable", "automatique", "non_traduit"].includes(result.statut));
-  assert.ok(["exact", "template", "fuzzy", "segments", "regles", "aucune"].includes(result.source));
+  assert.ok(["exact", "template", "fuzzy", "segments", "regles", "phrases", "aucune"].includes(result.source));
   if (result.statut === "non_traduit") {
     assert.strictEqual(result.eton, null);
   } else {
@@ -54,15 +54,31 @@ const rows = messages.map((original) => {
   };
 });
 
-for (const trappedPair of [
-  ["Transfert effectué : 25 000 FCFA.", "Transfert échoué : 25 000 FCFA."],
-  ["Votre solde est suffisant.", "Votre solde est insuffisant."],
-]) {
-  const outputs = trappedPair.map((original) => NS.translate.translate(original, { target: "eton" }));
-  for (let i = 0; i < outputs.length; i++) {
-    assert.strictEqual(outputs[i].statut, "non_traduit", trappedPair[i]);
-    assert.strictEqual(outputs[i].eton, null, trappedPair[i]);
+// Paires piégées : jamais d'inversion. « Transfert effectué / échoué : [montant] » sont désormais
+// traduits partie par partie (chaque partie validée) : chacun garde SON statut et le montant.
+{
+  const done = NS.translate.translate("Transfert effectué : 25 000 FCFA.", { target: "eton" });
+  const failed = NS.translate.translate("Transfert échoué : 25 000 FCFA.", { target: "eton" });
+  const doneEton = dictionary.entries.find((e) => e.fr === "Transfert effectué").local.replace(/\s*[.!]+$/u, "");
+  const failedEton = templates.find((t) => t.fr_pattern === "Transfert échoué").eton;
+  assert.strictEqual(done.eton, doneEton + " : 25 000 FCFA.");
+  assert.strictEqual(failed.eton, failedEton + " : 25 000 FCFA.");
+  assert.ok(!done.eton.includes(failedEton) && !failed.eton.includes(doneEton), "inversion effectué / échoué");
+}
+{
+  // « insuffisant » est validé (banque de messages) : sa propre traduction, exacte.
+  // « suffisant » n'existe pas : jamais traduit, et surtout jamais pris pour « insuffisant ».
+  const insufficient = NS.translate.translate("Votre solde est insuffisant.", { target: "eton" });
+  const entry = dictionary.entries.find((e) => e.fr === "Votre solde est insuffisant.");
+  if (entry && entry.statut === "valide") {
+    assert.strictEqual(insufficient.source, "exact");
+    assert.strictEqual(insufficient.eton, entry.local);
+  } else {
+    assert.strictEqual(insufficient.statut, "non_traduit");
   }
+  const sufficient = NS.translate.translate("Votre solde est suffisant.", { target: "eton" });
+  assert.strictEqual(sufficient.statut, "non_traduit");
+  assert.strictEqual(sufficient.eton, null);
 }
 
 console.table(rows);

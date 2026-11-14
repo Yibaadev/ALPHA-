@@ -46,10 +46,6 @@ guide.alerts.forEach((a, i) => a.local && shown.push({ where: "conseil " + i, te
 for (const [k, v] of Object.entries(guide.ui.local || {})) shown.push({ where: "titre guide " + k, text: v });
 const intro = guide.intro.local;
 if (intro) [intro.title, ...intro.lines, intro.about, intro.ok].forEach((t, i) => shown.push({ where: "bulle " + i, text: t }));
-const glossary = read("data/glossary.json");
-for (const e of glossary.entries) if (e.local) shown.push({ where: "Expliquer " + e.id, text: e.local.term }, { where: "Expliquer " + e.id, text: e.local.text });
-for (const [k, v] of Object.entries(glossary.meta.ui.local || {})) shown.push({ where: "bouton Expliquer " + k, text: v });
-
 let passed = 0;
 (async () => {
   await audio.load();

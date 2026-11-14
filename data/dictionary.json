@@ -974,72 +974,1503 @@
       "screen": "Erreurs",
       "fr": "Le montant doit être supérieur à zéro.",
       "en": "The amount must be greater than zero.",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Àbùm mwàní ù yì nâ ù lɔ̀d zèró.",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "error_amount_insufficient",
       "screen": "Erreurs",
       "fr": "Solde insuffisant pour effectuer ce transfert.",
       "en": "Insufficient balance for this transfer.",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Mwàní wô àlígì àtə̀ bɔ́n á lóm nlóm mwàní ńì.",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "error_beneficiary_missing",
       "screen": "Erreurs",
       "fr": "Veuillez renseigner le nom et le numéro du bénéficiaire.",
       "en": "Please provide the beneficiary name and phone number.",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Tílgá dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "error_network",
       "screen": "Erreurs",
       "fr": "Erreur réseau : le service est temporairement indisponible. Réessayez.",
       "en": "Network error: the service is temporarily unavailable. Please try again.",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Dzɔ̌m díŋgá cɔ́b á ŋkwǎl : ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ. Ù búlàn və̀gə̀.",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "alert_new_beneficiary",
       "screen": "Erreurs",
       "fr": "Alerte de sécurité : ce bénéficiaire n'a jamais été utilisé sur ce compte.",
       "en": "Security warning: this beneficiary has never been used on this account.",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Kálâ! Ùkálá : mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kɔ̂nt wô.",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "important_message",
       "screen": "Contenu dynamique",
       "fr": "Message important",
       "en": "Important message",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Fòè ìpúmgí",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "fee_desc_mobile",
       "screen": "Frais",
       "fr": "Frais de 1,5 % (min. [M1], max. [M2])",
       "en": "1,5 % fee (min. [M1], max. [M2])",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Táŋ yà 1,5 % (tə̀ kàt á sí [M1], tə̀ lɔ̀d [M2])",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     },
     {
       "id": "fee_desc_bank",
       "screen": "Frais",
       "fr": "Frais de 2 % (min. [M1], max. [M2])",
       "en": "2 % fee (min. [M1], max. [M2])",
-      "local": "",
-      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur.",
-      "statut": "a_verifier"
+      "local": "Táŋ yà 2 % (tə̀ kàt á sí [M1], tə̀ lɔ̀d [M2])",
+      "note": "Libellés français et anglais repris de la page de test Safinum. Éton à valider par un locuteur. Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_annule",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert a été annulé.",
+      "en": "Your transfer has been cancelled.",
+      "local": "Bə́ŋgá kàb nlóm mwàní wô.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_annule_montant",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert de [M1] a été annulé.",
+      "en": "Your transfer of [M1] has been cancelled.",
+      "local": "Bə́ŋgá kàb nlóm mwàní wô wà [M1].",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_traitement",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert est en cours de traitement.",
+      "en": "Your transfer is being processed.",
+      "local": "Bə̀tə̀ kɔ̀m nlóm mwàní wô ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_attente",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert est en attente de validation.",
+      "en": "Your transfer is awaiting validation.",
+      "local": "Nlóm mwàní wô ùtə̀ yàŋà ǹjə́blə́.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_refuse",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert a été refusé.",
+      "en": "Your transfer has been declined.",
+      "local": "Bə́ŋgá bɛ̀n nlóm mwàní wô.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_refuse_montant",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert de [M1] a été refusé.",
+      "en": "Your transfer of [M1] has been declined.",
+      "local": "Bə́ŋgá bɛ̀n nlóm mwàní wô wà [M1].",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_reussi",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert a réussi.",
+      "en": "Your transfer was successful.",
+      "local": "Nlóm mwàní wô ùbòbànyà mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_reussi_montant",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert de [M1] a réussi.",
+      "en": "Your transfer of [M1] was successful.",
+      "local": "Nlóm mwàní wô wà [M1] ùbòbànyà mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_echoue_reessayer",
+      "screen": "Banque de messages",
+      "fr": "Le transfert a échoué. Veuillez réessayer.",
+      "en": "The transfer failed. Please try again.",
+      "local": "Nlóm mwàní ùŋgá cɔ́b. Ù búlàn və̀gə̀.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_envoye",
+      "screen": "Banque de messages",
+      "fr": "Le transfert a été envoyé.",
+      "en": "The transfer has been sent.",
+      "local": "Nlóm mwàní ùkə̀nyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_envoye_vers",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert de [M1] vers [M2] a été envoyé.",
+      "en": "Your transfer of [M1] to [M2] has been sent.",
+      "local": "Nlóm mwàní wô wà [M1] ábə́ [M2] ùkə̀nyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_recu_de",
+      "screen": "Banque de messages",
+      "fr": "Vous avez reçu [M1] de [M2].",
+      "en": "You have received [M1] from [M2].",
+      "local": "Ù nɔ́ŋnyà [M1] ábə́ [M2].",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_recu",
+      "screen": "Banque de messages",
+      "fr": "Vous avez reçu [M1].",
+      "en": "You have received [M1].",
+      "local": "Ù nɔ́ŋnyà [M1].",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_minutes",
+      "screen": "Banque de messages",
+      "fr": "Le transfert sera effectué dans quelques minutes.",
+      "en": "The transfer will be completed in a few minutes.",
+      "local": "Nlóm mwàní wàyá bòbàn á ǹtə̀ŋ mɔ́n.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_programme",
+      "screen": "Banque de messages",
+      "fr": "Le transfert est programmé.",
+      "en": "The transfer is scheduled.",
+      "local": "Bə́kɔ̀mnyà nlóm mwàní.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_operation_reussie",
+      "screen": "Banque de messages",
+      "fr": "Opération réussie.",
+      "en": "Operation successful.",
+      "local": "Ìsɛ́ ìbòbànyà mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_operation_echouee",
+      "screen": "Banque de messages",
+      "fr": "Opération échouée.",
+      "en": "Operation failed.",
+      "local": "Ìsɛ́ ìŋgá cɔ́b.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_operation_cours",
+      "screen": "Banque de messages",
+      "fr": "Opération en cours.",
+      "en": "Operation in progress.",
+      "local": "Ìsɛ́ ìtə̀ bòbàn ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_operation_attente",
+      "screen": "Banque de messages",
+      "fr": "Opération en attente.",
+      "en": "Operation pending.",
+      "local": "Ìsɛ́ ìtə̀ yàŋà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_paiement_effectue",
+      "screen": "Banque de messages",
+      "fr": "Paiement effectué.",
+      "en": "Payment completed.",
+      "local": "Èyágná ìbòbànyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_paiement_refuse",
+      "screen": "Banque de messages",
+      "fr": "Paiement refusé.",
+      "en": "Payment declined.",
+      "local": "Bə́ŋgá bɛ̀n èyágná.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_paiement_annule",
+      "screen": "Banque de messages",
+      "fr": "Paiement annulé.",
+      "en": "Payment cancelled.",
+      "local": "Bə́ŋgá kàb èyágná.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_paiement_montant",
+      "screen": "Banque de messages",
+      "fr": "Le paiement de [M1] a été effectué.",
+      "en": "The payment of [M1] has been completed.",
+      "local": "Èyágná yà [M1] ìbòbànyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_remboursement_montant",
+      "screen": "Banque de messages",
+      "fr": "Le remboursement de [M1] a été effectué.",
+      "en": "The refund of [M1] has been completed.",
+      "local": "Ìbùlàn mwàní wà [M1] ùbòbànyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_demande_enregistree",
+      "screen": "Banque de messages",
+      "fr": "Votre demande a été enregistrée.",
+      "en": "Your request has been registered.",
+      "local": "Bə́tílnyà dzàm ù yì.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_demande_traitement",
+      "screen": "Banque de messages",
+      "fr": "Votre demande est en cours de traitement.",
+      "en": "Your request is being processed.",
+      "local": "Bə̀tə̀ kɔ̀m dzàm ù yì ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_demande_refusee",
+      "screen": "Banque de messages",
+      "fr": "Votre demande a été refusée.",
+      "en": "Your request has been declined.",
+      "local": "Bə́ŋgá bɛ̀n dzàm ù yì.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_demande_acceptee",
+      "screen": "Banque de messages",
+      "fr": "Votre demande a été acceptée.",
+      "en": "Your request has been accepted.",
+      "local": "Bə́jə́blə́nyà dzàm ù yì.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_transfert_confirme",
+      "screen": "Banque de messages",
+      "fr": "Transfert confirmé.",
+      "en": "Transfer confirmed.",
+      "local": "Nlóm mwàní ùjə́blə́bàn.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_statut_operation_terminee",
+      "screen": "Banque de messages",
+      "fr": "Opération terminée.",
+      "en": "Operation completed.",
+      "local": "Ìsɛ́ ìmànyà.",
+      "note": "Message bancaire probable (catégorie statut). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_solde_montant",
+      "screen": "Banque de messages",
+      "fr": "Votre solde est de [M1].",
+      "en": "Your balance is [M1].",
+      "local": "Mwàní wô ú nè [M1].",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_solde_insuffisant",
+      "screen": "Banque de messages",
+      "fr": "Votre solde est insuffisant.",
+      "en": "Your balance is insufficient.",
+      "local": "Mwàní wô àlígì àtə̀ bɔ́n.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_debite",
+      "screen": "Banque de messages",
+      "fr": "Votre compte a été débité de [M1].",
+      "en": "Your account has been debited [M1].",
+      "local": "Mwàní wà [M1] ùkùì á kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_credite",
+      "screen": "Banque de messages",
+      "fr": "Votre compte a été crédité de [M1].",
+      "en": "Your account has been credited [M1].",
+      "local": "Mwàní wà [M1] ùnyíìnyà á kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_bloque",
+      "screen": "Banque de messages",
+      "fr": "Votre compte est bloqué.",
+      "en": "Your account is blocked.",
+      "local": "Kɔ̂nt wô í díbân.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_suspendu",
+      "screen": "Banque de messages",
+      "fr": "Votre compte a été suspendu.",
+      "en": "Your account has been suspended.",
+      "local": "Bə́tə́lnyà kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_debloque",
+      "screen": "Banque de messages",
+      "fr": "Votre compte a été débloqué.",
+      "en": "Your account has been unblocked.",
+      "local": "Bə́kùlnyà kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_actif",
+      "screen": "Banque de messages",
+      "fr": "Votre compte est actif.",
+      "en": "Your account is active.",
+      "local": "Kɔ̂nt wô í tə̀ sɛ́.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_carte_bloquee",
+      "screen": "Banque de messages",
+      "fr": "Votre carte a été bloquée.",
+      "en": "Your card has been blocked.",
+      "local": "Kálàdà wô í díbân.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_carte_expiree",
+      "screen": "Banque de messages",
+      "fr": "Votre carte a expiré.",
+      "en": "Your card has expired.",
+      "local": "Ǹtə̀ŋ wà kálàdà wô ùmànyà.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_plafond_atteint",
+      "screen": "Banque de messages",
+      "fr": "Le plafond journalier est atteint.",
+      "en": "The daily limit has been reached.",
+      "local": "Ù mànyà àbùm mwàní yà mɔ́s wùá.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_montant_plafond",
+      "screen": "Banque de messages",
+      "fr": "Le montant dépasse le plafond autorisé.",
+      "en": "The amount exceeds the authorised limit.",
+      "local": "Àbùm mwàní ù lɔ̀d àbùm bə́jə́blə́.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_montant_maximum",
+      "screen": "Banque de messages",
+      "fr": "Le montant maximum par transfert est de [M1].",
+      "en": "The maximum amount per transfer is [M1].",
+      "local": "Àbùm mwàní àpúmgí á nlóm wùá ú nè [M1].",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_montant_minimum",
+      "screen": "Banque de messages",
+      "fr": "Le montant minimum par transfert est de [M1].",
+      "en": "The minimum amount per transfer is [M1].",
+      "local": "Àbùm mwàní mɔ́n á nlóm wùá ú nè [M1].",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_limite_modifiee",
+      "screen": "Banque de messages",
+      "fr": "Votre limite de transfert a été modifiée.",
+      "en": "Your transfer limit has been changed.",
+      "local": "Bə́cɛ́nînyà àbùm mwàní wô yà lóm.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_nouveau_solde",
+      "screen": "Banque de messages",
+      "fr": "Nouveau solde : [M1]",
+      "en": "New balance: [M1]",
+      "local": "Mwàní ḿfə́ : [M1]",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_solde_apres_transfert",
+      "screen": "Banque de messages",
+      "fr": "Solde après transfert : [M1]",
+      "en": "Balance after transfer: [M1]",
+      "local": "Mwàní àlígì á mbús nlóm : [M1]",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_appliques_montant",
+      "screen": "Banque de messages",
+      "fr": "Des frais de [M1] seront appliqués.",
+      "en": "A fee of [M1] will be charged.",
+      "local": "Bə̀yá nɔŋ táŋ yà [M1].",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_transfert_montant",
+      "screen": "Banque de messages",
+      "fr": "Les frais de ce transfert sont de [M1].",
+      "en": "The fee for this transfer is [M1].",
+      "local": "Táŋ í nlóm ńì í nè [M1].",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_gratuit",
+      "screen": "Banque de messages",
+      "fr": "Ce transfert est gratuit.",
+      "en": "This transfer is free.",
+      "local": "Nlóm mwàní ńì ú nè té táŋ.",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_aucun_preleve",
+      "screen": "Banque de messages",
+      "fr": "Aucun frais ne sera prélevé.",
+      "en": "No fee will be charged.",
+      "local": "Bə̀bə́gə̀ nɔŋ táŋ ḿfə́.",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_inclus",
+      "screen": "Banque de messages",
+      "fr": "Les frais sont inclus dans le montant.",
+      "en": "The fees are included in the amount.",
+      "local": "Táŋ í nè á àbùm mwàní.",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_changes",
+      "screen": "Banque de messages",
+      "fr": "Les frais ont changé.",
+      "en": "The fees have changed.",
+      "local": "Táŋ í cɛ́nînyà.",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_total_payer",
+      "screen": "Banque de messages",
+      "fr": "Total à payer : [M1]",
+      "en": "Total to pay: [M1]",
+      "local": "Mwàní wɔ́sə̂ wà yág : [M1]",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_total_debite_futur",
+      "screen": "Banque de messages",
+      "fr": "Le total débité sera de [M1].",
+      "en": "The total debited will be [M1].",
+      "local": "Mwàní wɔ́sə̂ wàyá kùì ú nè [M1].",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_frais_appliques_libelle",
+      "screen": "Banque de messages",
+      "fr": "Frais appliqués : [M1]",
+      "en": "Fees applied: [M1]",
+      "local": "Táŋ í nɔ́ŋí : [M1]",
+      "note": "Message bancaire probable (catégorie frais). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_montant",
+      "screen": "Banque de messages",
+      "fr": "Veuillez saisir un montant.",
+      "en": "Please enter an amount.",
+      "local": "Tílgá àbùm mwàní.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_montant_valide",
+      "screen": "Banque de messages",
+      "fr": "Veuillez saisir un montant valide.",
+      "en": "Please enter a valid amount.",
+      "local": "Tílgá àbùm mwàní wə́ bə́bɛ́lə́.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_montant_eleve",
+      "screen": "Banque de messages",
+      "fr": "Le montant est trop élevé.",
+      "en": "The amount is too high.",
+      "local": "Àbùm mwàní ù lɔ̀d àbùm.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_montant_faible",
+      "screen": "Banque de messages",
+      "fr": "Le montant est trop faible.",
+      "en": "The amount is too low.",
+      "local": "Àbùm mwàní ú nè mɔ́n ábùi.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_nom_beneficiaire",
+      "screen": "Banque de messages",
+      "fr": "Veuillez saisir le nom du bénéficiaire.",
+      "en": "Please enter the beneficiary's name.",
+      "local": "Tílgá dwé lə̀ mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_telephone_valide",
+      "screen": "Banque de messages",
+      "fr": "Veuillez saisir un numéro de téléphone valide.",
+      "en": "Please enter a valid phone number.",
+      "local": "Tílgá nwàmɔ̀ ŋkwǎl wə́ bə́bɛ́lə́.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_telephone_incorrect",
+      "screen": "Banque de messages",
+      "fr": "Le numéro de téléphone est incorrect.",
+      "en": "The phone number is incorrect.",
+      "local": "Nwàmɔ̀ ŋkwǎl àbə́gə̀ bə́bɛ́lə́ té.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_numero_inexistant",
+      "screen": "Banque de messages",
+      "fr": "Ce numéro n'existe pas.",
+      "en": "This number does not exist.",
+      "local": "Nwàmɔ̀ ńì àbə́gə̀.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_champ_obligatoire",
+      "screen": "Banque de messages",
+      "fr": "Ce champ est obligatoire.",
+      "en": "This field is required.",
+      "local": "Vôm nû á yì nâ ù tíl.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_tous_champs",
+      "screen": "Banque de messages",
+      "fr": "Veuillez remplir tous les champs.",
+      "en": "Please fill in all the fields.",
+      "local": "Tílgá màm mə́sə̂.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_type_operation",
+      "screen": "Banque de messages",
+      "fr": "Veuillez choisir le type d'opération.",
+      "en": "Please choose the operation type.",
+      "local": "Tɔ́bgá m̀bə̀b í ísɛ́.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_case_confirmation",
+      "screen": "Banque de messages",
+      "fr": "Veuillez cocher la case de confirmation.",
+      "en": "Please tick the confirmation box.",
+      "local": "Tɔ́bgá vôm à ǹjə́blə́.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_informations_incorrectes",
+      "screen": "Banque de messages",
+      "fr": "Les informations saisies sont incorrectes.",
+      "en": "The information entered is incorrect.",
+      "local": "Màm ù tíl mə́bə́gə̀ bə́bɛ́lə́ té.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_code_incorrect",
+      "screen": "Banque de messages",
+      "fr": "Le code saisi est incorrect.",
+      "en": "The code entered is incorrect.",
+      "local": "Nɔ́mbà ù tíl ìbə́gə̀ bə́bɛ́lə́ té.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_saisie_code_incorrect_reessayer",
+      "screen": "Banque de messages",
+      "fr": "Code incorrect. Veuillez réessayer.",
+      "en": "Incorrect code. Please try again.",
+      "local": "Nɔ́mbà ìbə́gə̀ bə́bɛ́lə́ té. Ù búlàn və̀gə̀.",
+      "note": "Message bancaire probable (catégorie saisie). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_technique",
+      "screen": "Banque de messages",
+      "fr": "Une erreur technique est survenue.",
+      "en": "A technical error occurred.",
+      "local": "Dzɔ̌m díŋgá cɔ́b á ǹkɔ̀m.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_service_indisponible",
+      "screen": "Banque de messages",
+      "fr": "Le service est momentanément indisponible.",
+      "en": "The service is temporarily unavailable.",
+      "local": "Ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_service_plus_tard",
+      "screen": "Banque de messages",
+      "fr": "Le service est indisponible. Réessayez plus tard.",
+      "en": "The service is unavailable. Try again later.",
+      "local": "Ìsɛ́ íbə́gə̀ dzàm bòbàn. Ù búlàn və̀gə̀ á mbús.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_connexion",
+      "screen": "Banque de messages",
+      "fr": "Erreur de connexion.",
+      "en": "Connection error.",
+      "local": "Dzɔ̌m díŋgá cɔ́b á ŋkwǎl.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_verifier_internet",
+      "screen": "Banque de messages",
+      "fr": "Vérifiez votre connexion internet.",
+      "en": "Check your internet connection.",
+      "local": "Cázgá ŋkwǎl wô wà internet.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_connexion_interrompue",
+      "screen": "Banque de messages",
+      "fr": "La connexion a été interrompue.",
+      "en": "The connection was interrupted.",
+      "local": "Ŋkwǎl ùkàbàn.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_reessayer",
+      "screen": "Banque de messages",
+      "fr": "Veuillez réessayer.",
+      "en": "Please try again.",
+      "local": "Ù búlàn və̀gə̀.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_reessayer_minutes",
+      "screen": "Banque de messages",
+      "fr": "Réessayez dans quelques minutes.",
+      "en": "Try again in a few minutes.",
+      "local": "Ù búlàn və̀gə̀ á ǹtə̀ŋ mɔ́n.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_delai_depasse",
+      "screen": "Banque de messages",
+      "fr": "Le délai d'attente est dépassé.",
+      "en": "The waiting time has expired.",
+      "local": "Ǹtə̀ŋ wà yàŋà ùlɔ̀dnyà.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_maintenance",
+      "screen": "Banque de messages",
+      "fr": "Le service est en maintenance.",
+      "en": "The service is under maintenance.",
+      "local": "Bə̀tə̀ kɔ̀m ìsɛ́ ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_pin_partager",
+      "screen": "Banque de messages",
+      "fr": "Ne partagez jamais votre code PIN.",
+      "en": "Never share your PIN code.",
+      "local": "Tə̀ ù kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_pin_communiquer",
+      "screen": "Banque de messages",
+      "fr": "Ne communiquez jamais votre code PIN.",
+      "en": "Never disclose your PIN code.",
+      "local": "Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN mɔ́s mɔ́s.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_telephone",
+      "screen": "Banque de messages",
+      "fr": "Ne donnez jamais votre code secret par téléphone.",
+      "en": "Never give your secret code over the phone.",
+      "local": "Tə̀ ù və́ nɔ́mbà yɔ̂ yà ǹsɔ́l á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_banque_demande",
+      "screen": "Banque de messages",
+      "fr": "Votre banque ne vous demandera jamais votre code secret.",
+      "en": "Your bank will never ask for your secret code.",
+      "local": "Bâŋ yɔ̂ íbə́gə̀ sílà wɔ̌ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_arnaques",
+      "screen": "Banque de messages",
+      "fr": "Attention aux arnaques.",
+      "en": "Beware of scams.",
+      "local": "Tɔ̀gá ǹjɔ̀ŋ èè bə̀fúfùb.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_faux_messages",
+      "screen": "Banque de messages",
+      "fr": "Méfiez-vous des faux messages.",
+      "en": "Beware of fake messages.",
+      "local": "Tɔ̀gá ǹjɔ̀ŋ èè mìfòè mə́ pûpùd.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_numero_frauduleux",
+      "screen": "Banque de messages",
+      "fr": "Ce numéro a été signalé comme frauduleux.",
+      "en": "This number has been reported as fraudulent.",
+      "local": "Bə́kàtnyà nâ nwàmɔ̀ ńì ú nè wà ǹwú.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_activite_suspecte",
+      "screen": "Banque de messages",
+      "fr": "Une activité suspecte a été détectée sur votre compte.",
+      "en": "Suspicious activity has been detected on your account.",
+      "local": "Bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_connexion_inhabituelle",
+      "screen": "Banque de messages",
+      "fr": "Une connexion inhabituelle a été détectée.",
+      "en": "An unusual sign-in has been detected.",
+      "local": "Bə́yɛ́nyà ŋkwǎl ḿfə́ úbə́gə̀ mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_pas_origine",
+      "screen": "Banque de messages",
+      "fr": "Si vous n'êtes pas à l'origine de cette opération, contactez votre banque.",
+      "en": "If you did not make this operation, contact your bank.",
+      "local": "Ŋgə́ ù bə́gə̀ bô ísɛ́ ńì, lɔ́gə̀ bâŋ yɔ̂.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_liens",
+      "screen": "Banque de messages",
+      "fr": "Ne cliquez pas sur les liens inconnus.",
+      "en": "Do not click on unknown links.",
+      "local": "Tə̀ ù nàm mə̀zə̀n ù bə́gə̀ yə́m.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_verifier_nom",
+      "screen": "Banque de messages",
+      "fr": "Vérifiez toujours le nom du bénéficiaire.",
+      "en": "Always check the beneficiary's name.",
+      "local": "Cázgá ngə́d ísə̂ dwé lə̀ mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_verifier_montant",
+      "screen": "Banque de messages",
+      "fr": "Vérifiez le montant avant de confirmer.",
+      "en": "Check the amount before confirming.",
+      "local": "Cázgá àbùm mwàní ósúsúâ nâ ù jə́blə̂.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_verifier_informations",
+      "screen": "Banque de messages",
+      "fr": "Vérifiez les informations avant de valider.",
+      "en": "Check the information before validating.",
+      "local": "Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə̂.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_irreversible",
+      "screen": "Banque de messages",
+      "fr": "Cette opération est irréversible.",
+      "en": "This operation cannot be undone.",
+      "local": "Ìsɛ́ ńì íbə́gə̀ dzàm búlàn á mbús.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_confirme_non_annulable",
+      "screen": "Banque de messages",
+      "fr": "Un transfert confirmé ne peut pas être annulé.",
+      "en": "A confirmed transfer cannot be cancelled.",
+      "local": "Nlóm mwàní ùjə́blə́bàn úbə́gə̀ dzàm kàbàn.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_session_fermee",
+      "screen": "Banque de messages",
+      "fr": "Pour votre sécurité, votre session a été fermée.",
+      "en": "For your security, your session has been closed.",
+      "local": "Ású ùkálá wô, bə́díbnyà ǹtə̀ŋ wô wà ísɛ́.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_sms_envoye",
+      "screen": "Banque de messages",
+      "fr": "Un code de confirmation vous a été envoyé par SMS.",
+      "en": "A confirmation code has been sent to you by SMS.",
+      "local": "Bə́lómnyà wɔ̌ nɔ́mbà yà ǹjə́blə́ á SMS.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_sms_saisir",
+      "screen": "Banque de messages",
+      "fr": "Saisissez le code reçu par SMS.",
+      "en": "Enter the code received by SMS.",
+      "local": "Tílgá nɔ́mbà ù nɔ́ŋ á SMS.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_pin_valider",
+      "screen": "Banque de messages",
+      "fr": "Saisissez votre code PIN pour valider.",
+      "en": "Enter your PIN code to validate.",
+      "local": "Tílgá nɔ́mbà yɔ̂ yà PIN ású ǹjə́blə́.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_secret_saisir",
+      "screen": "Banque de messages",
+      "fr": "Saisissez votre code secret.",
+      "en": "Enter your secret code.",
+      "local": "Tílgá nɔ́mbà yɔ̂ yà ǹsɔ́l.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_valable",
+      "screen": "Banque de messages",
+      "fr": "Ce code est valable quelques minutes.",
+      "en": "This code is valid for a few minutes.",
+      "local": "Nɔ́mbà ńì í tə̀ sɛ́ ǹtə̀ŋ mɔ́n.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_code_expire",
+      "screen": "Banque de messages",
+      "fr": "Le code a expiré.",
+      "en": "The code has expired.",
+      "local": "Ǹtə̀ŋ wà nɔ́mbà ńì ùmànyà.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_ajoute",
+      "screen": "Banque de messages",
+      "fr": "Bénéficiaire ajouté.",
+      "en": "Beneficiary added.",
+      "local": "Bə́bə̀gnyà mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_supprime",
+      "screen": "Banque de messages",
+      "fr": "Bénéficiaire supprimé.",
+      "en": "Beneficiary removed.",
+      "local": "Bə́vânyà mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_introuvable",
+      "screen": "Banque de messages",
+      "fr": "Bénéficiaire introuvable.",
+      "en": "Beneficiary not found.",
+      "local": "Bə̀bə́gə̀ yə́n mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_injoignable",
+      "screen": "Banque de messages",
+      "fr": "Le bénéficiaire n'est pas joignable.",
+      "en": "The beneficiary cannot be reached.",
+      "local": "Bə̀bə́gə̀ dzàm lɔ́g mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_a_recu",
+      "screen": "Banque de messages",
+      "fr": "Le bénéficiaire a reçu l'argent.",
+      "en": "The beneficiary has received the money.",
+      "local": "Mòd àtə́ nɔŋ ànɔ́ŋnyà mwàní.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_recevra_minutes",
+      "screen": "Banque de messages",
+      "fr": "Le bénéficiaire recevra l'argent dans quelques minutes.",
+      "en": "The beneficiary will receive the money in a few minutes.",
+      "local": "Mòd àtə́ nɔŋ àyá nɔŋ mwàní á ǹtə̀ŋ mɔ́n.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_nouveau",
+      "screen": "Banque de messages",
+      "fr": "Nouveau bénéficiaire.",
+      "en": "New beneficiary.",
+      "local": "Mòd àtə́ nɔŋ ḿfə́.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_deja_enregistre",
+      "screen": "Banque de messages",
+      "fr": "Ce bénéficiaire est déjà enregistré.",
+      "en": "This beneficiary is already registered.",
+      "local": "Mòd àtə́ nɔŋ nû àtílnyà ábə́.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_confirmer_numero",
+      "screen": "Banque de messages",
+      "fr": "Confirmez le numéro du bénéficiaire.",
+      "en": "Confirm the beneficiary's number.",
+      "local": "Jə́blə́gá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_numero_incorrect",
+      "screen": "Banque de messages",
+      "fr": "Le numéro du bénéficiaire est incorrect.",
+      "en": "The beneficiary's number is incorrect.",
+      "local": "Nwàmɔ̀ lə̀ mòd àtə́ nɔŋ àbə́gə̀ bə́bɛ́lə́ té.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_nom_a_recu",
+      "screen": "Banque de messages",
+      "fr": "Le bénéficiaire [M1] a bien reçu [M2].",
+      "en": "The beneficiary [M1] has received [M2].",
+      "local": "Mòd àtə́ nɔŋ [M1] ànɔ́ŋnyà [M2] mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_recevra_montant",
+      "screen": "Banque de messages",
+      "fr": "Le bénéficiaire recevra [M1].",
+      "en": "The beneficiary will receive [M1].",
+      "local": "Mòd àtə́ nɔŋ àyá nɔŋ [M1].",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_beneficiaire_envoyer_a",
+      "screen": "Banque de messages",
+      "fr": "Vous allez envoyer [M1] à [M2].",
+      "en": "You are about to send [M1] to [M2].",
+      "local": "Ù yá lóm [M1] ábə́ [M2].",
+      "note": "Message bancaire probable (catégorie beneficiaire). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_transfert_question",
+      "screen": "Banque de messages",
+      "fr": "Voulez-vous confirmer ce transfert ?",
+      "en": "Do you want to confirm this transfer?",
+      "local": "Yə̀ ù yì jə́blə́ nlóm mwàní ńì ?",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_continuer",
+      "screen": "Banque de messages",
+      "fr": "Voulez-vous continuer ?",
+      "en": "Do you want to continue?",
+      "local": "Yə̀ ù yì kə́ ósú ?",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_annuler",
+      "screen": "Banque de messages",
+      "fr": "Êtes-vous sûr de vouloir annuler ?",
+      "en": "Are you sure you want to cancel?",
+      "local": "Yə̀ ù yì kàb bə́bɛ́lə́ ?",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_operation",
+      "screen": "Banque de messages",
+      "fr": "Confirmez-vous cette opération ?",
+      "en": "Do you confirm this operation?",
+      "local": "Yə̀ ù jə́blə́ ísɛ́ ńì ?",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_merci_confiance",
+      "screen": "Banque de messages",
+      "fr": "Merci pour votre confiance.",
+      "en": "Thank you for your trust.",
+      "local": "Àkíbá ású ǹjə́blə́ wô.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_merci_service",
+      "screen": "Banque de messages",
+      "fr": "Merci d'avoir utilisé notre service.",
+      "en": "Thank you for using our service.",
+      "local": "Àkíbá nâ ù sɛ́ èè ìsɛ́ yə́.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_patienter",
+      "screen": "Banque de messages",
+      "fr": "Veuillez patienter.",
+      "en": "Please wait.",
+      "local": "Yàŋgá ǹtə̀ŋ mɔ́n.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_chargement",
+      "screen": "Banque de messages",
+      "fr": "Chargement en cours.",
+      "en": "Loading.",
+      "local": "Bə̀tə̀ lɔ̀d ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_traitement",
+      "screen": "Banque de messages",
+      "fr": "Traitement en cours.",
+      "en": "Processing.",
+      "local": "Bə̀tə̀ kɔ̀m ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_recu_disponible",
+      "screen": "Banque de messages",
+      "fr": "Votre reçu est disponible.",
+      "en": "Your receipt is available.",
+      "local": "Kálàdà wô wà ǹyáà ú nè.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_recu_sms",
+      "screen": "Banque de messages",
+      "fr": "Votre reçu a été envoyé par SMS.",
+      "en": "Your receipt has been sent by SMS.",
+      "local": "Bə́lómnyà kálàdà wô wà ǹyáà á SMS.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_conserver_recu",
+      "screen": "Banque de messages",
+      "fr": "Conservez votre reçu.",
+      "en": "Keep your receipt.",
+      "local": "Bàlgá kálàdà wô wà ǹyáà.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_noter_reference",
+      "screen": "Banque de messages",
+      "fr": "Notez la référence de votre transfert.",
+      "en": "Write down your transfer reference.",
+      "local": "Tílgá nɔ́mbà yà nlóm mwàní wô.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_reference",
+      "screen": "Banque de messages",
+      "fr": "Référence du transfert : [M1]",
+      "en": "Transfer reference: [M1]",
+      "local": "Nɔ́mbà yà nlóm mwàní : [M1]",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_date",
+      "screen": "Banque de messages",
+      "fr": "Date du transfert : [M1]",
+      "en": "Transfer date: [M1]",
+      "local": "Mɔ́s wà nlóm mwàní : [M1]",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_effectue_le",
+      "screen": "Banque de messages",
+      "fr": "Le transfert sera effectué le [M1].",
+      "en": "The transfer will be made on [M1].",
+      "local": "Nlóm mwàní wàyá bòbàn mɔ́s [M1].",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_transfert_du",
+      "screen": "Banque de messages",
+      "fr": "Votre transfert du [M1] a été effectué.",
+      "en": "Your transfer on [M1] has been completed.",
+      "local": "Nlóm mwàní wô wà [M1] ùbòbànyà.",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_montant_recu",
+      "screen": "Banque de messages",
+      "fr": "Montant reçu : [M1]",
+      "en": "Amount received: [M1]",
+      "local": "Àbùm mwàní ńnɔ́ŋí : [M1]",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_confirmation_montant_envoye",
+      "screen": "Banque de messages",
+      "fr": "Montant envoyé : [M1]",
+      "en": "Amount sent: [M1]",
+      "local": "Àbùm mwàní úlómí : [M1]",
+      "note": "Message bancaire probable (catégorie confirmation). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_expiree_reconnecter",
+      "screen": "Banque de messages",
+      "fr": "Votre session a expiré. Veuillez vous reconnecter.",
+      "en": "Your session has expired. Please sign in again.",
+      "local": "Ǹtə̀ŋ wô wà ísɛ́ ùmànyà. Ù búlàn nyíì á kɔ̂nt.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_reconnecter",
+      "screen": "Banque de messages",
+      "fr": "Veuillez vous reconnecter.",
+      "en": "Please sign in again.",
+      "local": "Ù búlàn nyíì á kɔ̂nt.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_deconnecte",
+      "screen": "Banque de messages",
+      "fr": "Vous êtes déconnecté.",
+      "en": "You are signed out.",
+      "local": "Ù kùìnyà á kɔ̂nt.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_deconnexion_reussie",
+      "screen": "Banque de messages",
+      "fr": "Déconnexion réussie.",
+      "en": "Signed out successfully.",
+      "local": "Ù kùìnyà á kɔ̂nt mbə̀ŋ.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_bienvenue",
+      "screen": "Banque de messages",
+      "fr": "Bienvenue.",
+      "en": "Welcome.",
+      "local": "Mə̀kónî.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_session_bienvenue_espace",
+      "screen": "Banque de messages",
+      "fr": "Bienvenue sur votre espace.",
+      "en": "Welcome to your space.",
+      "local": "Mə̀kónî á vôm wô.",
+      "note": "Message bancaire probable (catégorie session). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_nouveau",
+      "screen": "Banque de messages",
+      "fr": "Nouveau message.",
+      "en": "New message.",
+      "local": "Fòè ḿfə́.",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_vous_avez",
+      "screen": "Banque de messages",
+      "fr": "Vous avez un nouveau message.",
+      "en": "You have a new message.",
+      "local": "Ù bə́lə́ fòè ḿfə́.",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_information_importante",
+      "screen": "Banque de messages",
+      "fr": "Information importante.",
+      "en": "Important information.",
+      "local": "Fòè ìpúmgí.",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_maintenance_prevue",
+      "screen": "Banque de messages",
+      "fr": "Une maintenance est prévue.",
+      "en": "Maintenance is scheduled.",
+      "local": "Bə̀yá kɔ̀m ìsɛ́.",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_maintenance_le",
+      "screen": "Banque de messages",
+      "fr": "Une maintenance est prévue le [M1].",
+      "en": "Maintenance is scheduled on [M1].",
+      "local": "Bə̀yá kɔ̀m ìsɛ́ mɔ́s [M1].",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_message_mise_a_jour",
+      "screen": "Banque de messages",
+      "fr": "Une mise à jour est disponible.",
+      "en": "An update is available.",
+      "local": "Ìkɔ̀m ḿfə́ í nè.",
+      "note": "Message bancaire probable (catégorie message). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_attention",
+      "screen": "Banque de messages",
+      "fr": "Attention",
+      "en": "Warning",
+      "local": "Tɔ̀gá ǹjɔ̀ŋ",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_important",
+      "screen": "Banque de messages",
+      "fr": "Important",
+      "en": "Important",
+      "local": "Ìpúmgí",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_information",
+      "screen": "Banque de messages",
+      "fr": "Information",
+      "en": "Information",
+      "local": "Fòè",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_erreur",
+      "screen": "Banque de messages",
+      "fr": "Erreur",
+      "en": "Error",
+      "local": "Dzɔ̌m díŋgá cɔ́b",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_alerte",
+      "screen": "Banque de messages",
+      "fr": "Alerte",
+      "en": "Alert",
+      "local": "Kálâ!",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_intitule_rappel",
+      "screen": "Banque de messages",
+      "fr": "Rappel",
+      "en": "Reminder",
+      "local": "Ìbùlàn ǹkàt",
+      "note": "Message bancaire probable (catégorie intitule). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_solde_disponible_montant",
+      "screen": "Banque de messages",
+      "fr": "Votre solde disponible est de [M1].",
+      "en": "Your available balance is [M1].",
+      "local": "Mwàní wô ú nè [M1].",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_compte_sera_debite",
+      "screen": "Banque de messages",
+      "fr": "Votre compte sera débité de [M1].",
+      "en": "Your account will be debited [M1].",
+      "local": "Mwàní wà [M1] wàyá kùì á kɔ̂nt wô.",
+      "note": "Message bancaire probable (catégorie compte). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_reseau_survenue",
+      "screen": "Banque de messages",
+      "fr": "Une erreur réseau est survenue.",
+      "en": "A network error occurred.",
+      "local": "Dzɔ̌m díŋgá cɔ́b á ŋkwǎl.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_erreur_service_mobile_money",
+      "screen": "Banque de messages",
+      "fr": "Le service Mobile Money est momentanément indisponible.",
+      "en": "The Mobile Money service is temporarily unavailable.",
+      "local": "Ìsɛ́ yà Mobile Money íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.",
+      "note": "Message bancaire probable (catégorie erreur). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
+    },
+    {
+      "id": "bank_securite_pin_telephone",
+      "screen": "Banque de messages",
+      "fr": "Ne communiquez jamais votre code PIN par téléphone.",
+      "en": "Never give your PIN code over the phone.",
+      "local": "Tə̀ ù və́ mòd ḿfə́ nɔ́mbà yɔ̂ yà PIN á tɛ̀lɛ̀fɔ̂n mɔ́s mɔ́s.",
+      "note": "Message bancaire probable (catégorie securite). Éton proposé par Gemini (hors extension), validé par le locuteur.",
+      "statut": "valide"
     }
   ]
 }
