@@ -22,6 +22,7 @@
     "test:ui-confidence": "node tools/test-ui-confidence.js",
     "test:cascade": "node tools/test-cascade.js",
     "test:unseen": "node tools/test-unseen.js",
-    "test:guide": "node tools/test-guide.js"
+    "test:guide": "node tools/test-guide.js",
+    "test:explain": "node tools/test-explain.js"
   }
 }

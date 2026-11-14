@@ -1,7 +1,8 @@
 /* Lecture vocale avec une voix locale du navigateur.
    Uniquement avec une voix installée sur l'appareil (localService) : les voix « en ligne »
    de certains navigateurs enverraient le texte lu à un serveur, ce que le protocole interdit.
-   Deux lecteurs partagent la synthèse : la page entière et le guide de l'écran. */
+   Trois lecteurs partagent la synthèse : la page entière, le guide de l'écran et l'explication
+   d'un terme sélectionné. */
 (function () {
   "use strict";
 
@@ -18,8 +19,12 @@
         status: (panel, message, state) => panel.setGuideStatus && panel.setGuideStatus(message, state),
         speaking: (panel, value) => panel.setGuideSpeaking && panel.setGuideSpeaking(value),
       },
+      explain: {
+        status: (panel, message, state) => panel.setExplainStatus && panel.setExplainStatus(message, state),
+        speaking: (panel, value) => panel.setExplainSpeaking && panel.setExplainSpeaking(value),
+      },
     };
-    let speaker = null; // lecteur en cours : "page" | "guide" | null
+    let speaker = null; // lecteur en cours : "page" | "guide" | "explain" | null
 
     function report(owner, message, state) {
       const panel = getPanel();
@@ -98,7 +103,15 @@
       speakText("guide", text, lang === "en" ? "en-US" : "fr-FR");
     }
 
-    return { speak, speakGuide, stop: () => stop() };
+    // Lecture de l'explication d'un terme (action « Expliquer »).
+    function speakExplain(text, lang) {
+      speakText("explain", text, lang === "en" ? "en-US" : "fr-FR");
+    }
+    function stopExplain() {
+      if (speaker === "explain") stop();
+    }
+
+    return { speak, speakGuide, speakExplain, stopExplain, stop: () => stop() };
   }
 
   NS.voice = { create };

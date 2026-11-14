@@ -38,10 +38,13 @@
         "src/translation-controller.js",
         "src/confidence.js",
         "src/guide.js",
+        "src/explain.js",
         "src/panel-guide.js",
+        "src/panel-explain.js",
         "src/panel.js",
         "src/voice.js",
         "src/guide-controller.js",
+        "src/explain-controller.js",
         "src/content.js"
       ],
       "run_at": "document_idle",
@@ -52,12 +55,14 @@
     {
       "resources": [
         "src/panel.css",
+        "src/panel-help.css",
         "data/dictionary.json",
         "data/critical_terms.json",
         "data/templates.json",
         "data/lexicon.json",
         "data/rules.json",
-        "data/guide.json"
+        "data/guide.json",
+        "data/glossary.json"
       ],
       "matches": [
         "https://*/*",

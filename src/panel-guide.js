@@ -20,6 +20,7 @@
               <p class="guide-tip" hidden></p>
             </div>
             <p class="guide-note"></p>
+            <p class="guide-hint"></p>
             <div class="guide-actions">
               <button class="action guide-speak" type="button" aria-pressed="false">Écouter le guide</button>
               <button class="reset guide-refresh" type="button">Actualiser</button>

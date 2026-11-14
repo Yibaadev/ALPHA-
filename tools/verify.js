@@ -20,6 +20,7 @@ const checks = [
   ["contrôleur de traduction", "tools/test-translation-controller.js"],
   ["lecture vocale", "tools/test-voice.js"],
   ["guide de l'écran", "tools/test-guide.js"],
+  ["expliquer (glossaire)", "tools/test-explain.js"],
   ["dictionnaire", "tools/check.js"],
 ];
 

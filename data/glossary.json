@@ -1,0 +1,196 @@
+{
+  "meta": {
+    "description": "Glossaire de l'action « Expliquer » : quand l'utilisateur sélectionne un texte qui contient un de ces termes, ALPHA affiche l'explication, sans connexion et sans modèle d'IA. Les champs « local » (éton) restent vides tant qu'un locuteur ne les a pas validés : l'explication s'affiche alors en français.",
+    "statut_local": "a_completer",
+    "ui": {
+      "fr": {
+        "button": "Expliquer",
+        "title": "Explication",
+        "listen": "Écouter",
+        "close": "Fermer",
+        "source": "Explication du glossaire ALPHA, sans connexion.",
+        "etonPending": "Explication en éton en attente de validation : affichée en français.",
+        "hint": "Astuce : sélectionnez un mot de la page (frais, solde, bénéficiaire…) pour en voir l’explication."
+      },
+      "en": {
+        "button": "Explain",
+        "title": "Explanation",
+        "listen": "Listen",
+        "close": "Close",
+        "source": "ALPHA glossary explanation, offline.",
+        "etonPending": "Eton explanation awaiting validation: shown in French.",
+        "hint": "Tip: select a word on the page (fee, balance, beneficiary…) to see what it means."
+      }
+    }
+  },
+  "entries": [
+    {
+      "id": "fees",
+      "terms": { "fr": ["frais", "frais de transfert"], "en": ["fee", "fees", "transfer fees"] },
+      "fr": { "term": "Frais", "text": "Somme prélevée par le service pour réaliser l’opération. Elle s’ajoute au montant envoyé. Quand les frais sont un pourcentage (par exemple 1,5 %), ils augmentent avec le montant, entre un minimum et un maximum." },
+      "en": { "term": "Fee", "text": "Amount charged by the service to carry out the operation. It is added to the amount sent. When the fee is a percentage (for example 1.5%), it grows with the amount, between a minimum and a maximum." },
+      "local": null
+    },
+    {
+      "id": "balance_after",
+      "terms": { "fr": ["solde après opération"], "en": ["balance after transfer"] },
+      "fr": { "term": "Solde après opération", "text": "Ce qui restera sur votre compte une fois le montant et les frais retirés." },
+      "en": { "term": "Balance after transfer", "text": "What will remain in your account once the amount and the fee have been taken out." },
+      "local": null
+    },
+    {
+      "id": "balance",
+      "terms": { "fr": ["solde", "solde disponible"], "en": ["balance", "available balance"] },
+      "fr": { "term": "Solde", "text": "L’argent disponible sur votre compte à cet instant. Vous ne pouvez pas envoyer plus que ce solde, frais compris." },
+      "en": { "term": "Balance", "text": "The money available in your account right now. You cannot send more than this balance, fees included." },
+      "local": null
+    },
+    {
+      "id": "beneficiary",
+      "terms": { "fr": ["bénéficiaire", "destinataire", "nom du bénéficiaire"], "en": ["beneficiary", "recipient", "beneficiary name"] },
+      "fr": { "term": "Bénéficiaire", "text": "La personne qui reçoit l’argent. Vérifiez son nom et son numéro : un transfert envoyé à la mauvaise personne est difficile à récupérer." },
+      "en": { "term": "Beneficiary", "text": "The person who receives the money. Check their name and number: a transfer sent to the wrong person is hard to get back." },
+      "local": null
+    },
+    {
+      "id": "new_beneficiary",
+      "terms": { "fr": ["jamais été utilisé", "nouveau bénéficiaire"], "en": ["never been used", "new beneficiary"] },
+      "fr": { "term": "Nouveau bénéficiaire", "text": "Vous n’avez encore jamais envoyé d’argent à ce numéro depuis ce compte. C’est une situation fréquente dans les arnaques : assurez-vous de bien connaître la personne." },
+      "en": { "term": "New beneficiary", "text": "You have never sent money to this number from this account before. This is common in scams: make sure you know the person." },
+      "local": null
+    },
+    {
+      "id": "reference",
+      "terms": { "fr": ["référence"], "en": ["reference"] },
+      "fr": { "term": "Référence", "text": "Code unique qui identifie votre opération. Gardez-le : il sert à prouver le transfert ou à faire une réclamation." },
+      "en": { "term": "Reference", "text": "Unique code that identifies your operation. Keep it: it proves the transfer and is needed for a claim." },
+      "local": null
+    },
+    {
+      "id": "amount",
+      "terms": { "fr": ["montant", "montant à envoyer"], "en": ["amount", "amount to send"] },
+      "fr": { "term": "Montant", "text": "La somme que le bénéficiaire doit recevoir, sans les frais." },
+      "en": { "term": "Amount", "text": "The sum the beneficiary should receive, not counting the fee." },
+      "local": null
+    },
+    {
+      "id": "total_debit",
+      "terms": { "fr": ["total à débiter", "total débité"], "en": ["total to debit", "total debited"] },
+      "fr": { "term": "Total débité", "text": "Ce qui sort réellement de votre compte : le montant envoyé plus les frais." },
+      "en": { "term": "Total debited", "text": "What actually leaves your account: the amount sent plus the fee." },
+      "local": null
+    },
+    {
+      "id": "debit",
+      "terms": { "fr": ["débit", "débiter", "débité"], "en": ["debit", "debited"] },
+      "fr": { "term": "Débit", "text": "Argent qui sort de votre compte. Le contraire est un crédit : de l’argent qui entre." },
+      "en": { "term": "Debit", "text": "Money leaving your account. The opposite is a credit: money coming in." },
+      "local": null
+    },
+    {
+      "id": "reason",
+      "terms": { "fr": ["motif", "motif du transfert"], "en": ["transfer reason", "reason"] },
+      "fr": { "term": "Motif du transfert", "text": "Une courte phrase pour dire à quoi sert l’argent (loyer, famille, facture…). Elle aide à retrouver l’opération plus tard." },
+      "en": { "term": "Transfer reason", "text": "A short phrase saying what the money is for (rent, family, bill…). It helps you find the operation later." },
+      "local": null
+    },
+    {
+      "id": "operation_type",
+      "terms": { "fr": ["type d'opération"], "en": ["operation type"] },
+      "fr": { "term": "Type d’opération", "text": "Le moyen d’envoi : vers un compte du même service, vers Mobile Money ou vers une autre banque. Les frais changent selon ce choix." },
+      "en": { "term": "Operation type", "text": "How the money is sent: to an account of the same service, to Mobile Money or to another bank. The fee depends on this choice." },
+      "local": null
+    },
+    {
+      "id": "mobile_money",
+      "terms": { "fr": ["mobile money"], "en": ["mobile money"] },
+      "fr": { "term": "Mobile Money", "text": "Un compte d’argent lié à un numéro de téléphone, géré par un opérateur mobile. L’argent arrive sur le téléphone du bénéficiaire." },
+      "en": { "term": "Mobile Money", "text": "A money account linked to a phone number and run by a mobile operator. The money arrives on the beneficiary’s phone." },
+      "local": null
+    },
+    {
+      "id": "other_bank",
+      "terms": { "fr": ["autre banque"], "en": ["other bank"] },
+      "fr": { "term": "Autre banque", "text": "Envoi vers un compte ouvert dans une banque différente de la vôtre. C’est souvent l’option la plus chère et parfois la plus lente." },
+      "en": { "term": "Other bank", "text": "Sending to an account held at a different bank. It is often the most expensive option and sometimes the slowest." },
+      "local": null
+    },
+    {
+      "id": "account_number",
+      "terms": { "fr": ["numéro de compte"], "en": ["account number"] },
+      "fr": { "term": "Numéro de compte", "text": "L’identifiant de votre compte. Ne le communiquez qu’aux personnes qui doivent vous envoyer de l’argent." },
+      "en": { "term": "Account number", "text": "Your account’s identifier. Only share it with people who need to send you money." },
+      "local": null
+    },
+    {
+      "id": "transfer",
+      "terms": { "fr": ["transfert", "virement"], "en": ["transfer", "wire transfer"] },
+      "fr": { "term": "Transfert", "text": "Envoi d’argent de votre compte vers celui d’une autre personne. Une fois confirmé, il est en général impossible à annuler." },
+      "en": { "term": "Transfer", "text": "Sending money from your account to someone else’s. Once confirmed, it usually cannot be cancelled." },
+      "local": null
+    },
+    {
+      "id": "instant",
+      "terms": { "fr": ["instantané", "instantanée"], "en": ["instant"] },
+      "fr": { "term": "Instantané", "text": "L’argent arrive chez le bénéficiaire en quelques secondes, et non en quelques jours." },
+      "en": { "term": "Instant", "text": "The money reaches the beneficiary within seconds, not days." },
+      "local": null
+    },
+    {
+      "id": "summary",
+      "terms": { "fr": ["récapitulatif"], "en": ["summary"] },
+      "fr": { "term": "Récapitulatif", "text": "Le résumé de l’opération avant l’envoi. Rien n’est encore parti : c’est le dernier moment pour corriger une erreur." },
+      "en": { "term": "Summary", "text": "The overview of the operation before sending. Nothing has been sent yet: it is your last chance to fix a mistake." },
+      "local": null
+    },
+    {
+      "id": "receipt",
+      "terms": { "fr": ["reçu"], "en": ["receipt"] },
+      "fr": { "term": "Reçu", "text": "La preuve que l’opération a été faite. Conservez-le, avec sa référence." },
+      "en": { "term": "Receipt", "text": "Proof that the operation was carried out. Keep it, along with its reference." },
+      "local": null
+    },
+    {
+      "id": "status",
+      "terms": { "fr": ["statut"], "en": ["status"] },
+      "fr": { "term": "Statut", "text": "L’état de l’opération : réussie, en attente ou échouée." },
+      "en": { "term": "Status", "text": "The state of the operation: successful, pending or failed." },
+      "local": null
+    },
+    {
+      "id": "secret_code",
+      "terms": { "fr": ["code pin", "pin", "code otp", "otp", "code de vérification", "code de confirmation", "mot de passe"], "en": ["pin", "otp", "verification code", "confirmation code", "password"] },
+      "fr": { "term": "Code secret", "text": "Code personnel qui prouve que c’est bien vous. Ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque." },
+      "en": { "term": "Secret code", "text": "Personal code that proves it is really you. Never give it to anyone, even someone claiming to call from the bank." },
+      "local": null
+    },
+    {
+      "id": "security_alert",
+      "terms": { "fr": ["alerte de sécurité"], "en": ["security warning", "security alert"] },
+      "fr": { "term": "Alerte de sécurité", "text": "Message qui signale un risque. Lisez-le entièrement et vérifiez ce qu’il demande avant de continuer." },
+      "en": { "term": "Security warning", "text": "A message pointing out a risk. Read it in full and check what it asks before continuing." },
+      "local": null
+    },
+    {
+      "id": "secure_connection",
+      "terms": { "fr": ["connexion sécurisée"], "en": ["secure connection"] },
+      "fr": { "term": "Connexion sécurisée", "text": "Les échanges entre votre appareil et le service sont chiffrés. Cela ne garantit pas que le bénéficiaire est le bon : vérifiez-le toujours." },
+      "en": { "term": "Secure connection", "text": "Data between your device and the service is encrypted. It does not guarantee the beneficiary is the right one: always check." },
+      "local": null
+    },
+    {
+      "id": "merchant_payment",
+      "terms": { "fr": ["paiement marchand"], "en": ["merchant payment"] },
+      "fr": { "term": "Paiement marchand", "text": "Un achat payé à un commerçant depuis votre compte." },
+      "en": { "term": "Merchant payment", "text": "A purchase paid to a shop or business from your account." },
+      "local": null
+    },
+    {
+      "id": "free",
+      "terms": { "fr": ["gratuit"], "en": ["free"] },
+      "fr": { "term": "Gratuit", "text": "Aucun frais n’est prélevé : le total débité est égal au montant envoyé." },
+      "en": { "term": "Free", "text": "No fee is charged: the total debited equals the amount sent." },
+      "local": null
+    }
+  ]
+}
