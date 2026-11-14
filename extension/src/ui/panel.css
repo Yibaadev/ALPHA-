@@ -189,6 +189,7 @@
     .section-note { margin: 0 0 var(--space-2); color: var(--muted); font-size: 10.5px; line-height: 1.4; }
     .detected-language { color: var(--accent-strong); font-weight: 650; }
     /* Choix de la langue : contrôle segmenté sobre (onglet blanc sur fond gris clair). */
+    .mode-hint { margin: 6px 1px 0; }
     .modes {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 3px;
       border-radius: 9px; background: #eef1ef;

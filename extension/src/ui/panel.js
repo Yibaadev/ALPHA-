@@ -84,6 +84,7 @@ ${guidePart.introMarkup()}${NS.panelRead.markup(icon("speaker"))}
             <p class="section-note">Langue détectée : <span class="detected-language">non déterminée</span></p>
             <p class="section-note mt-notice" aria-live="polite" hidden></p>
             <div class="modes" role="group" aria-label="Choisir la langue d’affichage"></div>
+            <p class="section-note mode-hint" aria-live="polite"></p>
           </section>
 ${guidePart.sectionMarkup()}
           <section class="section" data-section="voice">
@@ -126,7 +127,8 @@ ${guidePart.sectionMarkup()}
       button.innerHTML = '<span class="mode-code"></span><span class="mode-name"></span>';
       button.querySelector(".mode-code").textContent = mode.code;
       button.querySelector(".mode-name").textContent = mode.label;
-      button.addEventListener("click", () => onModeChange(mode.id));
+      // Second clic sur la langue active : ALPHA s'efface et rend la main au site (et à son propre bouton de langue).
+      button.addEventListener("click", () => onModeChange(button.getAttribute("aria-pressed") === "true" ? "original" : mode.id));
       modesContainer.appendChild(button);
       return button;
     });
@@ -325,6 +327,9 @@ ${guidePart.sectionMarkup()}
           ? "français"
           : detectedLanguage === "en" ? "anglais" : "non déterminée";
         root.querySelector(".detected-language").textContent = detectedLabel;
+        root.querySelector(".mode-hint").textContent = currentMode === "original"
+          ? "ALPHA n’intervient pas : la page reste telle que le site l’affiche."
+          : "Cliquez à nouveau sur la langue choisie pour revenir au texte du site.";
       },
       // État de la traduction hors ligne des contenus nouveaux (vide = rien à signaler).
       setNotice(message) {

@@ -330,7 +330,8 @@
       (document.body.innerText || "").split(/[\r\n]+/).filter(Boolean)
     );
     pageLanguage = initialLanguage;
-    mode = ["original", "fr", "en", "local"].includes(saved) ? saved : initialLanguage || "original";
+    // Sans choix de l'utilisateur, ALPHA n'intervient pas : le site garde son propre bouton de langue.
+    mode = ["original", "fr", "en", "local"].includes(saved) ? saved : "original";
 
     originalBodyZoom = document.body.style.zoom;
     const computedBodyZoom = Number.parseFloat(getComputedStyle(document.body).zoom);
