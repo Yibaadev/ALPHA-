@@ -7,7 +7,7 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 ## Ce qu’il faut
 
 - Un compte Google (Colab et Drive sont gratuits).
-- Le fichier `tools/omnivoice_eton_colab.ipynb` du projet.
+- Le fichier `scripts/audio/omnivoice_eton_colab.ipynb` du projet.
 - Facultatif : un extrait de **3 à 10 secondes** de la voix du locuteur, en éton, enregistré sans bruit, **avec son accord**.
 
 ## Étapes
@@ -16,11 +16,11 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 
 1. Dans le dossier ALPHA, exportez les textes à faire lire :
    ```
-   node tools/export-eton-tts.js
+   node scripts/audio/export-eton-tts.js
    ```
    Cela crée deux fichiers :
-   - `docs/audio/eton-tts-a-generer.jsonl` : **seulement les clips à faire**, c’est-à-dire les nouveaux textes ou les textes corrigés. **C’est ce fichier qu’on envoie sur Colab.**
-   - `docs/audio/eton-tts.jsonl` : la liste complète, qui sert de référence sur le PC.
+   - `content/audio/eton-tts-a-generer.jsonl` : **seulement les clips à faire**, c’est-à-dire les nouveaux textes ou les textes corrigés. **C’est ce fichier qu’on envoie sur Colab.**
+   - `content/audio/eton-tts.jsonl` : la liste complète, qui sert de référence sur le PC.
 
    La liste complète couvre :
    - les textes éton validés du dictionnaire ;
@@ -30,7 +30,7 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 
 ### Sur Google Colab
 
-2. Ouvrez [colab.research.google.com](https://colab.research.google.com), puis **Fichier → Importer un notebook → Importer**, et choisissez `tools/omnivoice_eton_colab.ipynb`.
+2. Ouvrez [colab.research.google.com](https://colab.research.google.com), puis **Fichier → Importer un notebook → Importer**, et choisissez `scripts/audio/omnivoice_eton_colab.ipynb`.
 3. Menu **Exécution → Modifier le type d’exécution → GPU T4 → Enregistrer**.
 4. Lancez les cellules **une par une, dans l’ordre** (bouton ▶) :
 
@@ -39,7 +39,7 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 | 1. GPU | Vérifie qu’un GPU est actif. | quelques secondes |
 | 2. Installation | Installe OmniVoice. Si Colab demande de redémarrer la session, acceptez, puis reprenez à l’étape 3. | 2 à 4 min |
 | 3. Dossier | Connecte Google Drive (dossier `ALPHA_omnivoice`) pour ne rien perdre en cas de coupure. | quelques secondes |
-| 4. Textes | Envoyez `docs/audio/eton-tts-a-generer.jsonl` (seulement les clips à faire). | quelques secondes |
+| 4. Textes | Envoyez `content/audio/eton-tts-a-generer.jsonl` (seulement les clips à faire). | quelques secondes |
 | 5. Modèle | Télécharge et charge OmniVoice. | 1 à 2 min |
 | 6. Voix | **Option A** : voix du locuteur, à partir de son extrait. **Option B** : 4 voix de synthèse à écouter. | 1 min |
 | 6 bis | Notez le numéro de la voix choisie (option B). Elle sera la même pour tous les clips. | quelques secondes |
@@ -49,7 +49,11 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 
 ### De retour sur votre PC
 
-5. Décompressez `alpha_eton_omnivoice.zip` dans `data/audio/eton/omnivoice/` du projet. Le zip ne contient que ce lot : les nouveaux clips, `omnivoice-index-DATE.json` et `revue_locuteur-DATE.csv`. Rien n’est écrasé, et les lots précédents restent valables.
+5. Intégrez le zip, **sans le décompresser à la main** :
+   ```
+   npm run audio:import -- "chemin\vers\alpha_eton_omnivoice.zip"
+   ```
+   La commande range les clips dans `extension/data/audio/eton/omnivoice/` (livrés avec l’extension). Elle range la liste du lot et la feuille de revue dans `content/audio/omnivoice/` (non livrées). Elle reconstruit ensuite l’index en mode essai. Rien n’est écrasé, et les lots précédents restent valables.
 6. Gardez `revue_locuteur.csv` avec les clips : seuls les clips marqués `oui` seront utilisés par l’extension.
 7. Reconstruisez l’index lu par l’extension :
    ```
@@ -67,10 +71,10 @@ Deux cas :
 
 Ensuite :
 
-1. Envoyez `docs/audio/eton-tts-a-generer.jsonl` à l'étape 4. Il ne contient que les clips à faire. L'étape 4 efface d'elle-même les anciens clips concernés sur le Drive.
+1. Envoyez `content/audio/eton-tts-a-generer.jsonl` à l'étape 4. Il ne contient que les clips à faire. L'étape 4 efface d'elle-même les anciens clips concernés sur le Drive.
 2. À l'étape 6 bis, gardez la même voix pour tous les clips. La première génération utilisait la **synthèse n°4** (`VOIX_CHOISIE = 4`).
 3. À l'étape 7 bis, la feuille de revue garde les réponses déjà données pour les textes inchangés.
-4. Sur votre PC, décompressez le zip dans `data/audio/eton/omnivoice/`, puis lancez `npm run audio:index:essai` (ou `npm run audio:index` une fois la revue faite).
+4. Sur votre PC, lancez `npm run audio:import -- "chemin\vers\alpha_eton_omnivoice.zip"`. Une fois la revue faite, lancez `npm run audio:index`.
 
 **Ce qui est couvert.** Tout texte éton que l'extension peut afficher a sa voix :
 
@@ -85,5 +89,5 @@ Une phrase affichée est découpée en morceaux enregistrés. Seuls les montants
 - **L’éton est une langue à tons, et OmniVoice n’en a appris que 7,4 heures.** Un clip peut mal placer un ton : la revue du locuteur est indispensable.
 - **N’imitez la voix du locuteur qu’avec son accord explicite.**
 - Les mots très courts (« Táŋ ») sortent parfois mal : le locuteur peut les marquer `non`, ils seront lus autrement.
-- Les enregistrements du locuteur iront dans `data/audio/eton/locuteur/`, avec **le même nom de fichier** : ils passeront toujours avant les clips OmniVoice.
+- Les enregistrements du locuteur iront dans `extension/data/audio/eton/locuteur/`, avec **le même nom de fichier** : ils passeront toujours avant les clips OmniVoice.
 - Outil à déclarer au jury : *OmniVoice (k2-fsa), utilisé hors ligne pour produire des voix éton provisoires ; aucun modèle n’est embarqué dans l’extension.*

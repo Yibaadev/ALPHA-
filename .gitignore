@@ -11,7 +11,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-/data/dochack/
+/content/lexique/dochack/
 
 # Paquet de soumission (npm run package)
 /dist/
