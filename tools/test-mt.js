@@ -21,8 +21,8 @@ const FakeTranslator = {
 
 const context = vm.createContext({ console, Translator: FakeTranslator, setTimeout });
 for (const file of [
-  "src/protect.js", "src/confidence.js", "src/engine/templates.js", "src/engine/fuzzy.js",
-  "src/engine/segments.js", "src/engine/rules.js", "src/translate.js", "src/engine/mt.js",
+  "src/protect.js", "src/confidence.js", "src/engine/common.js", "src/engine/templates.js", "src/engine/fuzzy.js",
+  "src/engine/segments.js", "src/engine/rules.js", "src/engine/language.js", "src/translate.js", "src/engine/mt.js",
 ]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });
 }
@@ -56,12 +56,12 @@ function waitFor(text, src, tgt) {
 }
 
 (async () => {
-  // --- garde-fous sur la sortie du modèle ---
   const check = (original, output, src = "fr", tgt = "en") => {
     const { masked, values } = T.protectText(original);
     return MT.check(original, masked, values, output, src, tgt);
   };
 
+  // Les valeurs et la polarité doivent rester identiques après traduction.
   await test("traduction correcte acceptée, montant restauré à l'identique", () => {
     assert.strictEqual(
       check("Votre paiement de 12 500 FCFA a été reçu.", "Your payment of [M1] has been received."),
@@ -99,7 +99,7 @@ function waitFor(text, src, tgt) {
     assert.strictEqual(check("Bienvenue chez nous", "Bienvenue chez nous"), null);
   });
 
-  // --- chaîne complète avec le faux traducteur ---
+  // La chaîne complète utilise le modèle simulé pour tester les contenus inédits.
   await test("contenu inédit traduit de bout en bout, valeurs protégées", async () => {
     const original = "Votre prime de 5 000 FCFA arrive le 20/11/2026.";
     outputs.set(T.protectText(original).masked, "Your bonus of [M1] arrives on [M2].");
@@ -112,7 +112,7 @@ function waitFor(text, src, tgt) {
     assert.strictEqual(await waitFor(original, "fr", "en"), null);
   });
 
-  // --- détection de langue ---
+  // La détection de langue sert de secours quand le dictionnaire ne reconnaît pas le texte.
   await test("langue d'un texte libre", () => {
     assert.strictEqual(T.guessLanguage("Votre demande a été transmise à notre équipe."), "fr");
     assert.strictEqual(T.guessLanguage("Your request has been sent to our team."), "en");
@@ -124,7 +124,7 @@ function waitFor(text, src, tgt) {
     assert.strictEqual(T.detectPageLanguage("fr", english.slice(0, 2)), "fr");
   });
 
-  // --- formulations anglaises du site de test ---
+  // Vérifie les formulations réellement rencontrées dans l'interface de démonstration.
   await test("variantes anglaises du site traduites vers le français", () => {
     for (const [en, fr] of [
       ["Fee", "Frais"],
@@ -144,7 +144,7 @@ function waitFor(text, src, tgt) {
     assert.strictEqual(result.text, "The amount must be greater than zero.");
   });
 
-  // --- noms propres inconnus (bénéficiaire saisi par le jury) ---
+  // Les noms inconnus sont protégés, tandis que les titres de boutons restent traduisibles.
   await test("repérage des noms propres, sans confondre titres et débuts de phrase", () => {
     const names = (t) => Array.from(context.ALPHA.protect.detectNames(t));
     assert.deepStrictEqual(names("Bénéficiaire : Marie-Claire Essomba"), ["Marie-Claire Essomba"]);

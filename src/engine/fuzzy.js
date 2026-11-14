@@ -3,6 +3,7 @@
   "use strict";
 
   const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
+  const COMMON = NS.engineCommon;
   const DEFAULT_THRESHOLD = 0.90;
   const DEFAULTS = {
     threshold: DEFAULT_THRESHOLD,
@@ -10,24 +11,13 @@
     referenceSimilarityThreshold: 0.85,
   };
   const MARKER_RE = /\[M\d+\]/g;
+  const { normalizeForComparison, sameArray, markerTokens, numericTokens, normalizeCriticalTerms } = COMMON;
   let references = [];
   let protectionRegex = null;
   let criticalTerms = [];
   let criticalTermsReady = false;
   let ignored = new Set();
   let baseOptions = { ...DEFAULTS };
-
-  function normalizeForComparison(value) {
-    return String(value == null ? "" : value)
-      .replace(/\[M(\d+)\]/g, " marker$1 ")
-      .normalize("NFD")
-      .replace(/\p{M}/gu, "")
-      .toLowerCase()
-      .replace(/[‘’ʼ`]/g, "'")
-      .replace(/[^\p{L}\p{N}]+/gu, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
 
   function levenshteinDistance(left, right) {
     const a = Array.from(left);
@@ -96,19 +86,6 @@
     };
   }
 
-  function sameArray(a, b) {
-    return a.length === b.length && a.every((value, i) => value === b[i]);
-  }
-
-  function markerTokens(text) {
-    return String(text).match(MARKER_RE) || [];
-  }
-
-  function numericTokens(maskedText) {
-    const withoutMarkers = String(maskedText).replace(MARKER_RE, " ");
-    return withoutMarkers.match(/\d+(?:[.,]\d+)*/g) || [];
-  }
-
   function shape(text) {
     const protectedText = NS.protect.protect(String(text == null ? "" : text), protectionRegex);
     return {
@@ -117,18 +94,6 @@
       markers: markerTokens(protectedText.masked),
       numbers: numericTokens(protectedText.masked),
     };
-  }
-
-  function normalizeCriticalTerms(data) {
-    const categories = data && data.categories && typeof data.categories === "object" ? data.categories : {};
-    const output = [];
-    for (const [category, terms] of Object.entries(categories)) {
-      for (const value of Array.isArray(terms) ? terms : []) {
-        const term = normalizeForComparison(value);
-        if (term) output.push({ category, term });
-      }
-    }
-    return output;
   }
 
   function criticalSignature(text) {

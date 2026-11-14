@@ -27,15 +27,21 @@
       ],
       "js": [
         "src/protect.js",
+        "src/engine/common.js",
         "src/engine/templates.js",
         "src/engine/fuzzy.js",
         "src/engine/segments.js",
         "src/engine/rules.js",
+        "src/engine/language.js",
         "src/translate.js",
         "src/engine/mt.js",
+        "src/translation-controller.js",
         "src/confidence.js",
         "src/guide.js",
+        "src/panel-guide.js",
         "src/panel.js",
+        "src/voice.js",
+        "src/guide-controller.js",
         "src/content.js"
       ],
       "run_at": "document_idle",
@@ -45,6 +51,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "src/panel.css",
         "data/dictionary.json",
         "data/critical_terms.json",
         "data/templates.json",

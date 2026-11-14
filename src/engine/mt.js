@@ -34,8 +34,6 @@
     if (onStatus) onStatus(next);
   }
 
-  /* ---------- Contrôles de polarité ---------- */
-
   const LEXICON = {
     negation: {
       fr: /(?:^|[^\p{L}])(?:ne|pas|jamais|aucune?s?|rien|sans|ni|non|impossible|personne)(?=$|[^\p{L}])|(?:^|[^\p{L}])n['’]\p{L}/iu,
@@ -61,9 +59,7 @@
     return true;
   }
 
-  /* ---------- Traducteurs ---------- */
-
-  // Sans geste de l'utilisateur : n'ouvre un traducteur que si le modèle est déjà sur l'appareil.
+  // Si le modèle manque, son téléchargement est reporté à prepare, appelé depuis un clic.
   async function ensure(src, tgt) {
     const key = src + ">" + tgt;
     if (translators.has(key)) return translators.get(key);
@@ -142,8 +138,6 @@
       job.finally(() => { if (creating.get(key) === job) creating.delete(key); });
     }
   }
-
-  /* ---------- Traduction ---------- */
 
   function remember(key, value) {
     if (cache.size >= MAX_CACHE) cache.delete(cache.keys().next().value);

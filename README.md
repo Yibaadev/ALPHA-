@@ -57,19 +57,25 @@ Conservez les marqueurs comme `[M1]` dans les traductions : ils représentent de
 ## Vérifications
 
 ```bash
-node tools/test.js
-node tools/test-mt.js
-node tools/test-guide.js
-node tools/test-unseen.js
-node tools/check.js
+npm test
 ```
+
+Cette commande vérifie la syntaxe des scripts, les données JSON, les moteurs de traduction, les messages inédits et la cohérence du dictionnaire.
 
 ## Fichiers principaux
 
 - `manifest.json` : configuration de l’extension.
-- `src/` : lecture de la page, traduction et protection des valeurs.
+- `src/content.js` : observation de la page et adaptation du DOM.
+- `src/translation-controller.js` : choix de la cascade de traduction, indépendant du DOM.
+- `src/engine/` : moteurs linguistiques et utilitaires communs de validation.
+- `src/panel.js` : structure et interactions du panneau d’accessibilité.
+- `src/panel.css` : styles du Shadow DOM et variables de thème réutilisables.
+- `src/voice.js` : lecture vocale (page et guide) avec les voix locales du navigateur.
+- `src/protect.js` : protection des valeurs sensibles.
+- `src/guide.js` et `data/guide.json` : guide « ? » de l’écran (reconnaissance de l’écran, textes, bulle de présentation).
+- `src/guide-controller.js` : relevé de la page pour le guide, rafraîchissement et lecture.
+- `src/panel-guide.js` : section guide et bulle de présentation du panneau.
 - `data/dictionary.json` : textes et traductions.
-- `src/guide.js` et `data/guide.json` : guide « ? » de l’écran et bulle de présentation.
 - `tools/` : import/export CSV et vérifications.
 - `docs/` : documentation et fichiers de traduction.
 
