@@ -21,6 +21,7 @@ const checks = [
   ["lecture vocale", "tools/test-voice.js"],
   ["guide de l'écran", "tools/test-guide.js"],
   ["expliquer (glossaire)", "tools/test-explain.js"],
+  ["voix éton préenregistrées", "tools/test-eton-audio.js"],
   ["dictionnaire", "tools/check.js"],
 ];
 

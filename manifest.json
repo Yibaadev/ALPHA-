@@ -41,10 +41,13 @@
         "src/explain.js",
         "src/panel-guide.js",
         "src/panel-explain.js",
+        "src/panel-read.js",
         "src/panel.js",
+        "src/eton-audio.js",
         "src/voice.js",
         "src/guide-controller.js",
         "src/explain-controller.js",
+        "src/read-mode.js",
         "src/content.js"
       ],
       "run_at": "document_idle",
@@ -62,7 +65,10 @@
         "data/lexicon.json",
         "data/rules.json",
         "data/guide.json",
-        "data/glossary.json"
+        "data/glossary.json",
+        "data/audio/eton/index.json",
+        "data/audio/eton/omnivoice/*.ogg",
+        "data/audio/eton/locuteur/*"
       ],
       "matches": [
         "https://*/*",

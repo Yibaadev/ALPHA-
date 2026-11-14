@@ -52,11 +52,14 @@
     getPanel: () => panel,
     getMode: () => mode,
     getPageLanguage: () => pageLanguage,
+    getEton: () => etonAudio,
   });
+  const reader = NS.readMode.create({ hostId: HOST_ID, getPanel: () => panel, voice }); // lecture au clic
 
   // Pour chaque texte, on retient l'original et ce qui a été affiché.
   const textState = new WeakMap();
   const attrState = new WeakMap();
+  const etonAudio = NS.etonAudio ? NS.etonAudio.create({ hostId: HOST_ID }) : null; // clips éton
   const guide = NS.guideController.create({
     hostId: HOST_ID,
     textState,
@@ -332,7 +335,7 @@
       panel = NS.panel.create({
         hostId: HOST_ID,
         onModeChange: setMode,
-        onSpeak: voice.speak,
+        onSpeak: reader.toggle,
         onZoomChange: setZoom,
         onGuide: guide.refresh,
         onGuideSpeak: guide.speak,
@@ -381,7 +384,7 @@
     apply();
     showMachineStatus(NS.mt ? NS.mt.status() : "unsupported");
     guide.start();
-    if (panel) explainer.start();
+    if (panel) { explainer.start(); if (etonAudio) etonAudio.load(); }
     languageObserver = new MutationObserver(() => apply());
     languageObserver.observe(document.documentElement, {
       attributes: true,

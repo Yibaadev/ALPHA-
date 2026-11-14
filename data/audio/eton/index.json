@@ -1,0 +1,682 @@
+{
+  "meta": {
+    "description": "Clips éton lus par l'extension (généré par tools/build-audio-index.js, ne pas modifier à la main).",
+    "modele_synthese": "k2-fsa/OmniVoice",
+    "genere_le": "2026-11-14",
+    "inclut_non_revus": true
+  },
+  "clips": [
+    {
+      "key": "dict.tagline",
+      "text": "Bâŋ á ŋkwǎl",
+      "file": "omnivoice/dict.tagline.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.balance",
+      "text": "Mwàní",
+      "file": "omnivoice/dict.balance.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.fees",
+      "text": "Táŋ",
+      "file": "omnivoice/dict.fees.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.beneficiary",
+      "text": "Mòd àtə́ nɔŋ",
+      "file": "omnivoice/dict.beneficiary.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.summary",
+      "text": "Ìbɛ̀bə̀ àsúg",
+      "file": "omnivoice/dict.summary.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.confirmation",
+      "text": "Ìjə́blə́",
+      "file": "omnivoice/dict.confirmation.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.account_section",
+      "text": "Kônt wô",
+      "file": "omnivoice/dict.account_section.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.greeting_only",
+      "text": "Mə̀kónî,",
+      "file": "omnivoice/dict.greeting_only.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.balance_intro",
+      "text": "Tálgá mwàní wô, ù lóm mwàní èè ùkálá.",
+      "file": "omnivoice/dict.balance_intro.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.balance_available",
+      "text": "Mwàní ú nè",
+      "file": "omnivoice/dict.balance_available.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.account_number_label",
+      "text": "Nwàmɔ̀ kônt :",
+      "file": "omnivoice/dict.account_number_label.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.account_type",
+      "text": "Kônt á m̀bə̀ŋ",
+      "file": "omnivoice/dict.account_type.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.action_transfer",
+      "text": "Lóm mwàní",
+      "file": "omnivoice/dict.action_transfer.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.action_fees",
+      "text": "Tál táŋ",
+      "file": "omnivoice/dict.action_fees.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.recent_transactions",
+      "text": "Mìnlóm mə́ ŋm̀kpámgí",
+      "file": "omnivoice/dict.recent_transactions.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.tx_merchant",
+      "text": "Èyágná á kùz",
+      "file": "omnivoice/dict.tx_merchant.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.tx_salary",
+      "text": "Mwàní à ŋgwàn ńnɔ́ŋí",
+      "file": "omnivoice/dict.tx_salary.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.tx_received",
+      "text": "Nlóm mwàní ńnɔ́ŋí",
+      "file": "omnivoice/dict.tx_received.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.secure_title",
+      "text": "Ùkálá",
+      "file": "omnivoice/dict.secure_title.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.secure_text",
+      "text": "Cázgá ngə́d ísə̂ dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
+      "file": "omnivoice/dict.secure_text.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.secure_connection",
+      "text": "Ŋkwǎl ú kálâní",
+      "file": "omnivoice/dict.secure_connection.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.fees_section",
+      "text": "Táŋ í nlóm",
+      "file": "omnivoice/dict.fees_section.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.fees_intro",
+      "text": "Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í nlóm yátə́ lánbân ɲə̀ m̀yɛ̌n.",
+      "file": "omnivoice/dict.fees_intro.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation_type",
+      "text": "M̀bə̀b í nlóm",
+      "file": "omnivoice/dict.operation_type.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation_alpha_account",
+      "text": "Kɔ̂nt Safinum",
+      "file": "omnivoice/dict.operation_alpha_account.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation_alpha_hint",
+      "text": "Nlóm àvəl àvəl té táŋ",
+      "file": "omnivoice/dict.operation_alpha_hint.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.amount_to_send",
+      "text": "Mwàní ú nlóm",
+      "file": "omnivoice/dict.amount_to_send.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.fees_free",
+      "text": "Té táŋ",
+      "file": "omnivoice/dict.fees_free.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.total_to_debit",
+      "text": "Mwàní wɔ́sə̂ wàyá kùì",
+      "file": "omnivoice/dict.total_to_debit.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.balance_after",
+      "text": "Mwàní àlígì á mbús ísɛ́",
+      "file": "omnivoice/dict.balance_after.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.back",
+      "text": "Á mbús",
+      "file": "omnivoice/dict.back.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.continue",
+      "text": "Kə́lə̀ ósú",
+      "file": "omnivoice/dict.continue.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.beneficiary_intro",
+      "text": "Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.",
+      "file": "omnivoice/dict.beneficiary_intro.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.warning_new_beneficiary",
+      "text": "Mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kônt wô. Cázgá nwàmɔ̀ ósúsúâ nâ ù kə́ ósú.",
+      "file": "omnivoice/dict.warning_new_beneficiary.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.beneficiary_name",
+      "text": "Dwé lə̀ mòd àtə́ nɔŋ",
+      "file": "omnivoice/dict.beneficiary_name.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.phone_number",
+      "text": "Nwàmɔ̀ ŋkwǎl",
+      "file": "omnivoice/dict.phone_number.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.transfer_reason",
+      "text": "Àsú ú nlóm",
+      "file": "omnivoice/dict.transfer_reason.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.reason_services",
+      "text": "Èyágná ású ìsá",
+      "file": "omnivoice/dict.reason_services.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.note_optional",
+      "text": "Ètìl (ù kɔ́ŋ)",
+      "file": "omnivoice/dict.note_optional.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.alert_title",
+      "text": "Kálâ! Ùkálá",
+      "file": "omnivoice/dict.alert_title.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.alert_text",
+      "text": "Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.",
+      "file": "omnivoice/dict.alert_text.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.summary_intro",
+      "text": "Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
+      "file": "omnivoice/dict.summary_intro.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.amount",
+      "text": "Àbùm mwàní",
+      "file": "omnivoice/dict.amount.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.total_debited",
+      "text": "Mwàní wɔ́sə̂ ùkùì",
+      "file": "omnivoice/dict.total_debited.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.phone",
+      "text": "Nɔ́mbà yà tɛ̀lɛ̀fɔ̂n",
+      "file": "omnivoice/dict.phone.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.reference",
+      "text": "Nɔ́mbà yà ísɛ́",
+      "file": "omnivoice/dict.reference.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation",
+      "text": "Ìsɛ́",
+      "file": "omnivoice/dict.operation.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.confirm_checkbox",
+      "text": "Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.",
+      "file": "omnivoice/dict.confirm_checkbox.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.modify",
+      "text": "Cɛ́nî",
+      "file": "omnivoice/dict.modify.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.confirm_transfer",
+      "text": "Jə́blə́ nlóm mwàní",
+      "file": "omnivoice/dict.confirm_transfer.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.transfer_done",
+      "text": "Nlóm mwàní ùbòbànyà mbə̀ŋ !",
+      "file": "omnivoice/dict.transfer_done.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.transfer_success_msg",
+      "text": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
+      "file": "omnivoice/dict.transfer_success_msg.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.status",
+      "text": "M̀bə̀b",
+      "file": "omnivoice/dict.status.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.status_success",
+      "text": "Ŋ̀kàbní",
+      "file": "omnivoice/dict.status_success.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.new_transfer",
+      "text": "Lóm mwàní fə́",
+      "file": "omnivoice/dict.new_transfer.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.test_environment_banner",
+      "text": "Vôm à mə̀və́və́glá — màm mə́ pûpùd, té nlóm mwàní wə́ bə́bɛ́lə́.",
+      "file": "omnivoice/dict.test_environment_banner.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.test_protocol_link",
+      "text": "Mə̀tùm mə́ mə̀və́və́glá",
+      "file": "omnivoice/dict.test_protocol_link.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.hackathon_return_link",
+      "text": "Dúgnì á hackathon",
+      "file": "omnivoice/dict.hackathon_return_link.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation_electricity_bill",
+      "text": "Kálàdà wà kùrâŋ",
+      "file": "omnivoice/dict.operation_electricity_bill.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.operation_other_bank",
+      "text": "Báŋk ìfə́",
+      "file": "omnivoice/dict.operation_other_bank.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.confirm_beneficiary_checkbox",
+      "text": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.",
+      "file": "omnivoice/dict.confirm_beneficiary_checkbox.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.action_close",
+      "text": "Díb",
+      "file": "omnivoice/dict.action_close.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.error_title",
+      "text": "Dzɔ̌m díŋgá cɔ́b",
+      "file": "omnivoice/dict.error_title.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.error_must_confirm_info",
+      "text": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
+      "file": "omnivoice/dict.error_must_confirm_info.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.transfer_done_success",
+      "text": "Nlóm mwàní ùbòbànyà mbə̀ŋ !",
+      "file": "omnivoice/dict.transfer_done_success.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.money_sent_to_beneficiary",
+      "text": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
+      "file": "omnivoice/dict.money_sent_to_beneficiary.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.transaction_reference",
+      "text": "Nɔ́mbà yà nlóm mwàní",
+      "file": "omnivoice/dict.transaction_reference.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.date_and_time",
+      "text": "Mɔ́s bá ǹtə̀ŋ",
+      "file": "omnivoice/dict.date_and_time.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.download_receipt",
+      "text": "Nɔŋ kálàdà wà ǹyáà",
+      "file": "omnivoice/dict.download_receipt.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.action_new_transfer",
+      "text": "Lóm mwàní fə́",
+      "file": "omnivoice/dict.action_new_transfer.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.back_to_home",
+      "text": "Ìbùlàn á ǹtɔ́ŋ",
+      "file": "omnivoice/dict.back_to_home.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_connexion_réussie",
+      "text": "Mì nyíìnyà á kɔ̂nt mbə̀ŋ",
+      "file": "omnivoice/dict.ext_connexion_reussie.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_mot_de_passe_incorrect",
+      "text": "Ìbùg yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
+      "file": "omnivoice/dict.ext_mot_de_passe_incorrect.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_code_pin_incorrect",
+      "text": "Nɔ́mbà yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
+      "file": "omnivoice/dict.ext_code_pin_incorrect.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_limite_quotidienne_atteinte",
+      "text": "Mì mànyà àbùm mwàní yà lóm mɔ́s wùá",
+      "file": "omnivoice/dict.ext_limite_quotidienne_atteinte.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_téléchargement_terminé",
+      "text": "Ìnɔŋ kálàdà ìmànyà",
+      "file": "omnivoice/dict.ext_telechargement_termine.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_transaction_en_cours_de_traite",
+      "text": "Bə̀tə̀ kɔ̀m ísɛ́ yɔ̂ ɛ́yə́ŋ",
+      "file": "omnivoice/dict.ext_transaction_en_cours_de_traite.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_veuillez_patienter",
+      "text": "Yàŋgá ǹtə̀ŋ mɔ́n...",
+      "file": "omnivoice/dict.ext_veuillez_patienter.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_voulez-vous_annuler_cette_opér",
+      "text": "Yə̀ mì yì kàb ísɛ́ ńì ?",
+      "file": "omnivoice/dict.ext_voulez_vous_annuler_cette_oper.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_reçu_envoyé_par_sms",
+      "text": "Bə́lómnyà kálàdà wà ǹyáà á SMS",
+      "file": "omnivoice/dict.ext_recu_envoye_par_sms.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_votre_session_a_expiré",
+      "text": "Ǹtə̀ŋ wɔ̂ wà ísɛ́ ùmànyà.",
+      "file": "omnivoice/dict.ext_votre_session_a_expire.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_ne_partagez_jamais_votre_code_",
+      "text": "Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "file": "omnivoice/dict.ext_ne_partagez_jamais_votre_code_.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_attention__ne_partagez_jamais_",
+      "text": "Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "file": "omnivoice/dict.ext_attention__ne_partagez_jamais_.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_alerte_sécurité__une_activité_",
+      "text": "Mə̀bàlà : bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt yɔ̂.",
+      "file": "omnivoice/dict.ext_alerte_securite__une_activite_.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_impossible_de_traiter_cette_de",
+      "text": "Ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.",
+      "file": "omnivoice/dict.ext_impossible_de_traiter_cette_de.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_la_transaction_est_en_attente_",
+      "text": "Ìsɛ́ ìtə̀ yàŋà ǹjə́blə́ wɔ̂.",
+      "file": "omnivoice/dict.ext_la_transaction_est_en_attente_.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_votre_solde_est_insuffisant_po",
+      "text": "Mwàní wɔ̂ àlígì àtə̀ bɔ́n á yáà mwàní wà ísɛ́ yà nlóm.",
+      "file": "omnivoice/dict.ext_votre_solde_est_insuffisant_po.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_aucun_coût_supplémentaire_ne_s",
+      "text": "Bə̀bə́gə̀ nɔŋ mwàní ḿfə́ á yɔ́b.",
+      "file": "omnivoice/dict.ext_aucun_cout_supplementaire_ne_s.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_vérifiez_le_numéro_du_bénéfici",
+      "text": "Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.",
+      "file": "omnivoice/dict.ext_verifiez_le_numero_du_benefici.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_transfert_échoué__aucun_montan",
+      "text": "Nlóm mwàní ùŋgá cɔ́b : mwàní wɔ̂ àbə́gə̀ kùì á kɔ̂nt.",
+      "file": "omnivoice/dict.ext_transfert_echoue__aucun_montan.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_une_erreur_est_survenue_réessa",
+      "text": "Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.",
+      "file": "omnivoice/dict.ext_une_erreur_est_survenue_reessa.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_transfert_refusé",
+      "text": "Bə́ŋgá bɛ̀n nlóm mwàní",
+      "file": "omnivoice/dict.ext_transfert_refuse.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.ext_opération_annulée",
+      "text": "Bə́ŋgá kàb ísɛ́",
+      "file": "omnivoice/dict.ext_operation_annulee.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.demo_warning_banner_bare",
+      "text": "Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "file": "omnivoice/dict.demo_warning_banner_bare.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.demo_env_title",
+      "text": "Ìfɔ̀gɔ̀ yà ǹyèglè",
+      "file": "omnivoice/dict.demo_env_title.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    },
+    {
+      "key": "dict.demo_no_personal_data",
+      "text": "Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "file": "omnivoice/dict.demo_no_personal_data.ogg",
+      "source": "omnivoice",
+      "revue": "a_verifier"
+    }
+  ]
+}
