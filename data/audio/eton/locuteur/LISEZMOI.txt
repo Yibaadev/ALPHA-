@@ -1,0 +1,3 @@
+Enregistrements du locuteur éton.
+Même nom de fichier que le clip OmniVoice correspondant (ex. dict.balance.ogg) : ils passent toujours avant la voix de synthèse.
+Formats acceptés : .ogg, .mp3, .wav.

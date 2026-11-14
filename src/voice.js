@@ -1,19 +1,22 @@
-/* Lecture vocale avec une voix locale du navigateur.
-   Uniquement avec une voix installée sur l'appareil (localService) : les voix « en ligne »
-   de certains navigateurs enverraient le texte lu à un serveur, ce que le protocole interdit.
-   Trois lecteurs partagent la synthèse : la page entière, le guide de l'écran et l'explication
-   d'un terme sélectionné. */
+/* Lecture vocale.
+   - Français et anglais : voix installée sur l'appareil seulement (localService). Les voix
+     « en ligne » de certains navigateurs enverraient le texte à un serveur, ce que le protocole interdit.
+   - Éton : clips préenregistrés (src/eton-audio.js). En éton, ALPHA ne parle QU'en éton :
+     un texte sans voix éton n'est jamais lu en français, l'écran le signale.
+   Trois lecteurs partagent la synthèse : la lecture au clic (src/read-mode.js), le guide de
+   l'écran et l'explication d'un terme sélectionné. */
 (function () {
   "use strict";
 
   const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
+  const NO_ETON_VOICE = "Pas encore de voix éton pour ce texte.";
 
-  function create({ getPanel, getMode, getPageLanguage }) {
+  function create({ getPanel, getMode, getPageLanguage, getEton }) {
     // Chaque lecteur a son bouton et sa ligne d'état dans le panneau.
     const readers = {
       page: {
-        status: (panel, message) => panel.setVoiceStatus(message),
-        speaking: (panel, value) => panel.setSpeaking(value),
+        status: (panel, message, state) => panel.setReadStatus && panel.setReadStatus(message, state),
+        speaking: (panel, value) => panel.setReadSpeaking && panel.setReadSpeaking(value),
       },
       guide: {
         status: (panel, message, state) => panel.setGuideStatus && panel.setGuideStatus(message, state),
@@ -25,6 +28,7 @@
       },
     };
     let speaker = null; // lecteur en cours : "page" | "guide" | "explain" | null
+    let sequence = null; // suite de clips éton en cours
 
     function report(owner, message, state) {
       const panel = getPanel();
@@ -34,12 +38,21 @@
       const panel = getPanel();
       if (panel) readers[owner].speaking(panel, value);
     }
+    const eton = () => (getEton ? getEton() : null);
+    const localVoice = (language) => window.speechSynthesis.getVoices().find((candidate) =>
+      candidate.localService && candidate.lang.toLowerCase().startsWith(language.slice(0, 2)));
+    const textLanguage = () => {
+      const mode = getMode();
+      return mode === "en" || (mode === "original" && getPageLanguage() === "en") ? "en-US" : "fr-FR";
+    };
 
     function stop(message) {
       if (!speaker) return;
       const owner = speaker;
       speaker = null;
+      sequence = null;
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      if (eton()) eton().stopClip();
       setSpeaking(owner, false);
       if (typeof message === "string" && message) report(owner, message);
     }
@@ -56,15 +69,13 @@
       }
       stop();
       if (!text) {
-        report(owner, owner === "page" ? "Aucun texte visible à lire." : "Aucun texte à lire.", "notice");
+        report(owner, "Aucun texte à lire.", "notice");
         return;
       }
 
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = language;
-      const voice = window.speechSynthesis.getVoices().find((candidate) =>
-        candidate.localService && candidate.lang.toLowerCase().startsWith(language.slice(0, 2))
-      );
+      const voice = localVoice(language);
       if (!voice) {
         report(owner, "Aucune voix locale correspondante n’est installée pour cette langue.", "error");
         return;
@@ -85,33 +96,93 @@
       };
       speaker = owner;
       setSpeaking(owner, true);
-      report(owner, "Lecture vocale en cours…");
+      report(owner, "Lecture en cours…");
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utterance);
     }
 
-    // Lecture du contenu visible de la page.
-    function speak() {
-      const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
-      const mode = getMode();
-      const language = mode === "en" || (mode === "original" && getPageLanguage() === "en") ? "en-US" : "fr-FR";
-      speakText("page", visibleText, language);
+    // Suite de clips éton ; la lecture s'arrête dès qu'une autre commence.
+    async function playClips(owner, items, message) {
+      const audio = eton();
+      const token = {};
+      sequence = token;
+      speaker = owner;
+      setSpeaking(owner, true);
+      report(owner, message);
+      try {
+        for (const item of items) {
+          if (sequence !== token) return;
+          await audio.playClip(item.clip);
+        }
+        if (sequence === token) stop(message.replace("Lecture en éton", "Lu en éton"));
+      } catch (e) {
+        if (sequence === token) stop("La lecture du clip éton a échoué.");
+      }
+    }
+
+    // Texte d'un élément pour la synthèse : son texte, ou pour un champ son libellé.
+    function textForSpeech(el) {
+      if (el.matches("input, select, textarea")) {
+        const label = el.labels && el.labels[0];
+        if (label) return textForSpeech(label);
+        const value = el.matches("input[type=button], input[type=submit]") ? el.value : "";
+        return (value || el.getAttribute("aria-label") || el.getAttribute("placeholder") || "").trim();
+      }
+      return (el.innerText != null ? el.innerText : el.textContent || "").replace(/\s+/g, " ").trim().slice(0, 600);
+    }
+
+    // Lecture au clic : lit un seul élément de la page.
+    function speakElement(el) {
+      const owner = "page";
+      if (!getPanel() || !el) return;
+      stop();
+      if (getMode() !== "local") {
+        speakText(owner, textForSpeech(el), textLanguage());
+        return;
+      }
+      const audio = eton();
+      if (!audio) {
+        report(owner, NO_ETON_VOICE, "notice");
+        return;
+      }
+      audio.unlock(); // pendant le clic : Chrome n'autorise le son qu'après un geste
+      const { items, missing } = audio.elementQueue(el);
+      if (!items.length) {
+        report(owner, NO_ETON_VOICE, "notice");
+        return;
+      }
+      const info = audio.describe();
+      let message = "Lecture en éton";
+      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire" + (info.unreviewed ? ", pas encore vérifiée" : "") + ")";
+      message += ".";
+      if (missing) message += " Une partie de ce texte (montant, nom ou texte non enregistré) n’a pas encore de voix éton.";
+      playClips(owner, items, message);
+    }
+
+    // En éton, le guide et les explications n'ont pas encore de voix éton : rien n'est lu en français.
+    function etonOnly(owner) {
+      if (getMode() !== "local") return false;
+      if (speaker === owner) stop();
+      report(owner, "Pas encore de voix éton pour ce texte : il sera lu dès que les enregistrements seront validés.", "notice");
+      return true;
     }
 
     // Lecture du guide de l'écran, dans la langue du guide.
     function speakGuide(text, lang) {
+      if (etonOnly("guide")) return;
       speakText("guide", text, lang === "en" ? "en-US" : "fr-FR");
     }
 
     // Lecture de l'explication d'un terme (action « Expliquer »).
     function speakExplain(text, lang) {
+      if (etonOnly("explain")) return;
       speakText("explain", text, lang === "en" ? "en-US" : "fr-FR");
     }
     function stopExplain() {
       if (speaker === "explain") stop();
     }
 
-    return { speak, speakGuide, speakExplain, stopExplain, stop: () => stop() };
+    return { speakElement, speakGuide, speakExplain, stopExplain, stop: () => stop() };
   }
 
   NS.voice = { create };

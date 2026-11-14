@@ -66,13 +66,13 @@
           <button class="rail-button" type="button" data-panel="language" aria-label="Langues" aria-expanded="false">${icon("language")}<span class="tooltip">Langues</span></button>
           <button class="rail-button" type="button" data-panel="guide" aria-label="Guide de cet écran" aria-expanded="false">${icon("help")}<span class="tooltip">Guide de l’écran</span></button>
           <button class="rail-button" type="button" data-panel="zoom" aria-label="Agrandir l’affichage">${icon("zoom")}<span class="tooltip">Agrandir</span></button>
-          <button class="rail-button" type="button" data-panel="voice" aria-label="Lecture vocale">${icon("speaker")}<span class="tooltip">Lecture vocale</span></button>
+          <button class="rail-button" type="button" data-panel="voice" aria-label="Lecture au clic">${icon("speaker")}<span class="tooltip">Lecture au clic</span></button>
         </div>
         <span class="rail-rule"></span>
         <button class="rail-button rail-dismiss" type="button" aria-label="Masquer la barre ALPHA">${icon("close")}<span class="tooltip">Masquer la barre</span></button>
       </nav>
       <button class="launcher" type="button" aria-label="Ouvrir la barre ALPHA" title="Ouvrir ALPHA — glisser pour déplacer"><span class="cm-enter"><span class="cm-float">${cameroonMap("cm-launch")}</span></span><span class="cm-shadow"></span></button>
-${guidePart.introMarkup()}${NS.panelExplain.markup(icon("explain"))}
+${guidePart.introMarkup()}${NS.panelExplain.markup(icon("explain"))}${NS.panelRead.markup(icon("speaker"))}
       <aside class="drawer" aria-label="Langue et accessibilité" hidden>
         <div class="inner">
           <header class="head">
@@ -92,10 +92,10 @@ ${guidePart.sectionMarkup()}
             <h2 class="section-heading">Lecture vocale</h2>
             <div class="voice-card">
               <span class="voice-mark">${icon("speaker")}</span>
-              <span class="voice-copy"><span class="voice-title">Lecture vocale</span><span class="voice-hint">Lecture du contenu visible</span></span>
-              <button class="action speak" type="button">Écouter</button>
+              <span class="voice-copy"><span class="voice-title">Lecture au clic</span><span class="voice-hint">Touchez un texte de la page pour l’entendre</span></span>
+              <button class="action speak" type="button" aria-pressed="false">Activer</button>
             </div>
-            <p class="voice-status" aria-live="polite">Lecture avec la voix locale disponible sur l’appareil.</p>
+            <p class="voice-status" aria-live="polite">Activez la lecture au clic, puis touchez un texte de la page.</p>
           </section>
           <section class="section" data-section="zoom">
             <h2 class="section-heading">Taille d’affichage</h2>
@@ -304,6 +304,7 @@ ${guidePart.sectionMarkup()}
     root.querySelector(".speak").addEventListener("click", onSpeak);
     const guideApi = guidePart.attach(root, { launcher, onGuide, onGuideSpeak });
     const explainApi = NS.panelExplain.attach(root, { onExplain, onExplainSpeak, onExplainClose });
+    const readApi = NS.panelRead.attach(root, { onReadExit: onSpeak });
     let zoomPercent = 100;
     const zoomValue = root.querySelector(".zoom-value");
     const zoomOut = root.querySelector(".zoom-out");
@@ -351,6 +352,7 @@ ${guidePart.sectionMarkup()}
       updateZoom,
       ...guideApi,
       ...explainApi,
+      ...readApi,
       // Le guide est-il affiché ? (pour le rafraîchir quand la page change)
       guideVisible() {
         return !drawer.hidden && (openSection === "all" || openSection === "guide");

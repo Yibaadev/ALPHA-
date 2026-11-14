@@ -54,7 +54,9 @@ assert.ok(manifest.content_scripts[0].css.includes("src/confidence.css"));
 assert.ok(manifest.web_accessible_resources[0].resources.includes("data/critical_terms.json"));
 assert.ok(manifest.web_accessible_resources[0].resources.includes("src/panel.css"));
 for (const file of [...scripts, ...manifest.content_scripts[0].css, ...manifest.web_accessible_resources[0].resources]) {
-  assert.ok(fs.existsSync(path.join(root, file)), "fichier déclaré dans le manifeste : " + file);
+  // Motif « dossier/* » : le dossier doit exister (les fichiers audio peuvent arriver plus tard).
+  const target = file.includes("*") ? path.dirname(file) : file;
+  assert.ok(fs.existsSync(path.join(root, target)), "fichier déclaré dans le manifeste : " + file);
 }
 
 console.log("UI ALPHA : suppression des thèmes de vérification/IA, dimensions compactes et ergonomie validées.");

@@ -23,6 +23,10 @@
     "test:cascade": "node tools/test-cascade.js",
     "test:unseen": "node tools/test-unseen.js",
     "test:guide": "node tools/test-guide.js",
-    "test:explain": "node tools/test-explain.js"
+    "test:explain": "node tools/test-explain.js",
+    "audio:export": "node tools/export-eton-tts.js",
+    "test:eton-audio": "node tools/test-eton-audio.js",
+    "audio:index": "node tools/build-audio-index.js",
+    "audio:index:essai": "node tools/build-audio-index.js --inclure-non-revus"
   }
 }

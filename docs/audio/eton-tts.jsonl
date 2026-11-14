@@ -1,0 +1,96 @@
+{"id":"dict.tagline","key":"dict.tagline","text":"Bâŋ á ŋkwǎl","language_id":"eto","origin":"dictionary"}
+{"id":"dict.balance","key":"dict.balance","text":"Mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fees","key":"dict.fees","text":"Táŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.beneficiary","key":"dict.beneficiary","text":"Mòd àtə́ nɔŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.summary","key":"dict.summary","text":"Ìbɛ̀bə̀ àsúg","language_id":"eto","origin":"dictionary"}
+{"id":"dict.confirmation","key":"dict.confirmation","text":"Ìjə́blə́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.account_section","key":"dict.account_section","text":"Kônt wô","language_id":"eto","origin":"dictionary"}
+{"id":"dict.greeting_only","key":"dict.greeting_only","text":"Mə̀kónî,","language_id":"eto","origin":"dictionary"}
+{"id":"dict.balance_intro","key":"dict.balance_intro","text":"Tálgá mwàní wô, ù lóm mwàní èè ùkálá.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.balance_available","key":"dict.balance_available","text":"Mwàní ú nè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.account_number_label","key":"dict.account_number_label","text":"Nwàmɔ̀ kônt :","language_id":"eto","origin":"dictionary"}
+{"id":"dict.account_type","key":"dict.account_type","text":"Kônt á m̀bə̀ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.action_transfer","key":"dict.action_transfer","text":"Lóm mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.action_fees","key":"dict.action_fees","text":"Tál táŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.recent_transactions","key":"dict.recent_transactions","text":"Mìnlóm mə́ ŋm̀kpámgí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.tx_merchant","key":"dict.tx_merchant","text":"Èyágná á kùz","language_id":"eto","origin":"dictionary"}
+{"id":"dict.tx_salary","key":"dict.tx_salary","text":"Mwàní à ŋgwàn ńnɔ́ŋí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.tx_received","key":"dict.tx_received","text":"Nlóm mwàní ńnɔ́ŋí","language_id":"eto","origin":"dictionary"}
+{"id":"dict.secure_title","key":"dict.secure_title","text":"Ùkálá","language_id":"eto","origin":"dictionary"}
+{"id":"dict.secure_text","key":"dict.secure_text","text":"Cázgá ngə́d ísə̂ dwé èè nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù jə́blə́ nlóm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.secure_connection","key":"dict.secure_connection","text":"Ŋkwǎl ú kálâní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fees_section","key":"dict.fees_section","text":"Táŋ í nlóm","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fees_intro","key":"dict.fees_intro","text":"Tɔ́bgá nlóm mwàní èè táŋ mwàní. Táŋ í nlóm yátə́ lánbân ɲə̀ m̀yɛ̌n.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation_type","key":"dict.operation_type","text":"M̀bə̀b í nlóm","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation_alpha_account","key":"dict.operation_alpha_account","text":"Kɔ̂nt Safinum","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation_alpha_hint","key":"dict.operation_alpha_hint","text":"Nlóm àvəl àvəl té táŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.amount_to_send","key":"dict.amount_to_send","text":"Mwàní ú nlóm","language_id":"eto","origin":"dictionary"}
+{"id":"dict.fees_free","key":"dict.fees_free","text":"Té táŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.total_to_debit","key":"dict.total_to_debit","text":"Mwàní wɔ́sə̂ wàyá kùì","language_id":"eto","origin":"dictionary"}
+{"id":"dict.balance_after","key":"dict.balance_after","text":"Mwàní àlígì á mbús ísɛ́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.back","key":"dict.back","text":"Á mbús","language_id":"eto","origin":"dictionary"}
+{"id":"dict.continue","key":"dict.continue","text":"Kə́lə̀ ósú","language_id":"eto","origin":"dictionary"}
+{"id":"dict.beneficiary_intro","key":"dict.beneficiary_intro","text":"Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.warning_new_beneficiary","key":"dict.warning_new_beneficiary","text":"Mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kônt wô. Cázgá nwàmɔ̀ ósúsúâ nâ ù kə́ ósú.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.beneficiary_name","key":"dict.beneficiary_name","text":"Dwé lə̀ mòd àtə́ nɔŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.phone_number","key":"dict.phone_number","text":"Nwàmɔ̀ ŋkwǎl","language_id":"eto","origin":"dictionary"}
+{"id":"dict.transfer_reason","key":"dict.transfer_reason","text":"Àsú ú nlóm","language_id":"eto","origin":"dictionary"}
+{"id":"dict.reason_services","key":"dict.reason_services","text":"Èyágná ású ìsá","language_id":"eto","origin":"dictionary"}
+{"id":"dict.note_optional","key":"dict.note_optional","text":"Ètìl (ù kɔ́ŋ)","language_id":"eto","origin":"dictionary"}
+{"id":"dict.alert_title","key":"dict.alert_title","text":"Kálâ! Ùkálá","language_id":"eto","origin":"dictionary"}
+{"id":"dict.alert_text","key":"dict.alert_text","text":"Kálâ! Cázgá nwàmɔ̀ lə̀ mòd àtə́ nɔŋ ósúsúâ nâ ù kə́ ósú.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.summary_intro","key":"dict.summary_intro","text":"Cázgá màm mə́sə̂ ósúsúâ nâ ù jə́blə́ nlóm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.amount","key":"dict.amount","text":"Àbùm mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.total_debited","key":"dict.total_debited","text":"Mwàní wɔ́sə̂ ùkùì","language_id":"eto","origin":"dictionary"}
+{"id":"dict.phone","key":"dict.phone","text":"Nɔ́mbà yà tɛ̀lɛ̀fɔ̂n","language_id":"eto","origin":"dictionary"}
+{"id":"dict.reference","key":"dict.reference","text":"Nɔ́mbà yà ísɛ́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation","key":"dict.operation","text":"Ìsɛ́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.confirm_checkbox","key":"dict.confirm_checkbox","text":"Mə̀kàt nâ màm mə́sə̂ mánə̀ á yɔ́b mánə̀ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.modify","key":"dict.modify","text":"Cɛ́nî","language_id":"eto","origin":"dictionary"}
+{"id":"dict.confirm_transfer","key":"dict.confirm_transfer","text":"Jə́blə́ nlóm mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.transfer_done","key":"dict.transfer_done","text":"Nlóm mwàní ùbòbànyà mbə̀ŋ !","language_id":"eto","origin":"dictionary"}
+{"id":"dict.transfer_success_msg","key":"dict.transfer_success_msg","text":"Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.status","key":"dict.status","text":"M̀bə̀b","language_id":"eto","origin":"dictionary"}
+{"id":"dict.status_success","key":"dict.status_success","text":"Ŋ̀kàbní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.new_transfer","key":"dict.new_transfer","text":"Lóm mwàní fə́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.test_environment_banner","key":"dict.test_environment_banner","text":"Vôm à mə̀və́və́glá — màm mə́ pûpùd, té nlóm mwàní wə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.test_protocol_link","key":"dict.test_protocol_link","text":"Mə̀tùm mə́ mə̀və́və́glá","language_id":"eto","origin":"dictionary"}
+{"id":"dict.hackathon_return_link","key":"dict.hackathon_return_link","text":"Dúgnì á hackathon","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation_electricity_bill","key":"dict.operation_electricity_bill","text":"Kálàdà wà kùrâŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.operation_other_bank","key":"dict.operation_other_bank","text":"Báŋk ìfə́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.confirm_beneficiary_checkbox","key":"dict.confirm_beneficiary_checkbox","text":"Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.action_close","key":"dict.action_close","text":"Díb","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_title","key":"dict.error_title","text":"Dzɔ̌m díŋgá cɔ́b","language_id":"eto","origin":"dictionary"}
+{"id":"dict.error_must_confirm_info","key":"dict.error_must_confirm_info","text":"Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.transfer_done_success","key":"dict.transfer_done_success","text":"Nlóm mwàní ùbòbànyà mbə̀ŋ !","language_id":"eto","origin":"dictionary"}
+{"id":"dict.money_sent_to_beneficiary","key":"dict.money_sent_to_beneficiary","text":"Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.transaction_reference","key":"dict.transaction_reference","text":"Nɔ́mbà yà nlóm mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.date_and_time","key":"dict.date_and_time","text":"Mɔ́s bá ǹtə̀ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.download_receipt","key":"dict.download_receipt","text":"Nɔŋ kálàdà wà ǹyáà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.action_new_transfer","key":"dict.action_new_transfer","text":"Lóm mwàní fə́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.back_to_home","key":"dict.back_to_home","text":"Ìbùlàn á ǹtɔ́ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_connexion_reussie","key":"dict.ext_connexion_réussie","text":"Mì nyíìnyà á kɔ̂nt mbə̀ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_mot_de_passe_incorrect","key":"dict.ext_mot_de_passe_incorrect","text":"Ìbùg yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_code_pin_incorrect","key":"dict.ext_code_pin_incorrect","text":"Nɔ́mbà yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_limite_quotidienne_atteinte","key":"dict.ext_limite_quotidienne_atteinte","text":"Mì mànyà àbùm mwàní yà lóm mɔ́s wùá","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_telechargement_termine","key":"dict.ext_téléchargement_terminé","text":"Ìnɔŋ kálàdà ìmànyà","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_transaction_en_cours_de_traite","key":"dict.ext_transaction_en_cours_de_traite","text":"Bə̀tə̀ kɔ̀m ísɛ́ yɔ̂ ɛ́yə́ŋ","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_veuillez_patienter","key":"dict.ext_veuillez_patienter","text":"Yàŋgá ǹtə̀ŋ mɔ́n...","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_voulez_vous_annuler_cette_oper","key":"dict.ext_voulez-vous_annuler_cette_opér","text":"Yə̀ mì yì kàb ísɛ́ ńì ?","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_recu_envoye_par_sms","key":"dict.ext_reçu_envoyé_par_sms","text":"Bə́lómnyà kálàdà wà ǹyáà á SMS","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_votre_session_a_expire","key":"dict.ext_votre_session_a_expiré","text":"Ǹtə̀ŋ wɔ̂ wà ísɛ́ ùmànyà.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_ne_partagez_jamais_votre_code_","key":"dict.ext_ne_partagez_jamais_votre_code_","text":"Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_attention__ne_partagez_jamais_","key":"dict.ext_attention__ne_partagez_jamais_","text":"Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_alerte_securite__une_activite_","key":"dict.ext_alerte_sécurité__une_activité_","text":"Mə̀bàlà : bə́yɛ́nyà ísɛ́ ìfə́ íbə́gə̀ mbə̀ŋ á kɔ̂nt yɔ̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_impossible_de_traiter_cette_de","key":"dict.ext_impossible_de_traiter_cette_de","text":"Ìsɛ́ íbə́gə̀ dzàm bòbàn ɛ́yə́ŋ.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_la_transaction_est_en_attente_","key":"dict.ext_la_transaction_est_en_attente_","text":"Ìsɛ́ ìtə̀ yàŋà ǹjə́blə́ wɔ̂.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_votre_solde_est_insuffisant_po","key":"dict.ext_votre_solde_est_insuffisant_po","text":"Mwàní wɔ̂ àlígì àtə̀ bɔ́n á yáà mwàní wà ísɛ́ yà nlóm.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_aucun_cout_supplementaire_ne_s","key":"dict.ext_aucun_coût_supplémentaire_ne_s","text":"Bə̀bə́gə̀ nɔŋ mwàní ḿfə́ á yɔ́b.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_verifiez_le_numero_du_benefici","key":"dict.ext_vérifiez_le_numéro_du_bénéfici","text":"Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_transfert_echoue__aucun_montan","key":"dict.ext_transfert_échoué__aucun_montan","text":"Nlóm mwàní ùŋgá cɔ́b : mwàní wɔ̂ àbə́gə̀ kùì á kɔ̂nt.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_une_erreur_est_survenue_reessa","key":"dict.ext_une_erreur_est_survenue_réessa","text":"Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_transfert_refuse","key":"dict.ext_transfert_refusé","text":"Bə́ŋgá bɛ̀n nlóm mwàní","language_id":"eto","origin":"dictionary"}
+{"id":"dict.ext_operation_annulee","key":"dict.ext_opération_annulée","text":"Bə́ŋgá kàb ísɛ́","language_id":"eto","origin":"dictionary"}
+{"id":"dict.demo_warning_banner_bare","key":"dict.demo_warning_banner_bare","text":"Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
+{"id":"dict.demo_env_title","key":"dict.demo_env_title","text":"Ìfɔ̀gɔ̀ yà ǹyèglè","language_id":"eto","origin":"dictionary"}
+{"id":"dict.demo_no_personal_data","key":"dict.demo_no_personal_data","text":"Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.","language_id":"eto","origin":"dictionary"}
