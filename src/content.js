@@ -248,6 +248,7 @@
 
     lastCost = performance.now() - t0;
     if (panel) panel.update(stats, mode, pageLanguage);
+    if (panel && panel.guideVisible()) scheduleGuide();
     if (observer) roots.forEach((root) => observer.observe(root, OBSERVE));
   }
 
@@ -272,11 +273,7 @@
     mode = next;
     // Appelé pendant le clic : Chrome autorise alors la préparation du modèle hors ligne.
     if (NS.mt) NS.mt.prepare(machinePairs(next));
-    if (speaking && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      speaking = false;
-      if (panel) panel.setSpeaking(false);
-    }
+    if (speaking) stopSpeaking("");
     try {
       chrome.storage.local.set({ alphaMode: next });
     } catch (e) {
@@ -296,58 +293,156 @@
     body.style.zoom = String(baseBodyZoom * (percent / 100));
   }
 
-  // Réserve la synthèse du navigateur au français et à l'anglais avec une voix locale.
-  function speakVisibleText() {
+  /* ---------- Lecture vocale ----------
+     Uniquement avec une voix installée sur l'appareil (localService) : les voix « en ligne »
+     de certains navigateurs enverraient le texte lu à un serveur, ce que le protocole interdit.
+     Deux lecteurs partagent la synthèse : la page entière et le guide de l'écran. */
+  const readers = {
+    page: {
+      setStatus: (message) => panel && panel.setVoiceStatus(message),
+      setSpeaking: (on) => panel && panel.setSpeaking(on),
+    },
+    guide: {
+      setStatus: (message, state) => panel && panel.setGuideStatus(message, state),
+      setSpeaking: (on) => panel && panel.setGuideSpeaking(on),
+    },
+  };
+  let speaker = null; // lecteur en cours : "page" | "guide" | null
+
+  function stopSpeaking(message) {
+    if (!speaker) return;
+    const reader = readers[speaker];
+    speaker = null;
+    speaking = false;
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    reader.setSpeaking(false);
+    if (message) reader.setStatus(message);
+  }
+
+  function speak(owner, text, language) {
+    const reader = readers[owner];
     if (!panel) return;
     if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-      panel.setVoiceStatus("La lecture vocale n’est pas disponible dans ce navigateur.");
+      reader.setStatus("La lecture vocale n’est pas disponible dans ce navigateur.", "error");
       return;
     }
-    if (speaking) {
-      window.speechSynthesis.cancel();
-      speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("Lecture arrêtée.");
+    if (speaker === owner) {
+      stopSpeaking("Lecture arrêtée.");
       return;
     }
-
-    const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
-    if (!visibleText) {
-      panel.setVoiceStatus("Aucun texte visible à lire.");
+    stopSpeaking("");
+    if (!text) {
+      reader.setStatus("Aucun texte à lire.", "notice");
       return;
     }
-
-    const utterance = new SpeechSynthesisUtterance(visibleText);
-    const language = mode === "en" || (mode === "original" && pageLanguage === "en")
-      ? "en-US"
-      : "fr-FR";
-    utterance.lang = language;
     const voices = window.speechSynthesis.getVoices();
     const voice = voices.find((candidate) =>
       candidate.localService && candidate.lang.toLowerCase().startsWith(language.slice(0, 2))
     );
     if (!voice) {
-      panel.setVoiceStatus("Aucune voix locale correspondante n’est installée pour cette langue.");
+      reader.setStatus("Aucune voix locale correspondante n’est installée pour cette langue.", "error");
       return;
     }
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = language;
     utterance.voice = voice;
-    utterance.onstart = () => {
-      speaking = true;
-      panel.setSpeaking(true);
-    };
-    utterance.onend = () => {
+    const finish = (message) => {
+      if (speaker !== owner) return;
+      speaker = null;
       speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("Lecture terminée.");
+      reader.setSpeaking(false);
+      reader.setStatus(message);
     };
-    utterance.onerror = () => {
-      speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("La lecture a échoué. Vérifiez les voix disponibles dans le navigateur.");
+    utterance.onend = () => finish("Lecture terminée.");
+    utterance.onerror = (e) => {
+      if (e && (e.error === "canceled" || e.error === "interrupted")) return;
+      finish("La lecture a échoué. Vérifiez les voix disponibles dans le navigateur.");
     };
-    panel.setVoiceStatus("Lecture vocale en cours…");
+    speaker = owner;
+    speaking = true;
+    reader.setSpeaking(true);
+    reader.setStatus("Lecture vocale en cours…");
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
+  }
+
+  function speakVisibleText() {
+    const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
+    const language = mode === "en" || (mode === "original" && pageLanguage === "en") ? "en-US" : "fr-FR";
+    speak("page", visibleText, language);
+  }
+
+  /* ---------- Guide de l'écran ---------- */
+
+  // Texte d'origine d'un élément, même si ALPHA l'a traduit à l'écran.
+  function originalTextOf(el) {
+    let out = "";
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const st = textState.get(node);
+      out += st && st.orig !== undefined && st.written === node.nodeValue ? st.orig : node.nodeValue;
+    }
+    return out;
+  }
+  function originalAttrOf(el, name) {
+    const map = attrState.get(el);
+    const st = map && map[name];
+    const current = el.getAttribute(name);
+    return st && st.orig !== undefined && st.written === current ? st.orig : current;
+  }
+  const guideHelpers = {
+    origText: originalTextOf,
+    origAttr: originalAttrOf,
+    skip: (el) => el.id === HOST_ID || Boolean(el.closest("#" + HOST_ID + ", .alpha-status-badge, .alpha-status-original, .alpha-status-warning")),
+  };
+
+  let currentGuide = null;
+  function refreshGuide() {
+    if (!panel || !NS.guide) return;
+    try {
+      currentGuide = NS.guide.build(NS.guide.snapshot(document, guideHelpers), mode, pageLanguage);
+      panel.setGuide(currentGuide);
+      panel.setIntroTexts(NS.guide.intro(mode, pageLanguage));
+    } catch (e) {
+      console.warn("[ALPHA] guide indisponible :", e);
+    }
+  }
+  let guideTimer = null;
+  function scheduleGuide() {
+    if (guideTimer) return;
+    guideTimer = setTimeout(() => {
+      guideTimer = null;
+      refreshGuide();
+    }, 250);
+  }
+  function speakGuide() {
+    if (speaker !== "guide") refreshGuide();
+    const guide = currentGuide;
+    speak("guide", guide ? guide.speech : "", guide && guide.lang === "en" ? "en-US" : "fr-FR");
+  }
+
+  // Bulle « Moi, c'est ALPHA » : une seule fois, à la première visite.
+  const INTRO_KEY = "alphaIntroSeen";
+  async function maybeShowIntro() {
+    if (!panel || !NS.guide) return;
+    let seen = false;
+    try {
+      const r = await chrome.storage.local.get(INTRO_KEY);
+      seen = Boolean(r && r[INTRO_KEY]);
+    } catch (e) {
+      seen = false;
+    }
+    if (seen) return;
+    setTimeout(() => {
+      panel.showIntro(NS.guide.intro(mode, pageLanguage), () => {
+        try {
+          chrome.storage.local.set({ [INTRO_KEY]: true });
+        } catch (e) {
+          /* sans importance : la bulle reviendra à la prochaine visite */
+        }
+      });
+    }, 1200); // après l'entrée animée de la carte
   }
 
   /* ---------- Démarrage ---------- */
@@ -377,21 +472,24 @@
     if (!document.body) return;
     // Dans un cadre (iframe), on traduit aussi, sauf les cadres minuscules (publicités, pixels).
     if (!IS_TOP && (window.innerWidth < 120 || window.innerHeight < 40)) return;
-    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse] = await Promise.all([
+    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse, guideResponse] = await Promise.all([
       fetch(chrome.runtime.getURL("data/dictionary.json")),
       fetch(chrome.runtime.getURL("data/critical_terms.json")),
       fetch(chrome.runtime.getURL("data/templates.json")),
       fetch(chrome.runtime.getURL("data/lexicon.json")),
       fetch(chrome.runtime.getURL("data/rules.json")),
+      IS_TOP ? fetch(chrome.runtime.getURL("data/guide.json")).catch(() => null) : Promise.resolve(null),
     ]);
     if (!dictionaryResponse.ok) throw new Error("Dictionnaire local indisponible.");
-    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules] = await Promise.all([
+    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules, loadedGuide] = await Promise.all([
       dictionaryResponse.json(),
       criticalResponse.ok ? criticalResponse.json() : Promise.resolve(null),
       templatesResponse.ok ? templatesResponse.json() : Promise.resolve([]),
       lexiconResponse.ok ? lexiconResponse.json() : Promise.resolve([]),
       rulesResponse.ok ? rulesResponse.json() : Promise.resolve([]),
+      guideResponse && guideResponse.ok ? guideResponse.json() : Promise.resolve(null),
     ]);
+    if (NS.guide) NS.guide.init(loadedGuide);
     dict = loadedDictionary;
     criticalData = loadedCritical;
     T.init(dict, {
@@ -420,6 +518,8 @@
         onModeChange: setMode,
         onSpeak: speakVisibleText,
         onZoomChange: setZoom,
+        onGuide: refreshGuide,
+        onGuideSpeak: speakGuide,
       });
     }
     try {
@@ -461,6 +561,10 @@
     });
     apply();
     showMachineStatus(NS.mt ? NS.mt.status() : "unsupported");
+    if (panel && NS.guide) {
+      panel.setIntroTexts(NS.guide.intro(mode, pageLanguage));
+      maybeShowIntro();
+    }
     languageObserver = new MutationObserver(() => apply());
     languageObserver.observe(document.documentElement, {
       attributes: true,

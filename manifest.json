@@ -34,6 +34,7 @@
         "src/translate.js",
         "src/engine/mt.js",
         "src/confidence.js",
+        "src/guide.js",
         "src/panel.js",
         "src/content.js"
       ],
@@ -48,7 +49,8 @@
         "data/critical_terms.json",
         "data/templates.json",
         "data/lexicon.json",
-        "data/rules.json"
+        "data/rules.json",
+        "data/guide.json"
       ],
       "matches": [
         "https://*/*",

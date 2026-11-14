@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "description": "Textes du guide « ? » (où suis-je, que faire, comment) et de la bulle de présentation du drapeau. Les {cles} sont remplacées par le libellé réellement affiché sur la page. Les champs « local » (éton) restent vides tant qu'un locuteur ne les a pas validés : le guide s'affiche alors en français.",
+    "statut_local": "a_completer"
+  },
+  "ui": {
+    "fr": {
+      "where": "Où suis-je ?",
+      "what": "Que faire ?",
+      "how": "Comment ?",
+      "alert": "Message affiché",
+      "auto": "Guide établi à partir des éléments visibles de cette page.",
+      "known": "Guide rédigé pour cet écran.",
+      "etonPending": "Guide en éton en attente de validation par un locuteur : affiché en français.",
+      "untitled": "Page sans titre visible.",
+      "page": "Page « {title} ».",
+      "fill": "Remplir : {list}.",
+      "check": "Cocher : {list}.",
+      "readOnly": "Lire les informations affichées.",
+      "chooseAction": "Lire les informations affichées, puis choisir une action.",
+      "press": "Ensuite, appuyez sur « {button} ».",
+      "others": "Autres choix : {list}.",
+      "noButton": "Aucun bouton d’action repéré sur cet écran.",
+      "unknownAlert": "Lisez ce message avant de continuer.",
+      "secretTip": "Ce code est secret : ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque."
+    },
+    "en": {
+      "where": "Where am I?",
+      "what": "What to do?",
+      "how": "How?",
+      "alert": "Message shown",
+      "auto": "Guide built from the visible elements of this page.",
+      "known": "Guide written for this screen.",
+      "etonPending": "Eton guide awaiting validation by a speaker: shown in French.",
+      "untitled": "Page with no visible title.",
+      "page": "Page “{title}”.",
+      "fill": "Fill in: {list}.",
+      "check": "Tick: {list}.",
+      "readOnly": "Read the information shown.",
+      "chooseAction": "Read the information shown, then choose an action.",
+      "press": "Then press “{button}”.",
+      "others": "Other choices: {list}.",
+      "noButton": "No action button found on this screen.",
+      "unknownAlert": "Read this message before continuing.",
+      "secretTip": "This code is secret: never give it to anyone, even someone claiming to call from the bank."
+    }
+  },
+  "labels": {
+    "start": ["Effectuer un transfert", "Make a transfer"],
+    "fees": ["Consulter les frais", "View fees"],
+    "type": ["Type d'opération", "Operation type"],
+    "amount": ["Montant à envoyer", "Amount to send"],
+    "total": ["Total à débiter", "Total to debit"],
+    "continue": ["Continuer", "Continue"],
+    "name": ["Nom du bénéficiaire", "Beneficiary name"],
+    "phone": ["Numéro de téléphone", "Phone number"],
+    "confirm": ["Confirmer le transfert", "Confirm transfer"],
+    "edit": ["Modifier", "Edit"],
+    "new": ["Nouveau transfert", "New transfer"]
+  },
+  "screens": [
+    {
+      "id": "dashboard",
+      "signals": ["Votre compte", "Your account", "Solde disponible", "Available balance", "Effectuer un transfert", "Make a transfer", "Transactions récentes", "Recent transactions"],
+      "fr": {
+        "where": "Accueil de votre compte : votre solde et vos dernières opérations.",
+        "what": "Consulter votre solde disponible, ou commencer un transfert d’argent.",
+        "how": "Pour envoyer de l’argent, appuyez sur « {start} ». Pour connaître d’abord les frais, appuyez sur « {fees} »."
+      },
+      "en": {
+        "where": "Your account home: your balance and latest transactions.",
+        "what": "Check your available balance, or start a money transfer.",
+        "how": "To send money, press “{start}”. To check the fees first, press “{fees}”."
+      },
+      "local": null
+    },
+    {
+      "id": "fees",
+      "signals": ["Frais de transfert", "Transfer fees", "Type d'opération", "Operation type", "Montant à envoyer", "Amount to send", "Total à débiter", "Total to debit"],
+      "fr": {
+        "where": "Transfert : choix du montant et calcul des frais.",
+        "what": "Choisir le type de transfert et saisir le montant. Les frais et le total à débiter se calculent tout seuls.",
+        "how": "Choisissez le type dans « {type} », tapez le montant dans « {amount} », vérifiez le « {total} », puis appuyez sur « {continue} »."
+      },
+      "en": {
+        "where": "Transfer: choosing the amount and calculating the fees.",
+        "what": "Choose the transfer type and enter the amount. The fees and the total to debit are calculated automatically.",
+        "how": "Choose the type in “{type}”, type the amount in “{amount}”, check the “{total}”, then press “{continue}”."
+      },
+      "local": null
+    },
+    {
+      "id": "beneficiary",
+      "signals": ["Nom du bénéficiaire", "Beneficiary name", "Motif du transfert", "Transfer reason", "J'ai vérifié le nom et le numéro du bénéficiaire.", "I have verified the beneficiary name and phone number."],
+      "fr": {
+        "where": "Transfert : à qui envoyer l’argent.",
+        "what": "Indiquer le nom et le numéro de téléphone du bénéficiaire, puis le motif du transfert.",
+        "how": "Remplissez « {name} » et « {phone} ». Relisez le numéro chiffre par chiffre, cochez la case de vérification, puis appuyez sur « {continue} ».",
+        "tip": "Une erreur dans le numéro envoie l’argent à quelqu’un d’autre."
+      },
+      "en": {
+        "where": "Transfer: who receives the money.",
+        "what": "Enter the beneficiary’s name and phone number, then the reason for the transfer.",
+        "how": "Fill in “{name}” and “{phone}”. Re-read the number digit by digit, tick the verification box, then press “{continue}”.",
+        "tip": "A wrong number sends the money to someone else."
+      },
+      "local": null
+    },
+    {
+      "id": "summary",
+      "signals": ["Confirmer le transfert", "Confirm transfer", "Je confirme que les informations ci-dessus sont correctes.", "I confirm the information above is correct.", "Total débité", "Total debited", "Référence", "Reference"],
+      "fr": {
+        "where": "Transfert : récapitulatif avant l’envoi.",
+        "what": "Relire le montant, les frais, le total et le bénéficiaire. Rien n’est encore envoyé.",
+        "how": "Si tout est juste, cochez la case de confirmation puis appuyez sur « {confirm} ». Sinon, appuyez sur « {edit} »."
+      },
+      "en": {
+        "where": "Transfer: summary before sending.",
+        "what": "Re-read the amount, fees, total and beneficiary. Nothing has been sent yet.",
+        "how": "If everything is right, tick the confirmation box, then press “{confirm}”. Otherwise, press “{edit}”."
+      },
+      "local": null
+    },
+    {
+      "id": "receipt",
+      "signals": ["Transfert effectué", "Transfer completed", "Votre transfert a été envoyé avec succès.", "Your transfer has been sent successfully.", "Nouveau transfert", "New transfer", "Statut", "Status"],
+      "fr": {
+        "where": "Reçu : le transfert est terminé.",
+        "what": "Garder la référence du transfert : elle sert en cas de réclamation.",
+        "how": "Notez la référence affichée. Pour un autre envoi, appuyez sur « {new} »."
+      },
+      "en": {
+        "where": "Receipt: the transfer is complete.",
+        "what": "Keep the transfer reference: you will need it if you make a claim.",
+        "how": "Write down the reference shown. For another transfer, press “{new}”."
+      },
+      "local": null
+    }
+  ],
+  "alerts": [
+    {
+      "match": ["montant doit être supérieur à zéro", "amount must be greater than zero"],
+      "fr": "Saisissez un montant supérieur à zéro, puis réessayez.",
+      "en": "Enter an amount greater than zero, then try again."
+    },
+    {
+      "match": ["solde insuffisant", "insufficient balance"],
+      "fr": "Le montant plus les frais dépasse votre solde : réduisez le montant.",
+      "en": "The amount plus fees is more than your balance: lower the amount."
+    },
+    {
+      "match": ["renseigner le nom et le numéro", "provide the beneficiary name"],
+      "fr": "Remplissez le nom et le numéro du bénéficiaire.",
+      "en": "Fill in the beneficiary’s name and phone number."
+    },
+    {
+      "match": ["vérifiez le numéro du bénéficiaire avant de continuer", "verify the beneficiary phone number before continuing"],
+      "fr": "Relisez le numéro du bénéficiaire, puis cochez la case de vérification.",
+      "en": "Re-read the beneficiary’s number, then tick the verification box."
+    },
+    {
+      "match": ["jamais été utilisé", "never been used"],
+      "fr": "Nouveau bénéficiaire : assurez-vous de bien connaître cette personne avant d’envoyer de l’argent.",
+      "en": "New beneficiary: make sure you know this person before sending money."
+    },
+    {
+      "match": ["erreur réseau", "network error"],
+      "fr": "Problème de connexion : patientez un instant, puis réessayez.",
+      "en": "Connection problem: wait a moment, then try again."
+    },
+    {
+      "match": ["devez confirmer les informations", "must confirm the details"],
+      "fr": "Cochez la case de confirmation avant de valider le transfert.",
+      "en": "Tick the confirmation box before validating the transfer."
+    }
+  ],
+  "intro": {
+    "fr": {
+      "title": "Moi, c’est ALPHA !",
+      "lines": [
+        "Je flotte, mais vos chiffres, eux, ne bougent pas.",
+        "Je traduis cette page en français, anglais ou éton, sans jamais toucher à vos montants, numéros ou noms.",
+        "Cliquez-moi pour ouvrir mes outils. Glissez-moi si je vous gêne : je ne le prendrai pas mal."
+      ],
+      "about": "Ce drapeau qui flotte, c’est quoi ?",
+      "ok": "Compris !"
+    },
+    "en": {
+      "title": "Hi, I’m ALPHA!",
+      "lines": [
+        "I float, but your numbers stay put.",
+        "I translate this page into French, English or Eton without ever touching your amounts, numbers or names.",
+        "Click me to open my tools. Drag me if I’m in the way: no hard feelings."
+      ],
+      "about": "What is this floating flag?",
+      "ok": "Got it!"
+    },
+    "local": null
+  }
+}
