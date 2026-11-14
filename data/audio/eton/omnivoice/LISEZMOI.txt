@@ -1,3 +1,0 @@
-Clips éton provisoires générés par OmniVoice (Google Colab).
-Décompressez ici le contenu de alpha_eton_omnivoice.zip : les fichiers .ogg, omnivoice-index.json et revue_locuteur.csv.
-Voir docs/OMNIVOICE_COLAB.md.
