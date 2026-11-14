@@ -13,6 +13,7 @@
     language: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>',
     zoom: '<circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"/>',
     speaker: '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+    assistant: '<path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 14 .9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14Z"/>',
     close: '<path d="m18 6-12 12M6 6l12 12"/>',
   };
 
@@ -49,7 +50,7 @@
   const alphaMark = () => '<svg class="alpha-mark" viewBox="130 65 235 235" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M145 280 218 80h31l52 141c14-18 22-38 27-58h22c-5 30-17 55-34 75l25 41h-34l-15-18c-15 13-32 20-51 20-24 0-42-10-50-28l-10 27h-36zm63-79h52l-28-69z"/></svg>';
 
 
-  function create({ hostId, onModeChange, onSpeak, onZoomChange }) {
+  function create({ hostId, onModeChange, onGuidePage, onExplainSelection, onSpeakGuide, onStopGuide, onZoomChange }) {
     const host = document.createElement("div");
     host.id = hostId;
     const root = host.attachShadow({ mode: "open" });
@@ -61,7 +62,7 @@
         <div class="rail-group">
           <button class="rail-button" type="button" data-panel="language" aria-label="Langues" aria-expanded="false">${icon("language")}<span class="tooltip">Langues</span></button>
           <button class="rail-button" type="button" data-panel="zoom" aria-label="Agrandir l’affichage">${icon("zoom")}<span class="tooltip">Agrandir</span></button>
-          <button class="rail-button" type="button" data-panel="voice" aria-label="Lecture vocale">${icon("speaker")}<span class="tooltip">Lecture vocale</span></button>
+          <button class="rail-button" type="button" data-panel="voice" aria-label="Guide vocal">${icon("assistant")}<span class="tooltip">Guide vocal</span></button>
         </div>
         <span class="rail-rule"></span>
         <button class="rail-button rail-dismiss" type="button" aria-label="Masquer la barre ALPHA">${icon("close")}<span class="tooltip">Masquer la barre</span></button>
@@ -82,13 +83,21 @@
             <button class="reset" type="button">Revenir au texte d’origine</button>
           </section>
           <section class="section" data-section="voice">
-            <h2 class="section-heading">Lecture vocale</h2>
+            <h2 class="section-heading">Guide vocal de la page</h2>
+            <p class="section-note assistant-privacy">L’aide transmet à Gemini un passage choisi ou un résumé filtré de la page. N’utilisez pas de données financières réelles.</p>
             <div class="voice-card">
-              <span class="voice-mark">${icon("speaker")}</span>
-              <span class="voice-copy"><span class="voice-title">Lecture vocale</span><span class="voice-hint">Lecture du contenu visible</span></span>
-              <button class="action speak" type="button">Écouter</button>
+              <span class="voice-mark">${icon("assistant")}</span>
+              <span class="voice-copy"><span class="voice-title">Comprendre cette étape</span><span class="voice-hint">Position, prochaine action et point de vigilance</span></span>
+              <button class="action guide-page" type="button">Me guider</button>
             </div>
-            <p class="voice-status" aria-live="polite">Lecture avec la voix locale disponible sur l’appareil.</p>
+            <div class="assistant-output" hidden aria-live="polite">
+              <p class="assistant-location"></p>
+              <p class="assistant-summary"></p>
+              <p class="assistant-next"></p>
+              <p class="assistant-caution"></p>
+              <button class="action assistant-listen" type="button" aria-pressed="false">Écouter l’explication</button>
+            </div>
+            <p class="voice-status" aria-live="polite">Le guide n’effectue aucune action à votre place.</p>
           </section>
           <section class="section" data-section="zoom">
             <h2 class="section-heading">Taille d’affichage</h2>
@@ -104,6 +113,14 @@
           </section>
         </div>
       </aside>`;
+
+    const selectionToolbar = document.createElement("div");
+    selectionToolbar.className = "selection-toolbar";
+    selectionToolbar.setAttribute("role", "toolbar");
+    selectionToolbar.setAttribute("aria-label", "Action sur le texte sélectionné");
+    selectionToolbar.hidden = true;
+    selectionToolbar.innerHTML = `<button class="selection-explain" type="button" aria-label="Expliquer le texte sélectionné">${icon("assistant")}<span>Expliquer</span></button>`;
+    root.appendChild(selectionToolbar);
 
     const drawer = root.querySelector(".drawer");
     const rail = root.querySelector(".rail");
@@ -286,7 +303,23 @@
       root.querySelector('.rail-button[data-panel="language"]').focus();
     });
     root.querySelector(".reset").addEventListener("click", () => onModeChange("original"));
-    root.querySelector(".speak").addEventListener("click", onSpeak);
+    root.querySelector(".guide-page").addEventListener("click", () => onGuidePage && onGuidePage());
+    const explainSelectionButton = root.querySelector(".selection-explain");
+    const assistantSpeakButton = root.querySelector(".assistant-listen");
+    let selectedText = "";
+    explainSelectionButton.addEventListener("pointerdown", (event) => event.preventDefault());
+    explainSelectionButton.addEventListener("click", () => {
+      const text = selectedText;
+      hideSelectionToolbar();
+      if (text && onExplainSelection) onExplainSelection(text);
+    });
+    assistantSpeakButton.addEventListener("click", () => {
+      if (assistantSpeakButton.getAttribute("aria-pressed") === "true") {
+        if (onStopGuide) onStopGuide();
+      } else if (onSpeakGuide) {
+        onSpeakGuide();
+      }
+    });
     let zoomPercent = 100;
     const zoomValue = root.querySelector(".zoom-value");
     const zoomOut = root.querySelector(".zoom-out");
@@ -303,6 +336,11 @@
     zoomIn.addEventListener("click", () => updateZoom(zoomPercent < 150 ? zoomPercent + 10 : zoomPercent + 25));
     root.querySelector(".zoom-reset").addEventListener("click", () => updateZoom(100));
     document.documentElement.appendChild(host);
+
+    function hideSelectionToolbar() {
+      selectedText = "";
+      selectionToolbar.hidden = true;
+    }
 
     return {
       update(stats, currentMode, detectedLanguage) {
@@ -326,10 +364,54 @@
           ? "error"
           : /désactivée|en attendant|indisponible/.test(lower) ? "notice" : "";
       },
+      setAssistantStatus(message, state = "") {
+        const status = root.querySelector(".voice-status");
+        status.textContent = message || "";
+        status.dataset.state = state;
+      },
+      setAssistantBusy(busy) {
+        root.querySelector(".guide-page").disabled = Boolean(busy);
+        root.querySelector(".selection-explain").disabled = Boolean(busy);
+        if (busy) {
+          root.querySelector(".assistant-output").hidden = true;
+          root.querySelector(".assistant-listen").disabled = true;
+        }
+      },
+      setAssistantResult(result, kind) {
+        const output = root.querySelector(".assistant-output");
+        output.hidden = false;
+        root.querySelector(".assistant-location").textContent = result.location || (kind === "explain" ? "Explication" : "Étape actuelle");
+        root.querySelector(".assistant-summary").textContent = result.summary || "";
+        root.querySelector(".assistant-next").textContent = result.next_step ? `À faire : ${result.next_step}` : "";
+        root.querySelector(".assistant-caution").textContent = result.caution || "";
+        assistantSpeakButton.disabled = !result.summary;
+        assistantSpeakButton.setAttribute("aria-pressed", "false");
+        assistantSpeakButton.textContent = "Écouter l’explication";
+      },
+      showSelectionToolbar(rect, text) {
+        if (!rect || !text) return;
+        selectedText = text;
+        selectionToolbar.hidden = false;
+        const box = selectionToolbar.getBoundingClientRect();
+        const margin = 8;
+        const left = Math.max(margin, Math.min(window.innerWidth - box.width - margin, rect.left + rect.width / 2 - box.width / 2));
+        const above = rect.top - box.height - 8;
+        const top = above >= margin ? above : Math.min(window.innerHeight - box.height - margin, rect.bottom + 8);
+        selectionToolbar.style.left = `${left}px`;
+        selectionToolbar.style.top = `${Math.max(margin, top)}px`;
+      },
+      hideSelectionToolbar,
+      openAssistant() {
+        if (rail.hidden) {
+          launcher.hidden = true;
+          rail.hidden = false;
+          placePanels();
+        }
+        openAt("voice");
+      },
       setSpeaking(speaking) {
-        const button = root.querySelector(".speak");
-        button.textContent = speaking ? "Arrêter" : "Écouter";
-        button.setAttribute("aria-pressed", String(speaking));
+        assistantSpeakButton.textContent = speaking ? "Arrêter" : "Écouter l’explication";
+        assistantSpeakButton.setAttribute("aria-pressed", String(speaking));
       },
       updateZoom,
       openAt,

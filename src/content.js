@@ -2,7 +2,8 @@
    - adapte les textes de la page selon la langue choisie ;
    - préserve les valeurs sensibles (montants, numéros, dates...) sans altération ;
    - surveille la page pour adapter les nouveaux contenus à la volée ;
-   - propose le choix de langue, la lecture vocale et le zoom d'accessibilité.
+   - propose l’explication d’un texte sélectionné et le guidage vocal du contexte visible.
+   - garde les voix locales séparées du moteur de réponse IA.
    Il ne modifie jamais le code source du site : il agit uniquement sur l'affichage. */
 (function () {
   "use strict";
@@ -53,6 +54,154 @@
     getMode: () => mode,
     getPageLanguage: () => pageLanguage,
   });
+  let assistantBusy = false;
+  let assistantSpeech = "";
+  let assistantSpeechLanguage = "fr";
+
+  function assistantLanguage() {
+    if (mode === "en" || (mode === "original" && pageLanguage === "en")) return "en";
+    return "fr"; // L’aide Éton sera activée quand le texte et la voix auront été validés.
+  }
+
+  function requestAssistant(payload) {
+    return new Promise((resolve, reject) => {
+      try {
+        chrome.runtime.sendMessage({ type: "ALPHA_ASSISTANT_REQUEST", payload }, (response) => {
+          if (chrome.runtime.lastError) {
+            reject(new Error("proxy_unavailable"));
+            return;
+          }
+          if (!response || response.ok !== true) {
+            reject(new Error(response && response.error ? response.error : "service_unavailable"));
+            return;
+          }
+          const value = response.result;
+          if (!value || typeof value.summary !== "string" || !value.summary.trim()) {
+            reject(new Error("invalid_response"));
+            return;
+          }
+          const bounded = (text, length) => typeof text === "string" ? text.trim().slice(0, length) : "";
+          resolve({
+            location: bounded(value.location, 160),
+            summary: bounded(value.summary, 500),
+            next_step: bounded(value.next_step, 280),
+            caution: bounded(value.caution, 280),
+            confidence: ["low", "medium", "high"].includes(value.confidence) ? value.confidence : "low",
+          });
+        });
+      } catch (_) {
+        reject(new Error("proxy_unavailable"));
+      }
+    });
+  }
+
+  const ASSISTANT_ERRORS = {
+    assistant_disabled: "L’aide IA est désactivée. Configurez ALPHA_AI_ENABLED côté proxy pour l’activer.",
+    assistant_not_configured: "La clé Gemini n’est pas configurée côté proxy.",
+    invalid_request: "Le contexte n’a pas pu être préparé de façon sûre.",
+    invalid_response: "La réponse de l’assistant n’a pas passé les contrôles. Réessayez avec une sélection plus précise.",
+    invalid_model_response: "La réponse de Gemini n’a pas passé les contrôles. Réessayez plus tard.",
+    quota_exceeded: "Le quota Gemini est atteint. Réessayez plus tard.",
+    rate_limited: "Trop de demandes rapprochées. Attendez un instant avant de réessayer.",
+    timeout: "Gemini met trop de temps à répondre. Réessayez plus tard.",
+    proxy_unavailable: "Le proxy ALPHA est indisponible. Vérifiez qu’il est lancé sur cet appareil.",
+    service_unavailable: "L’assistant est momentanément indisponible.",
+    origin_not_allowed: "Ce proxy n’autorise pas cette installation de l’extension.",
+  };
+
+  async function runAssistant(kind, input) {
+    if (!panel || assistantBusy) return;
+    assistantBusy = true;
+    assistantSpeech = "";
+    voice.stop();
+    panel.openAssistant();
+    panel.setAssistantBusy(true);
+    panel.setAssistantStatus(kind === "guide" ? "Analyse des repères visibles de la page…" : "Préparation de l’explication…", "notice");
+    const language = assistantLanguage();
+    assistantSpeechLanguage = language;
+    try {
+      const result = await requestAssistant({ kind, language, ...input });
+      panel.setAssistantResult(result, kind);
+      assistantSpeech = [result.location, result.summary, result.next_step, result.caution].filter(Boolean).join(". ");
+      panel.setAssistantStatus(
+        mode === "local" ? "L’aide est en français pour le moment; la voix Éton sera ajoutée après validation." : "Vérifiez toujours les informations sur la page avant d’agir.",
+        "notice",
+      );
+    } catch (error) {
+      const message = ASSISTANT_ERRORS[error.message] || ASSISTANT_ERRORS.service_unavailable;
+      panel.setAssistantStatus(message, "error");
+    } finally {
+      assistantBusy = false;
+      panel.setAssistantBusy(false);
+    }
+  }
+
+  function explainSelection(text) {
+    const result = NS.assistantContext.selectionForExplanation(text, document, HOST_ID);
+    if (!result.ok) {
+      panel.openAssistant();
+      panel.setAssistantBusy(true);
+      panel.setAssistantBusy(false);
+      panel.setAssistantStatus(result.error, "error");
+      return;
+    }
+    runAssistant("explain", { text: result.text });
+  }
+
+  function guideCurrentPage() {
+    const context = NS.assistantContext.buildPageContext(document, HOST_ID);
+    if (!context.pageTitle && !context.headings.length && !context.activeStep.length && !context.alerts.length) {
+      panel.openAssistant();
+      panel.setAssistantBusy(true);
+      panel.setAssistantBusy(false);
+      panel.setAssistantStatus("Je ne trouve pas assez de repères visibles pour identifier cette page.", "notice");
+      return;
+    }
+    runAssistant("guide", { context });
+  }
+
+  function updateSelectionToolbar() {
+    if (!panel) return;
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed || !selection.rangeCount) {
+      panel.hideSelectionToolbar();
+      return;
+    }
+    const text = selection.toString().trim();
+    const range = selection.getRangeAt(0);
+    const container = range.commonAncestorContainer.nodeType === Node.ELEMENT_NODE
+      ? range.commonAncestorContainer
+      : range.commonAncestorContainer.parentElement;
+    if (!text || !container || container.closest("input, textarea, select, [contenteditable], [translate='no'], .notranslate") || container.closest(`#${HOST_ID}`)) {
+      panel.hideSelectionToolbar();
+      return;
+    }
+    const rect = range.getBoundingClientRect();
+    if (!rect || (!rect.width && !rect.height)) {
+      panel.hideSelectionToolbar();
+      return;
+    }
+    panel.showSelectionToolbar(rect, text.slice(0, 1201));
+  }
+
+  function installSelectionActions() {
+    let selectionTimer = null;
+    const schedule = () => {
+      clearTimeout(selectionTimer);
+      selectionTimer = setTimeout(updateSelectionToolbar, 40);
+    };
+    document.addEventListener("pointerup", (event) => {
+      if (event.composedPath().some((node) => node && node.id === HOST_ID)) return;
+      schedule();
+    });
+    document.addEventListener("keyup", (event) => {
+      if (event.shiftKey || ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) schedule();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") panel.hideSelectionToolbar();
+    });
+    window.addEventListener("scroll", () => panel.hideSelectionToolbar(), true);
+  }
 
   // Pour chaque texte, on retient l'original et ce qui a été affiché.
   const textState = new WeakMap();
@@ -308,9 +457,13 @@
       panel = NS.panel.create({
         hostId: HOST_ID,
         onModeChange: setMode,
-        onSpeak: voice.speak,
+        onGuidePage: guideCurrentPage,
+        onExplainSelection: explainSelection,
+        onSpeakGuide: () => assistantSpeech && voice.speakText(assistantSpeech, assistantSpeechLanguage),
+        onStopGuide: voice.stop,
         onZoomChange: setZoom,
       });
+      installSelectionActions();
     }
     try {
       chrome.storage.onChanged.addListener((changes, area) => {

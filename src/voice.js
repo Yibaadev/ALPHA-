@@ -20,7 +20,7 @@
       if (panel) panel.setSpeaking(false);
     }
 
-    function speak() {
+    function speakText(value, requestedLanguage) {
       const panel = getPanel();
       if (!panel) return;
       if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
@@ -34,17 +34,18 @@
         return;
       }
 
-      const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
-      if (!visibleText) {
-        panel.setVoiceStatus("Aucun texte visible à lire.");
+      const text = String(value || "").replace(/\s+/g, " ").trim().slice(0, 1800);
+      if (!text) {
+        panel.setVoiceStatus("Aucun texte à prononcer.");
         return;
       }
 
-      const utterance = new SpeechSynthesisUtterance(visibleText);
-      const mode = getMode();
-      const language = mode === "en" || (mode === "original" && getPageLanguage() === "en")
-        ? "en-US"
-        : "fr-FR";
+      const language = requestedLanguage === "en" ? "en-US" : requestedLanguage === "fr" ? "fr-FR" : "";
+      if (!language) {
+        panel.setVoiceStatus("La voix Éton n’est pas encore configurée. L’explication reste disponible en texte.");
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = language;
       const voice = window.speechSynthesis.getVoices().find((candidate) =>
         candidate.localService && candidate.lang.toLowerCase().startsWith(language.slice(0, 2))
@@ -69,7 +70,14 @@
       window.speechSynthesis.speak(utterance);
     }
 
-    return { speak, stop };
+    function speak() {
+      const mode = getMode();
+      const language = mode === "en" || (mode === "original" && getPageLanguage() === "en") ? "en" : "fr";
+      const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
+      speakText(visibleText, language);
+    }
+
+    return { speak, speakText, stop };
   }
 
   NS.voice = { create };
