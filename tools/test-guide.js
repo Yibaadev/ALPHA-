@@ -13,6 +13,11 @@ const context = vm.createContext({ console });
 vm.runInContext(fs.readFileSync(path.join(root, "src/guide.js"), "utf8"), context, { filename: "src/guide.js" });
 const G = context.ALPHA.guide;
 const data = JSON.parse(fs.readFileSync(path.join(root, "data/guide.json"), "utf8"));
+// Ces tests couvrent le comportement sans traduction éton (voir test-guide-eton.js pour l’éton).
+data.ui.local = null;
+data.intro.local = null;
+for (const s of data.screens) s.local = null;
+for (const a of data.alerts) a.local = null;
 G.init(data);
 
 // Élément relevé sur la page : texte d'origine, et texte affiché (traduit ou non).

@@ -1,7 +1,8 @@
 {
   "meta": {
     "description": "Textes du guide « ? » (où suis-je, que faire, comment) et de la bulle de présentation du drapeau. Les {cles} sont remplacées par le libellé réellement affiché sur la page. Les champs « local » (éton) restent vides tant qu'un locuteur ne les a pas validés : le guide s'affiche alors en français.",
-    "statut_local": "a_completer"
+    "statut_local": "a_verifier",
+    "source_local": "Proposition de traduction par Gemini (Google), hors de l'extension, vérifiée par un locuteur."
   },
   "ui": {
     "fr": {
@@ -22,7 +23,8 @@
       "others": "Autres choix : {list}.",
       "noButton": "Aucun bouton d’action repéré sur cet écran.",
       "unknownAlert": "Lisez ce message avant de continuer.",
-      "secretTip": "Ce code est secret : ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque."
+      "secretTip": "Ce code est secret : ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque.",
+      "etonDraft": "Guide en éton proposé avec l’aide d’une IA de traduction (Google), en cours de vérification par un locuteur."
     },
     "en": {
       "where": "Where am I?",
@@ -42,26 +44,78 @@
       "others": "Other choices: {list}.",
       "noButton": "No action button found on this screen.",
       "unknownAlert": "Read this message before continuing.",
-      "secretTip": "This code is secret: never give it to anyone, even someone claiming to call from the bank."
+      "secretTip": "This code is secret: never give it to anyone, even someone claiming to call from the bank.",
+      "etonDraft": "Eton guide drafted with help from a translation AI (Google), being checked by a native speaker."
+    },
+    "local": {
+      "where": "Mə̀ nə̀ vé ?",
+      "what": "Mə̀ bɔ̀ dzé ?",
+      "how": "Mə̀ bɔ̀ yá ?",
+      "alert": "Fɔ̀ é nə̀ á màn",
+      "known": "B’à tílí lédég di ású màn má.",
+      "unknownAlert": "Láŋgá fɔ̀ ní ósúsúâ nâ ù kə̀ ósú.",
+      "secretTip": "Nɔ́mbà ní à nə̀ àswé : tə̀ ù kàt mòd mɔ́s, tɔ́ mòd à kàt nâ bâŋ à lóm ɲə́."
     }
   },
   "labels": {
-    "start": ["Effectuer un transfert", "Make a transfer"],
-    "fees": ["Consulter les frais", "View fees"],
-    "type": ["Type d'opération", "Operation type"],
-    "amount": ["Montant à envoyer", "Amount to send"],
-    "total": ["Total à débiter", "Total to debit"],
-    "continue": ["Continuer", "Continue"],
-    "name": ["Nom du bénéficiaire", "Beneficiary name"],
-    "phone": ["Numéro de téléphone", "Phone number"],
-    "confirm": ["Confirmer le transfert", "Confirm transfer"],
-    "edit": ["Modifier", "Edit"],
-    "new": ["Nouveau transfert", "New transfer"]
+    "start": [
+      "Effectuer un transfert",
+      "Make a transfer"
+    ],
+    "fees": [
+      "Consulter les frais",
+      "View fees"
+    ],
+    "type": [
+      "Type d'opération",
+      "Operation type"
+    ],
+    "amount": [
+      "Montant à envoyer",
+      "Amount to send"
+    ],
+    "total": [
+      "Total à débiter",
+      "Total to debit"
+    ],
+    "continue": [
+      "Continuer",
+      "Continue"
+    ],
+    "name": [
+      "Nom du bénéficiaire",
+      "Beneficiary name"
+    ],
+    "phone": [
+      "Numéro de téléphone",
+      "Phone number"
+    ],
+    "confirm": [
+      "Confirmer le transfert",
+      "Confirm transfer"
+    ],
+    "edit": [
+      "Modifier",
+      "Edit"
+    ],
+    "new": [
+      "Nouveau transfert",
+      "New transfer"
+    ]
   },
   "screens": [
     {
       "id": "dashboard",
-      "signals": ["Votre compte", "Your account", "Solde disponible", "Available balance", "Effectuer un transfert", "Make a transfer", "Transactions récentes", "Recent transactions"],
+      "signals": [
+        "Votre compte",
+        "Your account",
+        "Solde disponible",
+        "Available balance",
+        "Effectuer un transfert",
+        "Make a transfer",
+        "Transactions récentes",
+        "Recent transactions"
+      ],
       "fr": {
         "where": "Accueil de votre compte : votre solde et vos dernières opérations.",
         "what": "Consulter votre solde disponible, ou commencer un transfert d’argent.",
@@ -72,11 +126,25 @@
         "what": "Check your available balance, or start a money transfer.",
         "how": "To send money, press “{start}”. To check the fees first, press “{fees}”."
       },
-      "local": null
+      "local": {
+        "statut": "valide",
+        "where": "Nlem é kɔ̂nt yɔ̂ : mwàní à lígì yà bísɛ́ ù bòbànyà.",
+        "what": "Yén mwàní w’à lígì, ŋgə́ tàdì lóm mwàní.",
+        "how": "Ŋgə́ ù yì lóm mwàní, nyì’ì « {start} ». Ŋgə́ ù yì tɔ́ŋ yə́m táŋ, nyì’ì « {fees} »."
+      }
     },
     {
       "id": "fees",
-      "signals": ["Frais de transfert", "Transfer fees", "Type d'opération", "Operation type", "Montant à envoyer", "Amount to send", "Total à débiter", "Total to debit"],
+      "signals": [
+        "Frais de transfert",
+        "Transfer fees",
+        "Type d'opération",
+        "Operation type",
+        "Montant à envoyer",
+        "Amount to send",
+        "Total à débiter",
+        "Total to debit"
+      ],
       "fr": {
         "where": "Transfert : choix du montant et calcul des frais.",
         "what": "Choisir le type de transfert et saisir le montant. Les frais et le total à débiter se calculent tout seuls.",
@@ -87,11 +155,23 @@
         "what": "Choose the transfer type and enter the amount. The fees and the total to debit are calculated automatically.",
         "how": "Choose the type in “{type}”, type the amount in “{amount}”, check the “{total}”, then press “{continue}”."
       },
-      "local": null
+      "local": {
+        "statut": "valide",
+        "where": "Nlóm mwàní : tɔ́b mwàní w’à lóm yà táŋ.",
+        "what": "Tɔ́b m̀bə̀b nlóm, ù tíl mwàní w’à lóm. Táŋ yà mwàní wɔ́sə̂ w’à kùì by’à lánbân byə̀ m̀yɛ̌n.",
+        "how": "Tɔ́b m̀bə̀b á « {type} », tíl mwàní á « {amount} », yénègè bèn « {total} », mbús ù nyì’ì « {continue} »."
+      }
     },
     {
       "id": "beneficiary",
-      "signals": ["Nom du bénéficiaire", "Beneficiary name", "Motif du transfert", "Transfer reason", "J'ai vérifié le nom et le numéro du bénéficiaire.", "I have verified the beneficiary name and phone number."],
+      "signals": [
+        "Nom du bénéficiaire",
+        "Beneficiary name",
+        "Motif du transfert",
+        "Transfer reason",
+        "J'ai vérifié le nom et le numéro du bénéficiaire.",
+        "I have verified the beneficiary name and phone number."
+      ],
       "fr": {
         "where": "Transfert : à qui envoyer l’argent.",
         "what": "Indiquer le nom et le numéro de téléphone du bénéficiaire, puis le motif du transfert.",
@@ -104,11 +184,26 @@
         "how": "Fill in “{name}” and “{phone}”. Re-read the number digit by digit, tick the verification box, then press “{continue}”.",
         "tip": "A wrong number sends the money to someone else."
       },
-      "local": null
+      "local": {
+        "statut": "valide",
+        "where": "Nlóm mwàní : mòd àtə́ nɔŋ mwàní.",
+        "what": "Tíl dwé lə̀ mòd àtə́ nɔŋ yà nwàmɔ̀ ŋkwǎl wɔ́, mbús àsú nlóm.",
+        "how": "Tíl « {name} » yà « {phone} ». Búlnì láŋ nwàmɔ̀ nɔ́mbà nɔ́mbà, nyì’ì é kàrà é nə̀ ósúsúâ, mbús ù nyì’ì « {continue} ».",
+        "tip": "Ŋgə́ nwàmɔ̀ àcɔ́b, mwàní àkə̀ ábə́ mòd ḿfə́."
+      }
     },
     {
       "id": "summary",
-      "signals": ["Confirmer le transfert", "Confirm transfer", "Je confirme que les informations ci-dessus sont correctes.", "I confirm the information above is correct.", "Total débité", "Total debited", "Référence", "Reference"],
+      "signals": [
+        "Confirmer le transfert",
+        "Confirm transfer",
+        "Je confirme que les informations ci-dessus sont correctes.",
+        "I confirm the information above is correct.",
+        "Total débité",
+        "Total debited",
+        "Référence",
+        "Reference"
+      ],
       "fr": {
         "where": "Transfert : récapitulatif avant l’envoi.",
         "what": "Relire le montant, les frais, le total et le bénéficiaire. Rien n’est encore envoyé.",
@@ -119,11 +214,25 @@
         "what": "Re-read the amount, fees, total and beneficiary. Nothing has been sent yet.",
         "how": "If everything is right, tick the confirmation box, then press “{confirm}”. Otherwise, press “{edit}”."
       },
-      "local": null
+      "local": {
+        "statut": "valide",
+        "where": "Nlóm mwàní : bə̀’ə̀ yén bísə̂ ósúsúâ nâ ù lóm.",
+        "what": "Bə̀’ə̀ yén mwàní w’à lóm, táŋ, mwàní wɔ́sə̂ w’à kùì yà mòd àtə́ nɔŋ. Mwàní à ngə́nə́ tà’à kə́.",
+        "how": "Ŋgə́ bísə̂ bí nə̀ bèn, nyì’ì é kàrà é nə̀ ósúsúâ, mbús ù nyì’ì « {confirm} ». Ŋgə́ tà’à nà, nyì’ì « {edit} »."
+      }
     },
     {
       "id": "receipt",
-      "signals": ["Transfert effectué", "Transfer completed", "Votre transfert a été envoyé avec succès.", "Your transfer has been sent successfully.", "Nouveau transfert", "New transfer", "Statut", "Status"],
+      "signals": [
+        "Transfert effectué",
+        "Transfer completed",
+        "Votre transfert a été envoyé avec succès.",
+        "Your transfer has been sent successfully.",
+        "Nouveau transfert",
+        "New transfer",
+        "Statut",
+        "Status"
+      ],
       "fr": {
         "where": "Reçu : le transfert est terminé.",
         "what": "Garder la référence du transfert : elle sert en cas de réclamation.",
@@ -134,44 +243,84 @@
         "what": "Keep the transfer reference: you will need it if you make a claim.",
         "how": "Write down the reference shown. For another transfer, press “{new}”."
       },
-      "local": null
+      "local": {
+        "statut": "valide",
+        "where": "Kálàdà wà ǹyáà : nlóm mwàní ùbòbànyà.",
+        "what": "Bà’àlà nɔ́mbà nlóm mwàní : à yá sál ŋgə́ ù yì bɛ̀bə̀.",
+        "how": "Tíl nɔ́mbà à nə̀ á màn. Ŋgə́ ù yì lóm fə́, nyì’ì « {new} »."
+      }
     }
   ],
   "alerts": [
     {
-      "match": ["montant doit être supérieur à zéro", "amount must be greater than zero"],
+      "match": [
+        "montant doit être supérieur à zéro",
+        "amount must be greater than zero"
+      ],
       "fr": "Saisissez un montant supérieur à zéro, puis réessayez.",
-      "en": "Enter an amount greater than zero, then try again."
+      "en": "Enter an amount greater than zero, then try again.",
+      "local": "Tíl mwàní à dàŋ zérò, mbús ù búlnì və̀gə̀.",
+      "localStatut": "valide"
     },
     {
-      "match": ["solde insuffisant", "insufficient balance"],
+      "match": [
+        "solde insuffisant",
+        "insufficient balance"
+      ],
       "fr": "Le montant plus les frais dépasse votre solde : réduisez le montant.",
-      "en": "The amount plus fees is more than your balance: lower the amount."
+      "en": "The amount plus fees is more than your balance: lower the amount.",
+      "local": "Mwàní w’à lóm yà táŋ bí dàŋ mwàní wɔ̂ : sùzgá mwàní w’à lóm.",
+      "localStatut": "valide"
     },
     {
-      "match": ["renseigner le nom et le numéro", "provide the beneficiary name"],
+      "match": [
+        "renseigner le nom et le numéro",
+        "provide the beneficiary name"
+      ],
       "fr": "Remplissez le nom et le numéro du bénéficiaire.",
-      "en": "Fill in the beneficiary’s name and phone number."
+      "en": "Fill in the beneficiary’s name and phone number.",
+      "local": "Tíl dwé lə̀ mòd àtə́ nɔŋ yà nwàmɔ̀ wɔ́.",
+      "localStatut": "valide"
     },
     {
-      "match": ["vérifiez le numéro du bénéficiaire avant de continuer", "verify the beneficiary phone number before continuing"],
+      "match": [
+        "vérifiez le numéro du bénéficiaire avant de continuer",
+        "verify the beneficiary phone number before continuing"
+      ],
       "fr": "Relisez le numéro du bénéficiaire, puis cochez la case de vérification.",
-      "en": "Re-read the beneficiary’s number, then tick the verification box."
+      "en": "Re-read the beneficiary’s number, then tick the verification box.",
+      "local": "Búlnì láŋ nwàmɔ̀ mòd àtə́ nɔŋ, mbús ù nyì’ì é kàrà é nə̀ ósúsúâ.",
+      "localStatut": "valide"
     },
     {
-      "match": ["jamais été utilisé", "never been used"],
+      "match": [
+        "jamais été utilisé",
+        "never been used"
+      ],
       "fr": "Nouveau bénéficiaire : assurez-vous de bien connaître cette personne avant d’envoyer de l’argent.",
-      "en": "New beneficiary: make sure you know this person before sending money."
+      "en": "New beneficiary: make sure you know this person before sending money.",
+      "local": "Mòd àtə́ nɔŋ ḿfə́ : yə́mègè bèn mòd nû ósúsúâ nâ ù lóm mwàní.",
+      "localStatut": "valide"
     },
     {
-      "match": ["erreur réseau", "network error"],
+      "match": [
+        "erreur réseau",
+        "network error"
+      ],
       "fr": "Problème de connexion : patientez un instant, puis réessayez.",
-      "en": "Connection problem: wait a moment, then try again."
+      "en": "Connection problem: wait a moment, then try again.",
+      "local": "Dzɔ̌m dí cɔ́b á ŋkwǎl : yàŋgá mɔ́n ìtə̀ŋ, mbús ù búlnì və̀gə̀.",
+      "localStatut": "valide"
     },
     {
-      "match": ["devez confirmer les informations", "must confirm the details"],
+      "match": [
+        "devez confirmer les informations",
+        "must confirm the details"
+      ],
       "fr": "Cochez la case de confirmation avant de valider le transfert.",
-      "en": "Tick the confirmation box before validating the transfer."
+      "en": "Tick the confirmation box before validating the transfer.",
+      "local": "Nyì’ì é kàrà é nə̀ ósúsúâ nâ ù jə́blə́ nlóm mwàní.",
+      "localStatut": "valide"
     }
   ],
   "intro": {
@@ -195,6 +344,16 @@
       "about": "What is this floating flag?",
       "ok": "Got it!"
     },
-    "local": null
+    "local": {
+      "title": "Mə̀ nə̀ ALPHA !",
+      "lines": [
+        "Mə̀ tə̀ yɛ̀ŋ á yɔ́b, vè mànɔ́mbà mɔ̂ mə̀ tə́ fɔ́’ɔ́ té.",
+        "Mə̀ tə̀ kɔ̀bɔ̀ màn má á flànsí, íŋglís, ŋgə́ étón, tə̀ nàm mwàní wɔ̂, mànɔ́mbà mɔ̂, ŋgə́ móy mɔ̂.",
+        "Nyì’ì mə́ ású yɛ́n bìsɛ́ byâm. Tìndgá mə́ ŋgə́ mə̀ tə̀ ù kwàm : mə̀ bə́gə̀ bə̀ ɔ̀lùn."
+      ],
+      "about": "Fùlàgì ní à tə̀ yɛ̀ŋ á yɔ́b, à nə̀ dzé ?",
+      "ok": "Mə̀wógí !",
+      "statut": "valide"
+    }
   }
 }

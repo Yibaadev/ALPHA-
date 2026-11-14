@@ -67,7 +67,7 @@
   function adviceFor(alertText, lang) {
     const text = norm(alertText);
     for (const rule of (data && data.alerts) || []) {
-      if (rule.match.some((m) => text.includes(norm(m)))) return rule[lang] || rule.fr;
+      if (rule.match.some((m) => text.includes(norm(m)))) return lang === "local" ? rule.local || null : rule[lang] || rule.fr;
     }
     return null;
   }
@@ -77,10 +77,12 @@
   // mode : "fr" | "en" | "local" | "original" ; pageLanguage : "fr" | "en" | null
   function build(snapshot, mode, pageLanguage) {
     const lang = mode === "en" || (mode === "original" && pageLanguage === "en") ? "en" : "fr";
-    const ui = (data && data.ui && data.ui[lang]) || {};
+    const screen = detectScreen(snapshot);
+    // Éton : seulement pour un écran connu dont la traduction existe (sinon tout reste en français).
+    const eton = mode === "local" && screen && screen.local ? screen.local : null;
+    const ui = Object.assign({}, (data && data.ui && data.ui[lang]) || {}, (eton && data.ui.local) || {});
     // En éton, les libellés cités à voix haute sont ceux d'origine : la voix est française ou anglaise.
     const speakOriginal = mode === "local";
-    const screen = detectScreen(snapshot);
     const guide = {
       lang,
       screen: screen ? screen.id : null,
@@ -97,7 +99,7 @@
 
     const say = { where: "", what: "", how: "", tip: "" };
     if (screen) {
-      const texts = (mode === "local" && screen.local) || screen[lang];
+      const texts = eton || screen[lang];
       const shown = {};
       const spoken = {};
       for (const key of Object.keys(data.labels || {})) {
@@ -119,13 +121,19 @@
     // Alerte visible : on la cite telle qu'affichée, avec un conseil si on la connaît.
     const alertItem = snapshot.items.find((item) => item.kind === "alert");
     if (alertItem) {
-      const advice = adviceFor(alertItem.orig, lang) || ui.unknownAlert || "";
+      const advice = adviceFor(alertItem.orig, eton ? "local" : lang) || ui.unknownAlert || "";
       guide.alert = { text: shorten(alertItem.shown || alertItem.orig, 180), advice };
     }
-    if (mode === "local" && !(screen && screen.local)) {
+    if (mode === "local" && !eton) {
       guide.note = (ui.etonPending || "") + (guide.note ? " " + guide.note : "");
+    } else if (eton && eton.statut !== "valide") {
+      guide.note = data.ui[lang].etonDraft || "";
     }
 
+    // En éton : les phrases affichées, lues une à une avec leurs clips éton.
+    guide.etonSpeech = eton
+      ? [guide.where, guide.alert && guide.alert.advice, guide.what, guide.how, guide.tip].filter(Boolean)
+      : null;
     guide.speech = [
       say.where,
       guide.alert ? (guide.labels.alert || "") + " : " + (speakOriginal ? "" : guide.alert.text + ". ") + guide.alert.advice : "",

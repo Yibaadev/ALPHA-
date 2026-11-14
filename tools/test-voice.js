@@ -43,6 +43,7 @@ const eton = {
   elementQueue: (el) => (el.innerText.includes("Mwàní") ? { items: [{ clip: { file: "omnivoice/dict.balance.ogg" } }], missing: 1 } : { items: [], missing: 1 }),
   playClip: async (clip) => { played.push(clip.file); },
   stopClip() {},
+  clipFor: (text) => (text === "Mə̀ nə̀ vé ?" ? { file: "omnivoice/guide.ogg" } : null),
 };
 const voice = context.ALPHA.voice.create({
   getPanel: () => panel,
@@ -95,6 +96,14 @@ const lastStatus = () => [...panelEvents].reverse().find(([type]) => type === "s
   voice.speakGuide("Où suis-je ? Récapitulatif.", "fr");
   assert.strictEqual(spokenCount, before);
   assert.ok(panelEvents.some(([type, value]) => type === "guide" && /Pas encore de voix éton/.test(value)));
+
+  // Éton : guide traduit et enregistré -> clips éton de ses phrases, toujours sans français.
+  played.length = 0;
+  voice.speakGuide("texte français", "fr", ["Mə̀ nə̀ vé ?", "Phrase sans clip"]);
+  await new Promise((r) => setTimeout(r, 10));
+  assert.deepStrictEqual(played, ["omnivoice/guide.ogg"]);
+  assert.strictEqual(spokenCount, before);
+  assert.ok(panelEvents.some(([type, value]) => type === "guide" && /Certaines phrases/.test(value)));
 
   console.log("Lecture vocale : lecture au clic, langue, arrêt, erreurs et éton sans français validés.");
 })().catch((e) => {

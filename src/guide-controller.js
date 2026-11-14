@@ -60,7 +60,7 @@
 
     function speak() {
       refresh();
-      voice.speakGuide(current ? current.speech : "", current ? current.lang : "fr");
+      voice.speakGuide(current ? current.speech : "", current ? current.lang : "fr", current ? current.etonSpeech : null);
     }
 
     // Bulle « Moi, c'est ALPHA » : une seule fois, à la première visite.

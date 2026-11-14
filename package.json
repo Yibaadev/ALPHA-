@@ -24,9 +24,13 @@
     "test:unseen": "node tools/test-unseen.js",
     "test:guide": "node tools/test-guide.js",
     "test:explain": "node tools/test-explain.js",
+    "test:guide-eton": "node tools/test-guide-eton.js",
+    "eton:prompt": "node tools/guide-eton.js export",
+    "eton:import": "node tools/guide-eton.js import docs/traduction/gemini-eton.json",
+    "eton:revue": "node tools/guide-eton.js import docs/traduction/gemini-eton.json docs/traduction/revue-guide-eton.csv",
     "audio:export": "node tools/export-eton-tts.js",
     "test:eton-audio": "node tools/test-eton-audio.js",
-    "audio:index": "node tools/build-audio-index.js",
-    "audio:index:essai": "node tools/build-audio-index.js --inclure-non-revus"
+    "audio:index": "node tools/export-eton-tts.js && node tools/build-audio-index.js",
+    "audio:index:essai": "node tools/export-eton-tts.js && node tools/build-audio-index.js --inclure-non-revus"
   }
 }

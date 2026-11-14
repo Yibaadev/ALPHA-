@@ -68,7 +68,7 @@
     }
 
     function speak() {
-      if (current) voice.speakExplain(current.result.speech, current.result.lang);
+      if (current) voice.speakExplain(current.result.speech, current.result.lang, current.result.etonSpeech);
     }
 
     function close() {

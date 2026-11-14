@@ -18,7 +18,12 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
    ```
    node tools/export-eton-tts.js
    ```
-   Cela crée `docs/audio/eton-tts.jsonl`, avec les textes éton validés du dictionnaire (96 aujourd’hui). Les textes qui contiennent une valeur variable (montant, nom) sont écartés : ils changent à chaque fois.
+   Cela crée `docs/audio/eton-tts.jsonl` (120 textes aujourd’hui) avec :
+   - les textes éton validés du dictionnaire ;
+   - les phrases validées du guide « ? », avec les noms de boutons éton déjà insérés ;
+   - les termes et les définitions validés d’« Expliquer ».
+
+   Les textes avec une valeur variable (montant, nom) sont écartés, car ils changent à chaque fois. La commande indique combien de textes sont **nouveaux**, combien sont **à régénérer** (leur texte a été corrigé) et combien sont **déjà prêts**.
 
 ### Sur Google Colab
 
@@ -43,6 +48,23 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 
 5. Décompressez `alpha_eton_omnivoice.zip` dans `data/audio/eton/omnivoice/` du projet.
 6. Gardez `revue_locuteur.csv` avec les clips : seuls les clips marqués `oui` seront utilisés par l’extension.
+7. Reconstruisez l’index lu par l’extension :
+   ```
+   npm run audio:index          (clips marqués « oui » seulement)
+   npm run audio:index:essai    (pour tester : ajoute les clips pas encore écoutés)
+   ```
+   Un clip dont le texte a été corrigé depuis sa génération est écarté automatiquement (« périmé »). Le texte concerné reste muet jusqu’à ce que son clip soit refait.
+
+## Relancer après une correction des textes
+
+C’est le cas aujourd’hui : le guide a été traduit, et 12 phrases du dictionnaire ont été passées au tutoiement.
+
+1. `node tools/export-eton-tts.js`, puis envoyez le nouveau `eton-tts.jsonl` à l’étape 4.
+2. Gardez **le même dossier Drive** et **la même voix**. La première génération utilisait la **synthèse n°4** : mettez `VOIX_CHOISIE = 4` à l’étape 6 bis, sinon les nouveaux clips n’auront pas la même voix que les anciens.
+3. L’étape 4 efface d’elle-même les clips dont le texte a changé. L’étape 7 ne génère que ce qui manque, soit 39 clips environ (1 à 2 minutes).
+4. À l’étape 7 bis, la feuille de revue garde les réponses déjà données. Seuls les clips nouveaux ou modifiés sont à écouter.
+
+Si le dossier Drive de la première fois n’existe plus, ce n’est pas grave : tout est simplement régénéré, avec la même voix n°4.
 
 ## Bonnes pratiques
 

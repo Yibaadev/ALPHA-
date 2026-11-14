@@ -70,18 +70,22 @@
     const entries = find(text).slice(0, MAX_RESULTS);
     if (!entries.length) return null;
     const lang = languageFor(mode, pageLanguage);
-    const ui = uiFor(lang);
+    const allEton = mode === "local" && entries.every((entry) => entry.local);
+    const ui = Object.assign({}, uiFor(lang), (allEton && data.meta.ui.local) || {});
     const items = entries.map((entry) => {
       const texts = (mode === "local" && entry.local) || entry[lang] || entry.fr;
       return { id: entry.id, term: texts.term, text: texts.text };
     });
-    const etonPending = mode === "local" && entries.some((entry) => !entry.local);
+    const etonPending = mode === "local" && !allEton;
+    const etonDraft = allEton && entries.some((entry) => entry.local.statut !== "valide");
+    const base = uiFor(lang);
     return {
       lang,
       items,
       title: ui.title,
-      note: etonPending ? ui.etonPending + " " + ui.source : ui.source,
+      note: etonPending ? base.etonPending + " " + base.source : etonDraft ? base.etonDraft : base.source,
       speech: items.map((item) => item.term + ". " + item.text).join(" "),
+      etonSpeech: allEton ? items.flatMap((item) => [item.term, item.text]) : null,
     };
   }
 
