@@ -10,10 +10,12 @@ const context = vm.createContext({ console });
 for (const file of [
   "src/protect.js",
   "src/confidence.js",
+  "src/engine/common.js",
   "src/engine/templates.js",
   "src/engine/fuzzy.js",
   "src/engine/segments.js",
   "src/engine/rules.js",
+  "src/engine/language.js",
   "src/translate.js",
 ]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context, { filename: file });

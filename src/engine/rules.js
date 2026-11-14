@@ -3,7 +3,8 @@
   "use strict";
 
   const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
-  const MARKER_RE = /\[M\d+\]/g;
+  const COMMON = NS.engineCommon;
+  const { normalizeForComparison, sameArray, markerTokens, numericTokens, normalizeCriticalTerms } = COMMON;
   let rules = [];
   let activeRules = [];
   let verbs = [];
@@ -11,51 +12,6 @@
   let criticalTerms = [];
   let criticalTermsReady = false;
   let ignored = new Set();
-
-  function normalizeForComparison(value) {
-    return String(value == null ? "" : value)
-      .replace(/\[M(\d+)\]/g, " marker$1 ")
-      .normalize("NFD")
-      .replace(/\p{M}/gu, "")
-      .toLowerCase()
-      .replace(/[‘’ʼ`]/g, "'")
-      .replace(/[^\p{L}\p{N}]+/gu, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function sameArray(a, b) {
-    return a.length === b.length && a.every((value, i) => value === b[i]);
-  }
-
-  function markerTokens(text) {
-    return String(text).match(MARKER_RE) || [];
-  }
-
-  function numericTokens(maskedText) {
-    return String(maskedText).replace(MARKER_RE, " ").match(/\d+(?:[.,]\d+)*/g) || [];
-  }
-
-  function normalizeCriticalTerms(data) {
-    const categories = data && data.categories && typeof data.categories === "object" ? data.categories : {};
-    const output = [];
-    for (const terms of Object.values(categories)) {
-      for (const value of Array.isArray(terms) ? terms : []) {
-        const term = normalizeForComparison(value);
-        if (term) output.push(term);
-      }
-    }
-    return output;
-  }
-
-  function containsCriticalTerm(text) {
-    const normalized = normalizeForComparison(text);
-    for (const term of criticalTerms) {
-      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
-      if (new RegExp("(?:^|\\s)" + escaped + "(?=$|\\s)").test(normalized)) return true;
-    }
-    return false;
-  }
 
   function render(template, verb, placeholder) {
     if (typeof template !== "string") return null;
@@ -137,7 +93,7 @@
     if (!protectionRegex) return noMatch(original, "Le moteur règles n’est pas initialisé.");
     if (!criticalTermsReady) return noMatch(original, "La liste française des termes critiques est absente ou invalide.");
     if (ignored.has(NS.protect.normalize(original))) return noMatch(original, "Texte ignoré par la configuration.");
-    if (containsCriticalTerm(original)) {
+    if (COMMON.containsCriticalTerm(original, criticalTerms)) {
       return noMatch(original, "Phrase critique : le moteur de règles est interdit.");
     }
 
