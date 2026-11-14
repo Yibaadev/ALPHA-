@@ -2,7 +2,7 @@
 
 Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant en français ou en anglais, sans modifier son code source. Elle propose le français, l’anglais et l’éton. L’extension détecte la langue de la page à partir de son attribut `lang` et de son contenu réel, qui l’emporte quand il le contredit nettement (beaucoup de sites changent de langue sans mettre à jour `lang`).
 
-L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte ne peut pas être traduit, il reste dans sa langue d’origine et un avertissement invite l’utilisateur à le comprendre avant de continuer. Le rail latéral donne accès au choix de langue, à la lecture vocale et à l’agrandissement du contenu.
+L’extension utilise le dictionnaire `data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte ne peut pas être traduit, il reste dans sa langue d’origine et un avertissement invite l’utilisateur à le comprendre avant de continuer. Le rail latéral donne accès au choix de langue, au guide vocal contextuel et à l’agrandissement du contenu.
 
 Les 60 traductions Eton du parcours financier et du bandeau de démonstration ont été renseignées à partir de l’ouvrage de référence *Dictionnaire éton – français* (Mark Van de Velde et Kisito Essele Essele, Éditions CLÉ, 2022). Les correspondances lexicales, les règles grammaticales et les tons ont été appliqués avec précision. La synthèse automatique reste désactivée en mode Eton en attendant des enregistrements natifs validés. En français et en anglais, le navigateur ne lit qu’avec une voix qu’il signale comme locale; si aucune voix locale correspondante n’est installée, la lecture ne démarre pas.
 
@@ -18,7 +18,7 @@ La traduction de secours utilise l’API **Translator intégrée à Chrome** (Ch
 
 Ne sont jamais modifiés : les champs de saisie et leur réaffichage (nom, motif, note saisis par l’utilisateur), les zones `contenteditable`, les éléments `translate="no"` ou `.notranslate`, le code (`code`, `pre`), les options de liste sans attribut `value` et les boutons `<input>` envoyés avec le formulaire. L’extension traduit aussi les Shadow DOM ouverts et les cadres (iframes), qui suivent la langue choisie dans la page principale.
 
-**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe). Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
+**Outils déclarés** : API Translator de Chrome (traduction locale) et API Gemini optionnelle pour les actions d’aide lancées explicitement. L’assistant transmet un extrait sélectionné ou un résumé filtré via un proxy; n’envoyez pas de données financières réelles à l’offre gratuite. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
 
 ## Installation
 
@@ -27,6 +27,12 @@ Ne sont jamais modifiés : les champs de saisie et leur réaffichage (nom, motif
 3. Ouvrir une page Web de démonstration compatible, puis vérifier le panneau ALPHA.
 
 Après une modification, recharger l’extension dans Chrome puis actualiser la page.
+
+## Aide contextuelle Gemini
+
+L’extension propose **Expliquer** pour un passage sélectionné et **Me guider** pour résumer l’étape visible d’une page. L’aide est appelée seulement au clic. Elle ne réalise aucune action sur le site. Les voix Éton seront branchées après validation; le texte d’aide est disponible dès maintenant en français ou en anglais.
+
+Pour lancer le proxy Gemini local, voir [docs/AI_GUIDE.md](docs/AI_GUIDE.md). Le proxy est désactivé par défaut; les essais doivent utiliser l’environnement fictif. Ne placez jamais la clé API dans l’extension ou dans Git.
 
 ## Dictionnaire
 
@@ -57,7 +63,10 @@ Cette commande vérifie la syntaxe des scripts, les données JSON, les moteurs d
 - `src/engine/` : moteurs linguistiques et utilitaires communs de validation.
 - `src/panel.js` : structure et interactions du panneau d’accessibilité.
 - `src/panel.css` : styles du Shadow DOM et variables de thème réutilisables.
-- `src/voice.js` : lecture vocale avec les voix locales du navigateur.
+- `src/voice.js` : synthèse vocale locale des réponses du guide.
+- `src/assistant.js` : sélection et extraction d’un contexte de page limité.
+- `src/background.js` : relais de l’extension vers le proxy local.
+- `server/gemini-proxy.mjs` : proxy de développement Gemini, lié à l’interface loopback.
 - `src/protect.js` : protection des valeurs sensibles.
 - `data/dictionary.json` : textes et traductions.
 - `tools/` : import/export CSV et vérifications.

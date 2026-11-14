@@ -12,6 +12,12 @@
   "permissions": [
     "storage"
   ],
+  "host_permissions": [
+    "http://127.0.0.1:8787/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -37,6 +43,7 @@
         "src/engine/mt.js",
         "src/translation-controller.js",
         "src/confidence.js",
+        "src/assistant.js",
         "src/panel.js",
         "src/voice.js",
         "src/content.js"

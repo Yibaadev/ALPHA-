@@ -2,6 +2,7 @@
   "name": "alpha-eton-lexicon-tools",
   "private": true,
   "scripts": {
+    "assistant:proxy": "node --env-file=.env.local server/gemini-proxy.mjs",
     "test": "node tools/verify.js",
     "check": "node tools/check.js",
     "test:core": "node tools/test.js",
