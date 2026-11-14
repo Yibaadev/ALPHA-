@@ -66,6 +66,14 @@
     getPageLanguage: () => pageLanguage,
     voice,
   });
+  const explainer = NS.explainController.create({
+    hostId: HOST_ID,
+    textState,
+    getPanel: () => panel,
+    getMode: () => mode,
+    getPageLanguage: () => pageLanguage,
+    voice,
+  });
 
   // Valeurs saisies par l'utilisateur (nom, motif, note...). Quand la page les réaffiche
   // (récapitulatif, reçu), elles ne doivent jamais être traduites.
@@ -277,24 +285,27 @@
     if (!document.body) return;
     // Dans un cadre (iframe), on traduit aussi, sauf les cadres minuscules (publicités, pixels).
     if (!IS_TOP && (window.innerWidth < 120 || window.innerHeight < 40)) return;
-    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse, guideResponse] = await Promise.all([
+    const [dictionaryResponse, criticalResponse, templatesResponse, lexiconResponse, rulesResponse, guideResponse, glossaryResponse] = await Promise.all([
       fetch(chrome.runtime.getURL("data/dictionary.json")),
       fetch(chrome.runtime.getURL("data/critical_terms.json")),
       fetch(chrome.runtime.getURL("data/templates.json")),
       fetch(chrome.runtime.getURL("data/lexicon.json")),
       fetch(chrome.runtime.getURL("data/rules.json")),
       IS_TOP ? fetch(chrome.runtime.getURL("data/guide.json")).catch(() => null) : Promise.resolve(null),
+      IS_TOP ? fetch(chrome.runtime.getURL("data/glossary.json")).catch(() => null) : Promise.resolve(null),
     ]);
     if (!dictionaryResponse.ok) throw new Error("Dictionnaire local indisponible.");
-    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules, loadedGuide] = await Promise.all([
+    const [loadedDictionary, loadedCritical, loadedTemplates, loadedLexicon, loadedRules, loadedGuide, loadedGlossary] = await Promise.all([
       dictionaryResponse.json(),
       criticalResponse.ok ? criticalResponse.json() : Promise.resolve(null),
       templatesResponse.ok ? templatesResponse.json() : Promise.resolve([]),
       lexiconResponse.ok ? lexiconResponse.json() : Promise.resolve([]),
       rulesResponse.ok ? rulesResponse.json() : Promise.resolve([]),
       guideResponse && guideResponse.ok ? guideResponse.json() : Promise.resolve(null),
+      glossaryResponse && glossaryResponse.ok ? glossaryResponse.json() : Promise.resolve(null),
     ]);
     if (NS.guide) NS.guide.init(loadedGuide);
+    if (NS.explain) NS.explain.init(loadedGlossary);
     dict = loadedDictionary;
     criticalData = loadedCritical;
     T.init(dict, {
@@ -325,6 +336,9 @@
         onZoomChange: setZoom,
         onGuide: guide.refresh,
         onGuideSpeak: guide.speak,
+        onExplain: explainer.show,
+        onExplainSpeak: explainer.speak,
+        onExplainClose: explainer.close,
       });
     }
     try {
@@ -367,6 +381,7 @@
     apply();
     showMachineStatus(NS.mt ? NS.mt.status() : "unsupported");
     guide.start();
+    if (panel) explainer.start();
     languageObserver = new MutationObserver(() => apply());
     languageObserver.observe(document.documentElement, {
       attributes: true,

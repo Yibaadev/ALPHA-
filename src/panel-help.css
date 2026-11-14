@@ -1,0 +1,101 @@
+/* Styles des fonctions d'aide du panneau ALPHA (Shadow DOM) : guide « ? »,
+   bulle de présentation et action « Expliquer ». Les jetons (--space-*, --radius-*,
+   couleurs) sont définis dans panel.css, chargée avant celle-ci. */
+    /* Guide « ? » de l'écran */
+    .guide-card { padding: 9px 10px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+    .guide-list { margin: 0; }
+    .guide-list dt { margin: 7px 0 1px; color: var(--accent-strong); font-size: 10.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-list dt:first-child { margin-top: 0; }
+    .guide-list dd { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.45; }
+    .guide-alert {
+      margin: 0 0 var(--space-2); padding: 7px 9px; border: 1px solid #f0b4b9; border-left: 3px solid var(--cm-red);
+      border-radius: var(--radius-control); background: #fff3f4; color: #5c0b13; font-size: 11.5px; line-height: 1.4;
+    }
+    .guide-alert[hidden], .guide-tip[hidden] { display: none; }
+    .guide-alert-label { display: block; color: var(--cm-red); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-alert-text { display: block; font-style: italic; }
+    .guide-alert-advice { display: block; margin-top: 3px; font-weight: 650; }
+    .guide-tip {
+      margin: var(--space-2) 0 0; padding: 6px var(--space-2); border-radius: var(--radius-control);
+      background: #fff8dc; border: 1px solid #f1dc8a; color: #5a4300; font-size: 11px; line-height: 1.4;
+    }
+    .guide-note { margin: 6px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .guide-actions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-2); }
+    .guide-actions .reset { margin: 0; }
+    .guide-about { margin-top: var(--space-2); border-top: 1px dashed var(--line); padding-top: 6px; }
+    .about-summary { color: var(--accent-strong); font-size: 11px; font-weight: 650; cursor: pointer; }
+    .about-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+    .about-body p { margin: 5px 0 0; color: var(--ink); font-size: 11.5px; line-height: 1.45; }
+    .about-body p:first-child { font-weight: 700; }
+    /* Bulle de présentation du drapeau, à côté de la carte, à la première visite. */
+    .intro {
+      position: fixed; z-index: 2147483647; width: 260px; max-width: calc(100vw - 24px);
+      padding: var(--space-3) 14px 10px; border: 1px solid #cbd7d1; border-radius: var(--radius-panel);
+      color: var(--ink); background: var(--cm-stripe) top / 100% 3px no-repeat, var(--surface);
+      box-shadow: 0 12px 34px -4px rgba(15, 38, 32, .25), 0 4px 12px -2px rgba(15, 38, 32, .1);
+      font: 12.5px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      animation: intro-in .35s cubic-bezier(.22, 1.2, .36, 1) both;
+    }
+    .intro[hidden] { display: none; }
+    .intro-title { margin: 0 0 var(--space-1); font-size: 14px; font-weight: 800; color: var(--accent-strong); }
+    .intro-body p { margin: 0 0 5px; }
+    .intro-body p:first-child { font-weight: 650; }
+    .intro-ok {
+      display: block; margin: 6px 0 0 auto; min-height: 30px; padding: 5px var(--space-3); border: 1px solid var(--accent);
+      border-radius: var(--radius-control); color: #fff; background: var(--accent); font-size: 11.5px; font-weight: 700; cursor: pointer;
+    }
+    .intro-ok:hover { background: var(--accent-strong); }
+    .intro-ok:focus-visible { outline: 2px solid var(--cm-yellow); outline-offset: 2px; }
+    @keyframes intro-in {
+      from { opacity: 0; transform: translateY(8px) scale(.94); }
+      to { opacity: 1; transform: none; }
+    }
+
+
+    /* Action « Expliquer » : bouton près de la sélection et carte d'explication. */
+    .selection-toolbar {
+      position: fixed; z-index: 2147483647; display: flex; padding: var(--space-1);
+      background: var(--surface); border: 1px solid #cbd7d1; border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+      font: 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .selection-toolbar[hidden], .explain-card[hidden] { display: none; }
+    .selection-explain {
+      min-height: 36px; padding: 0 var(--space-3); display: inline-flex; align-items: center; gap: var(--space-2);
+      border: 0; border-radius: var(--radius-card); color: #fff; background: var(--accent-strong);
+      font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    .selection-explain:hover { background: #004333; }
+    .selection-explain svg { width: 17px; height: 17px; }
+    .selection-explain:focus-visible { outline: 3px solid var(--cm-yellow); outline-offset: 2px; }
+    .explain-card {
+      position: fixed; z-index: 2147483647; width: 300px; max-width: calc(100vw - 16px);
+      max-height: min(60dvh, 420px); overflow-y: auto;
+      padding: var(--space-3) 14px 10px; border: 1px solid #cbd7d1; border-radius: var(--radius-panel);
+      color: var(--ink); background: var(--cm-stripe) top / 100% 3px no-repeat, var(--surface);
+      box-shadow: 0 12px 34px -4px rgba(15, 38, 32, .25), 0 4px 12px -2px rgba(15, 38, 32, .1);
+      font: 12.5px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      animation: intro-in .25s ease-out both;
+    }
+    .explain-title { margin: 0 0 var(--space-1); font-size: 13.5px; font-weight: 800; color: var(--accent-strong); }
+    .explain-list { margin: 0; }
+    .explain-list dt { margin: 7px 0 1px; font-weight: 750; color: var(--ink); }
+    .explain-list dt:first-child { margin-top: 0; }
+    .explain-list dd { margin: 0; color: var(--ink); line-height: 1.45; }
+    .explain-note, .guide-hint { margin: var(--space-2) 0 0; color: var(--muted); font-size: 10.5px; line-height: 1.35; }
+    .explain-actions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-2); }
+    .explain-actions .reset { margin: 0; }
+    .guide-hint:empty { display: none; }
+
+    /* Téléphones : textes plus grands (même seuil que panel.css). */
+    @media (max-width: 560px) {
+      .guide-note, .guide-hint, .explain-note { font-size: 12px; }
+      .guide-list dd, .explain-list dd { font-size: 13.5px; }
+      .guide-alert, .guide-tip, .about-summary, .about-body p { font-size: 12.5px; }
+    }
+    /* Écrans tactiles : cibles d’au moins 44 px. */
+    @media (pointer: coarse) {
+      .intro-ok, .selection-explain { min-height: 44px; padding: 8px var(--space-4); }
+      .about-summary { padding: 8px 0; }
+      .explain-actions .reset { min-height: 40px; }
+    }

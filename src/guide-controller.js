@@ -40,6 +40,7 @@
       try {
         current = NS.guide.build(NS.guide.snapshot(document, helpers), getMode(), getPageLanguage());
         panel.setGuide(current);
+        if (NS.explain && panel.setExplainHint) panel.setExplainHint(NS.explain.ui(current.lang).hint);
         panel.setIntroTexts(NS.guide.intro(getMode(), getPageLanguage()));
       } catch (e) {
         console.warn("[ALPHA] guide indisponible :", e);

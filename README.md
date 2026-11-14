@@ -29,9 +29,13 @@ Le bouton **?** de la barre latérale explique l’écran affiché en trois rép
 
 À la première visite, une bulle « Moi, c’est ALPHA ! » présente le drapeau flottant à côté de la carte. Elle ne revient plus une fois fermée, et son texte reste disponible en bas du guide.
 
+## Expliquer un terme
+
+Quand l’utilisateur sélectionne un texte de la page qui contient un terme financier connu (frais, solde, bénéficiaire, référence, total débité, Mobile Money…), un bouton **Expliquer** apparaît à côté. Il ouvre une courte explication, lisible à voix haute. Les explications viennent d’un glossaire vérifié (`data/glossary.json`, 24 termes en français et en anglais), pas d’un modèle d’IA : rien n’est inventé et rien ne sort de l’appareil. En mode Éton, le terme d’origine est reconnu sous le texte traduit ; l’explication s’affiche en français tant que sa version éton n’est pas validée. Le bouton n’apparaît jamais dans un champ de saisie, ni sur une sélection sans terme connu.
+
 Le guide lit la page en mémoire, sur l’appareil. Il ne stocke ni ne transmet aucun texte de la page. La lecture vocale n’utilise que des voix installées sur l’appareil (`localService`) : les voix « en ligne » de certains navigateurs enverraient le texte lu à un serveur.
 
-**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
+**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales. **Aucun modèle d’IA générative** n’est utilisé et l’extension n’envoie aucun texte de la page à un service externe. Un prototype d’assistant Gemini en ligne a été écarté de cette version pour respecter la règle de non-transmission des données affichées ; il est conservé à part dans la branche `experimental-gemini`. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
 
 ## Installation
 
@@ -75,6 +79,8 @@ Cette commande vérifie la syntaxe des scripts, les données JSON, les moteurs d
 - `src/guide.js` et `data/guide.json` : guide « ? » de l’écran (reconnaissance de l’écran, textes, bulle de présentation).
 - `src/guide-controller.js` : relevé de la page pour le guide, rafraîchissement et lecture.
 - `src/panel-guide.js` : section guide et bulle de présentation du panneau.
+- `src/explain.js`, `src/explain-controller.js`, `src/panel-explain.js` et `data/glossary.json` : action « Expliquer » (glossaire, sélection, carte d’explication).
+- `src/panel-help.css` : styles du guide, de la bulle et de « Expliquer ».
 - `data/dictionary.json` : textes et traductions.
 - `tools/` : import/export CSV et vérifications.
 - `docs/` : documentation et fichiers de traduction.
