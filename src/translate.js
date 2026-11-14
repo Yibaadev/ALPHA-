@@ -4,9 +4,9 @@
   "use strict";
   const NS = globalThis.ALPHA;
   const P = NS.protect;
+  const Language = NS.language;
 
   let index = new Map();
-  let languageIndexes = { fr: new Map(), en: new Map() };
   let regex = P.build([]);
   let baseNames = [];
   const nameRegexCache = new Map();
@@ -20,20 +20,15 @@
     regex = P.build(baseNames);
     nameRegexCache.clear();
     ignored = new Set((meta.ignore || []).map(P.normalize));
+    Language.init(dict);
     index = new Map();
-    languageIndexes = { fr: new Map(), en: new Map() };
     for (const e of dict.entries || []) {
-      if (e.fr) {
-        const key = P.normalize(e.fr);
-        index.set(key, e);
-        languageIndexes.fr.set(key, e);
-      }
+      if (e.fr) index.set(P.normalize(e.fr), e);
       // en_variants : autres formulations anglaises du même texte (ex. libellés d'un site).
       for (const en of [e.en, ...(Array.isArray(e.en_variants) ? e.en_variants : [])]) {
         if (!en || !en.trim()) continue;
         const key = P.normalize(en);
         if (!index.has(key)) index.set(key, e);
-        languageIndexes.en.set(key, e);
       }
     }
 
@@ -52,69 +47,6 @@
       NS.segments.init(dict, cascade.lexicon, criticalTerms, config.segmentOptions);
       NS.rules.init(cascade.rules, cascade.lexicon, criticalTerms, meta);
     }
-  }
-
-  function normalizeLanguageTag(tag) {
-    const language = String(tag || "").trim().toLowerCase().split(/[-_]/)[0];
-    return language === "fr" || language === "en" ? language : null;
-  }
-
-  // Détecte une phrase uniquement si elle correspond sans ambiguïté à une langue connue.
-  function detectTextLanguage(original) {
-    if (ignored.has(P.normalize(original))) return null;
-    const { masked } = P.protect(original, regex);
-    const key = P.normalize(masked);
-    const isFrench = languageIndexes.fr.has(key);
-    const isEnglish = languageIndexes.en.has(key);
-    if (isFrench === isEnglish) return null;
-    return isFrench ? "fr" : "en";
-  }
-
-  // Mots très fréquents propres à chaque langue, pour deviner la langue d'un texte inconnu.
-  const STOPWORDS = {
-    fr: new Set(("le la les un une des du de au aux et ou est sont été être avec pour par sur dans vers votre vos " +
-      "nous vous ils elle il ce cette ces qui que ne pas plus sans très mais leur leurs avez avant après " +
-      "été sera seront veuillez merci aucun aucune frais solde montant compte").split(" ")),
-    en: new Set(("the a an of to and or is are was were be been with for by on in into your our you we they " +
-      "it this that these those which who not no more without very but their have has before after will " +
-      "please thank any fee fees balance amount account").split(" ")),
-  };
-
-  // Devine la langue d'un texte libre. Renvoie null en cas de doute.
-  function guessLanguage(text) {
-    const known = detectTextLanguage(text);
-    if (known) return known;
-    const words = String(text || "").toLowerCase().normalize("NFC").match(/\p{L}+/gu) || [];
-    if (!words.length) return null;
-    let fr = 0;
-    let en = 0;
-    for (const w of words) {
-      if (STOPWORDS.fr.has(w)) fr++;
-      if (STOPWORDS.en.has(w)) en++;
-    }
-    // Les lettres accentuées sont un indice fort de français.
-    if (/[àâçéèêëîïôûùüÿœæ]/i.test(text)) fr += 2;
-    if (fr === en) return null;
-    if (Math.max(fr, en) < 2 && words.length > 3) return null;
-    return fr > en ? "fr" : "en";
-  }
-
-  // Le contenu réel l'emporte sur l'attribut lang quand il le contredit nettement
-  // (beaucoup de sites changent de langue sans mettre à jour <html lang>).
-  function detectPageLanguage(pageLang, samples) {
-    const declared = normalizeLanguageTag(pageLang);
-    const counts = { fr: 0, en: 0 };
-    for (const sample of samples || []) {
-      const language = guessLanguage(sample);
-      if (language) counts[language]++;
-    }
-    const top = counts.fr === counts.en ? null : counts.fr > counts.en ? "fr" : "en";
-    if (!declared) return top;
-    if (top && top !== declared) {
-      const other = top === "fr" ? counts.en : counts.fr;
-      if (counts[top] >= 5 && counts[top] >= 2 * other) return top;
-    }
-    return declared;
   }
 
   // Expression de protection étendue aux noms propres inconnus du texte (null s'il n'y en a pas).
@@ -294,7 +226,7 @@
     if (!/\p{L}/u.test(masked.replace(/\[M\d+\]/g, ""))) return { kind: "skip" };
 
     const key = P.normalize(masked);
-    const sourceLanguage = detectTextLanguage(original);
+    const sourceLanguage = Language.detectTextLanguage(original);
     if (sourceLanguage === lang || (!sourceLanguage && pageLanguage === lang)) {
       return { kind: "same", language: sourceLanguage || pageLanguage };
     }
@@ -410,6 +342,11 @@
 
   NS.translate = {
     init, translate, analyse, validateIntegrity, normalizeForComparison, setDebugTrace,
-    detectPageLanguage, detectTextLanguage, normalizeLanguageTag, guessLanguage, protectText, withNames,
+    detectPageLanguage: Language.detectPageLanguage,
+    detectTextLanguage: Language.detectTextLanguage,
+    normalizeLanguageTag: Language.normalizeLanguageTag,
+    guessLanguage: Language.guessLanguage,
+    protectText,
+    withNames,
   };
 })();

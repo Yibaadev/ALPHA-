@@ -37,11 +37,22 @@
   let panel = null;
   let observer = null;
   let languageObserver = null;
-  let speaking = false;
   let originalBodyZoom = "";
   let baseBodyZoom = 1;
   let stats = { ok: 0, total: 0 };
   let lastCost = 0; // durée du dernier scan, en ms
+  const translationController = NS.translationController.create({
+    translate: T,
+    getCriticalData: () => criticalData,
+    machine(text, source, target) {
+      return NS.mt ? NS.mt.lookup(text, source, target) || null : null;
+    },
+  });
+  const voice = NS.voice.create({
+    getPanel: () => panel,
+    getMode: () => mode,
+    getPageLanguage: () => pageLanguage,
+  });
 
   // Pour chaque texte, on retient l'original et ce qui a été affiché.
   const textState = new WeakMap();
@@ -77,13 +88,6 @@
     return true;
   }
 
-  function retainOuterWhitespace(original, translated) {
-    if (translated === original) return original;
-    const lead = original.match(/^\s*/)?.[0] || "";
-    const trail = original.match(/\s*$/)?.[0] || "";
-    return lead + translated + trail;
-  }
-
   function unwrapText(node, state) {
     const wrapper = state.wrapper;
     if (wrapper && wrapper.parentNode && wrapper.contains(node)) {
@@ -110,63 +114,9 @@
     }
     if (isUserData(original)) return original; // donnée saisie par l'utilisateur
 
-    if (mode === "local") {
-      if (T.analyse(original, "local", pageLanguage).kind === "skip") return original;
-      const eton = toEton(original, pageLanguage);
-      if (eton) {
-        stats.ok++;
-        return retainOuterWhitespace(original, eton);
-      }
-      // Texte anglais inédit : passage par le français, puis vers l'éton si possible.
-      // Sinon le français est affiché, plus proche du lecteur que l'anglais.
-      if (sourceLanguageOf(original) === "en") {
-        const french = machine(original, "en", "fr");
-        if (french) {
-          stats.ok++;
-          return retainOuterWhitespace(original, toEton(french, "fr") || french);
-        }
-      }
-      return original;
-    }
-
-    const res = T.analyse(original, mode, pageLanguage);
-    if (res.kind === "ok") {
-      const candidate = retainOuterWhitespace(original, res.text);
-      if (res.values.every((v) => candidate.includes(v))) {
-        stats.ok++;
-        return candidate;
-      }
-    }
-    // Contenu inédit (absent du dictionnaire) : traduction locale contrôlée.
-    if (res.kind === "unknown" || res.kind === "same") {
-      const source = sourceLanguageOf(original);
-      if (source && source !== mode) {
-        const translated = machine(original, source, mode);
-        if (translated) {
-          stats.ok++;
-          return retainOuterWhitespace(original, translated);
-        }
-      }
-    }
-    return original;
-  }
-
-  function toEton(text, language) {
-    if (!criticalData) return null;
-    const structured = T.translate(text, { target: "eton", pageLanguage: language });
-    return structured && typeof structured.eton === "string" && structured.eton.trim() && structured.marqueurs_ok !== false
-      ? structured.eton
-      : null;
-  }
-
-  function sourceLanguageOf(text) {
-    return T.guessLanguage(text) || pageLanguage;
-  }
-
-  // Traduction locale de secours (voir src/engine/mt.js). Renvoie null tant qu'elle n'est pas prête.
-  function machine(text, source, target) {
-    if (!NS.mt) return null;
-    return NS.mt.lookup(text, source, target) || null;
+    const decision = translationController.translateText(original, mode, pageLanguage);
+    if (decision.translated) stats.ok++;
+    return decision.text;
   }
 
   function writeText(node) {
@@ -272,11 +222,7 @@
     mode = next;
     // Appelé pendant le clic : Chrome autorise alors la préparation du modèle hors ligne.
     if (NS.mt) NS.mt.prepare(machinePairs(next));
-    if (speaking && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      speaking = false;
-      if (panel) panel.setSpeaking(false);
-    }
+    voice.stop();
     try {
       chrome.storage.local.set({ alphaMode: next });
     } catch (e) {
@@ -295,62 +241,6 @@
     }
     body.style.zoom = String(baseBodyZoom * (percent / 100));
   }
-
-  // Réserve la synthèse du navigateur au français et à l'anglais avec une voix locale.
-  function speakVisibleText() {
-    if (!panel) return;
-    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-      panel.setVoiceStatus("La lecture vocale n’est pas disponible dans ce navigateur.");
-      return;
-    }
-    if (speaking) {
-      window.speechSynthesis.cancel();
-      speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("Lecture arrêtée.");
-      return;
-    }
-
-    const visibleText = (document.body.innerText || "").replace(/\s+/g, " ").trim().slice(0, 4000);
-    if (!visibleText) {
-      panel.setVoiceStatus("Aucun texte visible à lire.");
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(visibleText);
-    const language = mode === "en" || (mode === "original" && pageLanguage === "en")
-      ? "en-US"
-      : "fr-FR";
-    utterance.lang = language;
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find((candidate) =>
-      candidate.localService && candidate.lang.toLowerCase().startsWith(language.slice(0, 2))
-    );
-    if (!voice) {
-      panel.setVoiceStatus("Aucune voix locale correspondante n’est installée pour cette langue.");
-      return;
-    }
-    utterance.voice = voice;
-    utterance.onstart = () => {
-      speaking = true;
-      panel.setSpeaking(true);
-    };
-    utterance.onend = () => {
-      speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("Lecture terminée.");
-    };
-    utterance.onerror = () => {
-      speaking = false;
-      panel.setSpeaking(false);
-      panel.setVoiceStatus("La lecture a échoué. Vérifiez les voix disponibles dans le navigateur.");
-    };
-    panel.setVoiceStatus("Lecture vocale en cours…");
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-  }
-
-  /* ---------- Démarrage ---------- */
 
   async function readSavedMode() {
     try {
@@ -418,7 +308,7 @@
       panel = NS.panel.create({
         hostId: HOST_ID,
         onModeChange: setMode,
-        onSpeak: speakVisibleText,
+        onSpeak: voice.speak,
         onZoomChange: setZoom,
       });
     }

@@ -3,8 +3,9 @@
   "use strict";
 
   const NS = (globalThis.ALPHA = globalThis.ALPHA || {});
+  const COMMON = NS.engineCommon;
+  const { normalizeForComparison, sameArray, markerTokens, numericTokens, normalizeCriticalTerms } = COMMON;
   const DEFAULT_COVERAGE_THRESHOLD = 0.80;
-  const MARKER_RE = /\[M\d+\]/g;
   const WORD_RE = /\[M\d+\]|[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu;
   let vocabulary = new Map();
   let protectionRegex = null;
@@ -12,52 +13,6 @@
   let criticalTermsReady = false;
   let ignored = new Set();
   let baseOptions = { coverageThreshold: DEFAULT_COVERAGE_THRESHOLD };
-
-  function normalizeForComparison(value) {
-    return String(value == null ? "" : value)
-      .replace(/\[M(\d+)\]/g, " marker$1 ")
-      .normalize("NFD")
-      .replace(/\p{M}/gu, "")
-      .toLowerCase()
-      .replace(/[‘’ʼ`]/g, "'")
-      .replace(/[^\p{L}\p{N}]+/gu, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function sameArray(a, b) {
-    return a.length === b.length && a.every((value, i) => value === b[i]);
-  }
-
-  function markerTokens(text) {
-    return String(text).match(MARKER_RE) || [];
-  }
-
-  function numericTokens(maskedText) {
-    return String(maskedText).replace(MARKER_RE, " ").match(/\d+(?:[.,]\d+)*/g) || [];
-  }
-
-  function normalizeCriticalTerms(data) {
-    const categories = data && data.categories && typeof data.categories === "object" ? data.categories : {};
-    const output = [];
-    for (const [category, terms] of Object.entries(categories)) {
-      for (const value of Array.isArray(terms) ? terms : []) {
-        const term = normalizeForComparison(value);
-        if (term) output.push({ category, term });
-      }
-    }
-    return output;
-  }
-
-  function containsCriticalTerm(text) {
-    const normalized = normalizeForComparison(text);
-    for (const { term } of criticalTerms) {
-      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
-      const expression = new RegExp("(?:^|\\s)" + escaped + "(?=$|\\s)", "g");
-      if (expression.test(normalized)) return true;
-    }
-    return false;
-  }
 
   function addEntry(source, target, status, conflicts) {
     if ((status !== "valide" && status !== "verifie") ||
@@ -140,7 +95,7 @@
     if (!protectionRegex) return noMatch(original, "Le moteur segments n’est pas initialisé.");
     if (!criticalTermsReady) return noMatch(original, "La liste française des termes critiques est absente ou invalide.");
     if (ignored.has(NS.protect.normalize(original))) return noMatch(original, "Texte ignoré par la configuration.");
-    if (containsCriticalTerm(original)) {
+    if (COMMON.containsCriticalTerm(original, criticalTerms)) {
       return noMatch(original, "Phrase critique : l’assemblage de segments est interdit.");
     }
 
