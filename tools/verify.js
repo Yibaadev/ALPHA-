@@ -23,6 +23,7 @@ const checks = [
   ["expliquer (glossaire)", "tools/test-explain.js"],
   ["guide en éton (traduction)", "tools/test-guide-eton.js"],
   ["voix éton préenregistrées", "tools/test-eton-audio.js"],
+  ["couverture vocale éton", "tools/test-eton-coverage.js"],
   ["dictionnaire", "tools/check.js"],
 ];
 

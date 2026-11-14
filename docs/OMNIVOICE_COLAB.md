@@ -18,7 +18,7 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
    ```
    node tools/export-eton-tts.js
    ```
-   Cela crée `docs/audio/eton-tts.jsonl` (120 textes aujourd’hui) avec :
+   Cela crée `docs/audio/eton-tts.jsonl` (195 textes aujourd’hui) avec :
    - les textes éton validés du dictionnaire ;
    - les phrases validées du guide « ? », avec les noms de boutons éton déjà insérés ;
    - les termes et les définitions validés d’« Expliquer ».
@@ -57,14 +57,25 @@ Le modèle tourne **une seule fois, sur Google Colab**. L’extension ne contien
 
 ## Relancer après une correction des textes
 
-C’est le cas aujourd’hui : le guide a été traduit, et 12 phrases du dictionnaire ont été passées au tutoiement.
+Deux cas :
 
-1. `node tools/export-eton-tts.js`, puis envoyez le nouveau `eton-tts.jsonl` à l’étape 4.
-2. Gardez **le même dossier Drive** et **la même voix**. La première génération utilisait la **synthèse n°4** : mettez `VOIX_CHOISIE = 4` à l’étape 6 bis, sinon les nouveaux clips n’auront pas la même voix que les anciens.
-3. L’étape 4 efface d’elle-même les clips dont le texte a changé. L’étape 7 ne génère que ce qui manque, soit 39 clips environ (1 à 2 minutes).
-4. À l’étape 7 bis, la feuille de revue garde les réponses déjà données. Seuls les clips nouveaux ou modifiés sont à écouter.
+- **Tout refaire avec une seule voix**, c'est le cas aujourd'hui : `npm run audio:export:tout`. Les 195 clips sont marqués « à régénérer », soit environ 5 à 10 minutes sur un T4.
+- **Ne refaire que ce qui a changé** : `npm run audio:export`.
 
-Si le dossier Drive de la première fois n’existe plus, ce n’est pas grave : tout est simplement régénéré, avec la même voix n°4.
+Ensuite :
+
+1. Envoyez le nouveau `docs/audio/eton-tts.jsonl` à l'étape 4. L'étape 4 efface d'elle-même les anciens clips concernés sur le Drive.
+2. À l'étape 6 bis, gardez la même voix pour tous les clips. La première génération utilisait la **synthèse n°4** (`VOIX_CHOISIE = 4`).
+3. À l'étape 7 bis, la feuille de revue garde les réponses déjà données pour les textes inchangés.
+4. Sur votre PC, décompressez le zip dans `data/audio/eton/omnivoice/`, puis lancez `npm run audio:index:essai` (ou `npm run audio:index` une fois la revue faite).
+
+**Ce qui est couvert.** Tout texte éton que l'extension peut afficher a sa voix :
+
+- les entrées du dictionnaire ;
+- les phrases modèles, avec leurs morceaux fixes autour des montants et des noms ;
+- le guide, la bulle et « Expliquer ».
+
+Une phrase affichée est découpée en morceaux enregistrés. Seuls les montants, les noms et les mots restés en français ne sont pas lus. Le test `npm run test:eton-coverage` le vérifie.
 
 ## Bonnes pratiques
 

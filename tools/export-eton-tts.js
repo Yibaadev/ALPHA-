@@ -20,6 +20,7 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const read = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const drafts = process.argv.includes("--brouillons");
+const redoAll = process.argv.includes("--tout"); // refaire tous les clips (même voix pour tout)
 const norm = (text) => String(text || "").normalize("NFC").replace(/\s+/g, " ").trim();
 const usable = (statut) => statut === "valide" || (drafts && statut === "a_verifier");
 
@@ -46,21 +47,29 @@ const seenTexts = new Set();
 function add(id, text, origin) {
   const value = norm(text);
   if (!value) return;
+  // Valeur variable [M1] (montant, nom) : on enregistre les morceaux fixes autour ; à la lecture,
+  // la phrase affichée est découpée en ces morceaux (src/eton-audio.js), la valeur n'est pas lue.
   if (/\[M\d+\]/.test(value)) {
-    skipped.push(id + " (valeur variable)");
+    value.split(/\[M\d+\]/).map((part) => part.replace(/^[\s—–\-,;:]+|[\s—–\-,;]+$/g, ""))
+      .forEach((part, n) => { if (/\p{L}/u.test(part)) add(id + ".partie" + (n + 1), part, origin); });
     return;
   }
   if (seenTexts.has(value)) return; // même phrase déjà exportée : un seul clip suffit
   seenTexts.add(value);
   // « id » : nom du fichier audio ; « key » : identifiant d'origine dans les données d'ALPHA.
   const line = { id: fileNameFor(id), key: id, text: value, language_id: "eto", origin };
-  if (current.has(line.id) && current.get(line.id) !== value) line.regenerer = true;
+  if (redoAll ? current.has(line.id) : current.has(line.id) && current.get(line.id) !== value) line.regenerer = true;
   lines.push(line);
 }
 
 const dictionary = read("data/dictionary.json");
 for (const entry of dictionary.entries || []) {
   if (entry.statut === "valide") add("dict." + entry.id, entry.local, "dictionary");
+}
+
+// Phrases modèles (« Solde disponible : [M1] ») : morceaux fixes.
+for (const template of read("data/templates.json")) {
+  if (template.statut === "valide" && template.eton) add("tpl." + template.id, template.eton, "templates");
 }
 
 // Libellé éton d'un bouton ou d'un champ, tel que la page traduite l'affiche (voir src/guide.js).
@@ -87,15 +96,28 @@ for (const screen of guide.screens || []) {
 guide.alerts.forEach((rule, i) => {
   if (rule.local && usable(rule.localStatut)) add("guide.alert." + i, rule.local, "guide");
 });
-if (guide.ui.local && guide.ui.local.unknownAlert && guide.screens.some((s) => s.local && usable(s.local.statut))) {
+if (false) { // titre « unknownAlert » exporté avec les autres titres ci-dessous
   add("guide.alert.inconnue", guide.ui.local.unknownAlert, "guide");
 }
 
-for (const entry of read("data/glossary.json").entries || []) {
+// Titres du guide et bulle de présentation.
+const anyGuide = guide.screens.some((s) => s.local && usable(s.local.statut));
+for (const [key, text] of Object.entries((anyGuide && guide.ui.local) || {})) add("guide.ui." + key, text, "guide");
+const intro = guide.intro.local;
+if (intro && usable(intro.statut)) {
+  add("intro.title", intro.title, "guide");
+  intro.lines.forEach((line, i) => add("intro.line." + i, line, "guide"));
+  add("intro.about", intro.about, "guide");
+  add("intro.ok", intro.ok, "guide");
+}
+
+const glossary = read("data/glossary.json");
+for (const entry of glossary.entries || []) {
   if (!entry.local || !usable(entry.local.statut)) continue;
   add("gloss." + entry.id + ".term", entry.local.term, "glossary");
   add("gloss." + entry.id + ".text", entry.local.text, "glossary");
 }
+for (const [key, text] of Object.entries(glossary.meta.ui.local || {})) add("gloss.ui." + key, text, "glossary");
 
 const outDir = path.join(root, "docs", "audio");
 fs.mkdirSync(outDir, { recursive: true });

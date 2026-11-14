@@ -155,7 +155,7 @@
       let message = "Lecture en éton";
       if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire" + (info.unreviewed ? ", pas encore vérifiée" : "") + ")";
       message += ".";
-      if (missing) message += " Une partie de ce texte (montant, nom ou texte non enregistré) n’a pas encore de voix éton.";
+      if (missing) message += " Les montants, les noms et les mots restés en français ne sont pas lus.";
       playClips(owner, items, message);
     }
 
@@ -178,14 +178,16 @@
       }
       stop();
       const audio = eton();
-      const clips = audio && texts ? texts.map((text) => audio.clipFor(text)) : [];
-      const items = clips.filter(Boolean).map((clip) => ({ clip }));
+      const queues = audio && texts
+        ? texts.map((text) => (audio.textQueue ? audio.textQueue(text) : { items: audio.clipFor(text) ? [{ clip: audio.clipFor(text) }] : [], missing: 1 }))
+        : [];
+      const items = queues.flatMap((queue) => queue.items);
       if (!items.length) {
         report(owner, "Pas encore de voix éton pour ce texte : il sera lu dès que les enregistrements seront validés.", "notice");
         return true;
       }
       audio.unlock(); // pendant le clic : Chrome n'autorise le son qu'après un geste
-      const missing = items.length < clips.length ? "Certaines phrases n’ont pas encore de voix éton." : "";
+      const missing = queues.some((queue) => queue.missing) ? "Certains passages n’ont pas encore de voix éton." : "";
       playClips(owner, items, etonMessage(missing));
       return true;
     }

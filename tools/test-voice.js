@@ -103,7 +103,7 @@ const lastStatus = () => [...panelEvents].reverse().find(([type]) => type === "s
   await new Promise((r) => setTimeout(r, 10));
   assert.deepStrictEqual(played, ["omnivoice/guide.ogg"]);
   assert.strictEqual(spokenCount, before);
-  assert.ok(panelEvents.some(([type, value]) => type === "guide" && /Certaines phrases/.test(value)));
+  assert.ok(panelEvents.some(([type, value]) => type === "guide" && /Certains passages/.test(value)));
 
   console.log("Lecture vocale : lecture au clic, langue, arrêt, erreurs et éton sans français validés.");
 })().catch((e) => {

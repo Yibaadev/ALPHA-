@@ -1,7 +1,7 @@
 {
   "meta": {
     "description": "Textes du guide « ? » (où suis-je, que faire, comment) et de la bulle de présentation du drapeau. Les {cles} sont remplacées par le libellé réellement affiché sur la page. Les champs « local » (éton) restent vides tant qu'un locuteur ne les a pas validés : le guide s'affiche alors en français.",
-    "statut_local": "a_verifier",
+    "statut_local": "valide",
     "source_local": "Proposition de traduction par Gemini (Google), hors de l'extension, vérifiée par un locuteur."
   },
   "ui": {

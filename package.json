@@ -29,6 +29,8 @@
     "eton:import": "node tools/guide-eton.js import docs/traduction/gemini-eton.json",
     "eton:revue": "node tools/guide-eton.js import docs/traduction/gemini-eton.json docs/traduction/revue-guide-eton.csv",
     "audio:export": "node tools/export-eton-tts.js",
+    "audio:export:tout": "node tools/export-eton-tts.js --tout",
+    "test:eton-coverage": "node tools/test-eton-coverage.js",
     "test:eton-audio": "node tools/test-eton-audio.js",
     "audio:index": "node tools/export-eton-tts.js && node tools/build-audio-index.js",
     "audio:index:essai": "node tools/export-eton-tts.js && node tools/build-audio-index.js --inclure-non-revus"

@@ -151,15 +151,20 @@ test("style éton : « mì » sujet devient « ù », majuscule comprise", () =>
   assert.strictEqual(harmonize("Mì yì nâ mì jə́blə́ màm.").text, "Ù yì nâ ù jə́blə́ màm.");
   assert.strictEqual(harmonize("Tə̀ mì tìl màm.").text, "Tə̀ ù tìl màm.");
 });
-test("style éton : « mì » complément laissé tel quel et signalé", () => {
-  const r = harmonize("Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm mì mwàní.");
-  assert.ok(r.text.includes("lóm mì mwàní"));
-  assert.strictEqual(r.flags.length, 1);
+test("style éton : « mì » complément au tutoiement (formes du locuteur)", () => {
+  const send = harmonize("Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm mì mwàní.");
+  assert.strictEqual(send.text, "Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm wɔ̀ mwàní.");
+  assert.strictEqual(send.flags.length, 0);
+  assert.strictEqual(harmonize("Nɔ́mbà wɔ̂ àtə̀ lə́d nâ ànə̀ mì. Tə̀ mì kàt mòd.").text, "Nɔ́mbà wɔ̂ àtə̀ lə́d nâ à nə̀ wɔ̀. Tə̀ ù kàt mòd.");
 });
 test("style éton : bénéficiaire toujours « mòd àtə́ nɔŋ »", () => {
   assert.strictEqual(harmonize("Mòd à nɔŋ").text, "Mòd àtə́ nɔŋ");
   assert.strictEqual(harmonize("ábə́ mòd àyá nɔŋ mwàní").text, "ábə́ mòd àtə́ nɔŋ mwàní");
   assert.strictEqual(harmonize("Mwàní mòd àtə́ nɔŋ àyá nɔŋ").text, "Mwàní mòd àtə́ nɔŋ àyá nɔŋ");
+});
+test("style éton : compte toujours « kɔ̂nt »", () => {
+  assert.strictEqual(harmonize("Nwàmɔ̀ kônt :").text, "Nwàmɔ̀ kɔ̂nt :");
+  assert.strictEqual(harmonize("Kônt wô").text, "Kɔ̂nt wô");
 });
 test("données livrées : plus aucune incohérence de style dans les textes validés", () => {
   const dictionary = load("data/dictionary.json");
