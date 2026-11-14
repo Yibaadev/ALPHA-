@@ -2,6 +2,13 @@
   "name": "alpha-eton-lexicon-tools",
   "private": true,
   "scripts": {
+    "test": "node tools/verify.js",
+    "check": "node tools/check.js",
+    "test:core": "node tools/test.js",
+    "test:mt": "node tools/test-mt.js",
+    "test:engine-common": "node tools/test-engine-common.js",
+    "test:translation-controller": "node tools/test-translation-controller.js",
+    "test:voice": "node tools/test-voice.js",
     "lexicon:extract": "python tools/extract-lexicon.py",
     "lexicon:review": "node tools/review-lexicon.js",
     "lexicon:quality": "node tools/lexicon-quality.js",
@@ -14,6 +21,7 @@
     "test:rules": "node tools/test-rules.js",
     "test:ui-confidence": "node tools/test-ui-confidence.js",
     "test:cascade": "node tools/test-cascade.js",
-    "test:unseen": "node tools/test-unseen.js"
+    "test:unseen": "node tools/test-unseen.js",
+    "test:guide": "node tools/test-guide.js"
   }
 }

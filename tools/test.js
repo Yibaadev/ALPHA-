@@ -9,7 +9,7 @@ const { execFileSync } = require("child_process");
 
 const root = path.join(__dirname, "..");
 const ctx = vm.createContext({ console });
-for (const f of ["src/protect.js", "src/translate.js"]) {
+for (const f of ["src/protect.js", "src/engine/language.js", "src/translate.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), ctx, { filename: f });
 }
 const { protect: P, translate: T } = ctx.ALPHA;
@@ -28,7 +28,7 @@ function test(name, fn) {
 const re = P.build(["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina"]);
 const masked = (s) => P.protect(s, re).masked;
 
-// --- valeurs protégées ---
+// Protection des montants, coordonnées, références et noms connus.
 const cases = [
   ["25 000 FCFA", "[M1]"],
   ["25 000 FCFA", "[M1]"],
@@ -65,14 +65,14 @@ test("le nom propre reconnu est protégé quelle que soit sa casse", () => {
   assert.strictEqual(r.values[0], "SAFINUM PAY");
 });
 
-// --- remise des valeurs ---
+// Restauration stricte : les marqueurs manquants ou répétés sont rejetés.
 test("restore simple", () => assert.strictEqual(P.restore("Total : [M1]", ["25 000 FCFA"]), "Total : 25 000 FCFA"));
 test("restore dans un autre ordre", () => assert.strictEqual(P.restore("[M2] puis [M1]", ["a", "b"]), "b puis a"));
 test("restore refuse un marqueur manquant", () => assert.strictEqual(P.restore("sans marqueur", ["x"]), null));
 test("restore refuse un marqueur répété", () => assert.strictEqual(P.restore("[M1] [M1]", ["x"]), null));
 test("restore refuse un marqueur inconnu", () => assert.strictEqual(P.restore("[M3]", ["x"]), null));
 
-// --- dictionnaire ---
+// Recherche exacte, variantes et intégrité des valeurs du dictionnaire.
 T.init({
   meta: { names: ["Amina Ngo Bell", "Jean-Paul Mbarga", "Amina", "Safinum Pay"], ignore: ["Alpha Pay", "Safinum Pay"] },
   entries: [
