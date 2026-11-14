@@ -18,7 +18,20 @@ La traduction de secours utilise l’API **Translator intégrée à Chrome** (Ch
 
 Ne sont jamais modifiés : les champs de saisie et leur réaffichage (nom, motif, note saisis par l’utilisateur), les zones `contenteditable`, les éléments `translate="no"` ou `.notranslate`, le code (`code`, `pre`), les options de liste sans attribut `value` et les boutons `<input>` envoyés avec le formulaire. L’extension traduit aussi les Shadow DOM ouverts et les cadres (iframes), qui suivent la langue choisie dans la page principale.
 
-**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe). Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
+## Guide de l’écran (« ? »)
+
+Le bouton **?** de la barre latérale explique l’écran affiché en trois réponses courtes : **Où suis-je ?**, **Que faire ?**, **Comment ?**. Le bouton **Écouter le guide** les lit à voix haute.
+
+- **Écrans connus** (tableau de bord, frais, bénéficiaire, récapitulatif, reçu de la page de test Safinum) : textes rédigés à l’avance dans `data/guide.json`. L’écran est reconnu à partir des textes d’origine de la page, même quand ALPHA les a traduits, et le guide cite les boutons tels qu’ils sont affichés.
+- **Autres écrans et autres sites** : le guide est construit à partir des éléments visibles (titre, champs à remplir, cases à cocher, bouton principal). Il ne cite que des libellés présents sur la page et n’invente rien.
+- **Alertes** : une alerte affichée par le site est reprise telle quelle. Pour les messages connus du parcours, un conseil s’y ajoute (par exemple « Cochez la case de confirmation… »). Un champ de code secret (code SMS, PIN, mot de passe) déclenche un rappel de sécurité.
+- **Éton** : les champs `local` de `data/guide.json` attendent des textes validés par un locuteur. D’ici là, le guide s’affiche et se lit en français, et le panneau le signale.
+
+À la première visite, une bulle « Moi, c’est ALPHA ! » présente le drapeau flottant à côté de la carte. Elle ne revient plus une fois fermée, et son texte reste disponible en bas du guide.
+
+Le guide lit la page en mémoire, sur l’appareil. Il ne stocke ni ne transmet aucun texte de la page. La lecture vocale n’utilise que des voix installées sur l’appareil (`localService`) : les voix « en ligne » de certains navigateurs enverraient le texte lu à un serveur.
+
+**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
 
 ## Installation
 
@@ -46,6 +59,7 @@ Conservez les marqueurs comme `[M1]` dans les traductions : ils représentent de
 ```bash
 node tools/test.js
 node tools/test-mt.js
+node tools/test-guide.js
 node tools/test-unseen.js
 node tools/check.js
 ```
@@ -55,6 +69,7 @@ node tools/check.js
 - `manifest.json` : configuration de l’extension.
 - `src/` : lecture de la page, traduction et protection des valeurs.
 - `data/dictionary.json` : textes et traductions.
+- `src/guide.js` et `data/guide.json` : guide « ? » de l’écran et bulle de présentation.
 - `tools/` : import/export CSV et vérifications.
 - `docs/` : documentation et fichiers de traduction.
 

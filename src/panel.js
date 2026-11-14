@@ -14,6 +14,7 @@
     zoom: '<circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"/>',
     speaker: '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
     close: '<path d="m18 6-12 12M6 6l12 12"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.4 9.3a2.7 2.7 0 0 1 5.2 1c0 1.8-2.6 2.3-2.6 4"/><path d="M12 17.4h.01"/>',
   };
 
   const icon = (name) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
@@ -285,6 +286,56 @@
     .zoom-control:hover:not(:disabled) { background: var(--accent-soft); border-color: #6da295; }
     .zoom-control:disabled { color: #87948f; background: #f2f5f3; opacity: .65; cursor: not-allowed; }
     .zoom-reset { margin: 6px 0 0 auto; }
+    /* Guide « ? » de l'écran */
+    .guide-card { padding: 9px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .guide-list { margin: 0; }
+    .guide-list dt { margin: 7px 0 1px; color: var(--accent-strong); font-size: 10.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-list dt:first-child { margin-top: 0; }
+    .guide-list dd { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.45; }
+    .guide-alert {
+      margin: 0 0 8px; padding: 7px 9px; border: 1px solid #f0b4b9; border-left: 3px solid var(--cm-red);
+      border-radius: 6px; background: #fff3f4; color: #5c0b13; font-size: 11.5px; line-height: 1.4;
+    }
+    .guide-alert[hidden] { display: none; }
+    .guide-alert-label { display: block; color: var(--cm-red); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-alert-text { display: block; font-style: italic; }
+    .guide-alert-advice { display: block; margin-top: 3px; font-weight: 650; }
+    .guide-tip {
+      margin: 8px 0 0; padding: 6px 8px; border-radius: 6px; background: #fff8dc; border: 1px solid #f1dc8a;
+      color: #5a4300; font-size: 11px; line-height: 1.4;
+    }
+    .guide-tip[hidden] { display: none; }
+    .guide-note { margin: 6px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .guide-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+    .guide-actions .reset { margin: 0; }
+    .guide-about { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+    .about-summary { color: var(--accent-strong); font-size: 11px; font-weight: 650; cursor: pointer; }
+    .about-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+    .about-body p { margin: 5px 0 0; color: var(--ink); font-size: 11.5px; line-height: 1.45; }
+    .about-body p:first-child { font-weight: 700; }
+    /* Bulle de présentation du drapeau, à côté de la carte, à la première visite. */
+    .intro {
+      position: fixed; z-index: 2147483647; width: 260px; max-width: calc(100vw - 24px);
+      padding: 12px 14px 10px; border: 1px solid #cbd7d1; border-radius: 12px;
+      color: var(--ink); background: var(--cm-stripe) top / 100% 3px no-repeat, var(--surface);
+      box-shadow: 0 12px 34px -4px rgba(15, 38, 32, .25), 0 4px 12px -2px rgba(15, 38, 32, .1);
+      font: 12.5px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      animation: intro-in .35s cubic-bezier(.22, 1.2, .36, 1) both;
+    }
+    .intro[hidden] { display: none; }
+    .intro-title { margin: 0 0 4px; font-size: 14px; font-weight: 800; color: var(--accent-strong); }
+    .intro-body p { margin: 0 0 5px; }
+    .intro-body p:first-child { font-weight: 650; }
+    .intro-ok {
+      display: block; margin: 6px 0 0 auto; min-height: 30px; padding: 5px 12px; border: 1px solid var(--accent);
+      border-radius: 6px; color: #fff; background: var(--accent); font-size: 11.5px; font-weight: 700; cursor: pointer;
+    }
+    .intro-ok:hover { background: var(--accent-strong); }
+    .intro-ok:focus-visible { outline: 2px solid var(--cm-yellow); outline-offset: 2px; }
+    @keyframes intro-in {
+      from { opacity: 0; transform: translateY(8px) scale(.94); }
+      to { opacity: 1; transform: none; }
+    }
     /* ---------- Adaptation à toutes les tailles d'écran ---------- */
     /* Hauteur réelle visible sur mobile (barre d'adresse comprise) et zones sûres (encoches). */
     .drawer { max-height: calc(100dvh - 28px); }
@@ -301,13 +352,16 @@
         left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
         top: auto; bottom: max(8px, env(safe-area-inset-bottom));
         width: auto; max-width: none; max-height: min(72dvh, calc(100dvh - 24px));
+        z-index: 2147483647; /* au-dessus de la barre : le bouton de fermeture reste accessible */
         border-radius: 16px; font-size: 13.5px;
         box-shadow: 0 -8px 30px rgba(15, 38, 32, .22), 0 2px 8px rgba(15, 38, 32, .1);
         animation: sheet-in .24s ease-out both;
       }
       .inner { padding: 14px 16px 18px; }
       .title { font-size: 15px; }
-      .subtitle, .section-note, .voice-hint, .zoom-hint, .voice-status { font-size: 12px; }
+      .subtitle, .section-note, .voice-hint, .zoom-hint, .voice-status, .guide-note { font-size: 12px; }
+      .guide-list dd { font-size: 13.5px; }
+      .guide-alert, .guide-tip, .about-summary, .about-body p { font-size: 12.5px; }
       .section-heading, .voice-title { font-size: 13.5px; }
       .mode-code { font-size: 14px; }
       .mode-name { font-size: 11px; }
@@ -338,7 +392,8 @@
       .close { width: 40px; height: 40px; }
       .mode { height: 50px; min-height: 50px; }
       .zoom-control { width: 44px; height: 44px; font-size: 20px; }
-      .action { min-height: 44px; padding: 8px 16px; }
+      .action, .intro-ok { min-height: 44px; padding: 8px 16px; }
+      .about-summary { padding: 8px 0; }
       .reset, .zoom-reset { min-height: 40px; padding: 8px 10px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -346,7 +401,7 @@
     }
   `;
 
-  function create({ hostId, onModeChange, onSpeak, onZoomChange }) {
+  function create({ hostId, onModeChange, onSpeak, onZoomChange, onGuide, onGuideSpeak }) {
     const host = document.createElement("div");
     host.id = hostId;
     const root = host.attachShadow({ mode: "open" });
@@ -357,6 +412,7 @@
         <span class="rail-rule"></span>
         <div class="rail-group">
           <button class="rail-button" type="button" data-panel="language" aria-label="Langues" aria-expanded="false">${icon("language")}<span class="tooltip">Langues</span></button>
+          <button class="rail-button" type="button" data-panel="guide" aria-label="Guide de cet écran" aria-expanded="false">${icon("help")}<span class="tooltip">Guide de l’écran</span></button>
           <button class="rail-button" type="button" data-panel="zoom" aria-label="Agrandir l’affichage">${icon("zoom")}<span class="tooltip">Agrandir</span></button>
           <button class="rail-button" type="button" data-panel="voice" aria-label="Lecture vocale">${icon("speaker")}<span class="tooltip">Lecture vocale</span></button>
         </div>
@@ -364,6 +420,11 @@
         <button class="rail-button rail-dismiss" type="button" aria-label="Masquer la barre ALPHA">${icon("close")}<span class="tooltip">Masquer la barre</span></button>
       </nav>
       <button class="launcher" type="button" aria-label="Ouvrir la barre ALPHA" title="Ouvrir ALPHA — glisser pour déplacer"><span class="cm-enter"><span class="cm-float">${cameroonMap("cm-launch")}</span></span><span class="cm-shadow"></span></button>
+      <div class="intro" role="dialog" aria-modal="false" aria-labelledby="alpha-intro-title" hidden>
+        <p class="intro-title" id="alpha-intro-title"></p>
+        <div class="intro-body"></div>
+        <button class="intro-ok" type="button">Compris !</button>
+      </div>
       <aside class="drawer" aria-label="Langue et accessibilité" hidden>
         <div class="inner">
           <header class="head">
@@ -377,6 +438,28 @@
             <p class="section-note mt-notice" aria-live="polite" hidden></p>
             <div class="modes" role="group" aria-label="Choisir la langue d’affichage"></div>
             <button class="reset" type="button">Revenir au texte d’origine</button>
+          </section>
+          <section class="section" data-section="guide">
+            <h2 class="section-heading">Guide de cet écran</h2>
+            <div class="guide-card">
+              <div class="guide-alert" role="alert" hidden><strong class="guide-alert-label"></strong><span class="guide-alert-text"></span><span class="guide-alert-advice"></span></div>
+              <dl class="guide-list">
+                <dt class="g-where-label">Où suis-je ?</dt><dd class="g-where">…</dd>
+                <dt class="g-what-label">Que faire ?</dt><dd class="g-what"></dd>
+                <dt class="g-how-label">Comment ?</dt><dd class="g-how"></dd>
+              </dl>
+              <p class="guide-tip" hidden></p>
+            </div>
+            <p class="guide-note"></p>
+            <div class="guide-actions">
+              <button class="action guide-speak" type="button" aria-pressed="false">Écouter le guide</button>
+              <button class="reset guide-refresh" type="button">Actualiser</button>
+            </div>
+            <p class="voice-status guide-status" aria-live="polite"></p>
+            <details class="guide-about">
+              <summary class="about-summary">Ce drapeau qui flotte, c’est quoi ?</summary>
+              <div class="about-body"></div>
+            </details>
           </section>
           <section class="section" data-section="voice">
             <h2 class="section-heading">Lecture vocale</h2>
@@ -437,6 +520,7 @@
         button.dataset.active = String(active);
       });
       placePanels();
+      if ((section === "all" || section === "guide") && onGuide) onGuide();
       if (section === "all" || section === "language") root.querySelector(".close").focus();
       else drawer.querySelector(`[data-section="${section}"]`)?.scrollIntoView({ block: "nearest" });
     }
@@ -577,6 +661,7 @@
 
     launcher.addEventListener("click", () => {
       if (suppressClick) { suppressClick = false; return; }
+      hideIntro();
       launcher.hidden = true;
       rail.hidden = false;
       placePanels();
@@ -591,6 +676,54 @@
     });
     root.querySelector(".reset").addEventListener("click", () => onModeChange("original"));
     root.querySelector(".speak").addEventListener("click", onSpeak);
+    if (onGuideSpeak) root.querySelector(".guide-speak").addEventListener("click", onGuideSpeak);
+    if (onGuide) root.querySelector(".guide-refresh").addEventListener("click", () => onGuide());
+
+    /* Bulle de présentation : à côté de la carte, du côté où il y a de la place ;
+       sinon au-dessus ou en dessous. */
+    const intro = root.querySelector(".intro");
+    let introDone = null;
+    function placeIntro() {
+      if (intro.hidden) return;
+      const M = 12;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const r = launcher.getBoundingClientRect();
+      const w = intro.offsetWidth;
+      const h = intro.offsetHeight;
+      let x = r.left + r.width / 2 > vw / 2 ? r.left - w - 10 : r.right + 10;
+      let y = r.top + r.height / 2 - h / 2;
+      if (x < M || x + w > vw - M) {
+        x = r.left + r.width / 2 - w / 2;
+        y = r.top - h - 10 >= M ? r.top - h - 10 : r.bottom + 10;
+      }
+      x = Math.min(Math.max(M, x), Math.max(M, vw - w - M));
+      y = Math.min(Math.max(M, y), Math.max(M, vh - h - M));
+      intro.style.left = x + "px";
+      intro.style.top = y + "px";
+    }
+    function hideIntro() {
+      if (intro.hidden) return;
+      intro.hidden = true;
+      const done = introDone;
+      introDone = null;
+      if (done) done();
+    }
+    root.querySelector(".intro-ok").addEventListener("click", () => {
+      hideIntro();
+      launcher.focus();
+    });
+    intro.addEventListener("keydown", (e) => { if (e.key === "Escape") hideIntro(); });
+    launcher.addEventListener("pointerdown", hideIntro);
+    window.addEventListener("resize", placeIntro);
+    function fillIntro(container, lines) {
+      container.textContent = "";
+      for (const line of lines) {
+        const p = document.createElement("p");
+        p.textContent = line;
+        container.appendChild(p);
+      }
+    }
     let zoomPercent = 100;
     const zoomValue = root.querySelector(".zoom-value");
     const zoomOut = root.querySelector(".zoom-out");
@@ -637,6 +770,58 @@
       },
       updateZoom,
       openAt,
+      // Le guide est-il affiché ? (pour le rafraîchir quand la page change)
+      guideVisible() {
+        return !drawer.hidden && (openSection === "all" || openSection === "guide");
+      },
+      // Tous les textes passent par textContent : rien de la page n'est interprété comme du HTML.
+      setGuide(guide) {
+        const set = (sel, text) => { root.querySelector(sel).textContent = text || ""; };
+        set(".g-where-label", guide.labels.where);
+        set(".g-what-label", guide.labels.what);
+        set(".g-how-label", guide.labels.how);
+        set(".g-where", guide.where);
+        set(".g-what", guide.what);
+        set(".g-how", guide.how);
+        const tip = root.querySelector(".guide-tip");
+        tip.textContent = guide.tip || "";
+        tip.hidden = !guide.tip;
+        const alertBox = root.querySelector(".guide-alert");
+        alertBox.hidden = !guide.alert;
+        if (guide.alert) {
+          set(".guide-alert-label", guide.labels.alert);
+          set(".guide-alert-text", guide.lang === "en" ? "“" + guide.alert.text + "”" : "« " + guide.alert.text + " »");
+          set(".guide-alert-advice", guide.alert.advice);
+        }
+        set(".guide-note", guide.note);
+        root.querySelector('[data-section="guide"]').lang = guide.lang;
+      },
+      setGuideStatus(message, state) {
+        const status = root.querySelector(".guide-status");
+        status.textContent = message || "";
+        status.dataset.state = state || "";
+      },
+      setGuideSpeaking(speaking) {
+        const button = root.querySelector(".guide-speak");
+        button.textContent = speaking ? "Arrêter" : "Écouter le guide";
+        button.setAttribute("aria-pressed", String(speaking));
+      },
+      // Textes de la bulle « Moi, c'est ALPHA », repris aussi en bas du guide.
+      setIntroTexts(texts) {
+        if (!texts) return;
+        root.querySelector(".about-summary").textContent = texts.about || "Ce drapeau qui flotte, c’est quoi ?";
+        fillIntro(root.querySelector(".about-body"), [texts.title].concat(texts.lines || []));
+      },
+      showIntro(texts, onDone) {
+        if (!texts || launcher.hidden) return;
+        root.querySelector(".intro-title").textContent = texts.title;
+        fillIntro(root.querySelector(".intro-body"), texts.lines || []);
+        root.querySelector(".intro-ok").textContent = texts.ok || "OK";
+        introDone = onDone || null;
+        intro.hidden = false;
+        placeIntro();
+      },
+      hideIntro,
     };
   }
 
