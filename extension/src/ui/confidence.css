@@ -1,0 +1,9 @@
+/* Styles d'isolation et affichage textuel ALPHA */
+.alpha-status-wrap { display: inline !important; font: inherit !important; }
+.alpha-status-text { font: inherit !important; }
+.alpha-status-wrap [hidden],
+.alpha-status-badge,
+.alpha-status-original,
+.alpha-status-warning {
+  display: none !important;
+}

@@ -1,0 +1,390 @@
+/* Repère la langue des textes et renvoie la traduction demandée si elle est sûre.
+   La détection utilise l'attribut lang de la page puis les phrases du dictionnaire. */
+(function () {
+  "use strict";
+  const NS = globalThis.ALPHA;
+  const P = NS.protect;
+  const Language = NS.language;
+
+  let index = new Map();
+  let regex = P.build([]);
+  let baseNames = [];
+  const nameRegexCache = new Map();
+  let ignored = new Set();
+  let cascade = { ready: false, templates: [], lexicon: [], rules: [], criticalTerms: null };
+  let debugTraceEnabled = false;
+  // Le point (ou « ! ») final ne change pas le sens : un message peut arriver avec ou sans.
+  // Le « ? » est gardé : il fait d'une phrase une question.
+  const withoutFinalDot = (key) => key.replace(/\s*[.!]+$/, "").trimEnd();
+
+  function init(dict, options) {
+    const meta = dict.meta || {};
+    baseNames = meta.names || [];
+    regex = P.build(baseNames);
+    nameRegexCache.clear();
+    ignored = new Set((meta.ignore || []).map(P.normalize));
+    Language.init(dict);
+    index = new Map();
+    for (const e of dict.entries || []) {
+      if (e.fr) index.set(P.normalize(e.fr), e);
+      // Même texte sans point final (« Paiement refusé » / « Paiement refusé. »).
+      if (e.fr && !index.has(withoutFinalDot(P.normalize(e.fr)))) index.set(withoutFinalDot(P.normalize(e.fr)), e);
+      // en_variants : autres formulations anglaises du même texte (ex. libellés d'un site).
+      for (const en of [e.en, ...(Array.isArray(e.en_variants) ? e.en_variants : [])]) {
+        if (!en || !en.trim()) continue;
+        const key = P.normalize(en);
+        if (!index.has(key)) index.set(key, e);
+      }
+    }
+
+    const config = options && typeof options === "object" ? options : {};
+    const criticalTerms = config.criticalTerms || null;
+    cascade = {
+      templates: Array.isArray(config.templates) ? config.templates : [],
+      lexicon: Array.isArray(config.lexicon) ? config.lexicon : [],
+      rules: Array.isArray(config.rules) ? config.rules : [],
+      criticalTerms,
+      ready: Boolean(criticalTerms && criticalTerms.langue_source === "fr" &&
+        criticalTermsIn(criticalTerms).length > 0 && NS.templates && NS.fuzzy && NS.segments && NS.rules),
+    };
+    if (cascade.ready) {
+      NS.fuzzy.init(dict, criticalTerms, config.fuzzyOptions);
+      NS.segments.init(dict, cascade.lexicon, criticalTerms, config.segmentOptions);
+      NS.rules.init(cascade.rules, cascade.lexicon, criticalTerms, meta);
+    }
+  }
+
+  // Expression de protection étendue aux noms propres inconnus du texte (null s'il n'y en a pas).
+  function namesRegexFor(text) {
+    const known = new Set(baseNames.map((name) => name.toLowerCase()));
+    const extra = P.detectNames(text).filter((name) => !known.has(name.toLowerCase()) && !ignored.has(P.normalize(name)));
+    if (!extra.length) return null;
+    const key = extra.slice().sort().join("|");
+    if (!nameRegexCache.has(key)) {
+      if (nameRegexCache.size > 200) nameRegexCache.delete(nameRegexCache.keys().next().value);
+      nameRegexCache.set(key, P.build([...baseNames, ...extra]));
+    }
+    return nameRegexCache.get(key);
+  }
+
+  // Exécute fn en protégeant aussi les noms propres inconnus de ce texte.
+  function withNames(text, fn) {
+    const extended = namesRegexFor(text);
+    if (!extended) return fn();
+    const saved = regex;
+    regex = extended;
+    try {
+      return fn();
+    } finally {
+      regex = saved;
+    }
+  }
+
+  // Masque les valeurs sensibles, noms connus et noms propres repérés dans le texte.
+  function protectText(text) {
+    const value = String(text == null ? "" : text);
+    return P.protect(value, namesRegexFor(value) || regex);
+  }
+
+  function markerTokens(text) {
+    return String(text).match(/\[M\d+\]/g) || [];
+  }
+
+  function sameArray(a, b) {
+    return a.length === b.length && a.every((value, i) => value === b[i]);
+  }
+
+  // Valide les marqueurs avant restauration, puis revérifie les valeurs restaurées.
+  function validateIntegrity(original, candidate, values) {
+    const protectedSource = P.protect(original, regex);
+    const originalValues = protectedSource.values;
+    const expectedMarkers = originalValues.map((_, i) => "[M" + (i + 1) + "]");
+    const candidateMarkers = markerTokens(candidate);
+    if (!sameArray(expectedMarkers, candidateMarkers)) {
+      return { ok: false, text: null, reason: "Les marqueurs sont absents, dupliqués ou réordonnés." };
+    }
+    if (values && !sameArray(originalValues, values)) {
+      return { ok: false, text: null, reason: "Les valeurs protégées ont changé avant restauration." };
+    }
+
+    const restored = P.restore(candidate, originalValues);
+    if (restored === null) {
+      return { ok: false, text: null, reason: "La restauration des marqueurs a échoué." };
+    }
+    const checked = P.protect(restored, regex);
+    if (!sameArray(originalValues, checked.values)) {
+      return { ok: false, text: null, reason: "Les valeurs protégées ne sont pas identiques après restauration." };
+    }
+    const checkedMarkers = originalValues.map((_, i) => "[M" + (i + 1) + "]");
+    if (!sameArray(checkedMarkers, markerTokens(checked.masked))) {
+      return { ok: false, text: null, reason: "La signature des valeurs protégées a changé." };
+    }
+    if (!sameArray(numericSignature(original, regex), numericSignature(restored, regex))) {
+      return { ok: false, text: null, reason: "La signature des chiffres a changé." };
+    }
+    return { ok: true, text: restored, values: originalValues, reason: null };
+  }
+
+  // Normalisation réservée aux comparaisons. Les chaînes affichées restent inchangées.
+  function normalizeForComparison(value) {
+    return String(value == null ? "" : value)
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
+      .toLowerCase()
+      .replace(/[‘’ʼ]/g, "'")
+      .replace(/\p{P}+/gu, " ")
+      .replace(/\p{S}+/gu, " ")
+      .replace(/[\s  ]+/g, " ")
+      .trim();
+  }
+
+  function criticalTermsIn(data) {
+    const categories = data && data.categories && typeof data.categories === "object" ? data.categories : {};
+    return Object.values(categories).flatMap((terms) => Array.isArray(terms) ? terms : [])
+      .filter((term) => typeof term === "string" && term.trim());
+  }
+
+  function containsCritical(text) {
+    const normalize = NS.confidence && NS.confidence.normalize
+      ? NS.confidence.normalize
+      : normalizeForComparison;
+    const normalized = normalize(text);
+    return criticalTermsIn(cascade.criticalTerms).some((value) => {
+      const term = normalize(value);
+      if (!term) return false;
+      const escaped = Array.from(term, (character) =>
+        "\\^$.*+?()[]{}|".includes(character) ? "\\" + character : character
+      ).join("").replaceAll(" ", "\\s+");
+      return new RegExp("(?:^|\\s)" + escaped + "(?=$|\\s)").test(normalized);
+    });
+  }
+
+  function numericSignature(text, protectionRegex) {
+    const masked = P.protect(String(text == null ? "" : text), protectionRegex).masked;
+    return masked.replace(/\[M\d+\]/g, " ").match(/\d+(?:[.,]\d+)*/g) || [];
+  }
+
+  // Engines return restored text except templates, which return markers for this boundary.
+  function validateLayerCandidate(original, candidate, templateOutput) {
+    if (!candidate || candidate.marqueurs_ok === false || typeof candidate.eton !== "string" || !candidate.eton.trim()) {
+      return { ok: false, reason: "La couche n’a pas fourni de traduction intégrité-validée." };
+    }
+    let output = candidate.eton;
+    if (templateOutput) {
+      const restored = validateIntegrity(original, output);
+      if (!restored.ok) return { ok: false, reason: restored.reason };
+      output = restored.text;
+    } else if (markerTokens(output).length) {
+      return { ok: false, reason: "Un marqueur interne est resté dans la sortie." };
+    }
+
+    const source = P.protect(original, regex);
+    const target = P.protect(output, regex);
+    if (!sameArray(source.values, target.values)) {
+      return { ok: false, reason: "Les valeurs protégées diffèrent de la phrase originale." };
+    }
+    if (!sameArray(numericSignature(original, regex), numericSignature(output, regex))) {
+      return { ok: false, reason: "La signature des chiffres diffère de la phrase originale." };
+    }
+    return { ok: true, text: output };
+  }
+
+  function trace(layer, status, accepted) {
+    if (!debugTraceEnabled || typeof console === "undefined" || typeof console.debug !== "function") return;
+    // Ne jamais écrire le texte de la page ou des valeurs protégées dans la trace.
+    console.debug("[ALPHA cascade] couche=" + layer + " statut=" + status + " retenue=" + Boolean(accepted));
+  }
+
+  function nonTranslated(original, reason, markersOk) {
+    return {
+      original, eton: null, statut: "non_traduit", source: "aucune", score: 0,
+      marqueurs_ok: markersOk !== false, raisons: [reason],
+    };
+  }
+
+  function acceptCandidate(original, candidate, templateOutput) {
+    const checked = validateLayerCandidate(original, candidate, templateOutput);
+    if (!checked.ok) {
+      trace(candidate && candidate.source || "inconnue", "rejetée", false);
+      return { result: nonTranslated(original, checked.reason, false), rejected: true };
+    }
+    trace(candidate.source, candidate.statut, true);
+    return {
+      result: {
+        original,
+        eton: checked.text,
+        statut: candidate.statut,
+        source: candidate.source,
+        score: Number.isFinite(candidate.score) ? candidate.score : 1,
+        marqueurs_ok: true,
+        raisons: Array.isArray(candidate.raisons) ? candidate.raisons.slice() : [],
+      },
+      rejected: false,
+    };
+  }
+
+  // Résultat interne : { kind: "same" | "skip" | "unknown" | "pending" | "integrity" | "ok", ... }
+  function lookupExact(original, lang, pageLanguage) {
+    if (ignored.has(P.normalize(original))) return { kind: "skip" };
+    const { masked, values } = P.protect(original, regex);
+    // Rien à traduire : uniquement des valeurs, des chiffres ou de la ponctuation.
+    if (!/\p{L}/u.test(masked.replace(/\[M\d+\]/g, ""))) return { kind: "skip" };
+
+    const key = P.normalize(masked);
+    const sourceLanguage = Language.detectTextLanguage(original);
+    if (sourceLanguage === lang || (!sourceLanguage && pageLanguage === lang)) {
+      return { kind: "same", language: sourceLanguage || pageLanguage };
+    }
+
+    const entry = index.get(key) || index.get(withoutFinalDot(key));
+    if (!entry) return { kind: "unknown" };
+
+    const target = entry[lang];
+    if (!target || !target.trim()) return { kind: "pending", entry };
+    // Seules les traductions Eton explicitement validées peuvent sortir comme valides.
+    if (lang === "local" && entry.statut !== "valide") return { kind: "pending", entry };
+    if (P.normalize(target) === key) return { kind: "same", language: lang, entry };
+
+    const integrity = validateIntegrity(original, target, values);
+    if (!integrity.ok) return { kind: "integrity", entry, reason: integrity.reason };
+    return { kind: "ok", text: integrity.text, values, entry };
+  }
+
+  // API structurée du moteur Eton. context.target/lang accepte "local" ou "eton".
+  // Si la phrase échoue, un second essai protège les noms propres inconnus
+  // (« envoyés à Paul Atangana ») pour qu'un gabarit puisse s'appliquer.
+  function translate(original, context) {
+    const first = translateCore(original, context);
+    if (first.eton !== null || first.marqueurs_ok === false) return first;
+    if (namesRegexFor(String(original == null ? "" : original))) {
+      const second = withNames(String(original), () => translateCore(original, context));
+      if (second.eton !== null) return second;
+    }
+    return translateByParts(String(original == null ? "" : original), context) || first;
+  }
+
+  /* Message composé (« Nouveau message : votre carte a été bloquée. », « Erreur. Réessayez. ») :
+     traduit seulement si CHAQUE partie a sa propre traduction validée ; sinon rien n'est assemblé.
+     Une partie qui n'est qu'une valeur (montant, date…) est recopiée telle quelle. */
+  const PART_SEPARATOR = /(\s*:\s+|(?<=[.!?])\s+)/u;
+  function translateByParts(original, context) {
+    const pieces = original.split(PART_SEPARATOR);
+    if (pieces.length < 3) return null;
+    let output = "";
+    let weakest = "valide";
+    for (let i = 0; i < pieces.length; i++) {
+      const piece = pieces[i];
+      if (i % 2 === 1) { output += piece; continue; } // séparateur d'origine
+      if (!piece.trim()) return null;
+      if (!/\p{L}/u.test(P.protect(piece, regex).masked.replace(/\[M\d+\]/g, ""))) { output += piece; continue; }
+      const part = translate(piece, context);
+      if (part.eton === null) return null;
+      if (part.statut !== "valide") weakest = "probable";
+      // Avant « : », pas de ponctuation finale en double (« … mbə̀ŋ ! : 25 000 FCFA »).
+      output += /:/.test(pieces[i + 1] || "") ? part.eton.replace(/\s*[.!]+$/u, "") : part.eton;
+    }
+    // Contrôle final : mêmes valeurs protégées, dans le même ordre.
+    if (!COMMON_SAME(P.protect(original, regex).values, P.protect(output, regex).values)) return null;
+    trace("phrases", weakest, true);
+    return {
+      original, eton: output, statut: weakest, source: "phrases", score: 1, marqueurs_ok: true,
+      raisons: ["Message découpé en parties ; chaque partie a une traduction validée."],
+    };
+  }
+  const COMMON_SAME = (a, b) => a.length === b.length && a.every((value, i) => value === b[i]);
+
+  function translateCore(original, context) {
+    original = String(original == null ? "" : original);
+    context = context && typeof context === "object" ? context : {};
+    const requested = String(context.target || context.lang || context.language || "local").toLowerCase();
+    if (requested !== "local" && requested !== "eton" && requested !== "eto") {
+      return {
+        original, eton: null, statut: "non_traduit", source: "aucune", score: 0,
+        marqueurs_ok: true, raisons: ["Cette fonction ne traite que la sortie Eton."],
+      };
+    }
+
+    const exact = lookupExact(original, "local", context.pageLanguage || null);
+    if (exact.kind === "ok") {
+      const answer = {
+        original, eton: exact.text, statut: "valide", source: "exact", score: 1,
+        marqueurs_ok: true, raisons: ["Correspondance exacte avec une entrée Eton validée."],
+      };
+      trace("exact", "valide", true);
+      return answer;
+    }
+    if (exact.kind === "integrity") {
+      trace("exact", "non_traduit", false);
+      return nonTranslated(original, exact.reason || "Échec du contrôle d’intégrité.", false);
+    }
+    if (exact.kind === "skip" || exact.kind === "same") {
+      trace("exact", exact.kind, false);
+      return nonTranslated(original, exact.kind === "skip"
+        ? "Aucun texte traduisible reconnu."
+        : "Le texte ne nécessite pas de conversion vers l’éton.");
+    }
+
+    if (!cascade.ready) {
+      trace("cascade", "indisponible", false);
+      return nonTranslated(original, "Les couches de traduction ne sont pas initialisées; le texte français est conservé.");
+    }
+
+    const critical = containsCritical(original);
+    const protectedSource = P.protect(original, regex);
+    const matchingTemplate = NS.templates.match(protectedSource.masked, cascade.templates);
+    if (matchingTemplate && (!critical || cascade.templates.some((template) =>
+      template.id === matchingTemplate.id && template.critique === true
+    ))) {
+      const accepted = acceptCandidate(original, matchingTemplate, true);
+      if (accepted.rejected || accepted.result.eton !== null) return accepted.result;
+    }
+    trace("template", matchingTemplate ? "critique_non_autorisée" : "sans_match", false);
+    if (critical) {
+      trace("cascade", "critique_sans_exact_ni_template_valide", false);
+      return nonTranslated(original, "Phrase critique inconnue : seules les correspondances exactes et les gabarits critiques validés sont autorisés.");
+    }
+
+    const layers = [
+      ["fuzzy", () => NS.fuzzy.match(original, context.fuzzyOptions)],
+      ["segments", () => NS.segments.match(original, context.segmentOptions)],
+      ["regles", () => NS.rules.match(original)],
+    ];
+    for (const [name, run] of layers) {
+      const candidate = run();
+      if (candidate && candidate.marqueurs_ok === false) {
+        trace(name, "intégrité_refusée", false);
+        return nonTranslated(original, candidate.raisons && candidate.raisons[0] || "Échec du contrôle d’intégrité.", false);
+      }
+      if (!candidate || candidate.statut === "non_traduit" || typeof candidate.eton !== "string") {
+        trace(name, "sans_match", false);
+        continue;
+      }
+      const accepted = acceptCandidate(original, candidate, false);
+      if (accepted.rejected) return accepted.result;
+      return accepted.result;
+    }
+
+    trace("aucune", "non_traduit", false);
+    return nonTranslated(original, "Aucune couche validée ne peut traduire cette phrase sans risque.");
+  }
+
+  function setDebugTrace(enabled) {
+    debugTraceEnabled = enabled === true;
+    return debugTraceEnabled;
+  }
+
+  // Adaptateur conservé pour content.js et les tests historiques.
+  function analyse(original, lang, pageLanguage) {
+    return lookupExact(original, lang, pageLanguage);
+  }
+
+  NS.translate = {
+    init, translate, analyse, validateIntegrity, normalizeForComparison, setDebugTrace,
+    detectPageLanguage: Language.detectPageLanguage,
+    detectTextLanguage: Language.detectTextLanguage,
+    normalizeLanguageTag: Language.normalizeLanguageTag,
+    guessLanguage: Language.guessLanguage,
+    protectText,
+    withNames,
+  };
+})();

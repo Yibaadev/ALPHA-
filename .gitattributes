@@ -1,0 +1,7 @@
+# Fichiers binaires : jamais de conversion de fin de ligne (sinon clips et icônes corrompus).
+*.ogg binary
+*.mp3 binary
+*.wav binary
+*.png binary
+*.zip binary
+*.pdf binary

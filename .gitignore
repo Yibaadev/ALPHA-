@@ -1,6 +1,8 @@
 # Secrets : ne jamais les envoyer sur GitHub
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.key
 
 # Dépendances et fichiers temporaires
@@ -8,3 +10,8 @@ node_modules/
 *.zip
 .DS_Store
 Thumbs.db
+
+/content/lexique/dochack/
+
+# Paquet de soumission (npm run package)
+/dist/

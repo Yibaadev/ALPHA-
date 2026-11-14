@@ -1,0 +1,101 @@
+/* Styles des fonctions d'aide du panneau ALPHA (Shadow DOM) : guide « ? »,
+   bulle de présentation et lecture au clic. Les jetons (--space-*, --radius-*,
+   couleurs) sont définis dans panel.css, chargée avant celle-ci. */
+    /* Guide « ? » de l'écran */
+    .guide-card { padding: 9px 10px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+    .guide-list { margin: 0; }
+    .guide-list dt { margin: 7px 0 1px; color: var(--accent-strong); font-size: 10.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-list dt:first-child { margin-top: 0; }
+    .guide-list dd { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.45; }
+    .guide-alert {
+      margin: 0 0 var(--space-2); padding: 7px 9px; border: 1px solid #f0b4b9; border-left: 3px solid var(--cm-red);
+      border-radius: var(--radius-control); background: #fff3f4; color: #5c0b13; font-size: 11.5px; line-height: 1.4;
+    }
+    .guide-alert[hidden], .guide-tip[hidden] { display: none; }
+    .guide-alert-label { display: block; color: var(--cm-red); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; }
+    .guide-alert-text { display: block; font-style: italic; }
+    .guide-alert-advice { display: block; margin-top: 3px; font-weight: 650; }
+    .guide-tip {
+      margin: var(--space-2) 0 0; padding: 6px var(--space-2); border-radius: var(--radius-control);
+      background: #fff8dc; border: 1px solid #f1dc8a; color: #5a4300; font-size: 11px; line-height: 1.4;
+    }
+    .guide-note { margin: 6px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .guide-actions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-2); }
+    .guide-about { margin-top: var(--space-2); border-top: 1px dashed var(--line); padding-top: 6px; }
+    .about-summary { color: var(--accent-strong); font-size: 11px; font-weight: 650; cursor: pointer; }
+    .about-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+    .about-body p { margin: 5px 0 0; color: var(--ink); font-size: 11.5px; line-height: 1.45; }
+    .about-body p:first-child { font-weight: 700; }
+    /* Bulle de présentation du drapeau, à côté de la carte, à la première visite. */
+    .intro {
+      position: fixed; z-index: 2147483647; width: 260px; max-width: calc(100vw - 24px);
+      padding: var(--space-3) 14px 10px; border: 1px solid #cbd7d1; border-radius: var(--radius-panel);
+      color: var(--ink); background: var(--cm-stripe) top / 100% 3px no-repeat, var(--surface);
+      box-shadow: 0 12px 34px -4px rgba(15, 38, 32, .25), 0 4px 12px -2px rgba(15, 38, 32, .1);
+      font: 12.5px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      animation: intro-in .35s cubic-bezier(.22, 1.2, .36, 1) both;
+    }
+    .intro[hidden] { display: none; }
+    .intro-title { margin: 0 0 var(--space-1); font-size: 14px; font-weight: 800; color: var(--accent-strong); }
+    .intro-body p { margin: 0 0 5px; }
+    .intro-body p:first-child { font-weight: 650; }
+    .intro-ok {
+      display: block; margin: 6px 0 0 auto; min-height: 30px; padding: 5px var(--space-3); border: 1px solid var(--accent);
+      border-radius: var(--radius-control); color: #fff; background: var(--accent); font-size: 11.5px; font-weight: 700; cursor: pointer;
+    }
+    .intro-ok:hover { background: var(--accent-strong); }
+    .intro-ok:focus-visible { outline: 2px solid var(--cm-yellow); outline-offset: 2px; }
+    @keyframes intro-in {
+      from { opacity: 0; transform: translateY(8px) scale(.94); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Téléphones : textes plus grands (même seuil que panel.css). */
+    @media (max-width: 560px) {
+      .guide-note { font-size: 12px; }
+      .guide-list dd { font-size: 13.5px; }
+      .guide-alert, .guide-tip, .about-summary, .about-body p { font-size: 12.5px; }
+    }
+    /* Écrans tactiles : cibles d’au moins 44 px. */
+    @media (pointer: coarse) {
+      .intro-ok { min-height: 44px; padding: 8px var(--space-4); }
+      .about-summary { padding: 8px 0; }
+    }
+
+    /* Lecture au clic : cadre autour du texte visé, et bandeau en haut de l'écran, bien visible,
+       qui rappelle que le mode est actif (les clics du site sont alors neutralisés). */
+    .read-highlight {
+      position: fixed; z-index: 2147483645; pointer-events: none;
+      border: 3px solid var(--cm-yellow); border-radius: 8px;
+      box-shadow: 0 0 0 2px rgba(0, 92, 71, .55);
+      transition: left .08s ease, top .08s ease, width .08s ease, height .08s ease;
+    }
+    .read-highlight[hidden], .read-pill[hidden] { display: none; }
+    .read-highlight.reading { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 122, 94, .3); }
+    .read-pill {
+      position: fixed; z-index: 2147483647; left: 50%; top: max(12px, env(safe-area-inset-top));
+      transform: translateX(-50%); width: min(560px, calc(100vw - 24px));
+      display: flex; align-items: center; gap: var(--space-3); padding: 10px 10px 10px 14px;
+      color: #fff; background: var(--accent); border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 61, 46, .35);
+      font: 14px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      animation: read-in .2s ease-out both;
+    }
+    @keyframes read-in { from { opacity: 0; transform: translate(-50%, -8px); } to { opacity: 1; transform: translateX(-50%); } }
+    .read-pill-icon {
+      flex: none; width: 34px; height: 34px; display: grid; place-items: center;
+      border-radius: 50%; background: rgba(255, 255, 255, .16);
+    }
+    .read-pill-icon svg { width: 19px; height: 19px; color: #fff; display: block; }
+    .read-pill-copy { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .read-pill-title { font-size: 14px; font-weight: 700; }
+    .read-pill-status { color: #e3f2ec; font-size: 12.5px; }
+    .read-pill-status[data-state="notice"] { color: #fff3c4; }
+    .read-pill-exit {
+      flex: none; min-height: 36px; padding: 0 14px; border: 0; border-radius: 8px;
+      color: var(--accent-strong); background: #fff; font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    .read-pill-exit:hover { background: #e9f4ef; }
+    .read-pill-exit:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    @media (pointer: coarse) { .read-pill-exit { min-height: 44px; } }
+    @media (prefers-reduced-motion: reduce) { .read-pill { animation: none; } }

@@ -1,0 +1,971 @@
+{
+  "description": "Banque de messages bancaires probables (contenu inédit). [M1], [M2] : valeurs reconnues automatiquement (montant en FCFA, nom, date, référence, téléphone). Source FR/EN ; l'éton est proposé par Gemini puis validé par le locuteur (tools/bank-eton.js).",
+  "messages": [
+    {
+      "id": "statut_transfert_annule",
+      "categorie": "statut",
+      "fr": "Votre transfert a été annulé.",
+      "en": "Your transfer has been cancelled."
+    },
+    {
+      "id": "statut_transfert_annule_montant",
+      "categorie": "statut",
+      "fr": "Votre transfert de [M1] a été annulé.",
+      "en": "Your transfer of [M1] has been cancelled."
+    },
+    {
+      "id": "statut_transfert_traitement",
+      "categorie": "statut",
+      "fr": "Votre transfert est en cours de traitement.",
+      "en": "Your transfer is being processed."
+    },
+    {
+      "id": "statut_transfert_attente",
+      "categorie": "statut",
+      "fr": "Votre transfert est en attente de validation.",
+      "en": "Your transfer is awaiting validation."
+    },
+    {
+      "id": "statut_transfert_refuse",
+      "categorie": "statut",
+      "fr": "Votre transfert a été refusé.",
+      "en": "Your transfer has been declined."
+    },
+    {
+      "id": "statut_transfert_refuse_montant",
+      "categorie": "statut",
+      "fr": "Votre transfert de [M1] a été refusé.",
+      "en": "Your transfer of [M1] has been declined."
+    },
+    {
+      "id": "statut_transfert_reussi",
+      "categorie": "statut",
+      "fr": "Votre transfert a réussi.",
+      "en": "Your transfer was successful."
+    },
+    {
+      "id": "statut_transfert_reussi_montant",
+      "categorie": "statut",
+      "fr": "Votre transfert de [M1] a réussi.",
+      "en": "Your transfer of [M1] was successful."
+    },
+    {
+      "id": "statut_transfert_echoue_reessayer",
+      "categorie": "statut",
+      "fr": "Le transfert a échoué. Veuillez réessayer.",
+      "en": "The transfer failed. Please try again."
+    },
+    {
+      "id": "statut_transfert_envoye",
+      "categorie": "statut",
+      "fr": "Le transfert a été envoyé.",
+      "en": "The transfer has been sent."
+    },
+    {
+      "id": "statut_transfert_envoye_vers",
+      "categorie": "statut",
+      "fr": "Votre transfert de [M1] vers [M2] a été envoyé.",
+      "en": "Your transfer of [M1] to [M2] has been sent."
+    },
+    {
+      "id": "statut_recu_de",
+      "categorie": "statut",
+      "fr": "Vous avez reçu [M1] de [M2].",
+      "en": "You have received [M1] from [M2]."
+    },
+    {
+      "id": "statut_recu",
+      "categorie": "statut",
+      "fr": "Vous avez reçu [M1].",
+      "en": "You have received [M1]."
+    },
+    {
+      "id": "statut_transfert_minutes",
+      "categorie": "statut",
+      "fr": "Le transfert sera effectué dans quelques minutes.",
+      "en": "The transfer will be completed in a few minutes."
+    },
+    {
+      "id": "statut_transfert_programme",
+      "categorie": "statut",
+      "fr": "Le transfert est programmé.",
+      "en": "The transfer is scheduled."
+    },
+    {
+      "id": "statut_operation_reussie",
+      "categorie": "statut",
+      "fr": "Opération réussie.",
+      "en": "Operation successful."
+    },
+    {
+      "id": "statut_operation_echouee",
+      "categorie": "statut",
+      "fr": "Opération échouée.",
+      "en": "Operation failed."
+    },
+    {
+      "id": "statut_operation_cours",
+      "categorie": "statut",
+      "fr": "Opération en cours.",
+      "en": "Operation in progress."
+    },
+    {
+      "id": "statut_operation_attente",
+      "categorie": "statut",
+      "fr": "Opération en attente.",
+      "en": "Operation pending."
+    },
+    {
+      "id": "statut_paiement_effectue",
+      "categorie": "statut",
+      "fr": "Paiement effectué.",
+      "en": "Payment completed."
+    },
+    {
+      "id": "statut_paiement_refuse",
+      "categorie": "statut",
+      "fr": "Paiement refusé.",
+      "en": "Payment declined."
+    },
+    {
+      "id": "statut_paiement_annule",
+      "categorie": "statut",
+      "fr": "Paiement annulé.",
+      "en": "Payment cancelled."
+    },
+    {
+      "id": "statut_paiement_montant",
+      "categorie": "statut",
+      "fr": "Le paiement de [M1] a été effectué.",
+      "en": "The payment of [M1] has been completed."
+    },
+    {
+      "id": "statut_remboursement_montant",
+      "categorie": "statut",
+      "fr": "Le remboursement de [M1] a été effectué.",
+      "en": "The refund of [M1] has been completed."
+    },
+    {
+      "id": "statut_demande_enregistree",
+      "categorie": "statut",
+      "fr": "Votre demande a été enregistrée.",
+      "en": "Your request has been registered."
+    },
+    {
+      "id": "statut_demande_traitement",
+      "categorie": "statut",
+      "fr": "Votre demande est en cours de traitement.",
+      "en": "Your request is being processed."
+    },
+    {
+      "id": "statut_demande_refusee",
+      "categorie": "statut",
+      "fr": "Votre demande a été refusée.",
+      "en": "Your request has been declined."
+    },
+    {
+      "id": "statut_demande_acceptee",
+      "categorie": "statut",
+      "fr": "Votre demande a été acceptée.",
+      "en": "Your request has been accepted."
+    },
+    {
+      "id": "statut_transfert_confirme",
+      "categorie": "statut",
+      "fr": "Transfert confirmé.",
+      "en": "Transfer confirmed."
+    },
+    {
+      "id": "statut_operation_terminee",
+      "categorie": "statut",
+      "fr": "Opération terminée.",
+      "en": "Operation completed."
+    },
+    {
+      "id": "compte_solde_montant",
+      "categorie": "compte",
+      "fr": "Votre solde est de [M1].",
+      "en": "Your balance is [M1]."
+    },
+    {
+      "id": "compte_solde_insuffisant",
+      "categorie": "compte",
+      "fr": "Votre solde est insuffisant.",
+      "en": "Your balance is insufficient."
+    },
+    {
+      "id": "compte_debite",
+      "categorie": "compte",
+      "fr": "Votre compte a été débité de [M1].",
+      "en": "Your account has been debited [M1]."
+    },
+    {
+      "id": "compte_credite",
+      "categorie": "compte",
+      "fr": "Votre compte a été crédité de [M1].",
+      "en": "Your account has been credited [M1]."
+    },
+    {
+      "id": "compte_bloque",
+      "categorie": "compte",
+      "fr": "Votre compte est bloqué.",
+      "en": "Your account is blocked."
+    },
+    {
+      "id": "compte_suspendu",
+      "categorie": "compte",
+      "fr": "Votre compte a été suspendu.",
+      "en": "Your account has been suspended."
+    },
+    {
+      "id": "compte_debloque",
+      "categorie": "compte",
+      "fr": "Votre compte a été débloqué.",
+      "en": "Your account has been unblocked."
+    },
+    {
+      "id": "compte_actif",
+      "categorie": "compte",
+      "fr": "Votre compte est actif.",
+      "en": "Your account is active."
+    },
+    {
+      "id": "compte_carte_bloquee",
+      "categorie": "compte",
+      "fr": "Votre carte a été bloquée.",
+      "en": "Your card has been blocked."
+    },
+    {
+      "id": "compte_carte_expiree",
+      "categorie": "compte",
+      "fr": "Votre carte a expiré.",
+      "en": "Your card has expired."
+    },
+    {
+      "id": "compte_plafond_atteint",
+      "categorie": "compte",
+      "fr": "Le plafond journalier est atteint.",
+      "en": "The daily limit has been reached."
+    },
+    {
+      "id": "compte_montant_plafond",
+      "categorie": "compte",
+      "fr": "Le montant dépasse le plafond autorisé.",
+      "en": "The amount exceeds the authorised limit."
+    },
+    {
+      "id": "compte_montant_maximum",
+      "categorie": "compte",
+      "fr": "Le montant maximum par transfert est de [M1].",
+      "en": "The maximum amount per transfer is [M1]."
+    },
+    {
+      "id": "compte_montant_minimum",
+      "categorie": "compte",
+      "fr": "Le montant minimum par transfert est de [M1].",
+      "en": "The minimum amount per transfer is [M1]."
+    },
+    {
+      "id": "compte_limite_modifiee",
+      "categorie": "compte",
+      "fr": "Votre limite de transfert a été modifiée.",
+      "en": "Your transfer limit has been changed."
+    },
+    {
+      "id": "compte_nouveau_solde",
+      "categorie": "compte",
+      "fr": "Nouveau solde : [M1]",
+      "en": "New balance: [M1]"
+    },
+    {
+      "id": "compte_solde_apres_transfert",
+      "categorie": "compte",
+      "fr": "Solde après transfert : [M1]",
+      "en": "Balance after transfer: [M1]"
+    },
+    {
+      "id": "frais_appliques_montant",
+      "categorie": "frais",
+      "fr": "Des frais de [M1] seront appliqués.",
+      "en": "A fee of [M1] will be charged."
+    },
+    {
+      "id": "frais_transfert_montant",
+      "categorie": "frais",
+      "fr": "Les frais de ce transfert sont de [M1].",
+      "en": "The fee for this transfer is [M1]."
+    },
+    {
+      "id": "frais_gratuit",
+      "categorie": "frais",
+      "fr": "Ce transfert est gratuit.",
+      "en": "This transfer is free."
+    },
+    {
+      "id": "frais_aucun_preleve",
+      "categorie": "frais",
+      "fr": "Aucun frais ne sera prélevé.",
+      "en": "No fee will be charged."
+    },
+    {
+      "id": "frais_inclus",
+      "categorie": "frais",
+      "fr": "Les frais sont inclus dans le montant.",
+      "en": "The fees are included in the amount."
+    },
+    {
+      "id": "frais_changes",
+      "categorie": "frais",
+      "fr": "Les frais ont changé.",
+      "en": "The fees have changed."
+    },
+    {
+      "id": "frais_total_payer",
+      "categorie": "frais",
+      "fr": "Total à payer : [M1]",
+      "en": "Total to pay: [M1]"
+    },
+    {
+      "id": "frais_total_debite_futur",
+      "categorie": "frais",
+      "fr": "Le total débité sera de [M1].",
+      "en": "The total debited will be [M1]."
+    },
+    {
+      "id": "frais_appliques_libelle",
+      "categorie": "frais",
+      "fr": "Frais appliqués : [M1]",
+      "en": "Fees applied: [M1]"
+    },
+    {
+      "id": "saisie_montant",
+      "categorie": "saisie",
+      "fr": "Veuillez saisir un montant.",
+      "en": "Please enter an amount."
+    },
+    {
+      "id": "saisie_montant_valide",
+      "categorie": "saisie",
+      "fr": "Veuillez saisir un montant valide.",
+      "en": "Please enter a valid amount."
+    },
+    {
+      "id": "saisie_montant_eleve",
+      "categorie": "saisie",
+      "fr": "Le montant est trop élevé.",
+      "en": "The amount is too high."
+    },
+    {
+      "id": "saisie_montant_faible",
+      "categorie": "saisie",
+      "fr": "Le montant est trop faible.",
+      "en": "The amount is too low."
+    },
+    {
+      "id": "saisie_nom_beneficiaire",
+      "categorie": "saisie",
+      "fr": "Veuillez saisir le nom du bénéficiaire.",
+      "en": "Please enter the beneficiary's name."
+    },
+    {
+      "id": "saisie_telephone_valide",
+      "categorie": "saisie",
+      "fr": "Veuillez saisir un numéro de téléphone valide.",
+      "en": "Please enter a valid phone number."
+    },
+    {
+      "id": "saisie_telephone_incorrect",
+      "categorie": "saisie",
+      "fr": "Le numéro de téléphone est incorrect.",
+      "en": "The phone number is incorrect."
+    },
+    {
+      "id": "saisie_numero_inexistant",
+      "categorie": "saisie",
+      "fr": "Ce numéro n'existe pas.",
+      "en": "This number does not exist."
+    },
+    {
+      "id": "saisie_champ_obligatoire",
+      "categorie": "saisie",
+      "fr": "Ce champ est obligatoire.",
+      "en": "This field is required."
+    },
+    {
+      "id": "saisie_tous_champs",
+      "categorie": "saisie",
+      "fr": "Veuillez remplir tous les champs.",
+      "en": "Please fill in all the fields."
+    },
+    {
+      "id": "saisie_type_operation",
+      "categorie": "saisie",
+      "fr": "Veuillez choisir le type d'opération.",
+      "en": "Please choose the operation type."
+    },
+    {
+      "id": "saisie_case_confirmation",
+      "categorie": "saisie",
+      "fr": "Veuillez cocher la case de confirmation.",
+      "en": "Please tick the confirmation box."
+    },
+    {
+      "id": "saisie_informations_incorrectes",
+      "categorie": "saisie",
+      "fr": "Les informations saisies sont incorrectes.",
+      "en": "The information entered is incorrect."
+    },
+    {
+      "id": "saisie_code_incorrect",
+      "categorie": "saisie",
+      "fr": "Le code saisi est incorrect.",
+      "en": "The code entered is incorrect."
+    },
+    {
+      "id": "saisie_code_incorrect_reessayer",
+      "categorie": "saisie",
+      "fr": "Code incorrect. Veuillez réessayer.",
+      "en": "Incorrect code. Please try again."
+    },
+    {
+      "id": "erreur_survenue",
+      "categorie": "erreur",
+      "fr": "Une erreur est survenue.",
+      "en": "An error occurred."
+    },
+    {
+      "id": "erreur_technique",
+      "categorie": "erreur",
+      "fr": "Une erreur technique est survenue.",
+      "en": "A technical error occurred."
+    },
+    {
+      "id": "erreur_service_indisponible",
+      "categorie": "erreur",
+      "fr": "Le service est momentanément indisponible.",
+      "en": "The service is temporarily unavailable."
+    },
+    {
+      "id": "erreur_service_plus_tard",
+      "categorie": "erreur",
+      "fr": "Le service est indisponible. Réessayez plus tard.",
+      "en": "The service is unavailable. Try again later."
+    },
+    {
+      "id": "erreur_connexion",
+      "categorie": "erreur",
+      "fr": "Erreur de connexion.",
+      "en": "Connection error."
+    },
+    {
+      "id": "erreur_verifier_internet",
+      "categorie": "erreur",
+      "fr": "Vérifiez votre connexion internet.",
+      "en": "Check your internet connection."
+    },
+    {
+      "id": "erreur_connexion_interrompue",
+      "categorie": "erreur",
+      "fr": "La connexion a été interrompue.",
+      "en": "The connection was interrupted."
+    },
+    {
+      "id": "erreur_reessayer",
+      "categorie": "erreur",
+      "fr": "Veuillez réessayer.",
+      "en": "Please try again."
+    },
+    {
+      "id": "erreur_reessayer_minutes",
+      "categorie": "erreur",
+      "fr": "Réessayez dans quelques minutes.",
+      "en": "Try again in a few minutes."
+    },
+    {
+      "id": "erreur_delai_depasse",
+      "categorie": "erreur",
+      "fr": "Le délai d'attente est dépassé.",
+      "en": "The waiting time has expired."
+    },
+    {
+      "id": "erreur_maintenance",
+      "categorie": "erreur",
+      "fr": "Le service est en maintenance.",
+      "en": "The service is under maintenance."
+    },
+    {
+      "id": "securite_pin_partager",
+      "categorie": "securite",
+      "fr": "Ne partagez jamais votre code PIN.",
+      "en": "Never share your PIN code."
+    },
+    {
+      "id": "securite_pin_communiquer",
+      "categorie": "securite",
+      "fr": "Ne communiquez jamais votre code PIN.",
+      "en": "Never disclose your PIN code."
+    },
+    {
+      "id": "securite_code_telephone",
+      "categorie": "securite",
+      "fr": "Ne donnez jamais votre code secret par téléphone.",
+      "en": "Never give your secret code over the phone."
+    },
+    {
+      "id": "securite_banque_demande",
+      "categorie": "securite",
+      "fr": "Votre banque ne vous demandera jamais votre code secret.",
+      "en": "Your bank will never ask for your secret code."
+    },
+    {
+      "id": "securite_arnaques",
+      "categorie": "securite",
+      "fr": "Attention aux arnaques.",
+      "en": "Beware of scams."
+    },
+    {
+      "id": "securite_faux_messages",
+      "categorie": "securite",
+      "fr": "Méfiez-vous des faux messages.",
+      "en": "Beware of fake messages."
+    },
+    {
+      "id": "securite_numero_frauduleux",
+      "categorie": "securite",
+      "fr": "Ce numéro a été signalé comme frauduleux.",
+      "en": "This number has been reported as fraudulent."
+    },
+    {
+      "id": "securite_activite_suspecte",
+      "categorie": "securite",
+      "fr": "Une activité suspecte a été détectée sur votre compte.",
+      "en": "Suspicious activity has been detected on your account."
+    },
+    {
+      "id": "securite_connexion_inhabituelle",
+      "categorie": "securite",
+      "fr": "Une connexion inhabituelle a été détectée.",
+      "en": "An unusual sign-in has been detected."
+    },
+    {
+      "id": "securite_pas_origine",
+      "categorie": "securite",
+      "fr": "Si vous n'êtes pas à l'origine de cette opération, contactez votre banque.",
+      "en": "If you did not make this operation, contact your bank."
+    },
+    {
+      "id": "securite_liens",
+      "categorie": "securite",
+      "fr": "Ne cliquez pas sur les liens inconnus.",
+      "en": "Do not click on unknown links."
+    },
+    {
+      "id": "securite_verifier_nom",
+      "categorie": "securite",
+      "fr": "Vérifiez toujours le nom du bénéficiaire.",
+      "en": "Always check the beneficiary's name."
+    },
+    {
+      "id": "securite_verifier_montant",
+      "categorie": "securite",
+      "fr": "Vérifiez le montant avant de confirmer.",
+      "en": "Check the amount before confirming."
+    },
+    {
+      "id": "securite_verifier_informations",
+      "categorie": "securite",
+      "fr": "Vérifiez les informations avant de valider.",
+      "en": "Check the information before validating."
+    },
+    {
+      "id": "securite_irreversible",
+      "categorie": "securite",
+      "fr": "Cette opération est irréversible.",
+      "en": "This operation cannot be undone."
+    },
+    {
+      "id": "securite_confirme_non_annulable",
+      "categorie": "securite",
+      "fr": "Un transfert confirmé ne peut pas être annulé.",
+      "en": "A confirmed transfer cannot be cancelled."
+    },
+    {
+      "id": "securite_session_fermee",
+      "categorie": "securite",
+      "fr": "Pour votre sécurité, votre session a été fermée.",
+      "en": "For your security, your session has been closed."
+    },
+    {
+      "id": "securite_code_sms_envoye",
+      "categorie": "securite",
+      "fr": "Un code de confirmation vous a été envoyé par SMS.",
+      "en": "A confirmation code has been sent to you by SMS."
+    },
+    {
+      "id": "securite_code_sms_saisir",
+      "categorie": "securite",
+      "fr": "Saisissez le code reçu par SMS.",
+      "en": "Enter the code received by SMS."
+    },
+    {
+      "id": "securite_pin_valider",
+      "categorie": "securite",
+      "fr": "Saisissez votre code PIN pour valider.",
+      "en": "Enter your PIN code to validate."
+    },
+    {
+      "id": "securite_code_secret_saisir",
+      "categorie": "securite",
+      "fr": "Saisissez votre code secret.",
+      "en": "Enter your secret code."
+    },
+    {
+      "id": "securite_code_valable",
+      "categorie": "securite",
+      "fr": "Ce code est valable quelques minutes.",
+      "en": "This code is valid for a few minutes."
+    },
+    {
+      "id": "securite_code_expire",
+      "categorie": "securite",
+      "fr": "Le code a expiré.",
+      "en": "The code has expired."
+    },
+    {
+      "id": "beneficiaire_ajoute",
+      "categorie": "beneficiaire",
+      "fr": "Bénéficiaire ajouté.",
+      "en": "Beneficiary added."
+    },
+    {
+      "id": "beneficiaire_supprime",
+      "categorie": "beneficiaire",
+      "fr": "Bénéficiaire supprimé.",
+      "en": "Beneficiary removed."
+    },
+    {
+      "id": "beneficiaire_introuvable",
+      "categorie": "beneficiaire",
+      "fr": "Bénéficiaire introuvable.",
+      "en": "Beneficiary not found."
+    },
+    {
+      "id": "beneficiaire_injoignable",
+      "categorie": "beneficiaire",
+      "fr": "Le bénéficiaire n'est pas joignable.",
+      "en": "The beneficiary cannot be reached."
+    },
+    {
+      "id": "beneficiaire_a_recu",
+      "categorie": "beneficiaire",
+      "fr": "Le bénéficiaire a reçu l'argent.",
+      "en": "The beneficiary has received the money."
+    },
+    {
+      "id": "beneficiaire_recevra_minutes",
+      "categorie": "beneficiaire",
+      "fr": "Le bénéficiaire recevra l'argent dans quelques minutes.",
+      "en": "The beneficiary will receive the money in a few minutes."
+    },
+    {
+      "id": "beneficiaire_nouveau",
+      "categorie": "beneficiaire",
+      "fr": "Nouveau bénéficiaire.",
+      "en": "New beneficiary."
+    },
+    {
+      "id": "beneficiaire_deja_enregistre",
+      "categorie": "beneficiaire",
+      "fr": "Ce bénéficiaire est déjà enregistré.",
+      "en": "This beneficiary is already registered."
+    },
+    {
+      "id": "beneficiaire_confirmer_numero",
+      "categorie": "beneficiaire",
+      "fr": "Confirmez le numéro du bénéficiaire.",
+      "en": "Confirm the beneficiary's number."
+    },
+    {
+      "id": "beneficiaire_numero_incorrect",
+      "categorie": "beneficiaire",
+      "fr": "Le numéro du bénéficiaire est incorrect.",
+      "en": "The beneficiary's number is incorrect."
+    },
+    {
+      "id": "beneficiaire_nom_a_recu",
+      "categorie": "beneficiaire",
+      "fr": "Le bénéficiaire [M1] a bien reçu [M2].",
+      "en": "The beneficiary [M1] has received [M2]."
+    },
+    {
+      "id": "beneficiaire_recevra_montant",
+      "categorie": "beneficiaire",
+      "fr": "Le bénéficiaire recevra [M1].",
+      "en": "The beneficiary will receive [M1]."
+    },
+    {
+      "id": "beneficiaire_envoyer_a",
+      "categorie": "beneficiaire",
+      "fr": "Vous allez envoyer [M1] à [M2].",
+      "en": "You are about to send [M1] to [M2]."
+    },
+    {
+      "id": "confirmation_transfert_question",
+      "categorie": "confirmation",
+      "fr": "Voulez-vous confirmer ce transfert ?",
+      "en": "Do you want to confirm this transfer?"
+    },
+    {
+      "id": "confirmation_continuer",
+      "categorie": "confirmation",
+      "fr": "Voulez-vous continuer ?",
+      "en": "Do you want to continue?"
+    },
+    {
+      "id": "confirmation_annuler",
+      "categorie": "confirmation",
+      "fr": "Êtes-vous sûr de vouloir annuler ?",
+      "en": "Are you sure you want to cancel?"
+    },
+    {
+      "id": "confirmation_operation",
+      "categorie": "confirmation",
+      "fr": "Confirmez-vous cette opération ?",
+      "en": "Do you confirm this operation?"
+    },
+    {
+      "id": "confirmation_merci_confiance",
+      "categorie": "confirmation",
+      "fr": "Merci pour votre confiance.",
+      "en": "Thank you for your trust."
+    },
+    {
+      "id": "confirmation_merci_service",
+      "categorie": "confirmation",
+      "fr": "Merci d'avoir utilisé notre service.",
+      "en": "Thank you for using our service."
+    },
+    {
+      "id": "confirmation_patienter",
+      "categorie": "confirmation",
+      "fr": "Veuillez patienter.",
+      "en": "Please wait."
+    },
+    {
+      "id": "confirmation_chargement",
+      "categorie": "confirmation",
+      "fr": "Chargement en cours.",
+      "en": "Loading."
+    },
+    {
+      "id": "confirmation_traitement",
+      "categorie": "confirmation",
+      "fr": "Traitement en cours.",
+      "en": "Processing."
+    },
+    {
+      "id": "confirmation_recu_disponible",
+      "categorie": "confirmation",
+      "fr": "Votre reçu est disponible.",
+      "en": "Your receipt is available."
+    },
+    {
+      "id": "confirmation_recu_sms",
+      "categorie": "confirmation",
+      "fr": "Votre reçu a été envoyé par SMS.",
+      "en": "Your receipt has been sent by SMS."
+    },
+    {
+      "id": "confirmation_conserver_recu",
+      "categorie": "confirmation",
+      "fr": "Conservez votre reçu.",
+      "en": "Keep your receipt."
+    },
+    {
+      "id": "confirmation_noter_reference",
+      "categorie": "confirmation",
+      "fr": "Notez la référence de votre transfert.",
+      "en": "Write down your transfer reference."
+    },
+    {
+      "id": "confirmation_reference",
+      "categorie": "confirmation",
+      "fr": "Référence du transfert : [M1]",
+      "en": "Transfer reference: [M1]"
+    },
+    {
+      "id": "confirmation_date",
+      "categorie": "confirmation",
+      "fr": "Date du transfert : [M1]",
+      "en": "Transfer date: [M1]"
+    },
+    {
+      "id": "confirmation_effectue_le",
+      "categorie": "confirmation",
+      "fr": "Le transfert sera effectué le [M1].",
+      "en": "The transfer will be made on [M1]."
+    },
+    {
+      "id": "confirmation_transfert_du",
+      "categorie": "confirmation",
+      "fr": "Votre transfert du [M1] a été effectué.",
+      "en": "Your transfer on [M1] has been completed."
+    },
+    {
+      "id": "confirmation_montant_recu",
+      "categorie": "confirmation",
+      "fr": "Montant reçu : [M1]",
+      "en": "Amount received: [M1]"
+    },
+    {
+      "id": "confirmation_montant_envoye",
+      "categorie": "confirmation",
+      "fr": "Montant envoyé : [M1]",
+      "en": "Amount sent: [M1]"
+    },
+    {
+      "id": "session_expiree_reconnecter",
+      "categorie": "session",
+      "fr": "Votre session a expiré. Veuillez vous reconnecter.",
+      "en": "Your session has expired. Please sign in again."
+    },
+    {
+      "id": "session_reconnecter",
+      "categorie": "session",
+      "fr": "Veuillez vous reconnecter.",
+      "en": "Please sign in again."
+    },
+    {
+      "id": "session_deconnecte",
+      "categorie": "session",
+      "fr": "Vous êtes déconnecté.",
+      "en": "You are signed out."
+    },
+    {
+      "id": "session_deconnexion_reussie",
+      "categorie": "session",
+      "fr": "Déconnexion réussie.",
+      "en": "Signed out successfully."
+    },
+    {
+      "id": "session_bienvenue",
+      "categorie": "session",
+      "fr": "Bienvenue.",
+      "en": "Welcome."
+    },
+    {
+      "id": "session_bienvenue_espace",
+      "categorie": "session",
+      "fr": "Bienvenue sur votre espace.",
+      "en": "Welcome to your space."
+    },
+    {
+      "id": "message_nouveau",
+      "categorie": "message",
+      "fr": "Nouveau message.",
+      "en": "New message."
+    },
+    {
+      "id": "message_vous_avez",
+      "categorie": "message",
+      "fr": "Vous avez un nouveau message.",
+      "en": "You have a new message."
+    },
+    {
+      "id": "message_information_importante",
+      "categorie": "message",
+      "fr": "Information importante.",
+      "en": "Important information."
+    },
+    {
+      "id": "message_maintenance_prevue",
+      "categorie": "message",
+      "fr": "Une maintenance est prévue.",
+      "en": "Maintenance is scheduled."
+    },
+    {
+      "id": "message_maintenance_le",
+      "categorie": "message",
+      "fr": "Une maintenance est prévue le [M1].",
+      "en": "Maintenance is scheduled on [M1]."
+    },
+    {
+      "id": "message_mise_a_jour",
+      "categorie": "message",
+      "fr": "Une mise à jour est disponible.",
+      "en": "An update is available."
+    },
+    {
+      "id": "intitule_attention",
+      "categorie": "intitule",
+      "fr": "Attention",
+      "en": "Warning"
+    },
+    {
+      "id": "intitule_important",
+      "categorie": "intitule",
+      "fr": "Important",
+      "en": "Important"
+    },
+    {
+      "id": "intitule_information",
+      "categorie": "intitule",
+      "fr": "Information",
+      "en": "Information"
+    },
+    {
+      "id": "intitule_erreur",
+      "categorie": "intitule",
+      "fr": "Erreur",
+      "en": "Error"
+    },
+    {
+      "id": "intitule_alerte",
+      "categorie": "intitule",
+      "fr": "Alerte",
+      "en": "Alert"
+    },
+    {
+      "id": "intitule_rappel",
+      "categorie": "intitule",
+      "fr": "Rappel",
+      "en": "Reminder"
+    },
+    {
+      "id": "intitule_succes",
+      "categorie": "intitule",
+      "fr": "Succès",
+      "en": "Success"
+    },
+    {
+      "id": "compte_solde_disponible_montant",
+      "categorie": "compte",
+      "fr": "Votre solde disponible est de [M1].",
+      "en": "Your available balance is [M1]."
+    },
+    {
+      "id": "compte_sera_debite",
+      "categorie": "compte",
+      "fr": "Votre compte sera débité de [M1].",
+      "en": "Your account will be debited [M1]."
+    },
+    {
+      "id": "erreur_reseau_survenue",
+      "categorie": "erreur",
+      "fr": "Une erreur réseau est survenue.",
+      "en": "A network error occurred."
+    },
+    {
+      "id": "erreur_service_mobile_money",
+      "categorie": "erreur",
+      "fr": "Le service Mobile Money est momentanément indisponible.",
+      "en": "The Mobile Money service is temporarily unavailable."
+    },
+    {
+      "id": "securite_pin_telephone",
+      "categorie": "securite",
+      "fr": "Ne communiquez jamais votre code PIN par téléphone.",
+      "en": "Never give your PIN code over the phone."
+    }
+  ]
+}
