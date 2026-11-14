@@ -1,133 +1,72 @@
 # ALPHA
 
-> **Pour essayer l’extension**
-> - **Depuis GitHub** : dans `chrome://extensions`, activez le *Mode développeur*, cliquez sur *Charger l’extension non empaquetée* et choisissez le dossier **`extension/`**. Ne choisissez pas la racine du dépôt, qui ne contient pas de `manifest.json`.
-> - **Depuis le zip** (`alpha-extension.zip`) : décompressez-le, puis chargez le dossier obtenu de la même façon. Il contient `manifest.json` directement.
+Extension Chrome qui affiche un service financier en ligne en **éton**, en **français** ou en **anglais**, sans modifier le code du site. Elle ne touche jamais aux montants, numéros, noms ni références.
 
-Prototype d’extension Chrome qui adapte l’affichage d’un service financier existant en français ou en anglais, sans modifier son code source. Elle propose le français, l’anglais et l’éton. L’extension détecte la langue de la page à partir de son attribut `lang` et de son contenu réel, qui l’emporte quand il le contredit nettement (beaucoup de sites changent de langue sans mettre à jour `lang`).
+Projet présenté au hackathon **SAFINUM Innovate 2026**.
 
-L’extension utilise le dictionnaire `extension/data/dictionary.json`. Les montants et autres informations sensibles sont préservés. Si un texte ne peut pas être traduit, il reste dans sa langue d’origine et un avertissement invite l’utilisateur à le comprendre avant de continuer. Le rail latéral donne accès au choix de langue, au guide de l’écran, à l’agrandissement du contenu et à la lecture au clic.
+## Essayer l'extension
 
-Les 60 traductions Eton du parcours financier et du bandeau de démonstration ont été renseignées à partir de l’ouvrage de référence *Dictionnaire éton – français* (Mark Van de Velde et Kisito Essele Essele, Éditions CLÉ, 2022). Les correspondances lexicales, les règles grammaticales et les tons ont été appliqués avec précision. La lecture vocale fonctionne au clic (voir « Lecture au clic » ci-dessous) ; en mode Éton, elle utilise des clips éton préenregistrés. En français et en anglais, le navigateur ne lit qu’avec une voix qu’il signale comme locale; si aucune voix locale correspondante n’est installée, la lecture ne démarre pas.
+1. Ouvrez `chrome://extensions` et activez le **Mode développeur**.
+2. Cliquez sur **Charger l'extension non empaquetée** et choisissez :
+   - le dossier **`extension/`** si vous avez récupéré le projet depuis GitHub. Ne choisissez pas la racine du dépôt.
+   - le dossier décompressé, si vous avez reçu le fichier `alpha-extension.zip`.
+3. Ouvrez le site de test Safinum, puis cliquez sur la carte du Cameroun qui flotte à droite.
 
-## Contenu inédit et autres sites
+## Fonctionnalités
 
-ALPHA analyse la page telle qu’elle est, sans hook ni marqueur fourni par le site, et traduit aussi le texte ajouté après le chargement (contenu injecté, messages d’erreur, alertes). Pour chaque texte, dans l’ordre :
+- **Traduction de la page** : FR, EN ou ET au choix. ALPHA n'intervient que sur demande. Un second clic sur la langue active rend la page au site, dont le propre bouton de langue reste utilisable.
+- **Valeurs protégées** : un montant, un numéro ou une référence ne change jamais. Si une traduction risque d'en modifier une, elle est refusée et le texte d'origine reste affiché avec un avertissement.
+- **Messages nouveaux** : les messages qui apparaissent pendant l'utilisation sont aussi traduits (erreurs, alertes, confirmations). Pour cela, ALPHA s'appuie sur une banque d'environ 160 messages bancaires courants.
+- **Guide « ? »** : il explique l'écran affiché (où suis-je, que faire, comment), en éton comme en français.
+- **Lecture au clic** : seul le texte touché est lu. En éton, ALPHA utilise des voix éton préenregistrées et ne lit jamais en français. Pendant la lecture, les clics ne déclenchent rien sur le site.
+- **Agrandissement** de l'affichage. Le panneau est utilisable au clavier et sur téléphone.
 
-1. **Dictionnaire** (`extension/data/dictionary.json`) : correspondance exacte, y compris les formulations anglaises propres à un site (`en_variants`).
-2. **Cascade éton** (gabarits, correspondance approchée, segments, règles) pour le mode Éton.
-3. **Traduction hors ligne de secours** (`extension/src/engine/mt.js`), uniquement pour un texte absent du dictionnaire, entre français et anglais. En mode Éton, un texte anglais inédit passe par le français.
+## Confidentialité
 
-La traduction de secours utilise l’API **Translator intégrée à Chrome** (Chrome 138 ou plus récent) : le modèle s’exécute sur l’appareil et aucun texte n’est transmis. Chrome télécharge le modèle une seule fois, après un clic sur une langue dans le panneau. Avant d’être affichée, chaque sortie est contrôlée : les valeurs sensibles sont masquées avant la traduction, et la sortie est refusée si un montant, un chiffre ou une référence change, ou si la négation, un échec ou une alerte disparaît ou apparaît. En cas de refus, ou si le navigateur n’a pas cette API, le texte reste dans sa langue d’origine.
+ALPHA ne collecte, ne stocke et ne transmet aucune donnée de la page. Tout se passe sur l'appareil. La lecture vocale n'utilise que des voix installées localement, et l'extension ne contient aucun modèle d'IA.
 
-Ne sont jamais modifiés : les champs de saisie et leur réaffichage (nom, motif, note saisis par l’utilisateur), les zones `contenteditable`, les éléments `translate="no"` ou `.notranslate`, le code (`code`, `pre`), les options de liste sans attribut `value` et les boutons `<input>` envoyés avec le formulaire. L’extension traduit aussi les Shadow DOM ouverts et les cadres (iframes), qui suivent la langue choisie dans la page principale.
+## Langue éton
 
-## Guide de l’écran (« ? »)
+Les traductions s'appuient sur le *Dictionnaire éton – français* (Van de Velde et Essele Essele, Éditions CLÉ, 2022). Elles sont validées par notre locuteur : un texte éton n'est affiché qu'une fois validé.
 
-Le bouton **?** de la barre latérale explique l’écran affiché en trois réponses courtes : **Où suis-je ?**, **Que faire ?**, **Comment ?**. Le bouton **Écouter le guide** les lit à voix haute.
+**Outils utilisés pour préparer les contenus, hors de l'extension :**
+- Gemini a proposé une première traduction des textes fixes, ensuite corrigée et validée par le locuteur.
+- OmniVoice a produit les voix éton, une seule fois, sur Google Colab.
 
-- **Écrans connus** (tableau de bord, frais, bénéficiaire, récapitulatif, reçu de la page de test Safinum) : textes rédigés à l’avance dans `extension/data/guide.json`. L’écran est reconnu à partir des textes d’origine de la page, même quand ALPHA les a traduits, et le guide cite les boutons tels qu’ils sont affichés.
-- **Autres écrans et autres sites** : le guide est construit à partir des éléments visibles (titre, champs à remplir, cases à cocher, bouton principal). Il ne cite que des libellés présents sur la page et n’invente rien.
-- **Alertes** : une alerte affichée par le site est reprise telle quelle. Pour les messages connus du parcours, un conseil s’y ajoute (par exemple « Cochez la case de confirmation… »). Un champ de code secret (code SMS, PIN, mot de passe) déclenche un rappel de sécurité.
-- **Éton** : les champs `local` de `extension/data/guide.json` attendent des textes validés par un locuteur. D’ici là, le guide s’affiche et se lit en français, et le panneau le signale.
-
-À la première visite, une bulle « Moi, c’est ALPHA ! » présente le drapeau flottant à côté de la carte. Elle ne revient plus une fois fermée, et son texte reste disponible en bas du guide.
-
-## Lecture au clic
-
-Le bouton haut-parleur active la **lecture au clic** : l’utilisateur touche un texte de la page (un titre, un bouton, une ligne, un libellé de champ) et **seul ce texte est lu**. Le texte visé est encadré au survol. Un bandeau en bas de l’écran rappelle que le mode est actif ; **Quitter** ou Échap le désactivent. Au clavier, Entrée ou Espace lisent l’élément qui a le focus.
-
-**Pendant ce mode, les clics ne déclenchent rien sur le site** : toucher « Confirmer le transfert » pour l’entendre ne confirme jamais le transfert.
-
-**En mode Éton, ALPHA ne parle qu’en éton.** Les montants, les noms et les mots restés en français ne sont pas lus : le bandeau l’indique. Le guide « ? » est lu de la même façon, avec les voix éton de ses phrases.
-
-## Voix éton
-
-Aucune synthèse vocale n’existe pour l’éton dans les navigateurs. En mode Éton, la lecture au clic utilise donc des **clips audio préenregistrés**, livrés avec l’extension (`extension/data/audio/eton/`).
-
-- **Voix provisoires** : 159 clips générés à l’avance avec OmniVoice. Ils couvrent tout l’éton affiché : le dictionnaire, les phrases modèles (morceaux fixes autour des montants et des noms), le guide « ? » et la bulle. Une phrase est lue en enchaînant ses morceaux enregistrés ; les montants, les noms et les mots restés en français ne sont pas lus. Le modèle tourne une seule fois sur Google Colab (voir [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md)) : l’extension ne contient aucun modèle et ne transmet rien. Le panneau précise qu’il s’agit d’une voix de synthèse provisoire.
-- **Revue par un locuteur** : il note chaque clip dans `revue_locuteur.csv`. Seuls les clips validés sont livrés (`npm run audio:index`) ; `npm run audio:index:essai` inclut aussi les clips pas encore écoutés, pour les tests.
-- **Enregistrements du locuteur** : déposés dans `extension/data/audio/eton/locuteur/` avec le même nom de fichier, ils remplacent toujours le clip de synthèse.
-
-## Confidentialité et outils déclarés
-
-Le guide lit la page en mémoire, sur l’appareil. Il ne stocke ni ne transmet aucun texte de la page. La lecture vocale n’utilise que des voix installées sur l’appareil (`localService`) : les voix « en ligne » de certains navigateurs enverraient le texte lu à un serveur.
-
-**Outils déclarés** : API Translator de Chrome (traduction sur l’appareil, aucun service externe) ; synthèse vocale du navigateur (Web Speech API), limitée aux voix locales ; OmniVoice (k2-fsa, Apache-2.0), utilisé **hors de l’extension**, une seule fois, pour produire des clips audio éton provisoires (aucun modèle n’est embarqué dans l’extension) ; Gemini (Google), utilisé **hors de l’extension**, sur le site de Google, uniquement pour proposer une première traduction éton des textes fixes du guide, ensuite vérifiée par un locuteur (voir [docs/TRADUCTION.md](docs/TRADUCTION.md)) : aucun texte de la page n’y est envoyé. **Aucun modèle d’IA générative** n’est utilisé par l’extension et elle n’envoie aucun texte de la page à un service externe. Un prototype d’assistant Gemini en ligne a été écarté de cette version pour respecter la règle de non-transmission des données affichées ; il est conservé à part dans la branche `experimental-gemini`. Les formulations françaises et anglaises des messages d’erreur de la page de test Safinum ont été reprises de la page elle-même.
-
-## Installation
-
-1. Ouvrir `chrome://extensions` et activer le **Mode développeur**.
-2. Cliquer sur **Charger l’extension non empaquetée** et choisir le dossier **`extension/`** du projet. C’est lui qui contient `manifest.json`.
-3. Ouvrir une page Web de démonstration compatible, puis vérifier le panneau ALPHA.
-
-Après une modification, recharger l’extension dans Chrome puis actualiser la page.
-
-## Fichier à soumettre
-
-`npm run package` crée `dist/alpha-extension.zip`, avec `manifest.json` à la racine du zip. Le zip contient seulement ce que l’extension utilise : le manifeste, les icônes, les scripts, les données et les clips audio de l’index. Il pèse environ 1,9 Mo, sous la limite de 10 Mo. Un test (`npm test`) bloque tout dépassement.
-
-L’extension reste légère sur les pages :
-- elle ne retraduit que les textes nouveaux ou modifiés ;
-- elle regroupe les changements rapprochés en un seul passage ;
-- elle ne fait rien quand l’onglet est en arrière-plan ;
-- elle ne charge que les entrées validées du lexique (`extension/data/lexicon-valide.json`, régénéré par `npm run package`).
-
-## Dictionnaire
-
-Pour préparer ou mettre à jour les traductions :
-
-```bash
-node scripts/translation/csv.js export
-# Compléter le fichier content/dictionnaire.csv
-node scripts/translation/csv.js import content/dictionnaire.csv
-node tests/dictionary.test.js
-```
-
-Conservez les marqueurs comme `[M1]` dans les traductions : ils représentent des valeurs qui seront remises à leur place.
-
-## Vérifications
-
-```bash
-npm test
-```
-
-Cette commande vérifie la syntaxe des scripts, les données JSON, les moteurs de traduction, les messages inédits et la cohérence du dictionnaire.
+Dans l'extension, la traduction française et anglaise de secours utilise l'API Translator de Chrome, qui fonctionne sur l'appareil.
 
 ## Organisation du projet
 
 ```
-ALPHA/
-├── extension/        Ce que Chrome charge, et seulement cela (c’est ce dossier qui est zippé)
-│   ├── manifest.json
-│   ├── icons/
-│   ├── src/
-│   │   ├── content/  Point d’entrée sur la page : surveillance du DOM, choix de la traduction
-│   │   ├── engine/   Moteur de traduction : protection des valeurs, dictionnaire, gabarits, cascade
-│   │   ├── guide/    Guide « ? » de l’écran
-│   │   ├── voice/    Lecture au clic et voix éton
-│   │   └── ui/       Panneau ALPHA (Shadow DOM) et styles
-│   └── data/         Données lues par l’extension : dictionnaire, gabarits, guide, voix éton
-├── content/          Sources linguistiques, non livrées : lexique complet, traductions, lots audio
-├── scripts/          Outils de l’équipe : build/, audio/, translation/, lexicon/
-├── tests/            Tests automatiques (npm test lance tests/run-all.js)
-└── docs/             Documentation (architecture, traduction, voix, sources)
+extension/   l'extension (seul dossier chargé par Chrome et livré)
+content/     sources linguistiques : lexique, traductions, voix en préparation
+scripts/     outils de l'équipe (paquet, voix, traduction)
+tests/       vérifications automatiques
+docs/        documentation détaillée
 ```
 
-Le détail de chaque module et le trajet d’un texte dans l’extension sont décrits dans [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Pour les développeurs :
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) : le fonctionnement interne ;
+- [docs/TRADUCTION.md](docs/TRADUCTION.md) : le circuit de traduction ;
+- [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md) : la fabrication des voix.
 
-## Commandes utiles
+## Commandes
 
 | Commande | Rôle |
 |---|---|
-| `npm test` | Toutes les vérifications (syntaxe, données, moteurs, voix, taille du paquet). |
-| `npm run package` | Crée `dist/alpha-extension.zip`, le fichier à soumettre. |
-| `npm run audio:export` | Prépare `content/audio/eton-tts-a-generer.jsonl` pour Colab. |
-| `npm run audio:import -- "<zip>"` | Intègre un zip de voix téléchargé depuis Colab. |
-| `npm run audio:index` | Reconstruit l’index des voix validées par le locuteur. |
-| `npm run eton:prompt` / `eton:import` / `eton:revue` | Traduction éton du guide (voir [docs/TRADUCTION.md](docs/TRADUCTION.md)). |
-| `npm run banque:prompt` / `banque:import` / `banque:revue` | Traduction éton de la banque de messages. |
+| `npm test` | Lance toutes les vérifications. |
+| `npm run package` | Crée `dist/alpha-extension.zip`, le fichier à soumettre (environ 1,9 Mo). |
+| `npm run audio:export` puis `npm run audio:import -- "<zip>"` | Prépare de nouvelles voix pour Colab, puis les intègre. |
 
 ## Limites
 
-Sans l’API Translator de Chrome, les textes absents du dictionnaire ne sont pas traduits en français ni en anglais. En mode Éton, un texte inédit que la cascade ne sait pas traduire sans risque reste en français. La qualité des traductions Eton doit être vérifiée par des locuteurs compétents, en particulier pour les avertissements et les conditions financières. La disponibilité des voix locales en français et en anglais dépend du navigateur et du système. Le prototype ne réalise aucune opération financière.
+- Un message très différent de ceux que connaît ALPHA peut rester en français ; il est alors signalé.
+- Les voix éton sont des voix de synthèse provisoires, en attendant des enregistrements faits par des locuteurs.
+- En français et en anglais, la lecture dépend des voix installées sur l'appareil.
+- Le prototype ne réalise aucune opération financière.
+
+## Équipe
+
+- Ulrich ([@Yibaadev](https://github.com/Yibaadev))
+- Nganty Bikele Anicet ([@nganty237](https://github.com/nganty237))
+- Georges ([@PrinceGeorges](https://github.com/PrinceGeorges))
