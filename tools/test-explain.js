@@ -12,6 +12,9 @@ const context = vm.createContext({ console });
 vm.runInContext(fs.readFileSync(path.join(root, "src/explain.js"), "utf8"), context, { filename: "src/explain.js" });
 const E = context.ALPHA.explain;
 const glossary = JSON.parse(fs.readFileSync(path.join(root, "data/glossary.json"), "utf8"));
+// Ces tests couvrent le comportement sans traduction éton (voir test-guide-eton.js pour l’éton).
+glossary.meta.ui.local = null;
+for (const e of glossary.entries) e.local = null;
 E.init(glossary);
 const ids = (text) => Array.from(E.find(text), (entry) => entry.id);
 

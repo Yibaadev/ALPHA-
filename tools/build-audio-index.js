@@ -50,8 +50,12 @@ function readJson(file) {
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
 }
 
+const normText = (t) => String(t || "").normalize("NFC").replace(/\s+/g, " ").trim();
+
 // base : dossier data/audio/eton (ou un dossier de test).
-function buildIndex(base, includeUnreviewed) {
+// currentTexts (facultatif) : textes éton actuels (docs/audio/eton-tts.jsonl) ; un clip dont le texte
+// n'y figure plus est périmé (texte corrigé depuis) et n'est pas utilisé.
+function buildIndex(base, includeUnreviewed, currentTexts) {
   const omni = readJson(path.join(base, "omnivoice", "omnivoice-index.json")) || { clips: [] };
   const reviewFile = path.join(base, "omnivoice", "revue_locuteur.csv");
   const review = fs.existsSync(reviewFile) ? parseCsv(fs.readFileSync(reviewFile, "utf8")) : new Map();
@@ -63,8 +67,9 @@ function buildIndex(base, includeUnreviewed) {
   );
 
   const clips = [];
-  const counts = { locuteur: 0, oui: 0, a_verifier: 0, refuses: 0, absents: 0 };
+  const counts = { locuteur: 0, oui: 0, a_verifier: 0, refuses: 0, absents: 0, perimes: 0 };
   for (const clip of omni.clips) {
+    if (currentTexts && !currentTexts.has(normText(clip.text))) { counts.perimes++; continue; }
     const speaker = speakerFiles.get(clip.id);
     if (speaker) {
       clips.push({ key: clip.key, text: clip.text, file: "locuteur/" + speaker, source: "locuteur", revue: "oui" });
@@ -95,16 +100,21 @@ function buildIndex(base, includeUnreviewed) {
 if (require.main === module) {
   const base = path.join(__dirname, "..", "data", "audio", "eton");
   const includeUnreviewed = process.argv.includes("--inclure-non-revus");
-  const { index, counts, total } = buildIndex(base, includeUnreviewed);
+  const exportFile = path.join(__dirname, "..", "docs", "audio", "eton-tts.jsonl");
+  const currentTexts = fs.existsSync(exportFile)
+    ? new Set(fs.readFileSync(exportFile, "utf8").split(/\r?\n/).filter(Boolean).map((l) => normText(JSON.parse(l).text)))
+    : null;
+  if (!currentTexts) console.log("docs/audio/eton-tts.jsonl absent : lancez d'abord npm run audio:export (clips périmés non détectés).");
+  const { index, counts, total } = buildIndex(base, includeUnreviewed, currentTexts);
   fs.writeFileSync(path.join(base, "index.json"), JSON.stringify(index, null, 2) + "\n");
   console.log(
     index.clips.length + " clip(s) dans data/audio/eton/index.json — locuteur : " + counts.locuteur +
     ", OmniVoice validés : " + counts.oui + ", OmniVoice non revus : " + counts.a_verifier +
-    ", refusés : " + counts.refuses + (counts.absents ? ", fichiers absents : " + counts.absents : "")
+    ", refusés : " + counts.refuses + (counts.perimes ? ", périmés (texte corrigé, à régénérer) : " + counts.perimes : "") + (counts.absents ? ", fichiers absents : " + counts.absents : "")
   );
   if (!includeUnreviewed && !index.clips.length && total) {
     console.log("Aucun clip validé : faites remplir revue_locuteur.csv, ou testez avec --inclure-non-revus.");
   }
 }
 
-module.exports = { parseCsv, buildIndex };
+module.exports = { parseCsv, buildIndex, normText };

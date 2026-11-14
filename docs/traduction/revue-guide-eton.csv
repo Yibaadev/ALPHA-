@@ -1,0 +1,90 @@
+﻿id;endroit;francais;eton_propose;doute_gemini;correct;correction
+ui.where;Guide : titres et conseils;Où suis-je ?;Mə̀ nə̀ vé ?;;oui;
+ui.what;Guide : titres et conseils;Que faire ?;Mə̀ bɔ̀ dzé ?;;oui;
+ui.how;Guide : titres et conseils;Comment ?;Mə̀ bɔ̀ yá ?;;oui;
+ui.alert;Guide : titres et conseils;Message affiché;Fɔ̀ ńlɔ́ŋí;oui;non;Fɔ̀ é nə̀ á màn
+ui.known;Guide : titres et conseils;Guide rédigé pour cet écran.;Ǹyèglè ǹtílí ású ìfɔ̀gɔ̀ ńì.;;non;B’à tílí lédég di ású màn má.
+ui.unknownAlert;Guide : titres et conseils;Lisez ce message avant de continuer.;Láŋgá fɔ̀ ńì ósúsúâ nâ mì kə̀ ósú.;;non;Láŋgá fɔ̀ ní ósúsúâ nâ ù kə̀ ósú.
+ui.secretTip;Guide : titres et conseils;Ce code est secret : ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque.;Nɔ́mbà ńì ànə̀ yà ǹsɔ́l : tə̀ mì kàt mòd ḿfə́ mɔ́s mɔ́s, tɔ́ mòd àkàt nâ bâŋ àlóm ɲə́.;;non;Nɔ́mbà ní à nə̀ àswé : tə̀ ù kàt mòd mɔ́s, tɔ́ mòd à kàt nâ bâŋ à lóm ɲə́.
+screen.dashboard.where;Guide : écran dashboard;Accueil de votre compte : votre solde et vos dernières opérations.;Ǹtɔ́ŋ wà kɔ̂nt yɔ̂ : mwàní wɔ̂ yà mìnlóm mə́ ŋm̀kpámgí.;;non;Nlem é kɔ̂nt yɔ̂ : mwàní à lígì yà bísɛ́ ù bòbànyà.
+screen.dashboard.what;Guide : écran dashboard;Consulter votre solde disponible, ou commencer un transfert d’argent.;Tál mwàní ú nè, ŋgə́ tàdì lóm mwàní.;;non;Yén mwàní w’à lígì, ŋgə́ tàdì lóm mwàní.
+screen.dashboard.how;Guide : écran dashboard;Pour envoyer de l’argent, appuyez sur « {start} ». Pour connaître d’abord les frais, appuyez sur « {fees} ».;Ású lóm mwàní, mì nàm « {start} ». Ású tál táŋ ósúsúâ, mì nàm « {fees} ».;;non;Ŋgə́ ù yì lóm mwàní, nyì’ì « {start} ». Ŋgə́ ù yì tɔ́ŋ yə́m táŋ, nyì’ì « {fees} ».
+screen.fees.where;Guide : écran fees;Transfert : choix du montant et calcul des frais.;Nlóm mwàní : tɔ́b àbùm mwàní yà lán táŋ.;;non;Nlóm mwàní : tɔ́b mwàní w’à lóm yà táŋ.
+screen.fees.what;Guide : écran fees;Choisir le type de transfert et saisir le montant. Les frais et le total à débiter se calculent tout seuls.;Tɔ́bgá m̀bə̀b í nlóm, mì tìl àbùm mwàní. Táŋ í nlóm yà mwàní wɔ́sə̂ wàyá kùì byátə́ lánbân byə̀ m̀yɛ̌n.;;non;Tɔ́b m̀bə̀b nlóm, ù tíl mwàní w’à lóm. Táŋ yà mwàní wɔ́sə̂ w’à kùì by’à lánbân byə̀ m̀yɛ̌n.
+screen.fees.how;Guide : écran fees;Choisissez le type dans « {type} », tapez le montant dans « {amount} », vérifiez le « {total} », puis appuyez sur « {continue} ».;Tɔ́bgá m̀bə̀b á « {type} », mì tìl àbùm mwàní á « {amount} », mì cázgá « {total} », mbús mì nàm « {continue} ».;;non;Tɔ́b m̀bə̀b á « {type} », tíl mwàní á « {amount} », yénègè bèn « {total} », mbús ù nyì’ì « {continue} ».
+screen.beneficiary.where;Guide : écran beneficiary;Transfert : à qui envoyer l’argent.;Nlóm mwàní : mòd àtə́ nɔŋ mwàní.;;oui;
+screen.beneficiary.what;Guide : écran beneficiary;Indiquer le nom et le numéro de téléphone du bénéficiaire, puis le motif du transfert.;Tílgá dwé lə̀ mòd àtə́ nɔŋ yà nwàmɔ̀ ŋkwǎl wɔ́, mbús àsú ú nlóm.;;non;Tíl dwé lə̀ mòd à nɔŋ yà nwàmɔ̀ ŋkwǎl wɔ́, mbús àsú nlóm.
+screen.beneficiary.how;Guide : écran beneficiary;Remplissez « {name} » et « {phone} ». Relisez le numéro chiffre par chiffre, cochez la case de vérification, puis appuyez sur « {continue} ».;Tílgá « {name} » yà « {phone} ». Búlnì láŋ nwàmɔ̀ ńɔ́mbà ńɔ́mbà, mì cázgá ìbə̀ŋ yà ǹcázgí, mbús mì nàm « {continue} ».;oui;non;Tíl « {name} » yà « {phone} ». Búlnì láŋ nwàmɔ̀ nɔ́mbà nɔ́mbà, nyì’ì é kàrà é nə̀ ósúsúâ, mbús ù nyì’ì « {continue} ».
+screen.beneficiary.tip;Guide : écran beneficiary;Une erreur dans le numéro envoie l’argent à quelqu’un d’autre.;Ŋgə́ nwàmɔ̀ àcɔ́b, mwàní àkə̀ ábə́ mòd ḿfə́.;;oui;
+screen.summary.where;Guide : écran summary;Transfert : récapitulatif avant l’envoi.;Nlóm mwàní : ìbɛ̀bə̀ àsúg ósúsúâ nâ mì lóm.;;non;Nlóm mwàní : bə̀’ə̀ yén bísə̂ ósúsúâ nâ ù lóm.
+screen.summary.what;Guide : écran summary;Relire le montant, les frais, le total et le bénéficiaire. Rien n’est encore envoyé.;Búlnì láŋ àbùm mwàní, táŋ, mwàní wɔ́sə̂ ùkùì yà mòd àtə́ nɔŋ. Mwàní àbə́gə̀ kə̀.;;non;Bə̀’ə̀ yén mwàní w’à lóm, táŋ, mwàní wɔ́sə̂ w’à kùì yà mòd à nɔŋ. Mwàní à ngə́nə́ tà’à kə́.
+screen.summary.how;Guide : écran summary;Si tout est juste, cochez la case de confirmation puis appuyez sur « {confirm} ». Sinon, appuyez sur « {edit} ».;Ŋgə́ màm mə́sə̂ mánə̀ bə́bɛ́lə́, mì nàm ìbə̀ŋ yà ìjə́blə́, mbús mì nàm « {confirm} ». Ŋgə́ tə́, mì nàm « {edit} ».;oui;non;Ŋgə́ bísə̂ bí nə̀ bèn, nyì’ì é kàrà é nə̀ ósúsúâ, mbús ù nyì’ì « {confirm} ». Ŋgə́ tà’à nà, nyì’ì « {edit} ».
+screen.receipt.where;Guide : écran receipt;Reçu : le transfert est terminé.;Kálàdà wà ǹyáà : nlóm mwàní ùbòbànyà.;;oui;
+screen.receipt.what;Guide : écran receipt;Garder la référence du transfert : elle sert en cas de réclamation.;Bàglà nɔ́mbà yà nlóm mwàní : àyá sál ŋgə́ mì yì bɛ̀bə̀.;oui;non;Bà’àlà nɔ́mbà nlóm mwàní : à yá sál ŋgə́ ù yì bɛ̀bə̀.
+screen.receipt.how;Guide : écran receipt;Notez la référence affichée. Pour un autre envoi, appuyez sur « {new} ».;Tílgá nɔ́mbà ànə̀ á yɔ́b. Ású lóm mwàní fə́, mì nàm « {new} ».;;non;Tíl nɔ́mbà à nə̀ á màn. Ŋgə́ ù yì lóm fə́, nyì’ì « {new} ».
+alert.0;Guide : conseil après un message d'erreur;Saisissez un montant supérieur à zéro, puis réessayez.;Tílgá àbùm mwàní àdàŋ zérò, mbús mì búlnì və̀gə̀.;oui;non;Tíl mwàní à dàŋ zérò, mbús ù búlnì və̀gə̀.
+alert.1;Guide : conseil après un message d'erreur;Le montant plus les frais dépasse votre solde : réduisez le montant.;Àbùm mwàní yà táŋ bìdàŋ mwàní wɔ̂ : sùzgá àbùm mwàní.;oui;non;Mwàní w’à lóm yà táŋ bí dàŋ mwàní wɔ̂ : sùzgá mwàní w’à lóm.
+alert.2;Guide : conseil après un message d'erreur;Remplissez le nom et le numéro du bénéficiaire.;Tílgá dwé lə̀ mòd àtə́ nɔŋ yà nwàmɔ̀ wɔ́.;;non;Tíl dwé lə̀ mòd à nɔŋ yà nwàmɔ̀ wɔ́.
+alert.3;Guide : conseil après un message d'erreur;Relisez le numéro du bénéficiaire, puis cochez la case de vérification.;Búlnì láŋ nwàmɔ̀ lə̀ mòd àtə́ nɔŋ, mbús mì nàm ìbə̀ŋ yà ǹcázgí.;oui;non;Búlnì láŋ nwàmɔ̀ mòd à nɔŋ, mbús ù nyì’ì é kàrà é nə̀ ósúsúâ.
+alert.4;Guide : conseil après un message d'erreur;Nouveau bénéficiaire : assurez-vous de bien connaître cette personne avant d’envoyer de l’argent.;Mòd àtə́ nɔŋ ḿfə́ : yə̀mgá mbə̀ŋ nâ mì yə́m mòd nû ósúsúâ nâ mì lóm mwàní.;;non;Mòd à nɔŋ ḿfə́ : yə́mègè bèn mòd nû ósúsúâ nâ ù lóm mwàní.
+alert.5;Guide : conseil après un message d'erreur;Problème de connexion : patientez un instant, puis réessayez.;Dzɔ̌m díŋgá cɔ́b á ŋkwǎl : yàŋgá ǹtə̀ŋ mɔ́n, mbús mì búlnì və̀gə̀.;;non;Dzɔ̌m dí cɔ́b á ŋkwǎl : yàŋgá mɔ́n ìtə̀ŋ, mbús ù búlnì və̀gə̀.
+alert.6;Guide : conseil après un message d'erreur;Cochez la case de confirmation avant de valider le transfert.;Nàmgá ìbə̀ŋ yà ìjə́blə́ ósúsúâ nâ mì jə́blə́ nlóm mwàní.;oui;non;Nyì’ì é kàrà é nə̀ ósúsúâ nâ ù jə́blə́ nlóm mwàní.
+intro.title;Bulle de présentation;Moi, c’est ALPHA !;Mə̀ nə̀ ALPHA !;;oui;
+intro.line.0;Bulle de présentation;Je flotte, mais vos chiffres, eux, ne bougent pas.;Mə̀tə̀ yɛ̀ŋ á yɔ́b, vè mànɔ́mbà mɔ́n mə̀tə́ kə̀ mə̀fə́ té.;;non;Mə̀ tə̀ yɛ̀ŋ á yɔ́b, vè mànɔ́mbà mɔ̂ mə̀ tə́ fɔ́’ɔ́ té.
+intro.line.1;Bulle de présentation;Je traduis cette page en français, anglais ou éton, sans jamais toucher à vos montants, numéros ou noms.;Mə̀tə̀ kɔ̀bɔ̀ ìfɔ̀gɔ̀ ńì á flànsí, ŋgə́ íŋglís, ŋgə́ étón, tə̀ cɛ́nî àbùm mwàní wɔ̂, mànɔ́mbà mɔ́n, ŋgə́ móy mɔ́n.;;non;Mə̀ tə̀ kɔ̀bɔ̀ màn má á flànsí, íŋglís, ŋgə́ étón, tə̀ nàm mwàní wɔ̂, mànɔ́mbà mɔ̂, ŋgə́ móy mɔ̂.
+intro.line.2;Bulle de présentation;Cliquez-moi pour ouvrir mes outils. Glissez-moi si je vous gêne : je ne le prendrai pas mal.;Nàmgá mə́ ású yɛ́n bìsɛ́ byâm. Tìndgá mə́ ŋgə́ mə̀tə̀ mì kwàm : mə̀bə́gə̀ bə̀ ɔ̀lùn.;oui;non;Nyì’ì mə́ ású yɛ́n bìsɛ́ byâm. Tìndgá mə́ ŋgə́ mə̀ tə̀ ù kwàm : mə̀ bə́gə̀ bə̀ ɔ̀lùn.
+intro.about;Bulle de présentation;Ce drapeau qui flotte, c’est quoi ?;Fùlàgì ńì àtə̀ yɛ̀ŋ á yɔ́b, ànə̀ dzé ?;oui;non;Fùlàgì ní à tə̀ yɛ̀ŋ á yɔ́b, à nə̀ dzé ?
+intro.ok;Bulle de présentation;Compris !;Mə̀wógí !;;oui;
+glossary.ui.button;Expliquer : boutons;Expliquer;Tímìl;oui;non;Lédég
+glossary.ui.title;Expliquer : boutons;Explication;Ǹtímìl;oui;non;Lédég
+glossary.ui.listen;Expliquer : boutons;Écouter;Wóg;;non;Vòglò
+glossary.ui.close;Expliquer : boutons;Fermer;Díb;;oui;
+glossary.ui.hint;Expliquer : boutons;Astuce : sélectionnez un mot de la page (frais, solde, bénéficiaire…) pour en voir l’explication.;Fɛ́g : tɔ́bgá ìbùg ífɔ̀gɔ̀ (táŋ, mwàní, mòd àtə́ nɔŋ…) ású yɛ́n ǹtímìl wɔ́.;oui;non;Fɛ́g : tɔ́’ɔ̀ éfia jìá é nə̀ á màn (táŋ, mwàní, mòd à nɔŋ…) ású yɛ́n lédég wɔ́.
+glossary.fees.term;Expliquer : terme;Frais;Táŋ;;oui;
+glossary.fees.text;Expliquer : définition de « Frais »;Somme prélevée par le service pour réaliser l’opération. Elle s’ajoute au montant envoyé. Quand les frais sont un pourcentage (par exemple 1,5 %), ils augmentent avec le montant, entre un minimum et un maximum.;Mwàní ísɛ́ yà nɔŋ ású bòbàn ísɛ́. Àtə̀ bàmàn á àbùm mwàní ú nlóm. Ŋgə́ táŋ ànə̀ pùrsə́ntáz (fàlà 1,5 %), àtə̀ nɛ́n ŋgə́ àbùm mwàní ànɛ́n, á zàŋ ìtún yà ǹnɛ́n.;oui;non;Mwàní ísɛ́ y’à nɔŋ ású bòbàn ísɛ́. À tə̀ bàmàn á mwàní w’à lóm. Ŋgə́ mwàní w’à lóm à nɛ́n, táŋ y’à nɛ́n fə́, vè à nə̀ àbùm ìtún yà ǹnɛ́n.
+glossary.balance_after.term;Expliquer : terme;Solde après opération;Mwàní àlígì á mbús ísɛ́;;oui;
+glossary.balance_after.text;Expliquer : définition de « Solde après opération »;Ce qui restera sur votre compte une fois le montant et les frais retirés.;Mwàní àyá lígì á kɔ̂nt yɔ̂ á mbús nɔŋ àbùm mwàní yà táŋ.;;non;Mwàní à yá lígì á kɔ̂nt yɔ̂ á mbús b’à nɔŋ mwàní w’à lóm yà táŋ.
+glossary.balance.term;Expliquer : terme;Solde;Mwàní;;oui;
+glossary.balance.text;Expliquer : définition de « Solde »;L’argent disponible sur votre compte à cet instant. Vous ne pouvez pas envoyer plus que ce solde, frais compris.;Mwàní ú nè á kɔ̂nt yɔ̂ ɛ́yə́ŋ ńì. Mì bə́gə̀ dzàm lóm mwàní àdàŋ mwàní nû, ŋgə́ mì bàmàn táŋ.;;non;Mwàní ú nə̀ á kɔ̂nt yɔ̂ ɛ́yə́ŋ ní. Ù bə́gə̀ dzàm lóm mwàní à dàŋ mwàní nû, ŋgə́ ù bàmàn táŋ.
+glossary.beneficiary.term;Expliquer : terme;Bénéficiaire;Mòd àtə́ nɔŋ;;non;Mòd à nɔŋ
+glossary.beneficiary.text;Expliquer : définition de « Bénéficiaire »;La personne qui reçoit l’argent. Vérifiez son nom et son numéro : un transfert envoyé à la mauvaise personne est difficile à récupérer.;Mòd àtə́ nɔŋ mwàní. Cázgá dwé lɔ́ yà nwàmɔ̀ wɔ́ : ŋgə́ mwàní àkə̀ ábə́ mòd ḿfə́, ànə̀ àyà nâ mì búlnì nɔŋ ɲə́.;;;
+glossary.new_beneficiary.term;Expliquer : terme;Nouveau bénéficiaire;Mòd àtə́ nɔŋ ḿfə́;;;
+glossary.new_beneficiary.text;Expliquer : définition de « Nouveau bénéficiaire »;Vous n’avez encore jamais envoyé d’argent à ce numéro depuis ce compte. C’est une situation fréquente dans les arnaques : assurez-vous de bien connaître la personne.;Mì bə́gə̀ kə́ lóm mwàní á nwàmɔ̀ nû á kɔ̂nt yɔ̂ mɔ́s mɔ́s. Màdúgà mə̀tə̀ bɔ̀ nálá : yə̀mgá mbə̀ŋ nâ mì yə́m mòd nû.;oui;;
+glossary.reference.term;Expliquer : terme;Référence;Nɔ́mbà yà ísɛ́;;;
+glossary.reference.text;Expliquer : définition de « Référence »;Code unique qui identifie votre opération. Gardez-le : il sert à prouver le transfert ou à faire une réclamation.;Nɔ́mbà wùá àtə̀ lə́d ísɛ́ yɔ̂. Bàglà ɲə́ : àtə̀ lə́d nâ mì lómnyà mwàní ŋgə́ àtə̀ sál ású bɛ̀bə̀.;oui;;
+glossary.amount.term;Expliquer : terme;Montant;Àbùm mwàní;;;
+glossary.amount.text;Expliquer : définition de « Montant »;La somme que le bénéficiaire doit recevoir, sans les frais.;Mwàní mòd àtə́ nɔŋ àyá nɔŋ, tə̀ táŋ.;;;
+glossary.total_debit.term;Expliquer : terme;Total débité;Mwàní wɔ́sə̂ ùkùì;;;
+glossary.total_debit.text;Expliquer : définition de « Total débité »;Ce qui sort réellement de votre compte : le montant envoyé plus les frais.;Mwàní wɔ́sə̂ ùkùì á kɔ̂nt yɔ̂ : àbùm mwàní ú nlóm yà táŋ.;;;
+glossary.debit.term;Expliquer : terme;Débit;Mwàní ùkùì;oui;;
+glossary.debit.text;Expliquer : définition de « Débit »;Argent qui sort de votre compte. Le contraire est un crédit : de l’argent qui entre.;Mwàní ùkùì á kɔ̂nt yɔ̂. Ìfə́ yà ǹnɔ́ŋí : mwàní ùnyíì á kɔ̂nt yɔ̂.;;;
+glossary.reason.term;Expliquer : terme;Motif du transfert;Àsú ú nlóm;;;
+glossary.reason.text;Expliquer : définition de « Motif du transfert »;Une courte phrase pour dire à quoi sert l’argent (loyer, famille, facture…). Elle aide à retrouver l’opération plus tard.;Ìbùg ìtún ású kàt àsú ú mwàní (ndá, ǹdá bɔ̀d, kálàdà…). Yátə̀ sál ású yɛ́n ísɛ́ ńì á mbús.;;;
+glossary.operation_type.term;Expliquer : terme;Type d’opération;M̀bə̀b í nlóm;;;
+glossary.operation_type.text;Expliquer : définition de « Type d’opération »;Le moyen d’envoi : vers un compte du même service, vers Mobile Money ou vers une autre banque. Les frais changent selon ce choix.;Ǹzə̌n yà lóm mwàní : á kɔ̂nt yà ísɛ́ ńì, á Mobile Money, ŋgə́ á báŋk ìfə́. Táŋ àtə̀ cɛ́nî á mbús ǹtɔ́b wɔ̂.;oui;;
+glossary.mobile_money.term;Expliquer : terme;Mobile Money;Mobile Money;oui;;
+glossary.mobile_money.text;Expliquer : définition de « Mobile Money »;Un compte d’argent lié à un numéro de téléphone, géré par un opérateur mobile. L’argent arrive sur le téléphone du bénéficiaire.;Kɔ̂nt yà mwàní ìbàmàn á nwàmɔ̀ ŋkwǎl, ísɛ́ yà ŋkwǎl yátə̀ sál ɲə́. Mwàní àtə̀ kə̀ á tɛ̀lɛ̀fɔ̂n yà mòd àtə́ nɔŋ.;;;
+glossary.other_bank.term;Expliquer : terme;Autre banque;Báŋk ìfə́;;;
+glossary.other_bank.text;Expliquer : définition de « Autre banque »;Envoi vers un compte ouvert dans une banque différente de la vôtre. C’est souvent l’option la plus chère et parfois la plus lente.;Nlóm mwàní á kɔ̂nt yà báŋk ìfə́. Àtə̀ bə̀ ǹtáŋ á yɔ́b yà ǹtə̀ŋ àyà.;;;
+glossary.account_number.term;Expliquer : terme;Numéro de compte;Nwàmɔ̀ kônt;;;
+glossary.account_number.text;Expliquer : définition de « Numéro de compte »;L’identifiant de votre compte. Ne le communiquez qu’aux personnes qui doivent vous envoyer de l’argent.;Nɔ́mbà àtə̀ lə́d kɔ̂nt yɔ̂. Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm mì mwàní.;;;
+glossary.transfer.term;Expliquer : terme;Transfert;Nlóm mwàní;;;
+glossary.transfer.text;Expliquer : définition de « Transfert »;Envoi d’argent de votre compte vers celui d’une autre personne. Une fois confirmé, il est en général impossible à annuler.;Lóm mwàní á kɔ̂nt yɔ̂ á kə̀ á kɔ̂nt yà mòd ḿfə́. Ŋgə́ mì jə́blə́nyà, mì bə́gə̀ dzàm kàb ɲə́ fə́.;;;
+glossary.instant.term;Expliquer : terme;Instantané;Àvəl àvəl;;;
+glossary.instant.text;Expliquer : définition de « Instantané »;L’argent arrive chez le bénéficiaire en quelques secondes, et non en quelques jours.;Mwàní àtə̀ kə̀ ábə́ mòd àtə́ nɔŋ á ǹtə̀ŋ mɔ́n, tə̀ yàŋà mə̀lú.;;;
+glossary.summary.term;Expliquer : terme;Récapitulatif;Ìbɛ̀bə̀ àsúg;;;
+glossary.summary.text;Expliquer : définition de « Récapitulatif »;Le résumé de l’opération avant l’envoi. Rien n’est encore parti : c’est le dernier moment pour corriger une erreur.;Ìbɛ̀bə̀ ísɛ́ ósúsúâ nâ mì lóm. Mwàní àbə́gə̀ kə̀ : ànə̀ ǹtə̀ŋ àsú kɔ̀m dzɔ̌m díŋgá cɔ́b.;;;
+glossary.receipt.term;Expliquer : terme;Reçu;Kálàdà wà ǹyáà;;;
+glossary.receipt.text;Expliquer : définition de « Reçu »;La preuve que l’opération a été faite. Conservez-le, avec sa référence.;Kálàdà àtə̀ lə́d nâ ísɛ́ ìbòbànyà. Bàglà ɲə́, yà nɔ́mbà yà ísɛ́.;;;
+glossary.status.term;Expliquer : terme;Statut;M̀bə̀b;;;
+glossary.status.text;Expliquer : définition de « Statut »;L’état de l’opération : réussie, en attente ou échouée.;M̀bə̀b í ísɛ́ : ìbòbànyà mbə̀ŋ, ìtə̀ yàŋà, ŋgə́ ìŋgá cɔ́b.;;;
+glossary.secret_code.term;Expliquer : terme;Code secret;Nɔ́mbà yà ǹsɔ́l;;;
+glossary.secret_code.text;Expliquer : définition de « Code secret »;Code personnel qui prouve que c’est bien vous. Ne le donnez à personne, même à quelqu’un qui dit appeler de la part de la banque.;Nɔ́mbà wɔ̂ àtə̀ lə́d nâ ànə̀ mì. Tə̀ mì kàt mòd ḿfə́ mɔ́s mɔ́s, tɔ́ mòd àkàt nâ bâŋ àlóm ɲə́.;;;
+glossary.security_alert.term;Expliquer : terme;Alerte de sécurité;Kálâ! Ùkálá;;;
+glossary.security_alert.text;Expliquer : définition de « Alerte de sécurité »;Message qui signale un risque. Lisez-le entièrement et vérifiez ce qu’il demande avant de continuer.;Fɔ̀ ńlɔ́ŋí àtə̀ lə́d dzɔ̌m díbə́gə̀ mbə̀ŋ. Láŋgá ɲə́ wɔ́sə̂, mì cázgá dzɔ̌m àtə̀ yì ósúsúâ nâ mì kə̀ ósú.;oui;;
+glossary.secure_connection.term;Expliquer : terme;Connexion sécurisée;Ŋkwǎl ú kálâní;;;
+glossary.secure_connection.text;Expliquer : définition de « Connexion sécurisée »;Les échanges entre votre appareil et le service sont chiffrés. Cela ne garantit pas que le bénéficiaire est le bon : vérifiez-le toujours.;Màm mə̀tə̀ kə̀ á zàŋ tɛ̀lɛ̀fɔ̂n yɔ̂ yà ísɛ́ mánə̀ ǹsɔ́l. Bì bə́gə̀ lə́d nâ mòd àtə́ nɔŋ ànə̀ mbə̀ŋ : cázgá ɲə́ ngə́d ísə̂.;;;
+glossary.merchant_payment.term;Expliquer : terme;Paiement marchand;Èyágná á kùz;;;
+glossary.merchant_payment.text;Expliquer : définition de « Paiement marchand »;Un achat payé à un commerçant depuis votre compte.;Èyágná ábə́ mòd àtə̀ kùz bìyɔ́m á kɔ̂nt yɔ̂.;;;
+glossary.free.term;Expliquer : terme;Gratuit;Té táŋ;;;
+glossary.free.text;Expliquer : définition de « Gratuit »;Aucun frais n’est prélevé : le total débité est égal au montant envoyé.;Bə̀bə́gə̀ nɔŋ táŋ : mwàní wɔ́sə̂ ùkùì ànə̀ fàlà àbùm mwàní ú nlóm.;;;

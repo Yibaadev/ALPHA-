@@ -159,23 +159,46 @@
       playClips(owner, items, message);
     }
 
-    // En éton, le guide et les explications n'ont pas encore de voix éton : rien n'est lu en français.
-    function etonOnly(owner) {
+    function etonMessage(missing) {
+      const info = eton().describe();
+      let message = "Lecture en éton";
+      if (info.synthetic && !info.speaker) message += " (voix de synthèse provisoire" + (info.unreviewed ? ", pas encore vérifiée" : "") + ")";
+      message += ".";
+      if (missing) message += " " + missing;
+      return message;
+    }
+
+    /* En éton, le guide et les explications sont lus avec les clips éton de leurs phrases, et
+       jamais en français. Retourne true si le mode éton a pris la main (lu ou message affiché). */
+    function speakEton(owner, texts) {
       if (getMode() !== "local") return false;
-      if (speaker === owner) stop();
-      report(owner, "Pas encore de voix éton pour ce texte : il sera lu dès que les enregistrements seront validés.", "notice");
+      if (speaker === owner) {
+        stop();
+        return true;
+      }
+      stop();
+      const audio = eton();
+      const clips = audio && texts ? texts.map((text) => audio.clipFor(text)) : [];
+      const items = clips.filter(Boolean).map((clip) => ({ clip }));
+      if (!items.length) {
+        report(owner, "Pas encore de voix éton pour ce texte : il sera lu dès que les enregistrements seront validés.", "notice");
+        return true;
+      }
+      audio.unlock(); // pendant le clic : Chrome n'autorise le son qu'après un geste
+      const missing = items.length < clips.length ? "Certaines phrases n’ont pas encore de voix éton." : "";
+      playClips(owner, items, etonMessage(missing));
       return true;
     }
 
     // Lecture du guide de l'écran, dans la langue du guide.
-    function speakGuide(text, lang) {
-      if (etonOnly("guide")) return;
+    function speakGuide(text, lang, etonTexts) {
+      if (speakEton("guide", etonTexts)) return;
       speakText("guide", text, lang === "en" ? "en-US" : "fr-FR");
     }
 
     // Lecture de l'explication d'un terme (action « Expliquer »).
-    function speakExplain(text, lang) {
-      if (etonOnly("explain")) return;
+    function speakExplain(text, lang, etonTexts) {
+      if (speakEton("explain", etonTexts)) return;
       speakText("explain", text, lang === "en" ? "en-US" : "fr-FR");
     }
     function stopExplain() {

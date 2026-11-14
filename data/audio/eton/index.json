@@ -364,13 +364,6 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.transfer_success_msg",
-      "text": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
-      "file": "omnivoice/dict.transfer_success_msg.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.status",
       "text": "M̀bə̀b",
       "file": "omnivoice/dict.status.ogg",
@@ -427,13 +420,6 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.confirm_beneficiary_checkbox",
-      "text": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.",
-      "file": "omnivoice/dict.confirm_beneficiary_checkbox.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.action_close",
       "text": "Díb",
       "file": "omnivoice/dict.action_close.ogg",
@@ -448,23 +434,9 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.error_must_confirm_info",
-      "text": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
-      "file": "omnivoice/dict.error_must_confirm_info.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.transfer_done_success",
       "text": "Nlóm mwàní ùbòbànyà mbə̀ŋ !",
       "file": "omnivoice/dict.transfer_done_success.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.money_sent_to_beneficiary",
-      "text": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
-      "file": "omnivoice/dict.money_sent_to_beneficiary.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -504,13 +476,6 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.ext_connexion_réussie",
-      "text": "Mì nyíìnyà á kɔ̂nt mbə̀ŋ",
-      "file": "omnivoice/dict.ext_connexion_reussie.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.ext_mot_de_passe_incorrect",
       "text": "Ìbùg yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
       "file": "omnivoice/dict.ext_mot_de_passe_incorrect.ogg",
@@ -521,13 +486,6 @@
       "key": "dict.ext_code_pin_incorrect",
       "text": "Nɔ́mbà yà ǹsɔ́l ìbə́gə̀ bə́bɛ́lə́ té",
       "file": "omnivoice/dict.ext_code_pin_incorrect.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.ext_limite_quotidienne_atteinte",
-      "text": "Mì mànyà àbùm mwàní yà lóm mɔ́s wùá",
-      "file": "omnivoice/dict.ext_limite_quotidienne_atteinte.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -553,13 +511,6 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.ext_voulez-vous_annuler_cette_opér",
-      "text": "Yə̀ mì yì kàb ísɛ́ ńì ?",
-      "file": "omnivoice/dict.ext_voulez_vous_annuler_cette_oper.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.ext_reçu_envoyé_par_sms",
       "text": "Bə́lómnyà kálàdà wà ǹyáà á SMS",
       "file": "omnivoice/dict.ext_recu_envoye_par_sms.ogg",
@@ -570,20 +521,6 @@
       "key": "dict.ext_votre_session_a_expiré",
       "text": "Ǹtə̀ŋ wɔ̂ wà ísɛ́ ùmànyà.",
       "file": "omnivoice/dict.ext_votre_session_a_expire.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.ext_ne_partagez_jamais_votre_code_",
-      "text": "Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
-      "file": "omnivoice/dict.ext_ne_partagez_jamais_votre_code_.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.ext_attention__ne_partagez_jamais_",
-      "text": "Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
-      "file": "omnivoice/dict.ext_attention__ne_partagez_jamais_.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -623,23 +560,9 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.ext_vérifiez_le_numéro_du_bénéfici",
-      "text": "Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.",
-      "file": "omnivoice/dict.ext_verifiez_le_numero_du_benefici.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.ext_transfert_échoué__aucun_montan",
       "text": "Nlóm mwàní ùŋgá cɔ́b : mwàní wɔ̂ àbə́gə̀ kùì á kɔ̂nt.",
       "file": "omnivoice/dict.ext_transfert_echoue__aucun_montan.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.ext_une_erreur_est_survenue_réessa",
-      "text": "Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.",
-      "file": "omnivoice/dict.ext_une_erreur_est_survenue_reessa.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -658,23 +581,9 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.demo_warning_banner_bare",
-      "text": "Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "file": "omnivoice/dict.demo_warning_banner_bare.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.demo_env_title",
       "text": "Ìfɔ̀gɔ̀ yà ǹyèglè",
       "file": "omnivoice/dict.demo_env_title.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.demo_no_personal_data",
-      "text": "Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "file": "omnivoice/dict.demo_no_personal_data.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     }

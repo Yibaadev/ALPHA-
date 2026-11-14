@@ -548,8 +548,8 @@
       "screen": "5. Confirmation",
       "fr": "Votre transfert a été envoyé avec succès.",
       "en": "Your transfer has been sent successfully.",
-      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
-      "note": "Votre argent a bien été envoyé au bénéficiaire.",
+      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àtə́ nɔŋ mwàní.",
+      "note": "Votre argent a bien été envoyé au bénéficiaire. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -629,8 +629,8 @@
       "screen": "Bandeau de test",
       "fr": "[M1] — environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
       "en": "[M1] — demonstration environment. Do not enter any real personal data.",
-      "local": "[M1] — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "note": "Le nom propre Safinum Pay est conservé tel quel.",
+      "local": "[M1] — ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ ù tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Le nom propre Safinum Pay est conservé tel quel. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide",
       "en_variants": [
         "[M1] — demonstration environment. Do not enter real personal data."
@@ -641,8 +641,8 @@
       "screen": "3. Bénéficiaire",
       "fr": "J'ai vérifié le nom et le numéro du bénéficiaire.",
       "en": "I have checked the beneficiary's name and number.",
-      "local": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àyá nɔŋ mwàní.",
-      "note": "J'ai vérifié le nom et le numéro du bénéficiaire.",
+      "local": "Mə̀cázgí jɔ̌y yà nɔ́mbà yà mòd àtə́ nɔŋ mwàní.",
+      "note": "J'ai vérifié le nom et le numéro du bénéficiaire. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide",
       "en_variants": [
         "I have verified the beneficiary name and phone number."
@@ -674,8 +674,8 @@
       "screen": "Alertes",
       "fr": "Vous devez confirmer les informations avant de valider le transfert.",
       "en": "You must confirm the information before submitting the transfer.",
-      "local": "Mì yì nâ mì jə́blə́ màm mə́sə̂ ósúsúâ nâ mì lóm mwàní.",
-      "note": "Vous devez confirmer les informations avant de valider le transfert.",
+      "local": "Ù yì nâ ù jə́blə́ màm mə́sə̂ ósúsúâ nâ ù lóm mwàní.",
+      "note": "Vous devez confirmer les informations avant de valider le transfert. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide",
       "en_variants": [
         "You must confirm the details before validating the transfer."
@@ -695,8 +695,8 @@
       "screen": "5. Confirmation",
       "fr": "Votre argent a bien été envoyé au bénéficiaire.",
       "en": "Your money has been successfully sent to the beneficiary.",
-      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àyá nɔŋ mwàní.",
-      "note": "Votre argent a bien été envoyé au bénéficiaire.",
+      "local": "Mwàní wɔ̂ ùkə̀nyà ábə́ mòd àtə́ nɔŋ mwàní.",
+      "note": "Votre argent a bien été envoyé au bénéficiaire. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -749,8 +749,8 @@
       "screen": "Alertes",
       "fr": "Connexion réussie",
       "en": "Successful connection",
-      "local": "Mì nyíìnyà á kɔ̂nt mbə̀ŋ",
-      "note": "Notification / statut connexion.",
+      "local": "Ù nyíìnyà á kɔ̂nt mbə̀ŋ",
+      "note": "Notification / statut connexion. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -776,8 +776,8 @@
       "screen": "Alertes",
       "fr": "Limite quotidienne atteinte",
       "en": "Daily limit reached",
-      "local": "Mì mànyà àbùm mwàní yà lóm mɔ́s wùá",
-      "note": "Alerte limite journalière.",
+      "local": "Ù mànyà àbùm mwàní yà lóm mɔ́s wùá",
+      "note": "Alerte limite journalière. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -812,8 +812,8 @@
       "screen": "Alertes",
       "fr": "Voulez-vous annuler cette opération ?",
       "en": "Do you want to cancel this operation?",
-      "local": "Yə̀ mì yì kàb ísɛ́ ńì ?",
-      "note": "Demande de confirmation d'annulation.",
+      "local": "Yə̀ ù yì kàb ísɛ́ ńì ?",
+      "note": "Demande de confirmation d'annulation. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -839,8 +839,8 @@
       "screen": "Alertes",
       "fr": "Ne partagez jamais votre code secret.",
       "en": "Never share your secret code.",
-      "local": "Tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
-      "note": "Consigne de sécurité.",
+      "local": "Tə̀ ù kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "note": "Consigne de sécurité. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -848,8 +848,8 @@
       "screen": "Alertes",
       "fr": "Attention : ne partagez jamais votre code secret.",
       "en": "Warning: never share your secret code.",
-      "local": "Tɔ̀gá ǹjɔ̀ŋ : tə̀ mì kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
-      "note": "Alerte sécurité code secret.",
+      "local": "Tɔ̀gá ǹjɔ̀ŋ : tə̀ ù kàt mòd ḿfə́ nɔ́mbà yɔ̂ yà ǹsɔ́l mɔ́s mɔ́s.",
+      "note": "Alerte sécurité code secret. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -902,8 +902,8 @@
       "screen": "Alertes",
       "fr": "Vérifiez le numéro du bénéficiaire avant de poursuivre.",
       "en": "Check the beneficiary's number before proceeding.",
-      "local": "Cázgá nɔ́mbà yà mòd àyá nɔŋ mwàní ósúsúâ nâ mì kə̀ ósú.",
-      "note": "Consigne vérification numéro.",
+      "local": "Cázgá nɔ́mbà yà mòd àtə́ nɔŋ mwàní ósúsúâ nâ ù kə̀ ósú.",
+      "note": "Consigne vérification numéro. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -920,8 +920,8 @@
       "screen": "Alertes",
       "fr": "Une erreur est survenue. Réessayez plus tard.",
       "en": "An error occurred. Try again later.",
-      "local": "Dzɔ̌m díŋgá cɔ́b. Mì búlàn və̀gə̀ á mbús.",
-      "note": "Message d'erreur générique.",
+      "local": "Dzɔ̌m díŋgá cɔ́b. Ù búlàn və̀gə̀ á mbús.",
+      "note": "Message d'erreur générique. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -947,8 +947,8 @@
       "screen": "Bandeau de test",
       "fr": "Environnement de démonstration. Ne saisissez aucune donnée personnelle réelle.",
       "en": "Demonstration environment. Do not enter any real personal data.",
-      "local": "Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "note": "Avertissement de démonstration sans préfixe.",
+      "local": "Ìfɔ̀gɔ̀ yà ǹyèglè. Tə̀ ù tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Avertissement de démonstration sans préfixe. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
@@ -965,8 +965,8 @@
       "screen": "Bandeau de test",
       "fr": "Ne saisissez aucune donnée personnelle réelle.",
       "en": "Do not enter any real personal data.",
-      "local": "Tə̀ mì tìl màm mə́ńán mə́ bə́bɛ́lə́.",
-      "note": "Consigne de sécurité données personnelles.",
+      "local": "Tə̀ ù tìl màm mə́ńán mə́ bə́bɛ́lə́.",
+      "note": "Consigne de sécurité données personnelles. Harmonisé selon le style éton d'ALPHA (tutoiement, « mòd àtə́ nɔŋ »).",
       "statut": "valide"
     },
     {
