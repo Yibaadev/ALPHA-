@@ -54,8 +54,12 @@ function add(id, text, origin) {
       .forEach((part, n) => { if (/\p{L}/u.test(part)) add(id + ".partie" + (n + 1), part, origin); });
     return;
   }
-  if (seenTexts.has(value)) return; // même phrase déjà exportée : un seul clip suffit
-  seenTexts.add(value);
+  // Même suite de mots déjà exportée (seule la ponctuation diffère, ex. « Mòd àtə́ nɔŋ : ») : un seul
+  // clip suffit, la lecture compare les mots (src/eton-audio.js).
+  const words = value.toLowerCase().replace(/'/g, "’").match(/[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu);
+  const key = words ? words.join(" ") : value;
+  if (seenTexts.has(key)) return;
+  seenTexts.add(key);
   // « id » : nom du fichier audio ; « key » : identifiant d'origine dans les données d'ALPHA.
   const line = { id: fileNameFor(id), key: id, text: value, language_id: "eto", origin };
   if (redoAll ? current.has(line.id) : current.has(line.id) && current.get(line.id) !== value) line.regenerer = true;
