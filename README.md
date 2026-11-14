@@ -41,7 +41,7 @@ Le bouton haut-parleur active la **lecture au clic** : l’utilisateur touche un
 
 Aucune synthèse vocale n’existe pour l’éton dans les navigateurs. En mode Éton, la lecture au clic utilise donc des **clips audio préenregistrés**, livrés avec l’extension (`data/audio/eton/`).
 
-- **Voix provisoires** : 96 clips générés à l’avance avec OmniVoice, à partir des textes éton validés du dictionnaire. Le modèle tourne une seule fois sur Google Colab (voir [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md)) : l’extension ne contient aucun modèle et ne transmet rien. Le panneau précise qu’il s’agit d’une voix de synthèse provisoire.
+- **Voix provisoires** : 195 clips générés à l’avance avec OmniVoice. Ils couvrent tout l’éton affiché : le dictionnaire, les phrases modèles (morceaux fixes autour des montants et des noms), le guide « ? », la bulle et « Expliquer ». Une phrase est lue en enchaînant ses morceaux enregistrés ; les montants, les noms et les mots restés en français ne sont pas lus. Le modèle tourne une seule fois sur Google Colab (voir [docs/OMNIVOICE_COLAB.md](docs/OMNIVOICE_COLAB.md)) : l’extension ne contient aucun modèle et ne transmet rien. Le panneau précise qu’il s’agit d’une voix de synthèse provisoire.
 - **Revue par un locuteur** : il note chaque clip dans `revue_locuteur.csv`. Seuls les clips validés sont livrés (`npm run audio:index`) ; `npm run audio:index:essai` inclut aussi les clips pas encore écoutés, pour les tests.
 - **Enregistrements du locuteur** : déposés dans `data/audio/eton/locuteur/` avec le même nom de fichier, ils remplacent toujours le clip de synthèse.
 

@@ -1,7 +1,7 @@
 {
   "meta": {
     "description": "Glossaire de l'action « Expliquer » : quand l'utilisateur sélectionne un texte qui contient un de ces termes, ALPHA affiche l'explication, sans connexion et sans modèle d'IA. Les champs « local » (éton) restent vides tant qu'un locuteur ne les a pas validés : l'explication s'affiche alors en français.",
-    "statut_local": "a_verifier",
+    "statut_local": "valide",
     "ui": {
       "fr": {
         "button": "Expliquer",
@@ -136,7 +136,7 @@
       "local": {
         "term": "Mòd àtə́ nɔŋ",
         "text": "Mòd àtə́ nɔŋ mwàní. Cázgá dwé lɔ́ yà nwàmɔ̀ wɔ́ : ŋgə́ mwàní àkə̀ ábə́ mòd ḿfə́, ànə̀ àyà nâ ù búlnì nɔŋ ɲə́.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -162,7 +162,7 @@
       "local": {
         "term": "Mòd àtə́ nɔŋ ḿfə́",
         "text": "Ù bə́gə̀ kə́ lóm mwàní á nwàmɔ̀ nû á kɔ̂nt yɔ̂ mɔ́s mɔ́s. Màdúgà mə̀tə̀ bɔ̀ nálá : yə̀mgá mbə̀ŋ nâ ù yə́m mòd nû.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -186,7 +186,7 @@
       "local": {
         "term": "Nɔ́mbà yà ísɛ́",
         "text": "Nɔ́mbà wùá àtə̀ lə́d ísɛ́ yɔ̂. Bàglà ɲə́ : àtə̀ lə́d nâ ù lómnyà mwàní ŋgə́ àtə̀ sál ású bɛ̀bə̀.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -212,7 +212,7 @@
       "local": {
         "term": "Àbùm mwàní",
         "text": "Mwàní mòd àtə́ nɔŋ àyá nɔŋ, tə̀ táŋ.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -238,7 +238,7 @@
       "local": {
         "term": "Mwàní wɔ́sə̂ ùkùì",
         "text": "Mwàní wɔ́sə̂ ùkùì á kɔ̂nt yɔ̂ : àbùm mwàní ú nlóm yà táŋ.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -265,7 +265,7 @@
       "local": {
         "term": "Mwàní ùkùì",
         "text": "Mwàní ùkùì á kɔ̂nt yɔ̂. Ìfə́ yà ǹnɔ́ŋí : mwàní ùnyíì á kɔ̂nt yɔ̂.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -291,7 +291,7 @@
       "local": {
         "term": "Àsú ú nlóm",
         "text": "Ìbùg ìtún ású kàt àsú ú mwàní (ndá, ǹdá bɔ̀d, kálàdà…). Yátə̀ sál ású yɛ́n ísɛ́ ńì á mbús.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -315,7 +315,7 @@
       "local": {
         "term": "M̀bə̀b í nlóm",
         "text": "Ǹzə̌n yà lóm mwàní : á kɔ̂nt yà ísɛ́ ńì, á Mobile Money, ŋgə́ á báŋk ìfə́. Táŋ àtə̀ cɛ́nî á mbús ǹtɔ́b wɔ̂.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -339,7 +339,7 @@
       "local": {
         "term": "Mobile Money",
         "text": "Kɔ̂nt yà mwàní ìbàmàn á nwàmɔ̀ ŋkwǎl, ísɛ́ yà ŋkwǎl yátə̀ sál ɲə́. Mwàní àtə̀ kə̀ á tɛ̀lɛ̀fɔ̂n yà mòd àtə́ nɔŋ.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -363,7 +363,7 @@
       "local": {
         "term": "Báŋk ìfə́",
         "text": "Nlóm mwàní á kɔ̂nt yà báŋk ìfə́. Àtə̀ bə̀ ǹtáŋ á yɔ́b yà ǹtə̀ŋ àyà.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -385,9 +385,9 @@
         "text": "Your account’s identifier. Only share it with people who need to send you money."
       },
       "local": {
-        "term": "Nwàmɔ̀ kônt",
-        "text": "Nɔ́mbà àtə̀ lə́d kɔ̂nt yɔ̂. Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm mì mwàní.",
-        "statut": "a_verifier"
+        "term": "Nwàmɔ̀ kɔ̂nt",
+        "text": "Nɔ́mbà àtə̀ lə́d kɔ̂nt yɔ̂. Kàtgá ɲə́ vè bɔ̀d bə̀tə̀ lóm wɔ̀ mwàní.",
+        "statut": "valide"
       }
     },
     {
@@ -413,7 +413,7 @@
       "local": {
         "term": "Nlóm mwàní",
         "text": "Lóm mwàní á kɔ̂nt yɔ̂ á kə̀ á kɔ̂nt yà mòd ḿfə́. Ŋgə́ ù jə́blə́nyà, ù bə́gə̀ dzàm kàb ɲə́ fə́.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -438,7 +438,7 @@
       "local": {
         "term": "Àvəl àvəl",
         "text": "Mwàní àtə̀ kə̀ ábə́ mòd àtə́ nɔŋ á ǹtə̀ŋ mɔ́n, tə̀ yàŋà mə̀lú.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -462,7 +462,7 @@
       "local": {
         "term": "Ìbɛ̀bə̀ àsúg",
         "text": "Ìbɛ̀bə̀ ísɛ́ ósúsúâ nâ ù lóm. Mwàní àbə́gə̀ kə̀ : ànə̀ ǹtə̀ŋ àsú kɔ̀m dzɔ̌m díŋgá cɔ́b.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -486,7 +486,7 @@
       "local": {
         "term": "Kálàdà wà ǹyáà",
         "text": "Kálàdà àtə̀ lə́d nâ ísɛ́ ìbòbànyà. Bàglà ɲə́, yà nɔ́mbà yà ísɛ́.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -510,7 +510,7 @@
       "local": {
         "term": "M̀bə̀b",
         "text": "M̀bə̀b í ísɛ́ : ìbòbànyà mbə̀ŋ, ìtə̀ yàŋà, ŋgə́ ìŋgá cɔ́b.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -543,8 +543,8 @@
       },
       "local": {
         "term": "Nɔ́mbà yà ǹsɔ́l",
-        "text": "Nɔ́mbà wɔ̂ àtə̀ lə́d nâ ànə̀ mì. Tə̀ ù kàt mòd ḿfə́ mɔ́s mɔ́s, tɔ́ mòd àkàt nâ bâŋ àlóm ɲə́.",
-        "statut": "a_verifier"
+        "text": "Nɔ́mbà wɔ̂ àtə̀ lə́d nâ à nə̀ wɔ̀. Tə̀ ù kàt mòd ḿfə́ mɔ́s mɔ́s, tɔ́ mòd àkàt nâ bâŋ àlóm ɲə́.",
+        "statut": "valide"
       }
     },
     {
@@ -569,7 +569,7 @@
       "local": {
         "term": "Kálâ! Ùkálá",
         "text": "Fɔ̀ ńlɔ́ŋí àtə̀ lə́d dzɔ̌m díbə́gə̀ mbə̀ŋ. Láŋgá ɲə́ wɔ́sə̂, ù cázgá dzɔ̌m àtə̀ yì ósúsúâ nâ ù kə̀ ósú.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -593,7 +593,7 @@
       "local": {
         "term": "Ŋkwǎl ú kálâní",
         "text": "Màm mə̀tə̀ kə̀ á zàŋ tɛ̀lɛ̀fɔ̂n yɔ̂ yà ísɛ́ mánə̀ ǹsɔ́l. Bì bə́gə̀ lə́d nâ mòd àtə́ nɔŋ ànə̀ mbə̀ŋ : cázgá ɲə́ ngə́d ísə̂.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -617,7 +617,7 @@
       "local": {
         "term": "Èyágná á kùz",
         "text": "Èyágná ábə́ mòd àtə̀ kùz bìyɔ́m á kɔ̂nt yɔ̂.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     },
     {
@@ -641,7 +641,7 @@
       "local": {
         "term": "Té táŋ",
         "text": "Bə̀bə́gə̀ nɔŋ táŋ : mwàní wɔ́sə̂ ùkùì ànə̀ fàlà àbùm mwàní ú nlóm.",
-        "statut": "a_verifier"
+        "statut": "valide"
       }
     }
   ]

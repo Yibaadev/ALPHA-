@@ -49,13 +49,6 @@
       "revue": "a_verifier"
     },
     {
-      "key": "dict.account_section",
-      "text": "Kônt wô",
-      "file": "omnivoice/dict.account_section.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
       "key": "dict.greeting_only",
       "text": "Mə̀kónî,",
       "file": "omnivoice/dict.greeting_only.ogg",
@@ -73,20 +66,6 @@
       "key": "dict.balance_available",
       "text": "Mwàní ú nè",
       "file": "omnivoice/dict.balance_available.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.account_number_label",
-      "text": "Nwàmɔ̀ kônt :",
-      "file": "omnivoice/dict.account_number_label.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.account_type",
-      "text": "Kônt á m̀bə̀ŋ",
-      "file": "omnivoice/dict.account_type.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -234,13 +213,6 @@
       "key": "dict.beneficiary_intro",
       "text": "Tílgá màm mə́ mòd àtə́ nɔŋ. Cázgá ngə́d ísə̂ nwàmɔ̀ ósúsúâ nâ ù jə́blə̂.",
       "file": "omnivoice/dict.beneficiary_intro.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.warning_new_beneficiary",
-      "text": "Mòd àtə́ nɔŋ nû áŋgábə́ té bə̀ á kônt wô. Cázgá nwàmɔ̀ ósúsúâ nâ ù kə́ ósú.",
-      "file": "omnivoice/dict.warning_new_beneficiary.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },
@@ -542,13 +514,6 @@
       "key": "dict.ext_la_transaction_est_en_attente_",
       "text": "Ìsɛ́ ìtə̀ yàŋà ǹjə́blə́ wɔ̂.",
       "file": "omnivoice/dict.ext_la_transaction_est_en_attente_.ogg",
-      "source": "omnivoice",
-      "revue": "a_verifier"
-    },
-    {
-      "key": "dict.ext_votre_solde_est_insuffisant_po",
-      "text": "Mwàní wɔ̂ àlígì àtə̀ bɔ́n á yáà mwàní wà ísɛ́ yà nlóm.",
-      "file": "omnivoice/dict.ext_votre_solde_est_insuffisant_po.ogg",
       "source": "omnivoice",
       "revue": "a_verifier"
     },

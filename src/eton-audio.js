@@ -13,8 +13,14 @@
   // Forme de comparaison d'un texte éton : tons et diacritiques conservés, espaces normalisés.
   const norm = (text) => String(text || "").normalize("NFC").replace(/[\s  ]+/g, " ").trim();
 
+  // Mots d'un texte (lettres et diacritiques, apostrophes internes) : la ponctuation ne compte pas.
+  const WORD = /[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu;
+  const wordsOf = (text) => norm(text).toLowerCase().replace(/'/g, "’").match(WORD) || [];
+
   function create({ hostId }) {
     let clips = new Map(); // texte éton -> { file, source, revue }
+    let phrases = new Map(); // suite de mots -> clip (pour découper une phrase assemblée)
+    let maxWords = 1;
     let meta = {};
     let context = null;
     let current = null; // source audio en cours
@@ -27,13 +33,53 @@
         const index = await response.json();
         meta = index.meta || {};
         clips = new Map((index.clips || []).map((clip) => [norm(clip.text), clip]));
+        phrases = new Map();
+        maxWords = 1;
+        for (const clip of index.clips || []) {
+          const words = wordsOf(clip.text);
+          if (!words.length) continue;
+          const key = words.join(" ");
+          if (!phrases.has(key)) phrases.set(key, clip);
+          maxWords = Math.max(maxWords, words.length);
+        }
       } catch (e) {
-        clips = new Map(); // pas de clips : la lecture éton se replie sur le texte d'origine
+        clips = new Map(); // pas de clips : rien n'est lu en éton (et jamais en français)
+        phrases = new Map();
       }
     }
 
     function clipFor(text) {
       return clips.get(norm(text)) || null;
+    }
+
+    /* Clips d'un texte éton : le clip de la phrase entière s'il existe ; sinon la phrase est découpée
+       en morceaux enregistrés, du plus long au plus court (« Mwàní àlígì á kɔ̂nt : 25 000 FCFA » ->
+       clip « Mwàní àlígì á kɔ̂nt : »). Les mots restants (montant, nom, mot non traduit) ne sont pas lus. */
+    function textQueue(text) {
+      const whole = clipFor(text);
+      if (whole) return { items: [{ clip: whole }], missing: 0 };
+      const words = wordsOf(text);
+      const items = [];
+      let missing = 0;
+      let gap = false;
+      for (let i = 0; i < words.length;) {
+        let found = null;
+        for (let len = Math.min(maxWords, words.length - i); len > 0 && !found; len--) {
+          const clip = phrases.get(words.slice(i, i + len).join(" "));
+          if (clip) found = { clip, len };
+        }
+        if (found) {
+          items.push({ clip: found.clip });
+          i += found.len;
+          gap = false;
+        } else {
+          if (!gap) missing++;
+          gap = true;
+          i++;
+        }
+      }
+      if (!words.length && /\p{N}/u.test(text)) missing++;
+      return { items, missing };
     }
 
     function describe() {
@@ -81,9 +127,9 @@
       const items = [];
       let missing = 0;
       for (const text of textsOf(el)) {
-        const clip = clipFor(text);
-        if (clip) items.push({ clip });
-        else if (/[\p{L}\p{N}]/u.test(text)) missing++;
+        const part = textQueue(text);
+        items.push(...part.items);
+        missing += part.missing;
       }
       return { items, missing };
     }
@@ -137,7 +183,7 @@
       if (context.state === "suspended") context.resume().catch(() => {});
     }
 
-    return { load, clipFor, describe, elementQueue, playClip, stopClip, unlock, meta: () => meta };
+    return { load, clipFor, textQueue, describe, elementQueue, playClip, stopClip, unlock, meta: () => meta };
   }
 
   NS.etonAudio = { create };

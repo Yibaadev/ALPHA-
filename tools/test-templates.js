@@ -55,6 +55,6 @@ for (const template of data) {
 
 const testMatch = engine.match("Solde disponible : [M1]", data);
 assert.ok(testMatch, "les gabarits validés doivent matcher avec succès");
-assert.strictEqual(testMatch.eton, "Mwàní àlígì á kɔ̂nt : [M1]");
+assert.strictEqual(testMatch.eton, "Mwàní ú nè : [M1]"); // aligné sur le dictionnaire (« Solde disponible » = « Mwàní ú nè »)
 
 console.log("Gabarits : validation des champs, intégrité des marqueurs et appariement réussis.");
